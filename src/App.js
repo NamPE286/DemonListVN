@@ -14,6 +14,11 @@ function App() {
         </div>
       </div>
       <div className='pageContent'>
+        <div className='sidePanel'>
+          <div className='topplayerPanel'>
+            <h2>Top Player</h2>
+          </div>
+        </div>
         <div className='mainpanel'>
           <h2>Main List</h2>
           <div className='mainpanelContent'>
@@ -24,11 +29,7 @@ function App() {
             <p>Sample content</p>
           </div>
         </div>
-        <div className='sidePanel'>
-          <div className='topplayerPanel'>
-            <h2>Top Player</h2>
-          </div>
-        </div>
+
       </div>
     </div>
   );

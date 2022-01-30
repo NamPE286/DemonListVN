@@ -51,7 +51,7 @@
   margin-right: 30px;
   border-radius: 16px;
   padding: 10px;
-  width: 70%;
+  width: 75%;
 }
 
 .mainpanel h2 {
@@ -64,7 +64,7 @@
 }
 
 .sidePanel {
-  width: 30%;
+  width: 25%;
 }
 
 .sidePanel .topplayerPanel {
