@@ -1,0 +1,81 @@
+.App {
+  color: white;
+  background-color: black;
+}
+
+.navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-bottom: 100px;
+  background: #2e2e2e;
+  background: -webkit-gradient(linear, left top, left bottom, from(#2e2e2e), color-stop(27%, #2e2e2e), to(black));
+  background: linear-gradient(#2e2e2e 0%, #2e2e2e 27%, black 100%);
+}
+
+.navbar .pageName {
+  padding: 10px;
+  margin-left: 100px;
+  margin-top: 12px;
+  font-size: large;
+  font-weight: bold;
+}
+
+.navbar ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+}
+
+.navbar ul li {
+  padding: 10px;
+}
+
+.navbar .navItem {
+  margin-right: 100px;
+}
+
+.pageContent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.mainpanel {
+  background-color: #2E2E2E;
+  margin-left: 30px;
+  margin-right: 30px;
+  border-radius: 16px;
+  padding: 10px;
+  width: 70%;
+}
+
+.mainpanel h2 {
+  text-align: center;
+}
+
+.mainpanel .mainpanelContent {
+  margin-left: 30px;
+  line-height: 10px;
+}
+
+.sidePanel {
+  width: 30%;
+}
+
+.sidePanel .topplayerPanel {
+  background-color: #2E2E2E;
+  margin-left: 30px;
+  margin-right: 30px;
+  border-radius: 16px;
+  padding: 10px;
+}
+
+.sidePanel .topplayerPanel h2 {
+  text-align: center;
+}
+/*# sourceMappingURL=styles.css.map */
