@@ -3,6 +3,7 @@ import './styles/styles.css';
 function App() {
   return (
     <div className="App">
+      <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no"></meta>
       <div className='navbar'>
         <a className='pageName'>Demon List VN</a>
         <div className='navItem'>
