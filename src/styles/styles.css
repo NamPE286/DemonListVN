@@ -10,10 +10,10 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding-bottom: 100px;
+  padding-bottom: 200px;
   background: #2e2e2e;
-  background: -webkit-gradient(linear, left top, left bottom, from(#2e2e2e), color-stop(27%, #2e2e2e), to(black));
-  background: linear-gradient(#2e2e2e 0%, #2e2e2e 27%, black 100%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#2e2e2e), color-stop(75%, rgba(18, 18, 18, 0)), to(rgba(0, 0, 0, 0)));
+  background: linear-gradient(180deg, #2e2e2e 0%, rgba(18, 18, 18, 0) 75%, rgba(0, 0, 0, 0) 100%);
 }
 
 .navbar .pageName {
