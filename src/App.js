@@ -6,10 +6,10 @@ import Main from './components/Main.js'
 function App() {
   return (
     <div className="App">
-      <Navbar/>    
+      <Navbar />
       <div className='pageContent'>
-        <Side/>
-        <Main/>
+        <Side />
+        <Main />
       </div>
     </div>
   );
