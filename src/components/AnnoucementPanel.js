@@ -33,7 +33,7 @@ function Main(annoucement) {
 Main.defaultProps = [
     {
         title: "Title",
-        date: "30/1/2022",
+        date: "1/2/2022",
         content: "Annoucement go here"
     },
     {
@@ -43,7 +43,7 @@ Main.defaultProps = [
     },
     {
         title: "Long Annoucement Title Long Annoucement Title Long Annoucement Title",
-        date: "1/2/2022",
+        date: "30/1/2022",
         content: "Long annoucement go here Long annoucement go here Long annoucement go here Long annoucement go here"
     },
 ]
