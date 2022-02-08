@@ -5,7 +5,7 @@ function Main(player) {
             {
                 Object.keys(player).map(i => {
                     return (
-                        <div className='player'>
+                        <div className='player' key={i}>
                             <section>
                                 <img src={player[i].avatar}/>
                             </section>
