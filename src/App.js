@@ -6,6 +6,8 @@ import Main from './components/Main.js'
 function App() {
   return (
     <div className="App">
+      <meta name="viewport" content="width=device-width, initial-scale=0.75, 
+user-scalable=no"/>
       <Navbar />
       <div className='pageContent'>
         <Side />
