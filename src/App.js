@@ -22,11 +22,50 @@ function App() {
         <div className='mainpanel'>
           <h2>Main List</h2>
           <div className='mainpanelContent'>
-            <p>Sample content</p>
-            <p>Sample content</p>
-            <p>Sample content</p>
-            <p>Sample content</p>
-            <p>Sample content</p>
+            <div className='levelCard'>
+              <img src='https://i.imgur.com/BdBy1Ky.png'></img>
+              <div className='fadeEffect'></div>
+              <p className='top'>#1</p>
+              <div className='levelInfo'>
+                <h3>Level Name</h3>
+                <p>by Creator</p>
+                <br></br>
+                <p>1000pt</p>
+              </div>
+            </div>
+            <div className='levelCard'>
+              <img src='https://c4.wallpaperflare.com/wallpaper/262/965/121/gawr-gura-anime-girls-water-hd-wallpaper-preview.jpg'></img>
+              <div className='fadeEffect'></div>
+              <p className='top'>#2</p>
+              <div className='levelInfo'>
+                <h3>Level Name</h3>
+                <p>by Creator</p>
+                <br></br>
+                <p>1000pt</p>
+              </div>
+            </div>
+            <div className='levelCard'>
+              <img src='https://wallpaperaccess.com/full/6391518.jpg'></img>
+              <div className='fadeEffect'></div>
+              <p className='top'>#3</p>
+              <div className='levelInfo'>
+                <h3>Level Name</h3>
+                <p>by Creator</p>
+                <br></br>
+                <p>1000pt</p>
+              </div>
+            </div>
+            <div className='levelCard'>
+              <img src='https://wallpaperaccess.com/full/4858745.jpg'></img>
+              <div className='fadeEffect'></div>
+              <p className='top'>#4</p>
+              <div className='levelInfo'>
+                <h3>Level Name</h3>
+                <p>by Creator</p>
+                <br></br>
+                <p>1000pt</p>
+              </div>
+            </div>
           </div>
         </div>
 

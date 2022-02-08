@@ -42,9 +42,9 @@
     width: 75%;
     h2{
         text-align: center;
+        padding-bottom: 10px;
     }
     .mainpanelContent{
-        margin-left: 30px;
         line-height: 10px;
     }
 }
@@ -60,4 +60,54 @@
             text-align: center;
         }
     }
+}
+.levelCard{
+    margin: auto;
+    width: 65%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 16px;
+    object-fit: contain;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    margin-bottom: 42px;
+    img {
+        position: absolute;
+        z-index: 0;
+        width: 100%;
+        left: -1000%;
+        right: -1000%;
+        top: -1000%;
+        bottom: -1000%;
+        margin: auto;
+        min-height: 100%;
+        min-width: 100%;
+    }
+}
+.fadeEffect{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: rgb(46,46,46);
+    background: linear-gradient(90deg, rgba(46,46,46,0) 0%, rgba(46,46,46,1) 80%, rgba(0,0,0,1) 100%);}
+.levelInfo{
+    position: absolute;
+    z-index: 2;
+    text-align: right;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 30px;
+    line-height: 5px;
+}
+.top{
+    position: absolute;
+    z-index: 2;
+    text-align: left;
+    left:1%;
+    top:-10%;
+    font-size: 50px;
+    margin-left: 10px;
+    text-shadow: 3px 6px 12px black;
 }

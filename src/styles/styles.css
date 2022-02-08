@@ -56,10 +56,10 @@
 
 .mainpanel h2 {
   text-align: center;
+  padding-bottom: 10px;
 }
 
 .mainpanel .mainpanelContent {
-  margin-left: 30px;
   line-height: 10px;
 }
 
@@ -77,5 +77,68 @@
 
 .sidePanel .topplayerPanel h2 {
   text-align: center;
+}
+
+.levelCard {
+  margin: auto;
+  width: 65%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 16px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  position: relative;
+  margin-bottom: 42px;
+}
+
+.levelCard img {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  left: -1000%;
+  right: -1000%;
+  top: -1000%;
+  bottom: -1000%;
+  margin: auto;
+  min-height: 100%;
+  min-width: 100%;
+}
+
+.fadeEffect {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: #2e2e2e;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(46, 46, 46, 0)), color-stop(80%, #2e2e2e), to(black));
+  background: linear-gradient(90deg, rgba(46, 46, 46, 0) 0%, #2e2e2e 80%, black 100%);
+}
+
+.levelInfo {
+  position: absolute;
+  z-index: 2;
+  text-align: right;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  padding: 30px;
+  line-height: 5px;
+}
+
+.top {
+  position: absolute;
+  z-index: 2;
+  text-align: left;
+  left: 1%;
+  top: -10%;
+  font-size: 50px;
+  margin-left: 10px;
+  text-shadow: 3px 6px 12px black;
 }
 /*# sourceMappingURL=styles.css.map */
