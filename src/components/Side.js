@@ -1,11 +1,10 @@
+import TopplayerPanel from './TopplayerPanel.js';
 
 function Side() {
   return (
-        <div className='sidePanel'>
-          <div className='topplayerPanel'>
-            <h2>Top Player</h2>
-          </div>
-        </div>
+    <div className='sidePanel'>
+      <TopplayerPanel />
+    </div>
   )
 }
 
