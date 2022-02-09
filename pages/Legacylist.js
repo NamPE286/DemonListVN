@@ -1,6 +1,7 @@
+import './styles/styles.css';
 import Navbar from './components/Navbar.js'
 import Side from './components/Side.js'
-import Main from './components/Main/Mainlist.js'
+import Main from './components/Main/Legacylist.js'
 
 function App() {
   return (
