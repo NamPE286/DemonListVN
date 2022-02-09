@@ -22,22 +22,22 @@ function Main(levels){
             <section>
                 <img src={levels[1].thumbnail}></img>
                 <div className="fadeEffect1"></div>
-                <a className="smalltop">#2</a><a><div id="bold">{processTitle(levels[1].name)}</div>by {processAuthor(levels[1].creator)} - {+(2100/(0.3*(parseInt(1) + 1)+9)-80).toFixed(1)}pt</a>
+                <a className="smalltop">#2</a><a><div id="bold">{processTitle(levels[1].name)}</div>by {processAuthor(levels[1].creator)} - {+(2100/(0.3*(parseInt(2) + 1)+9)-80).toFixed(1)}pt</a>
             </section>
             <section>
                 <img src={levels[2].thumbnail}></img>
                 <div className="fadeEffect1"></div>
-                <a className="smalltop">#3</a><a><div id="bold">{processTitle(levels[2].name)}</div>by {processAuthor(levels[2].creator)} - {+(2100/(0.3*(parseInt(1) + 1)+9)-80).toFixed(1)}pt</a>
+                <a className="smalltop">#3</a><a><div id="bold">{processTitle(levels[2].name)}</div>by {processAuthor(levels[2].creator)} - {+(2100/(0.3*(parseInt(3) + 1)+9)-80).toFixed(1)}pt</a>
             </section>
             <section>
                 <img src={levels[3].thumbnail}></img>
                 <div className="fadeEffect1"></div>
-                <a className="smalltop">#4</a><a><div id="bold">{processTitle(levels[3].name)}</div>by {processAuthor(levels[3].creator)} - {+(2100/(0.3*(parseInt(1) + 1)+9)-80).toFixed(1)}pt</a>
+                <a className="smalltop">#4</a><a><div id="bold">{processTitle(levels[3].name)}</div>by {processAuthor(levels[3].creator)} - {+(2100/(0.3*(parseInt(4) + 1)+9)-80).toFixed(1)}pt</a>
             </section>
             <section>
                 <img src={levels[4].thumbnail}></img>
                 <div className="fadeEffect1"></div>
-                <a className="smalltop">#5</a><a><div id="bold">{processTitle(levels[4].name)}</div>by {processAuthor(levels[4].creator)} - {+(2100/(0.3*(parseInt(1) + 1)+9)-80).toFixed(1)}pt</a>
+                <a className="smalltop">#5</a><a><div id="bold">{processTitle(levels[4].name)}</div>by {processAuthor(levels[4].creator)} - {+(2100/(0.3*(parseInt(5) + 1)+9)-80).toFixed(1)}pt</a>
             </section>
         </div>
     )
