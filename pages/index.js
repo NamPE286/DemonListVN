@@ -1,14 +1,19 @@
 import Navbar from './components/Navbar.js'
-import Side from './components/Side.js'
+import TopplayerPanel from './components/TopplayerPanel.js';
+import AnnoucementPanel from './components/AnnoucementPanel.js';
 import Main from './components/Main/Mainlist.js'
 
 function App() {
   return (
     <div className="App">
-      <meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=no"/>
+      <meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=no" />
       <Navbar />
       <div className='pageContent'>
-        <Side />
+        <div className='sidePanel'>
+          <div className='topSpacer' />
+          <TopplayerPanel />
+          <AnnoucementPanel />
+        </div>
         <Main />
       </div>
     </div>
