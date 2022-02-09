@@ -1,12 +1,12 @@
 function Main(annoucement) {
-    function processTitle(s){
-        if(s.length > 35){
+    function processTitle(s) {
+        if (s.length > 35) {
             return s.slice(0, 35) + "...";
         }
         return s;
     }
-    function processContent(s){
-        if(s.length > 60){
+    function processContent(s) {
+        if (s.length > 60) {
             return s.slice(0, 60) + "...";
         }
         return s;
@@ -14,18 +14,24 @@ function Main(annoucement) {
     return (
         <div className='annoucementPanel'>
             <h2>Annoucement</h2>
-            {
-                Object.keys(annoucement).map(i => {
-                    return (
-                    <div className="annouce" key={i}>
-                        <div className="annouceContent">
-                            <a className="annoucementTitle">{processTitle(annoucement[i].title)}</a><a>{annoucement[i].date}</a>
-                            <p>{processContent(annoucement[i].content)}</p>
-                        </div>
-                    </div>
-                )})
-            }
-
+            <div className="annouce">
+                <div className="annouceContent">
+                    <a className="annoucementTitle">{processTitle(annoucement[0].title)}</a><a>{annoucement[0].date}</a>
+                    <p>{processContent(annoucement[0].content)}</p>
+                </div>
+            </div>
+            <div className="annouce">
+                <div className="annouceContent">
+                    <a className="annoucementTitle">{processTitle(annoucement[1].title)}</a><a>{annoucement[1].date}</a>
+                    <p>{processContent(annoucement[1].content)}</p>
+                </div>
+            </div>
+            <div className="annouce">
+                <div className="annouceContent">
+                    <a className="annoucementTitle">{processTitle(annoucement[2].title)}</a><a>{annoucement[2].date}</a>
+                    <p>{processContent(annoucement[2].content)}</p>
+                </div>
+            </div>
         </div>
     )
 }
