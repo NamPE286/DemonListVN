@@ -37,6 +37,7 @@ code {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  pointer-events: none;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -52,6 +53,7 @@ code {
   margin-top: 12px;
   font-size: large;
   font-weight: bold;
+  pointer-events: auto;
 }
 
 .navbar ul {
@@ -69,6 +71,7 @@ code {
 
 .navbar .navItem {
   margin-right: 100px;
+  pointer-events: auto;
 }
 
 .pageContent {
@@ -380,7 +383,7 @@ code {
 }
 
 .submitBtn {
-  background-color: #494949;
+  background-color: #424242;
   border-radius: 16px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -393,6 +396,7 @@ code {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  pointer-events: auto;
 }
 
 .submitBtn:hover {

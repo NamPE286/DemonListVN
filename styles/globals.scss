@@ -31,6 +31,7 @@ code {
     top: 0px;
     width: 100%;
     display: flex;
+    pointer-events: none;
     justify-content: space-between;
     padding-bottom: 200px;
     background: rgb(46,46,46);
@@ -41,6 +42,7 @@ code {
         margin-top: 12px;
         font-size: large;
         font-weight: bold;
+        pointer-events: auto;
     }
     ul {
         display: flex;
@@ -52,9 +54,9 @@ code {
     }
     .navItem {
         margin-right: 100px;
+        pointer-events: auto;
     }
 }
-
 .pageContent {
     display: flex;
 }
@@ -306,13 +308,13 @@ code {
     text-shadow: 3px 6px 12px black;
 }
 .submitBtn{
-    background-color: #333333;
+    background-color: #424242;
     border-radius: 16px;
     transition: 0.3s;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    pointer-events: auto;
 }
 .submitBtn:hover{
     background-color: #333333;
