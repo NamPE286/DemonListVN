@@ -15,7 +15,7 @@ function Main(levels) {
                 <h3>{levels[i].name}</h3>
                 <p>by {levels[i].creator}</p>
                 <br></br>
-                <p>{+(2100/(0.3*levels[i].top+9)-80).toFixed(1)}pt</p>
+                <p>{+(2100/(0.3*(parseInt(i) + 1)+9)-80).toFixed(1)}pt</p>
               </div>
             </div>
           )

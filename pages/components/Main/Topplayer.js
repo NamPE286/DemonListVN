@@ -1,7 +1,7 @@
 function Main(levels) {
   return (
     <div className="mainpanel">
-      <h2>Legacy List</h2>
+      <h2>Top Player</h2>
       <div className="mainpanelContent">
         {Object.keys(levels).map(i => {
           //Added Object.keys(levels) to get rid of the error
