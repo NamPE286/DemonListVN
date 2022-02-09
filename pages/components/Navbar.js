@@ -9,6 +9,7 @@ function Navbar() {
           <li><Link href='/'><a>Main List</a></Link></li>
           <li><Link href='/Legacylist'><a>Legacy List</a></Link></li>
           <li><Link href="/Topplayer">Top Player</Link></li>
+          <li className='submitBtn'><a href='#'>Submit</a></li>
         </ul>
       </div>
     </div>

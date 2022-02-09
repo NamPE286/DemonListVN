@@ -42,8 +42,8 @@ code {
           justify-content: space-between;
   padding-bottom: 200px;
   background: #2e2e2e;
-  background: -webkit-gradient(linear, left top, left bottom, from(#2e2e2e), color-stop(75%, rgba(18, 18, 18, 0)), to(rgba(0, 0, 0, 0)));
-  background: linear-gradient(180deg, #2e2e2e 0%, rgba(18, 18, 18, 0) 75%, rgba(0, 0, 0, 0) 100%);
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(46, 46, 46, 0)), to(#212121));
+  background: linear-gradient(0deg, rgba(46, 46, 46, 0) 0%, #212121 100%);
 }
 
 .navbar .pageName {
@@ -63,6 +63,8 @@ code {
 
 .navbar ul li {
   padding: 10px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .navbar .navItem {
@@ -375,6 +377,28 @@ code {
   font-size: 50px;
   margin-left: 10px;
   text-shadow: 3px 6px 12px black;
+}
+
+.submitBtn {
+  background-color: #494949;
+  border-radius: 16px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.submitBtn:hover {
+  background-color: #333333;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 @media screen and (max-width: 1000px) {
