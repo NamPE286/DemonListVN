@@ -10,7 +10,7 @@ function Main(levels) {
             <div className='levelCard' key={i}>
               <img src={levels[i].thumbnail}></img>
               <div className='fadeEffect'></div>
-              <p className='top'>#{levels[i].top}</p>
+              <p className='top'>#{parseInt(i) + 1}</p>
               <div className='levelInfo'>
                 <h3>{levels[i].name}</h3>
                 <p>by {levels[i].creator}</p>
