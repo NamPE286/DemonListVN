@@ -4,7 +4,7 @@ function Main(player) {
             <h2>Top Player</h2>
             <div className='player'>
                 <section>
-                    <img src={player[0].avatar} />
+                    <img src={player[0].avatar} alt=""/>
                 </section>
                 <div className='topplayerInfo'>
                     <p>{player[0].name} - {player[0].point}pt</p>
@@ -12,7 +12,7 @@ function Main(player) {
             </div>
             <div className='player'>
                 <section>
-                    <img src={player[1].avatar} />
+                    <img src={player[1].avatar} alt=""/>
                 </section>
                 <div className='topplayerInfo'>
                     <p>{player[1].name} - {player[1].point}pt</p>
@@ -20,7 +20,7 @@ function Main(player) {
             </div>
             <div className='player'>
                 <section>
-                    <img src={player[2].avatar} />
+                    <img src={player[2].avatar} alt=""/>
                 </section>
                 <div className='topplayerInfo'>
                     <p>{player[2].name} - {player[2].point}pt</p>

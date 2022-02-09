@@ -8,7 +8,7 @@ function Main(levels) {
           //Delete key={i} won't break the website but it will have a not so pretty error in console
           return (
             <div className='levelCard' key={i}>
-              <img src={levels[i].thumbnail}></img>
+              <img src={levels[i].thumbnail} alt=""></img>
               <div className='fadeEffect'></div>
               <p className='top'>#{parseInt(i) + 1}</p>
               <div className='levelInfo'>
