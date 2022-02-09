@@ -2,21 +2,30 @@ function Main(player) {
     return (
         <div className='topplayerPanel'>
             <h2>Top Player</h2>
-            {
-                Object.keys(player).map(i => {
-                    return (
-                        <div className='player' key={i}>
-                            <section>
-                                <img src={player[i].avatar}/>
-                            </section>
-                            <div className='topplayerInfo'>
-                                <p>{player[i].name} - {player[i].point}pt</p>
-                            </div>
-                        </div>
-                    )
-                })
-            }
-
+            <div className='player'>
+                <section>
+                    <img src={player[0].avatar} />
+                </section>
+                <div className='topplayerInfo'>
+                    <p>{player[0].name} - {player[0].point}pt</p>
+                </div>
+            </div>
+            <div className='player'>
+                <section>
+                    <img src={player[1].avatar} />
+                </section>
+                <div className='topplayerInfo'>
+                    <p>{player[1].name} - {player[1].point}pt</p>
+                </div>
+            </div>
+            <div className='player'>
+                <section>
+                    <img src={player[2].avatar} />
+                </section>
+                <div className='topplayerInfo'>
+                    <p>{player[2].name} - {player[2].point}pt</p>
+                </div>
+            </div>
 
         </div>
     )
