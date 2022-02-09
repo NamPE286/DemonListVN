@@ -119,7 +119,6 @@ code {
             }
         }
         .topplayerInfo {
-            //create a rounded rectangle
             position: absolute;
             margin-left: 50px;
             z-index: 0;
@@ -183,6 +182,7 @@ code {
             font-size: 30px;
             top: 50%;
             transform: translateY(-50%);
+            text-shadow: 3px 6px 12px black;
         }
         a{
             z-index: 1;

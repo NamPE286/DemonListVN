@@ -229,6 +229,7 @@ code {
   top: 50%;
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
+  text-shadow: 3px 6px 12px black;
 }
 
 .sidePanel .mainlistPanel a {
