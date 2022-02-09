@@ -8,7 +8,7 @@ function Navbar() {
         <ul>
           <li><Link href='/'><a>Main List</a></Link></li>
           <li><Link href='/Legacylist'><a>Legacy List</a></Link></li>
-          <li><a href="/Topplayer">Top Player</a></li>
+          <li><Link href="/Topplayer">Top Player</Link></li>
         </ul>
       </div>
     </div>
