@@ -15,7 +15,7 @@ function Main(levels) {
                 <h3>{levels[i].name}</h3>
                 <p>by {levels[i].creator}</p>
                 <br></br>
-                <p>{+(2100/(0.3*(parseInt(i) + 1)+9)-80).toFixed(1)}pt</p>
+                <p>{levels[i].point}pt</p>
               </div>
             </div>
           )
@@ -27,6 +27,9 @@ function Main(levels) {
 
 // If levels == null
 
+// Points will be pre-calculated when storing data into the-
+// database instead of calculating points directly.
+// So do 'top' and other props to increase website performance.
 Main.defaultProps = [
   {
     thumbnail: "https://i.imgur.com/BdBy1Ky.png",
