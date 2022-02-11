@@ -3,7 +3,7 @@ import Link from 'next/link'
 function Navbar() {
   return (
     <div className='navbar'>
-      <a className='pageName' href="App.js">Demon List VN</a>
+      <Link href='/'><a className='pageName'>Demon List VN</a></Link>
       <div className='navItem'>
         <ul>
           <li><Link href='/'><a>Main List</a></Link></li>
