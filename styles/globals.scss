@@ -321,13 +321,15 @@ code {
     transition: 0.3s;
 }
 .topMostPlayer{
-    display: flex;
-    align-items: center;
-    justify-content: center;
     transition: 0.3s;
     border-radius: 16px;
     padding-top: 15px;
     padding-bottom: 15px;
+    width: 790px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:auto;
     .sect{
         width: 105px;
         height: 105px;

@@ -406,6 +406,12 @@ code {
 }
 
 .topMostPlayer {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border-radius: 16px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 790px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -415,11 +421,7 @@ code {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-  border-radius: 16px;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  margin: auto;
 }
 
 .topMostPlayer .sect {
