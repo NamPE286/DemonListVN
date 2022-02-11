@@ -529,11 +529,10 @@ code {
 }
 
 .allPlayer {
-  margin-top: 80px;
   display: table;
-  margin-left: 30px;
-  margin-right: 30px;
   padding: 10px;
+  margin: auto;
+  margin-top: 30px;
 }
 
 .allPlayer .allPlayerInfo {
@@ -553,7 +552,7 @@ code {
 }
 
 .allPlayer #playerName {
-  width: 700px;
+  width: 60%;
   text-align: left;
 }
 

@@ -116,9 +116,7 @@ Main.defaultProps = [
       name: "Watson Amelia",
       creator: "Hololive EN",
       point: "1000"
-    }
-    ,
-    point: "1000"
+    },
   }
 ]
 
