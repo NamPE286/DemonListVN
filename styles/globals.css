@@ -541,6 +541,7 @@ code {
 }
 
 .allPlayer a {
+  line-height: 20px;
   display: table-cell;
   padding: 10px;
   width: 150px;
@@ -556,7 +557,7 @@ code {
   text-align: left;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1250px) {
   .App {
     margin-top: 150px;
   }
