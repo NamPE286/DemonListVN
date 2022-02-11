@@ -71,7 +71,7 @@ function Main(players) {
         </div>
 
         <div className="allPlayer">
-          <section className="allPlayerInfo">
+          <section>
             <a id="playerName"></a><a id="playerTotalPoint">Total Point</a><a id="playerBestplay">Best Play</a>
           </section>
           <section className="allPlayerInfo">
