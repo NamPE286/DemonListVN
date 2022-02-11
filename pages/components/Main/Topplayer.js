@@ -75,7 +75,7 @@ function Main(players) {
             <a id="playerName"></a><a id="playerTotalPoint">Total Point</a><a id="playerBestplay">Best Play</a>
           </section>
           <section className="allPlayerInfo">
-            <a id="playerName">Player name</a><a id="playerTotalPoint">1000pt</a><a id="playerBestplay">Level Name</a>
+            <a id="playerName">#1 Player name</a><a id="playerTotalPoint">1000pt</a><a id="playerBestplay">Level Name</a>
           </section>
         </div>
       </div>
