@@ -415,6 +415,27 @@ code {
     background-color: #424242;
 }
 
+.allPlayer{
+    margin-top: 80px;
+    display: table;
+    padding: 10px;
+    .allPlayerInfo{
+        display: table-row;
+        padding:10px;
+    }
+    a{
+        display: table-cell;
+        padding: 10px;
+        width: 150px;
+        margin: 5px;
+        text-align: center;
+    }
+    #playerName{
+        width: 700px;
+        text-align: left;
+    }
+}
+
 
 @media screen and (max-width: 1200px) {
     .App{
@@ -431,7 +452,7 @@ code {
     }
     .topMostPlayer{
         padding-bottom: 90px;
-        width: 350px;
+        width: 420px;
         .sect{
             margin-left: 0;
         }

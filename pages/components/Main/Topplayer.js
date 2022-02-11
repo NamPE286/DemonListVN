@@ -12,7 +12,7 @@ function Main(players) {
     }
     return s;
   }
-    return (
+  return (
     <div className="mainpanel">
       <h2>Top Player</h2>
       <div className="mainpanelContent">
@@ -70,6 +70,14 @@ function Main(players) {
           </div>
         </div>
 
+        <div className="allPlayer">
+          <section className="allPlayerInfo">
+            <a id="playerName"></a><a id="playerTotalPoint">Total Point</a><a id="playerBestplay">Best Play</a>
+          </section>
+          <section className="allPlayerInfo">
+            <a id="playerName">Player name</a><a id="playerTotalPoint">1000pt</a><a id="playerBestplay">Level Name</a>
+          </section>
+        </div>
       </div>
     </div>
 
