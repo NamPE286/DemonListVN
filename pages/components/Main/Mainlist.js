@@ -1,5 +1,4 @@
 function Main(levels) {
-  console.log(levels);
   return (
     <div className="mainpanel">
       <h2>Main List</h2>

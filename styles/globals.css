@@ -405,7 +405,159 @@ code {
   transition: 0.3s;
 }
 
-@media screen and (max-width: 1000px) {
+.topMostPlayer {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  border-radius: 16px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  width: 790px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: auto;
+}
+
+.topMostPlayer .sect {
+  width: 105px;
+  height: 105px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 50%;
+  margin-left: 30px;
+}
+
+.topMostPlayer .sect img {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  left: -1000%;
+  right: -1000%;
+  top: -1000%;
+  bottom: -1000%;
+  margin: auto;
+  min-height: 100%;
+  min-width: 100%;
+}
+
+.topMostPlayer .levelThumb {
+  width: 330px;
+  height: 50px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 16px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  position: relative;
+  margin-right: 30px;
+}
+
+.topMostPlayer .levelThumb img {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  left: -1000%;
+  right: -1000%;
+  top: -1000%;
+  bottom: -1000%;
+  margin: auto;
+  min-height: 100%;
+  min-width: 100%;
+}
+
+.topMostPlayer .levelThumb .smalltop {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  margin-left: 15px;
+  font-size: 30px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  text-shadow: 3px 6px 12px black;
+}
+
+.topMostPlayer .levelThumb a {
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 20px;
+}
+
+.topMostPlayer .levelThumb #bold {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.topMostPlayer .topMostPlayerInfo {
+  margin-left: 20px;
+}
+
+.topMostPlayer .topMostPlayerInfo p {
+  margin-bottom: 0;
+  color: #b9b9b9;
+}
+
+.topMostPlayer .topMostPlayerInfo hr {
+  overflow: auto;
+  width: 230px;
+  height: 0;
+  border: #707070 solid 1px;
+  margin-right: 30px;
+}
+
+.topMostPlayer:hover {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  background-color: #424242;
+}
+
+.allPlayer {
+  display: table;
+  padding: 10px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.allPlayer section {
+  display: table-row;
+  padding: 10px;
+}
+
+.allPlayer a {
+  line-height: 20px;
+  display: table-cell;
+  padding: 10px;
+  width: 150px;
+  margin: 5px;
+  color: #ABABAB;
+  border-bottom: #5f5f5f solid 1px;
+  border-width: 2px;
+  text-align: center;
+}
+
+.allPlayer #playerName {
+  width: 60%;
+  text-align: left;
+}
+
+@media screen and (max-width: 1250px) {
   .App {
     margin-top: 150px;
   }
@@ -418,8 +570,21 @@ code {
   .navbar .navItem {
     margin-right: 20px;
   }
-  .mainpanel {
+  .topMostPlayer {
+    padding-bottom: 90px;
+    width: 420px;
+  }
+  .topMostPlayer .sect {
+    margin-left: 0;
+  }
+  .levelThumbWrapper {
+    position: absolute;
+    margin-top: 200px;
     margin-left: 30px;
+  }
+  .mainpanel {
+    margin-left: 10px;
+    margin-right: 10px;
   }
   .levelCard {
     width: 85%;

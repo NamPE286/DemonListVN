@@ -1,6 +1,6 @@
 
 import nc from 'next-connect';
-import levels from '../../../public/data.js'
+import levels from '../../../public/levels.js'
 // We will connect to a database in production
 
 
