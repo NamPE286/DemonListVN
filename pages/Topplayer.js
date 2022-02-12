@@ -6,7 +6,7 @@ import Main from './components/Main/Topplayer.js'
 function App() {
   return (
     <div className="App">
-      <meta name="viewport" content="width=device-width, initial-scale=0.9, user-scalable=no" />
+      <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
       <Navbar />
       <div className='pageContent'>
         <div className='sidePanel'>
