@@ -4,12 +4,12 @@ import players from '../../../public/players.js'
 
 
 // This is a mock API to get players
-// Return a level with it's top
-const getPlayer = top => players.find(n => n.top === parseInt(top))
+// Return a level with it's id
+const getPlayer = id => players.find(n => n.id === parseInt(id))
 
 const handler = nc()
   .get((req, res) => {
-    const player = getPlayer(req.query.top)
+    const player = getPlayer(req.query.id)
 
     if (!player) {
       res.status(404)
