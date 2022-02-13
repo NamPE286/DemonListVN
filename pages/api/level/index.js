@@ -16,6 +16,9 @@ const handler = nc()
       return
     }
 
+    // We will automatically make this string when posting data
+    // The performance of the API will be slowed down a bit.
+
     res.json(levels)
   })
   
