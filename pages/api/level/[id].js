@@ -4,12 +4,12 @@ import levels from '../../../public/levels.js'
 
 
 // This is a mock API to get levels
-// Return a level with it's top
-const getLevel = top => levels.find(n => n.top === parseInt(top))
+// Return a level with it's id
+const getLevel = id => levels.find(n => n.id === parseInt(id))
 
 const handler = nc()
   .get((req, res) => {
-    const level = getLevel(req.query.top)
+    const level = getLevel(req.query.id)
 
     if (!level) {
       res.status(404)
