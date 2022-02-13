@@ -10,7 +10,7 @@ function Main(levels) {
           //Delete key={i} won't break the website but it will have a not so pretty error in console
           return (
             <div className='levelCard' key={i}>
-              <img src={`https://i.ytimg.com/vi/${levels[i].thumbnail}/hq720.jpg`} alt=""></img>
+              <img src={`https://i.ytimg.com/vi/${levels[i].thumbnail}/hqdefault.jpg`} alt=""></img>
               <div className='fadeEffect'></div>
               <p className='top'>#{levels[i].top}</p>
               <div className='levelInfo'>
