@@ -1,14 +1,13 @@
 function Main(players) {
-  console.log(players[0]);
   function processTitle(s) {
-    if (s.length > 7) {
-      return s.slice(0, 4) + "...";
+    if (s.length > 8) {
+      return s.slice(0, 6) + "...";
     }
     return s;
   }
   function processAuthor(s) {
-    if (s.length > 12) {
-      return s.slice(0, 12) + "...";
+    if (s.length > 8) {
+      return s.slice(0, 6) + "...";
     }
     return s;
   }
