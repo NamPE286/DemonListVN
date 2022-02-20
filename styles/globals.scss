@@ -78,7 +78,6 @@ code {
 }
 .sidePanel {
     padding-bottom: 30px;
-    position: fixed;
     overflow-y: scroll;
     top: 0;
     bottom: 0;
@@ -549,3 +548,19 @@ code {
         display: block;
     }
 }
+/*
+footer {
+  margin-top: 3vh;
+  height: 20vh;
+  border-top: 2px solid #777;
+  display: flex;
+  justify-content: center;
+
+  .footerTitle {
+    font-size: 0.9em;
+    height: 3vh;
+    display: flex;
+    justify-content: center;
+  }
+}
+*/
