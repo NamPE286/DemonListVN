@@ -7,11 +7,11 @@ function Main(levels) {
       <h2>Legacy List</h2>
       <div className="mainpanelContent">
         {Object.keys(levels).map(i => {
-            const [open, setOpen] = useState(false)
-            function toggle(){
-              setOpen(!open)
-            }
-          
+          const [open, setOpen] = useState(false)
+          function toggle() {
+            setOpen(!open)
+          }
+
           //Added Object.keys(levels) to get rid of the error
           //Delete key={i} won't break the website but it will have a not so pretty error in console
           return (
@@ -27,9 +27,9 @@ function Main(levels) {
                   <p>{levels[i].points}pt</p>
                 </div>
               </div>
-              <div style={{display:"none"}} style={{display: open?"flex":"none"}}>
+              <div style={{ display: "none" }} style={{ display: open ? "flex" : "none" }}>
                 <div className="lvinfo">
-                  <iframe width="256" height="144" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+                  <iframe width="256" height="144" src="https://www.youtube-nocookie.com/embed/BnkhBwzBqlQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   <div className="verticalLine"></div>
                   <div className="lvinfoContent">
                     <a><b>ID: </b>12345678</a><br></br>
