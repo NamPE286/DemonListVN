@@ -6,4 +6,7 @@
 // demons: List[Demon]
 // position_history: Object {date, position}
 
-//function Player()
+function Player(){
+    return(null)
+}
+export default Player;
