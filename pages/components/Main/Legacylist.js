@@ -29,7 +29,7 @@ function Main(levels) {
               </div>
               <div style={{ display: "none" }} style={{ display: open ? "flex" : "none" }}>
                 <div className="lvinfo">
-                  <iframe width="256" height="144" src="https://www.youtube-nocookie.com/embed/BnkhBwzBqlQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <iframe width="256" height="144" src="https://www.youtube-nocookie.com/embed/BnkhBwzBqlQ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                   <div className="verticalLine"></div>
                   <div className="lvinfoContent">
                     <a><b>ID: </b>12345678</a><br></br>
