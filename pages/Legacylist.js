@@ -1,4 +1,3 @@
-import Navbar from './components/Navbar.js'
 import TopplayerPanel from './components/TopplayerPanel.js';
 import AnnoucementPanel from './components/AnnoucementPanel.js';
 import Main from './components/Main/Legacylist.js'

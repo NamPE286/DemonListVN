@@ -459,18 +459,20 @@ code {
 .dropbtn {
     display: none;
     transition: 0.3s;
-    margin-top: 3px;
     border-radius: 15px;
     padding: 15px;
+    padding-bottom: 10px;
     font-size: 16px;
     border: none;
-    background-color: #333333;
+    background-color: transparent;
     color: white;
     //move div to the top of the website
     position: fixed;
     top: 10px;
     right:30px;
-
+    img{
+        filter: invert(1);
+    }
 }
 
 /* The container <div> - needed to position the dropdown content */
