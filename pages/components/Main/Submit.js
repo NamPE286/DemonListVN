@@ -12,7 +12,7 @@ function Main(levels) {
                 </ul>
             </div>
             <div className="submitForm">
-                <iframe class="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLScyjv64Ezp9-3kQPUvZ-aCpEjKue9jhXKqVnq2bFSGqARpzUg/viewform?embedded=true" width="640" height="1260" frameborder="0" marginheight="0" marginwidth="0"></iframe>
+                <iframe className="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLScyjv64Ezp9-3kQPUvZ-aCpEjKue9jhXKqVnq2bFSGqARpzUg/viewform?embedded=true" width="640" height="1260" frameborder="0" marginheight="0" marginwidth="0"></iframe>
             </div>
             <p className="submitP">Doesn't work? <a href="https://forms.gle/YfRLRSrb1MPB8vqG7"><u>Click Here</u></a></p>
         </div>
