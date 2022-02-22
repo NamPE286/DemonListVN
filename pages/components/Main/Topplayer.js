@@ -12,7 +12,7 @@ function Main(players) {
     return s;
   }
   return (
-    <div className="mainpanel">
+    <div className="mainpanel" data-aos="fade-up" data-aos-duration="600">
       <h2>Top Player</h2>
       <div className="mainpanelContent">
         <div className="topMostPlayer">
