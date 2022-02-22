@@ -1,9 +1,9 @@
 import levels from "../../../public/levels.js"
 import { useState } from "react"
-function Main(levels) {
 
+function Main(levels) {
   return (
-    <div className="mainpanel">
+    <div className="mainpanel" data-aos="fade-up" data-aos-duration="600">
       <h2>Main List</h2>
       <div className="mainpanelContent">
         {Object.keys(levels).map(i => {
@@ -11,12 +11,11 @@ function Main(levels) {
           function toggle() {
             setOpen(!open)
           }
-
           //Added Object.keys(levels) to get rid of the error
           //Delete key={i} won't break the website but it will have a not so pretty error in console
           return (
             <div key={i}>
-              <div className='levelCard' onClick={toggle}>
+              <div className='levelCard' onClick={toggle} data-aos="fade-up" data-aos-duration="600">
                 <img src={`https://i.ytimg.com/vi/${levels[i].thumbnail}/hqdefault.jpg`} alt=""></img>
                 <div className='fadeEffect'></div>
                 <p className='top'>#{levels[i].top}</p>
