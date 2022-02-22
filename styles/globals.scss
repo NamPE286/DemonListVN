@@ -542,7 +542,6 @@ code {
         border-radius: 15px;
     }
 }
-
 .dropdown-content{
     a:hover{
         background-color: #424242;
@@ -551,6 +550,17 @@ code {
 .a {
     display: flex;
     justify-content: space-between;
+}
+.submissionRules{
+    margin-left: 30px;
+}
+.submitForm{
+    display: flex;
+    justify-content: center;
+}
+.submitP{
+    display: flex;
+    justify-content: center;
 }
 
 @media screen and (max-width: 1250px) {
