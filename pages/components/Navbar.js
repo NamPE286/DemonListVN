@@ -13,7 +13,7 @@ function Navbar() {
             <li className='submitBtn'><a href='#'>Submit</a></li>
           </div>
           <li id="dropdown">
-            <button className="dropbtn"><img src='dropdownMenu.svg'></img></button>
+            <button className="dropbtn"><img src='dropdownMenu.svg' alt=""></img></button>
             <div className="dropdown-content">
               <a><Link href='/'><a>Main List</a></Link></a>
               <a><Link href='/Legacylist'><a>Legacy List</a></Link></a>
