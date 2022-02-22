@@ -108,7 +108,7 @@ Main.defaultProps = [
     point: "1000"
   },
   {
-    avatar: "https://pbs.twimg.com/profile_images/1318958836120649728/7JHxy2UO.jpg",
+    avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNNN5dgb1PmbjPexSmVtLS2PisLXvvEWMADg&usqp=CAU",
     name: "Amelia",
     bestplay: {
       thumbnail: "https://wallpaperaccess.com/full/6391518.jpg",
