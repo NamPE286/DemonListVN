@@ -542,23 +542,12 @@ code {
         border-radius: 15px;
     }
 }
-#dropdown:hover{
-    .dropbtn {
-        background-color: #424242;
-    }
-    .dropdown-content {
-        display: block;
-    }
-}
+
 .dropdown-content{
     a:hover{
         background-color: #424242;
-    }
-    
+    }   
 }
-
-
-
 .a {
     display: flex;
     justify-content: space-between;
@@ -636,6 +625,14 @@ code {
     }
     .dropdown {
         display: block;
+    }
+    #dropdown:hover{
+        .dropbtn {
+            background-color: #424242;
+        }
+        .dropdown-content {
+            display: block;
+        }
     }
 }
 /*
