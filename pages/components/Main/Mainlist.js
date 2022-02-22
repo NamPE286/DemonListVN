@@ -3,7 +3,7 @@ import { useState } from "react"
 
 function Main(levels) {
   return (
-    <div className="mainpanel" data-aos="fade-up" data-aos-duration="600">
+    <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
       <h2>Main List</h2>
       <div className="mainpanelContent">
         {Object.keys(levels).map(i => {
@@ -15,7 +15,7 @@ function Main(levels) {
           //Delete key={i} won't break the website but it will have a not so pretty error in console
           return (
             <div key={i}>
-              <div className='levelCard' onClick={toggle} data-aos="fade-up" data-aos-duration="600">
+              <div className='levelCard' onClick={toggle} data-aos="fade-up" data-aos-duration="500">
                 <img src={`https://i.ytimg.com/vi/${levels[i].thumbnail}/hqdefault.jpg`} alt=""></img>
                 <div className='fadeEffect'></div>
                 <p className='top'>#{levels[i].top}</p>
@@ -28,7 +28,7 @@ function Main(levels) {
               </div>
               <div style={{ display: "none" }} style={{ display: open ? "flex" : "none" }}>
                 <div className="lvinfo">
-                  <iframe width="256" height="144" src="https://www.youtube-nocookie.com/embed/BnkhBwzBqlQ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                  <iframe width="384" height="216" src="https://www.youtube-nocookie.com/embed/BnkhBwzBqlQ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                   <div className="verticalLine"></div>
                   <div className="lvinfoContent">
                     <a><b>ID: </b>12345678</a><br></br>
