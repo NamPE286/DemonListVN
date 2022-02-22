@@ -597,6 +597,34 @@ code {
     .levelCard {
         width: 85%;
     }
+    .lvinfo{
+        width: 85%;
+        height: 100%;
+        iframe{
+            margin-top: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+            height: 35vw;
+            padding-bottom: 200px;
+            border-radius: 0;
+        }
+        .verticalLine{
+            height: 1px;
+            width: 80%;
+            top:0;
+            margin-top: calc(35vw + 70px);
+            //align line horizontally
+            margin-left: auto;
+            transform: translateX(12.5%);
+        }
+        .lvinfoContent{
+            top: 0;
+            transform: translateY(0%);
+            margin-top: calc(35vw + 100px);
+            margin-left: 9vw;
+        }
+    }
     .sidePanel {
         display: none;
     }
