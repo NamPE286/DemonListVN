@@ -281,6 +281,47 @@ code {
         min-width: 100%;
     }
 }
+.lvinfo{
+    margin: auto;
+    width: 65%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 16px;
+    object-fit: contain;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    margin-bottom: 42px;
+    background-color: #333333;
+    iframe{
+        margin-right:auto;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: 18px;
+        border-radius: 16px;
+        border-color: transparent;
+    }
+    .verticalLine{
+        width: 1px;
+        height: 80%;
+        background-color: #707070;
+        position: absolute;
+        left: 0;
+        margin-left: 300px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .lvinfoContent{
+        position: absolute;
+        left: 0;
+        margin-left: 325px;
+        top: 50%;
+        transform: translateY(-50%);
+        a{
+            line-height: 25px;
+        }
+    }
+}
 .fadeEffect {
     position: absolute;
     transition: 0.3s;
