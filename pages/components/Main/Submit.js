@@ -7,7 +7,7 @@ function Main(levels) {
                 <h3>Submission Rules</h3>
                 <ul>
                     <li>Only 100% records of any demons in the list are accepted.</li>
-                    <li>Illegitimate records related to any cheat tools or secret ways will be rejected (However, FPS bypass is allowed, up to 300 FPS).</li>
+                    <li>Any records related to any cheat tools or secret ways will be rejected (However, FPS bypass is allowed, up to 300 FPS).</li>
                     <li>Stealing videos from others will not be accepted.</li>
                 </ul>
             </div>
