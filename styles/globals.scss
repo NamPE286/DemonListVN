@@ -284,7 +284,7 @@ code {
 .lvinfo{
     margin: auto;
     width: 65%;
-    height: 180px;
+    height: 250px;
     overflow: hidden;
     border-radius: 16px;
     object-fit: contain;
@@ -307,14 +307,14 @@ code {
         background-color: #707070;
         position: absolute;
         left: 0;
-        margin-left: 300px;
+        margin-left: 430px;
         top: 50%;
         transform: translateY(-50%);
     }
     .lvinfoContent{
         position: absolute;
         left: 0;
-        margin-left: 325px;
+        margin-left: 460px;
         top: 50%;
         transform: translateY(-50%);
         a{
@@ -642,6 +642,35 @@ code {
         }
         .dropdown-content {
             display: block;
+        }
+    }
+}
+@media screen and (max-width: 1450px) and (min-width: 1250px) {
+    .lvinfo{
+        height: 100%;
+        iframe{
+            margin-top: 30px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+            height: 20vw;
+            padding-bottom: 200px;
+            border-radius: 0;
+        }
+        .verticalLine{
+            height: 1px;
+            width: 80%;
+            top:0;
+            margin-top: calc(20vw + 70px);
+            //align line horizontally
+            margin-left: auto;
+            transform: translateX(12.5%);
+        }
+        .lvinfoContent{
+            top: 0;
+            transform: translateY(0%);
+            margin-top: calc(20vw + 100px);
+            margin-left: 6vw;
         }
     }
 }
