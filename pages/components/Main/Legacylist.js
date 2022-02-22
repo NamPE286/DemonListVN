@@ -4,7 +4,7 @@ function Main(levels) {
 
   return (
     <div className="mainpanel">
-      <h2>Main List</h2>
+      <h2>Legacy List</h2>
       <div className="mainpanelContent">
         {Object.keys(levels).map(i => {
             const [open, setOpen] = useState(false)
