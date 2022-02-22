@@ -2,9 +2,6 @@ import nc from 'next-connect';
 import players from '../../../public/players.js'
 // We will connect to a database in production
 
-
-// This is a mock API to get players
-// Return a level with it's id
 const getPlayer = id => players.find(n => n.id === parseInt(id))
 
 const handler = nc()
