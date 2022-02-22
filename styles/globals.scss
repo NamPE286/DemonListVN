@@ -76,6 +76,24 @@ code {
         line-height: 10px;
     }
 }
+
+.mainpanelNoMargin {
+    background-color: #1d1d1d;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-radius: 16px;
+    padding: 10px;
+    width: 100%;
+    h2 {
+        text-align: center;
+        padding-bottom: 10px;
+    }
+    .mainpanelContent {
+        line-height: 10px;
+    }
+
+}
+
 .sidePanel {
     padding-bottom: 30px;
     position: fixed;
@@ -549,3 +567,19 @@ code {
         display: block;
     }
 }
+/*
+footer {
+  margin-top: 3vh;
+  height: 20vh;
+  border-top: 2px solid #777;
+  display: flex;
+  justify-content: center;
+
+  .footerTitle {
+    font-size: 0.9em;
+    height: 3vh;
+    display: flex;
+    justify-content: center;
+  }
+}
+*/
