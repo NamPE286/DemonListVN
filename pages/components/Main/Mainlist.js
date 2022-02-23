@@ -27,7 +27,7 @@ function Main() {
           //Added Object.keys(levels) to get rid of the error
           //Delete key={i} won't break the website but it will have a not so pretty error in console
           return (
-            <div>
+            <div key={levels}>
               <div className='levelCard' onClick={toggle} data-aos="fade-up" data-aos-duration="500">
                 <img src={`https://i.ytimg.com/vi/${levels.thumbnail}/hqdefault.jpg`} alt=""></img>
                 <div className='fadeEffect'></div>
