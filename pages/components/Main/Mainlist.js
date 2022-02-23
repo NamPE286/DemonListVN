@@ -15,16 +15,16 @@ function Main() {
     };
     getData();
   }, [])
-
+  
+  const [open, setOpen] = useState(false)
+  const toggle = () => {
+    setOpen(!open)
+  }
   return (
     <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
       <h2>Main List</h2>
       <div className="mainpanelContent">
         {level.map((levels) => {
-          const [open, setOpen] = useState(false)
-          const toggle = () => {
-            setOpen(!open)
-          }
           //Added Object.keys(levels) to get rid of the error
           //Delete key={i} won't break the website but it will have a not so pretty error in console
           return (
