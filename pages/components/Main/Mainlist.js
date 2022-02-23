@@ -1,29 +1,42 @@
 import levels from "../../../public/levels.js"
-import { useState } from 'react';
+import {db} from '../../firebase-config.js'
+import {collection, getDocs} from "firebase/firestore"
+import { useState, useEffect } from 'react';
+function Main() {
+  var a = [];
+  const [level, setLevel] = useState([]);
+  const lvCol = collection(db, "levels");
 
-function Main(levels) {
+  useEffect(() => {
+    async function getData() {
+      const data = await getDocs(lvCol);
+      setLevel(data.docs.map(doc => ({...doc.data(), id: doc.id})));
+      level.map((lv) => console.log(lv));
+    };
+    getData();
+  }, [])
   return (
     <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
       <h2>Main List</h2>
       <div className="mainpanelContent">
-        {Object.keys(levels).map(i => {
+        {level.map((levels) => {
           const [open, setOpen] = useState(false)
-          function toggle() {
+          const toggle = () => {
             setOpen(!open)
           }
           //Added Object.keys(levels) to get rid of the error
           //Delete key={i} won't break the website but it will have a not so pretty error in console
           return (
-            <div key={i}>
+            <div>
               <div className='levelCard' onClick={toggle} data-aos="fade-up" data-aos-duration="500">
-                <img src={`https://i.ytimg.com/vi/${levels[i].thumbnail}/hqdefault.jpg`} alt=""></img>
+                <img src={`https://i.ytimg.com/vi/${levels.thumbnail}/hqdefault.jpg`} alt=""></img>
                 <div className='fadeEffect'></div>
-                <p className='top'>#{levels[i].top}</p>
+                <p className='top'>#{levels.top}</p>
                 <div className='levelInfo'>
-                  <h3>{levels[i].name}</h3>
-                  <p>by {levels[i].creator}</p>
+                  <h3>{levels.name}</h3>
+                  <p>by {levels.creator}</p>
                   <br></br>
-                  <p>{levels[i].points}pt</p>
+                  <p>{levels.points}pt</p>
                 </div>
               </div>
               <div style={{ display: "none" }} style={{ display: open ? "flex" : "none" }}>

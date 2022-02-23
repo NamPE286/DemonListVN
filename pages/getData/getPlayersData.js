@@ -2,9 +2,9 @@ import {db} from '../firebase-config.js'
 import {collection, getDocs} from "firebase/firestore"
 import { useState, useEffect } from 'react';
 
-var a = [];
 
 function main() {
+    var a = [];
     const [level, setLevel] = useState([]);
     const lvCol = collection(db, "testdata");
 

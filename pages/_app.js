@@ -5,8 +5,7 @@ import NProgress from 'nprogress'; //nprogress module
 import 'nprogress/nprogress.css'; //styles of nprogress
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { useEffect} from 'react';
-
+import { useEffect } from 'react';
 
 // Import the functions you need from the SDKs you need
 
