@@ -1,6 +1,6 @@
 import levels from "../../../public/levels.js"
-import {db} from '../../../public/firebase-config.js'
-import {collection, getDocs} from "firebase/firestore"
+import { db } from '../../api/firebase-config.js'
+import { collection, getDocs } from "firebase/firestore"
 import { useState, useEffect } from 'react';
 function Main() {
   var a = [];
@@ -10,11 +10,12 @@ function Main() {
   useEffect(() => {
     async function getData() {
       const data = await getDocs(lvCol);
-      setLevel(data.docs.map(doc => ({...doc.data(), id: doc.id})));
+      setLevel(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
       level.map((lv) => console.log(lv));
     };
     getData();
   }, [])
+
   return (
     <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
       <h2>Main List</h2>
