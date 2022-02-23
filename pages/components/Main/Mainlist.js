@@ -1,5 +1,5 @@
 import levels from "../../../public/levels.js"
-import {db} from '../../firebase-config.js'
+import {db} from '../../../public/firebase-config.js'
 import {collection, getDocs} from "firebase/firestore"
 import { useState, useEffect } from 'react';
 function Main() {
