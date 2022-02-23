@@ -1,10 +1,5 @@
 import levels from "../../../public/levels.js"
-import { useState } from "react"
-import { getDatabase, ref } from "firebase/database";
-
-const db = getDatabase();
-const test = ref(db, "levels")
-
+import { useState } from 'react';
 
 function Main(levels) {
   return (
