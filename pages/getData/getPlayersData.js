@@ -2,11 +2,12 @@ import {db} from '../firebase-config.js'
 import {collection, getDocs} from "firebase/firestore"
 import { useState, useEffect } from 'react';
 
+var a = [];
+
 function main() {
     const [level, setLevel] = useState([]);
     const lvCol = collection(db, "testdata");
 
-    var a = [];
     useEffect(() => {
       async function getData() {
         const data = await getDocs(lvCol);
@@ -18,8 +19,6 @@ function main() {
       };
       getData();
     }, [])
-
 }
-
 
 export default main;

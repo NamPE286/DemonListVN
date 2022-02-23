@@ -6,7 +6,6 @@ import 'nprogress/nprogress.css'; //styles of nprogress
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect} from 'react';
-import GetData from './getData/getPlayersData.js'
 
 
 // Import the functions you need from the SDKs you need
@@ -16,7 +15,6 @@ import GetData from './getData/getPlayersData.js'
 Router.events.on('routeChangeStart', () => NProgress.start()); Router.events.on('routeChangeComplete', () => NProgress.done()); Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
-  console.log(GetData());
 
   useEffect(() => {
     AOS.init({})
