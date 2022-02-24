@@ -1,11 +1,10 @@
 import levels from "../../../public/levels.js"
 import { db } from '../../api/firebase-config.js'
-import { collection, getDocs } from "firebase/firestore"
+import { collection, getDocs, query, orderBy } from "firebase/firestore"
 import { useState, useEffect } from 'react';
 function Main() {
-  var a = [];
   const [level, setLevel] = useState([]);
-  const lvCol = collection(db, "levels");
+  const lvCol = query(collection(db, 'levels'), orderBy("top", "asc"))
 
   useEffect(() => {
     async function getData() {
