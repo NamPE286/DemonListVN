@@ -506,8 +506,8 @@ code {
     color: white;
     //move div to the top of the website
     position: fixed;
-    top: 10px;
-    right:30px;
+    top: 8px;
+    right: 15px;
     img{
         filter: invert(1);
     }
@@ -562,13 +562,13 @@ code {
 .lvinfo{
     display: none;
 }
-.fadeEffect:hover{
-    transition: 0.3s;
-    opacity: 0.6;
-}
 .levelWrapper:hover{
     .lvinfo{
         display: block;
+    }
+    .fadeEffect{
+        transition: 0.3s;
+        opacity: 0.6;
     }
 }
 .fill-div {

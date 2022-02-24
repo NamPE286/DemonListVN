@@ -24,7 +24,7 @@ function Main() {
             <div className="levelWrapper" key={i}>
               <div className='levelCard' data-aos="fade-up" data-aos-duration="600">
                 <img src={`https://i.ytimg.com/vi/${levels[i].thumbnail}/hqdefault.jpg`} alt=""></img>
-                <div className='fadeEffect'><a href="#" className="fill-div"></a></div>
+                <div className='fadeEffect'></div>
                 <p className='top'>#{levels[i].top}</p>
                 <div className='levelInfo'>
                   <h3>{levels[i].name}</h3>
