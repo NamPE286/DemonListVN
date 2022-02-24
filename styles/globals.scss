@@ -260,7 +260,7 @@ code {
 }
 .levelCard {
     margin: auto;
-    width: 65%;
+    width: 100%;
     height: 180px;
     overflow: hidden;
     border-radius: 16px;
@@ -284,8 +284,8 @@ code {
 }
 .lvinfo{
     margin: auto;
-    width: 65%;
-    height: 250px;
+    width: 100%;
+    height: 245px;
     overflow: hidden;
     border-radius: 16px;
     object-fit: contain;
@@ -295,12 +295,13 @@ code {
     margin-bottom: 42px;
     background-color: #333333;
     iframe{
-        margin-right:auto;
-        margin-top: auto;
-        margin-bottom: auto;
-        margin-left: 18px;
         border-radius: 16px;
         border-color: transparent;
+        width: 350px;
+        height: 210px;
+        top: 0;
+        margin-top: 17.5px;
+        margin-left: 17.5px;
     }
     .verticalLine{
         width: 1px;
@@ -330,11 +331,6 @@ code {
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, rgba(46, 46, 46, 0.10968137254901966) 0%, rgba(0, 0, 0, 1) 95%);
-}
-.fadeEffect:hover {
-    transition: 0.3s;
-    opacity: 0.6;
-    transform: scale(1.5);
 }
 
 .fadeEffect1 {
@@ -563,8 +559,34 @@ code {
     display: flex;
     justify-content: center;
 }
+.lvinfo{
+    display: none;
+}
+.fadeEffect:hover{
+    transition: 0.3s;
+    opacity: 0.6;
+}
+.levelWrapper:hover{
+    .lvinfo{
+        display: block;
+    }
+}
+.fill-div {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+}
+.levelWrapper{
+    width: 65%;
+    margin: auto;
+}
+
 
 @media screen and (max-width: 1250px) {
+    .levelWrapper{
+        width: 100%;
+    }
     .App {
         margin-top: 150px;
     }
@@ -602,8 +624,7 @@ code {
         height: 100%;
         iframe{
             margin-top: 30px;
-            margin-left: auto;
-            margin-right: auto;
+            margin-left: 10%;
             width: 80%;
             height: 35vw;
             padding-bottom: 200px;
@@ -651,12 +672,12 @@ code {
         height: 100%;
         iframe{
             margin-top: 30px;
-            margin-left: auto;
-            margin-right: auto;
             width: 80%;
             height: 20vw;
             padding-bottom: 200px;
             border-radius: 0;
+            margin-left: 51px;
+
         }
         .verticalLine{
             height: 1px;

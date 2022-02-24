@@ -10,38 +10,32 @@ function Main() {
     async function getData() {
       const data = await getDocs(lvCol);
       setLevel(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
-      level.map((lv) => console.log(lv));
     };
     getData();
   }, [])
-  
-  const [open, setOpen] = useState(false)
-  const toggle = () => {
-    setOpen(!open)
-  }
   return (
     <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
       <h2>Main List</h2>
       <div className="mainpanelContent">
-        {level.map((levels) => {
+        {Object.keys(level).map(i => {
           //Added Object.keys(levels) to get rid of the error
           //Delete key={i} won't break the website but it will have a not so pretty error in console
           return (
-            <div key={levels}>
-              <div className='levelCard' onClick={toggle} data-aos="fade-up" data-aos-duration="500">
-                <img src={`https://i.ytimg.com/vi/${levels.thumbnail}/hqdefault.jpg`} alt=""></img>
-                <div className='fadeEffect'></div>
-                <p className='top'>#{levels.top}</p>
+            <div className="levelWrapper" key={i}>
+              <div className='levelCard' data-aos="fade-up" data-aos-duration="600">
+                <img src={`https://i.ytimg.com/vi/${levels[i].thumbnail}/hqdefault.jpg`} alt=""></img>
+                <div className='fadeEffect'><a href="#" className="fill-div"></a></div>
+                <p className='top'>#{levels[i].top}</p>
                 <div className='levelInfo'>
-                  <h3>{levels.name}</h3>
-                  <p>by {levels.creator}</p>
+                  <h3>{levels[i].name}</h3>
+                  <p>by {levels[i].creator}</p>
                   <br></br>
-                  <p>{levels.points}pt</p>
+                  <p>{levels[i].points}pt</p>
                 </div>
               </div>
-              <div style={{ display: "none" }} style={{ display: open ? "flex" : "none" }}>
-                <div className="lvinfo">
-                  <iframe width="384" height="216" src="https://www.youtube-nocookie.com/embed/BnkhBwzBqlQ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+              <div>
+                <div className="lvinfo" id="lvf">
+                  <iframe src="https://www.youtube-nocookie.com/embed/BnkhBwzBqlQ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                   <div className="verticalLine"></div>
                   <div className="lvinfoContent">
                     <a><b>ID: </b>12345678</a><br></br>

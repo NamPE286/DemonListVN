@@ -4,7 +4,7 @@
     // Other rules
     "@next/next/no-img-element": "off",
     "react/jsx-no-duplicate-props": "off",
-    "react-hooks/rules-of-hooks":"off",
+    "react-hooks/rules-of-hooks":"warn",
     "react/no-unescaped-entities": "off",
     "react-hooks/exhaustive-deps":"off"
   }
