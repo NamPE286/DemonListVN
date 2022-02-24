@@ -4,7 +4,7 @@ import { collection, getDocs, query, orderBy } from "firebase/firestore"
 import { useState, useEffect } from 'react';
 function Main() {
   const [level, setLevel] = useState([]);
-  const lvCol = query(collection(db, 'legacylist'), orderBy("name", "asc"))
+  const lvCol = query(collection(db, "legacylist"), orderBy("name", "asc"))
 
   useEffect(() => {
     async function getData() {
@@ -18,20 +18,20 @@ function Main() {
       <h2>Legacy List</h2>
       <div className="mainpanelContent">
         {Object.keys(level).map(i => {
+          console.log(level[i])
           //Added Object.keys(levels) to get rid of the error
           //Delete key={i} won't break the website but it will have a not so pretty error in console
           return (
             <div className="levelWrapper" key={i}>
               <div className='levelCard' data-aos="fade-up" data-aos-duration="600">
-                <img src={`https://i.ytimg.com/vi/${levels[i].thumbnail}/hqdefault.jpg`} alt=""></img>
+                <img src={`https://i.ytimg.com/vi/${level[i].thumbnail}/hqdefault.jpg`} alt=""></img>
                 <div className='fadeEffect'></div>
-                <p className='top'>#{parseInt(i) + 1}</p>
                 <div className='levelInfo'>
-                  <h3>{levels[i].name}</h3>
-                  <p>by {levels[i].creator}</p>
+                  <h3>{level[i].name}</h3>
+                  <p>by {level[i].creator}</p>
                   <br></br>
-                  <p>ID: {levels[i].id}</p>
-                  <p>Verified by: {levels[i].verifier}</p>
+                  <p>ID: {level[i].id}</p>
+                  <p>Verified by: {level[i].verifier}</p>
                 </div>
               </div>
             </div>

@@ -1,10 +1,9 @@
-import levels from "../../../public/levels.js"
 import { db } from '../../api/firebase-config.js'
 import { collection, getDocs, query, orderBy } from "firebase/firestore"
 import { useState, useEffect } from 'react';
 function Main() {
   const [level, setLevel] = useState([]);
-  const lvCol = query(collection(db, 'mainlist'), orderBy("points", "asc"))
+  const lvCol = query(collection(db, 'mainlist'), orderBy("points", "desc"))
 
   useEffect(() => {
     async function getData() {
@@ -18,19 +17,19 @@ function Main() {
       <h2>Main List</h2>
       <div className="mainpanelContent">
         {Object.keys(level).map(i => {
-          //Added Object.keys(levels) to get rid of the error
+          //Added Object.keys(level) to get rid of the error
           //Delete key={i} won't break the website but it will have a not so pretty error in console
           return (
             <div className="levelWrapper" key={i}>
               <div className='levelCard' data-aos="fade-up" data-aos-duration="600">
-                <img src={`https://i.ytimg.com/vi/${levels[i].thumbnail}/hqdefault.jpg`} alt=""></img>
+                <img src={`https://i.ytimg.com/vi/${level[i].thumbnail}/hqdefault.jpg`} alt=""></img>
                 <div className='fadeEffect'></div>
                 <p className='top'>#{parseInt(i) + 1}</p>
                 <div className='levelInfo'>
-                  <h3>{levels[i].name}</h3>
-                  <p>by {levels[i].creator}</p>
+                  <h3>{level[i].name}</h3>
+                  <p>by {level[i].creator}</p>
                   <br></br>
-                  <p>{levels[i].points}pt</p>
+                  <p>{level[i].points}pt</p>
                 </div>
               </div>
               <div>
@@ -53,13 +52,11 @@ function Main() {
   )
 }
 
-// If levels == null
+// If level == null
 
 // Points will be pre-calculated when storing data into the-
 // database instead of calculating points directly.
 // So do 'top' and other props to increase website performance.
 
 // Fetch data from the API next time
-Main.defaultProps = levels
-
 export default Main;
