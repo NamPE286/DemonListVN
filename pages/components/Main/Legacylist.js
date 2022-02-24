@@ -1,31 +1,39 @@
 import levels from "../../../public/levels.js"
-import { useState } from "react"
+import { db } from '../../api/firebase-config.js'
+import { collection, getDocs, query, orderBy } from "firebase/firestore"
+import { useState, useEffect } from 'react';
+function Main() {
+  const [level, setLevel] = useState([]);
+  const lvCol = query(collection(db, 'legacylist'), orderBy("name", "asc"))
 
-function Main(levels) {
+  useEffect(() => {
+    async function getData() {
+      const data = await getDocs(lvCol);
+      setLevel(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+    };
+    getData();
+  }, [])
   return (
-    <div className="mainpanel" data-aos="fade-up" data-aos-duration="600">
+    <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
       <h2>Legacy List</h2>
       <div className="mainpanelContent">
-        {Object.keys(levels).map(i => {
-          const [open, setOpen] = useState(false)
+        {Object.keys(level).map(i => {
           //Added Object.keys(levels) to get rid of the error
           //Delete key={i} won't break the website but it will have a not so pretty error in console
           return (
-            <div key={i}>
-              <div className='levelCard' onClick={() => setOpen(!open)} data-aos="fade-up" data-aos-duration="600">
+            <div className="levelWrapper" key={i}>
+              <div className='levelCard' data-aos="fade-up" data-aos-duration="600">
                 <img src={`https://i.ytimg.com/vi/${levels[i].thumbnail}/hqdefault.jpg`} alt=""></img>
                 <div className='fadeEffect'></div>
-                <p className='top'>#{levels[i].top}</p>
+                <p className='top'>#{parseInt(i) + 1}</p>
                 <div className='levelInfo'>
                   <h3>{levels[i].name}</h3>
                   <p>by {levels[i].creator}</p>
-                  <br></br>
-                  <p>{levels[i].points}pt</p>
                 </div>
               </div>
-              <div style={{ display: "none" }} style={{ display: open ? "flex" : "none" }}>
-                <div className="lvinfo">
-                  <iframe width="256" height="144" src="https://www.youtube-nocookie.com/embed/BnkhBwzBqlQ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+              <div>
+                <div className="lvinfo" id="lvf">
+                  <iframe src="https://www.youtube-nocookie.com/embed/BnkhBwzBqlQ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                   <div className="verticalLine"></div>
                   <div className="lvinfoContent">
                     <a><b>ID: </b>12345678</a><br></br>

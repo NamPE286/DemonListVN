@@ -4,7 +4,7 @@ import { collection, getDocs, query, orderBy } from "firebase/firestore"
 import { useState, useEffect } from 'react';
 function Main() {
   const [level, setLevel] = useState([]);
-  const lvCol = query(collection(db, 'levels'), orderBy("points", "asc"))
+  const lvCol = query(collection(db, 'mainlist'), orderBy("points", "asc"))
 
   useEffect(() => {
     async function getData() {
