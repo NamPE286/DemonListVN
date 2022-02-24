@@ -4,7 +4,7 @@ import { collection, getDocs, query, orderBy } from "firebase/firestore"
 import { useState, useEffect } from 'react';
 function Main() {
   const [level, setLevel] = useState([]);
-  const lvCol = query(collection(db, 'levels'), orderBy("top", "asc"))
+  const lvCol = query(collection(db, 'levels'), orderBy("points", "asc"))
 
   useEffect(() => {
     async function getData() {
@@ -25,7 +25,7 @@ function Main() {
               <div className='levelCard' data-aos="fade-up" data-aos-duration="600">
                 <img src={`https://i.ytimg.com/vi/${levels[i].thumbnail}/hqdefault.jpg`} alt=""></img>
                 <div className='fadeEffect'></div>
-                <p className='top'>#{levels[i].top}</p>
+                <p className='top'>#{parseInt(i) + 1}</p>
                 <div className='levelInfo'>
                   <h3>{levels[i].name}</h3>
                   <p>by {levels[i].creator}</p>
