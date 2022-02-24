@@ -2,7 +2,7 @@
 
 # dependencies
 /node_modules
-/idk/node_modules
+/importJsonToFirestore/node_modules
 /.pnp
 .pnp.js
 
