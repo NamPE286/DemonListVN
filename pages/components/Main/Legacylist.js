@@ -30,7 +30,7 @@ function Main() {
                   <h3>{level[i].name}</h3>
                   <p>by {level[i].creator}</p>
                   <br></br>
-                  <p>ID: {level[i].id}</p>
+                  <p>ID: {level[i].lvid}</p>
                   <p>Verified by: {level[i].verifier}</p>
                 </div>
               </div>

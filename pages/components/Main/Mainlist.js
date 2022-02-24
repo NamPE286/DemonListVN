@@ -37,10 +37,10 @@ function Main() {
                   <iframe src="https://www.youtube-nocookie.com/embed/BnkhBwzBqlQ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                   <div className="verticalLine"></div>
                   <div className="lvinfoContent">
-                    <a><b>ID: </b>12345678</a><br></br>
-                    <a><b>Verifier: </b>Player Name</a><br></br>
-                    <a><b>First Victor: </b>Player Name</a><br></br>
-                    <a><b>Rating: </b>Extreme Demon</a><br></br>
+                    <a><b>ID: </b>{level[i].lvid}</a><br></br>
+                    <a><b>Verifier: </b>{level[i].verifier}</a><br></br>
+                    <a><b>First Victor: </b>N/a</a><br></br>
+                    <a><b>Rating: </b>N/a</a><br></br>
                   </div>
                 </div>
               </div>
