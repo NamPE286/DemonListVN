@@ -1,4 +1,4 @@
-import {getFirestore} from "@firebase/firestore"
+import {getFirestore, enableIndexedDbPersistence} from "@firebase/firestore"
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {

@@ -1,6 +1,7 @@
+import { collection, getDocs, query, orderBy, enableIndexedDbPersistence } from "firebase/firestore"
 import { db } from '../../api/firebase-config.js'
-import { collection, getDocs, query, orderBy } from "firebase/firestore"
 import { useState, useEffect } from 'react';
+
 function Main() {
   const [level, setLevel] = useState([]);
   const lvCol = query(collection(db, 'mainlist'), orderBy("points", "desc"))
@@ -12,6 +13,9 @@ function Main() {
     };
     getData();
   }, [])
+
+
+// Subsequent queries will use persistence, if it was enabled successfully
   return (
     <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
       <h2>Main List</h2>

@@ -676,6 +676,11 @@ code {
             display: block;
         }
     }
+    .pageContent{
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 @media screen and (max-width: 1450px) and (min-width: 1250px) {
     .lvinfo{
