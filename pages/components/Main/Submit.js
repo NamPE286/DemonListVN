@@ -1,4 +1,4 @@
-function Main(levels) {
+function Main() {
 
     return (
         <div className="mainpanel" data-aos="fade-up" data-aos-duration="600">

@@ -552,6 +552,12 @@ code {
     display: block;
     margin: auto;
 }
+#discord2{
+    border-color: transparent;
+    border-radius: 16px;
+    display: block;
+    margin: auto;
+}
 #beta{
     font-weight: 100;
     font-size: 13px;
@@ -563,7 +569,13 @@ code {
     padding-right: 5px;
     border-radius: 16px;
 }
+#about{
+    margin-left: 0;
+}
 @media screen and (max-width: 1250px) {
+    #discord2{
+        width: 80%;
+    }
     .levelWrapper{
         width: 100%;
     }
