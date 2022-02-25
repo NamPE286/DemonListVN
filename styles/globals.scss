@@ -591,8 +591,14 @@ code {
     width: 65%;
     margin: auto;
 }
-
-
+#discord{
+    border-color: transparent;
+    border-radius: 16px;
+    display: block;
+    margin: auto;
+    margin-bottom: 15px;
+    margin-top:15px;
+}
 @media screen and (max-width: 1250px) {
     .levelWrapper{
         width: 100%;
