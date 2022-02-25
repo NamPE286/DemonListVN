@@ -10,6 +10,8 @@
   "dependencies": {
     "aos": "^2.3.4",
     "cors": "^2.8.5",
+    "firebase": "^9.6.7",
+    "firebase-admin": "^10.0.2",
     "googleapis": "^95.0.0",
     "next": "^12.1.0",
     "next-connect": "^0.12.1",

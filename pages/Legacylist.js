@@ -1,16 +1,14 @@
-import TopplayerPanel from './components/TopplayerPanel.js';
 import AnnoucementPanel from './components/AnnoucementPanel.js';
-import MainListPanel from './components/MainListPanel.js';
-import Main from './components/Main/Legacylist.js'
+import Main from './components/Main/Legacylist.js';
+import JoinDiscordPanel from './components/JoinDiscordPanel.js';
 
 function App() {
   return (
       <div className='pageContent'>
-        <div className='sidePanel' data-aos="fade-right" data-aos-duration="600">
+        <div className='sidePanel' data-aos="fade-right" data-aos-duration="800">
           <div className='topSpacer' />
+          <JoinDiscordPanel />
           <AnnoucementPanel />
-          <TopplayerPanel />
-          <MainListPanel/>
         </div>
         <Main />
       </div>
