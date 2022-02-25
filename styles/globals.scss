@@ -552,6 +552,17 @@ code {
     display: block;
     margin: auto;
 }
+#beta{
+    font-weight: 100;
+    font-size: 13px;
+    color: black;
+    margin-left: 3px;
+    background-color: white;
+    padding: -3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 16px;
+}
 @media screen and (max-width: 1250px) {
     .levelWrapper{
         width: 100%;

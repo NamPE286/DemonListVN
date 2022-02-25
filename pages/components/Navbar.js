@@ -3,7 +3,7 @@ import Link from 'next/link'
 function Navbar() {
   return (
     <div className='navbar' data-aos="fade-down" data-aos-duration="800">
-      <Link href='/'><a className='pageName'>Demon List VN</a></Link>
+      <Link href='/'><a className='pageName'>Demon List VN <a id='beta'>Beta</a></a></Link>
       <div className='navItem'>
         <ul>
           <div className='a'>
