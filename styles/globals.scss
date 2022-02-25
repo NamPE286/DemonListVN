@@ -109,6 +109,13 @@ code {
     }
     .topplayerPanel {
         margin-bottom: 40px;
+        iframe{
+            //center the iframe
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            margin-bottom: 20px;
+        }
         .player {
             margin-bottom: 15px;
         }
