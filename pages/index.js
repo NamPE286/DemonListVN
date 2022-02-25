@@ -7,8 +7,8 @@ function App() {
       <div className='pageContent'>
         <div className='sidePanel' data-aos="fade-right" data-aos-duration="800">
           <div className='topSpacer' />
-          <AnnoucementPanel />
           <JoinDiscordPanel />
+          <AnnoucementPanel />
         </div>
         <Main />
       </div>
