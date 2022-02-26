@@ -664,7 +664,7 @@ code {
         margin-right: auto;
     }
 }
-@media screen and (max-width: 1450px) and (min-width: 1250px) {
+@media screen and (max-width: 1700px) and (min-width: 1250px) {
     .lvinfo{
         height: 100%;
         iframe{
@@ -673,8 +673,9 @@ code {
             height: 20vw;
             padding-bottom: 200px;
             border-radius: 0;
-            margin-left: 51px;
-
+            display: block;
+            margin:auto;
+            margin-top:30px;
         }
         .verticalLine{
             height: 1px;
