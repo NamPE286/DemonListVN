@@ -1,6 +1,6 @@
 function Main(players) {
-
   
+
   function processTitle(s) {
     if (s.length > 8) {
       return s.slice(0, 6) + "...";
