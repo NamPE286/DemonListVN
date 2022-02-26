@@ -38,7 +38,7 @@ function Main() {
               </div>
               <div>
                 <div className="lvinfo" id="lvf">
-                  <iframe src="https://www.youtube-nocookie.com/embed/BnkhBwzBqlQ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                  <iframe src={`https://www.youtube-nocookie.com/embed/${level[i].thumbnail}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                   <div className="verticalLine"></div>
                   <div className="lvinfoContent">
                     <a><b>ID: </b>{level[i].lvid}</a><br></br>
