@@ -16,14 +16,14 @@ function Main() {
   }, [])
 
   function processTitle(s) {
-    if (s.length > 8) {
-      return s.slice(0, 6) + "...";
+    if (s.length > 15) {
+      return s.slice(0, 13) + "...";
     }
     return s;
   }
   function processAuthor(s) {
-    if (s.length > 8) {
-      return s.slice(0, 6) + "...";
+    if (s.length > 10) {
+      return s.slice(0, 8) + "...";
     }
     return s;
   }
@@ -47,7 +47,7 @@ function Main() {
                   <section className="levelThumb">
                     <img src={`https://i.ytimg.com/vi/${data[4][i].bestplayThumbnail}/hqdefault.jpg`} alt=''></img>
                     <div className="fadeEffect1"></div>
-                    <a className="smalltop">#1</a><a><div id="bold">{processTitle(data[4][i].bestplay)}</div>by {processAuthor(data[4][i].bestplayCreator)} - {data[4][i].bestplayPt}pt</a>
+                    <a><div id="bold">{processTitle(data[4][i].bestplay)}</div>by {processAuthor(data[4][i].bestplayCreator)} - {data[4][i].bestplayPt}pt</a>
                   </section>
                 </div>
               </div>
