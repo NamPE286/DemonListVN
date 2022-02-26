@@ -45,8 +45,10 @@ function isEmpty(obj) {
 
 async function upload(data, path) {
   return await admin.firestore()
-  .collection("levels")
-    .orderBy("id", "asc")
+    .doc(path.join('/'))
+    .set(data)
+    .then(() => console.log(`Document ${path.join('/')} uploaded.`))
+    .catch(() => console.error(`Could not write document ${path.join('/')}.`));
 }
 
 /**
