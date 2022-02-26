@@ -21,6 +21,7 @@ function MyApp({ Component, pageProps }) {
   // Initialize Firebase
   return (
     <div className="App">
+      <title>Demon List VN</title>
       <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
       <Navbar />
       <Component {...pageProps} />
