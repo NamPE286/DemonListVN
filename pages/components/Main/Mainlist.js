@@ -58,9 +58,4 @@ function Main() {
 
 // If level == null
 
-// Points will be pre-calculated when storing data into the-
-// database instead of calculating points directly.
-// So do 'top' and other props to increase website performance.
-
-// Fetch data from the API next time
 export default Main;
