@@ -1,7 +1,10 @@
 import AnnoucementPanel from './components/AnnoucementPanel.js';
-import Main from './components/Main/Mainlist.js'
 import JoinDiscordPanel from './components/JoinDiscordPanel.js';
-
+import dynamic from 'next/dynamic'
+const Test = dynamic(
+  () => import('./components/Main/Mainlist.js'),
+  { ssr: false }
+)
 function App() {
   return (
       <div className='pageContent'>
@@ -10,7 +13,7 @@ function App() {
           <JoinDiscordPanel />
           <AnnoucementPanel />
         </div>
-        <Main />
+        <Test />
       </div>
   );
 }

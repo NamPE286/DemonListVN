@@ -1,37 +1,38 @@
-import levels from "../../../public/levels.js"
+import { collection, getDocs, query, orderBy, enableIndexedDbPersistence } from "firebase/firestore"
 import { db } from '../../api/firebase-config.js'
-import { collection, getDocs, query, orderBy } from "firebase/firestore"
 import { useState, useEffect } from 'react';
+
 function Main() {
-  const [level, setLevel] = useState([]);
-  const lvCol = query(collection(db, "legacylist"), orderBy("name", "asc"))
+  const [data, setData] = useState([]);
+  const lvCol = query(collection(db, "data"))
 
   useEffect(() => {
     async function getData() {
       const data = await getDocs(lvCol);
-      setLevel(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+      setData(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
     };
     getData();
   }, [])
+
+  // Subsequent queries will use persistence, if it was enabled successfully
   return (
     <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
       <h2>Legacy List</h2>
       <div className="mainpanelContent">
-        {Object.keys(level).map(i => {
-          console.log(level[i])
-          //Added Object.keys(levels) to get rid of the error
+      {Object.keys(data).map(i => {
+          //Added Object.keys(datas) to get rid of the error
           //Delete key={i} won't break the website but it will have a not so pretty error in console
           return (
             <div className="levelWrapper" key={i}>
               <div className='levelCard' data-aos="fade-up" data-aos-duration="600">
-                <img src={`https://i.ytimg.com/vi/${level[i].thumbnail}/hqdefault.jpg`} alt=""></img>
+                <img src={`https://i.ytimg.com/vi/${data[0][i].thumbnail}/hqdefault.jpg`} alt=""></img>
                 <div className='fadeEffect'></div>
                 <div className='levelInfo'>
-                  <h3>{level[i].name}</h3>
-                  <p>by {level[i].creator}</p>
+                  <h3>{data[0][i].name}</h3>
+                  <p>by {data[0][i].creator}</p>
                   <br></br>
-                  <p>ID: {level[i].lvid}</p>
-                  <p>Verified by: {level[i].verifier}</p>
+                  <p>ID: {data[0][i].lvid}</p>
+                  <p>Verified by: {data[0][i].verifier}</p>
                 </div>
               </div>
             </div>
@@ -42,13 +43,6 @@ function Main() {
   )
 }
 
-// If levels == null
-
-// Points will be pre-calculated when storing data into the-
-// database instead of calculating points directly.
-// So do 'top' and other props to increase website performance.
-
-// Fetch data from the API next time
-Main.defaultProps = levels
+// If data == null
 
 export default Main;
