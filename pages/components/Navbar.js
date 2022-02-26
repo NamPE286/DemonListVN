@@ -1,6 +1,11 @@
 import Link from 'next/link'
-
+import {useState} from 'react'
 function Navbar() {
+  const [open, setOpen] = useState(false)
+  function toggle(){
+    setOpen(!open)
+  }
+
   return (
     <div className='navbar' data-aos="fade-down" data-aos-duration="800">
       <Link href='/'><a className='pageName'>Demon List VN <a id='beta'>Beta</a></a></Link>
@@ -14,8 +19,8 @@ function Navbar() {
             <li className='submitBtn'><Link href="/Submit">Submit</Link></li>
           </div>
           <li id="dropdown">
-            <button className="dropbtn"><img src='dropdownMenu.svg' alt=""></img></button>
-            <div className="dropdown-content">
+            <button className="dropbtn" onClick={toggle}><img src='dropdownMenu.svg' alt=""></img></button>
+            <div className="dropdown-content" style={{display: open?'block':'none'}}>
               <a><Link href='/'><a>Main List</a></Link></a>
               <a><Link href='/Legacylist'><a>Legacy List</a></Link></a>
               <a><Link href="/Topplayer">Top Player</Link></a>
