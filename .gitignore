@@ -5,6 +5,7 @@
 /importJsonToFirestore/node_modules
 /.pnp
 .pnp.js
+/preCalcPoint/node_modules
 
 # testing
 /coverage

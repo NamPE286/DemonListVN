@@ -108,6 +108,7 @@ code {
     }
     .topplayerPanel {
         margin-bottom: 40px;
+        background-color: #1d1d1d;
         iframe{
             //center the iframe
             margin-left: auto;
@@ -163,6 +164,9 @@ code {
                 margin-left: 5px;
             }
         }
+    }
+    .annoucementPanel{
+        background-color: #1d1d1d;
     }
     .mainlistPanel {
         background-color: #1d1d1d;
@@ -664,7 +668,7 @@ code {
         margin-right: auto;
     }
 }
-@media screen and (max-width: 1450px) and (min-width: 1250px) {
+@media screen and (max-width: 1700px) and (min-width: 1250px) {
     .lvinfo{
         height: 100%;
         iframe{
@@ -673,8 +677,9 @@ code {
             height: 20vw;
             padding-bottom: 200px;
             border-radius: 0;
-            margin-left: 51px;
-
+            display: block;
+            margin:auto;
+            margin-top:30px;
         }
         .verticalLine{
             height: 1px;
