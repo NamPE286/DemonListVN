@@ -659,14 +659,18 @@ code {
     .dropdown {
         display: block;
     }
+ 
     #dropdown:hover{
         .dropbtn {
             background-color: #424242;
         }
+        /*
         .dropdown-content {
             display: block;
         }
+        */
     }
+
     .pageContent{
         width: 100%;
         margin-left: auto;
