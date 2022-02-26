@@ -3,7 +3,8 @@ import { db } from '../../api/firebase-config.js'
 import { useState, useEffect } from 'react';
 
 function Main() {
-  const [data, setData] = useState([]);
+  const test = []
+  const [data, setData] = useState(test);
   const lvCol = query(collection(db, "data"))
 
   useEffect(() => {
@@ -26,12 +27,12 @@ function Main() {
     }
     return s;
   }
-
+  console.log(data[3])
   return (
     <div className="mainpanel" data-aos="fade-up" data-aos-duration="600">
       <h2>Top Player</h2>
       <div className="mainpanelContent">
-        {Object.keys(data[3]).map(i => {
+        {Object.keys(data).map(i => {
           if (i < 3) {
             return (
               <div className="topMostPlayer">
