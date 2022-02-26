@@ -27,7 +27,6 @@ function Main() {
     }
     return s;
   }
-  console.log(data[3])
   return (
     <div className="mainpanel" data-aos="fade-up" data-aos-duration="600">
       <h2>Top Player</h2>
