@@ -13,30 +13,37 @@ function Main() {
     };
     getData();
   }, [])
-
   // Subsequent queries will use persistence, if it was enabled successfully
   return (
     <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
       <h2>Legacy List</h2>
       <div className="mainpanelContent">
-      {Object.keys(data).map(i => {
-          //Added Object.keys(datas) to get rid of the error
-          //Delete key={i} won't break the website but it will have a not so pretty error in console
-          return (
-            <div className="levelWrapper" key={i}>
-              <div className='levelCard' data-aos="fade-up" data-aos-duration="600">
-                <img src={`https://i.ytimg.com/vi/${data[0][i].thumbnail}/hqdefault.jpg`} alt=""></img>
-                <div className='fadeEffect'></div>
-                <div className='levelInfo'>
-                  <h3>{data[0][i].name}</h3>
-                  <p>by {data[0][i].creator}</p>
-                  <br></br>
-                  <p>ID: {data[0][i].lvid}</p>
-                  <p>Verified by: {data[0][i].verifier}</p>
-                </div>
+        {Object.keys(data).map(a => {
+          if (a == data.length - 1) {
+            return (
+              <div>
+                {Object.keys(data[0]).map(i => {
+                  if (i < 50) {
+                    return (
+                      <div className="levelWrapper" key={i}>
+                        <div className='levelCard' data-aos="fade-up" data-aos-duration="600">
+                          <img src={`https://i.ytimg.com/vi/${data[0][i].thumbnail}/hqdefault.jpg`} alt=""></img>
+                          <div className='fadeEffect'></div>
+                          <div className='levelInfo'>
+                            <h3>{data[0][i].name}</h3>
+                            <p>by {data[0][i].creator}</p>
+                            <br></br>
+                            <p>ID: {data[0][i].lvid}</p>
+                            <p>Verified by: {data[0][i].verifier}</p>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  }
+                })}
               </div>
-            </div>
-          )
+            )
+          }
         })}
       </div>
     </div>
