@@ -2,7 +2,7 @@ import { collection, getDocs, query, orderBy, enableIndexedDbPersistence } from 
 import { db } from '../../api/firebase-config.js'
 import { useState, useEffect } from 'react';
 
-function Main(players) {
+function Main() {
   const [player, setPlayer] = useState([]);
   const lvCol = query(collection(db, 'playerPt'), orderBy("points", "desc"))
 
@@ -44,9 +44,9 @@ function Main(players) {
                 </div>
                 <div className="levelThumbWrapper">
                   <section className="levelThumb">
-                    <img src={players[i].bestplay.thumbnail} alt=''></img>
+                    <img src={`https://i.ytimg.com/vi/${player[i].bestplayThumbnail}/hqdefault.jpg`} alt=''></img>
                     <div className="fadeEffect1"></div>
-                    <a className="smalltop">#1</a><a><div id="bold">{processTitle(players[0].bestplay.name)}</div>by {processAuthor(players[0].bestplay.creator)} - {players[0].bestplay.point}pt</a>
+                    <a className="smalltop">#1</a><a><div id="bold">{processTitle(player[i].bestplay)}</div>by {processAuthor(player[i].bestplayCreator)} - {player[i].bestplayPt}pt</a>
                   </section>
                 </div>
               </div>
@@ -80,41 +80,5 @@ function Main(players) {
 
   )
 }
-
-Main.defaultProps = [
-  {
-    avatar: "https://cdn.donmai.us/original/61/6d/__uruha_rushia_and_piyoko_hololive_drawn_by_ixia_ixia424__616ddf55c52baa0cced4fdb8f3a432b8.png",
-    name: "Rushia",
-    bestplay: {
-      thumbnail: "https://i.imgur.com/BdBy1Ky.png",
-      name: "Rushia",
-      creator: "Hololive JP",
-      point: "1000"
-    }
-    ,
-    point: "1000"
-  },
-  {
-    avatar: "https://yt3.ggpht.com/uMUat6yJL2_Sk6Wg2-yn0fSIqUr_D6aKVNVoWbgeZ8N-edT5QJAusk4PI8nmPgT_DxFDTyl8=s900-c-k-c0x00ffffff-no-rj",
-    name: "Gawr Gura",
-    bestplay: {
-      thumbnail: "https://c4.wallpaperflare.com/wallpaper/262/965/121/gawr-gura-anime-girls-water-hd-wallpaper-preview.jpg",
-      name: "Gawr Gura",
-      creator: "Hololive EN",
-      point: "1000"
-    },
-    point: "1000"
-  },
-  {
-    avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNNN5dgb1PmbjPexSmVtLS2PisLXvvEWMADg&usqp=CAU",
-    name: "Amelia",
-    bestplay: {
-      thumbnail: "https://wallpaperaccess.com/full/6391518.jpg",
-      name: "Watson Amelia",
-      creator: "Hololive EN",
-      point: "1000"
-    },
-  }
-]
 
 export default Main;
