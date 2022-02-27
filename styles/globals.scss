@@ -265,6 +265,7 @@ code {
     margin-bottom: 42px;
     background-color: #333333;
     iframe{
+        background-color: black;
         border-radius: 16px;
         border-color: transparent;
         width: 45%;
@@ -617,9 +618,48 @@ code {
     border-radius: 16px;
 }
 #about{
-    margin-left: 0;
+    p{
+        text-align: center;
+    }
+    #role{
+        margin-left: 12%;
+    }
 }
-
+.credit{
+    display: flex;
+    background-color: #333333;
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    h3{
+        margin-bottom: -1px;
+        margin-top: 0px;
+        margin-left: 15px;
+    }
+    img{
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    hr{
+        margin-left: 15px;
+        border: #707070 solid 1px;
+        width: 10vw;
+    }
+    .creditContent{
+        margin-top: auto;
+        margin-bottom: auto;
+        a{
+            margin-left: 15px;
+            color:#c7c7c7;
+        }
+    }
+}
 @media screen and (max-width: 1450px) {
     .pageContent{
         margin-left: 100px;

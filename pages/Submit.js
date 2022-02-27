@@ -1,7 +1,10 @@
 import AnnoucementPanel from './components/AnnoucementPanel.js';
-import Main from './components/Main/Submit.js';
 import JoinDiscordPanel from './components/JoinDiscordPanel.js';
-
+import dynamic from 'next/dynamic'
+const Main = dynamic(
+  () => import('./components/Main/Submit.js'),
+  { ssr: false }
+)
 function App() {
   return (
       <div className='pageContent'>
