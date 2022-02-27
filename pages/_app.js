@@ -24,6 +24,7 @@ function MyApp({ Component, pageProps }) {
       <title>Demon List VN</title>
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4605218533506777"
      crossOrigin="anonymous"></script>
+     <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
       <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
       <Navbar />
       <Component {...pageProps} />
