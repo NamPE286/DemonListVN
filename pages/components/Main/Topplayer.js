@@ -16,8 +16,8 @@ function Main() {
   }, [])
 
   function processTitle(s) {
-    if (s.length > 15) {
-      return s.slice(0, 13) + "...";
+    if (s.length > 13) {
+      return s.slice(0, 11) + "...";
     }
     return s;
   }
@@ -41,7 +41,7 @@ function Main() {
                 <div className="topMostPlayerInfo">
                   <h3>#{parseInt(i) + 1} {data[4][i].name}</h3>
                   <hr></hr>
-                  <p>{data[4][i].points}pt</p>
+                  <p>{data[4][i].points}pt <p>Best Play: {processTitle(data[4][i].bestplay)} by {processAuthor(data[4][i].bestplayCreator)}</p></p>
                 </div>
                 <div className="levelThumbWrapper">
                   <section className="levelThumb">
