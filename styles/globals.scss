@@ -266,7 +266,7 @@ code {
     iframe{
         border-radius: 16px;
         border-color: transparent;
-        width: 300px;
+        width: 45%;
         height: 210px;
         top: 0;
         margin-top: 17.5px;
@@ -278,20 +278,64 @@ code {
         background-color: #707070;
         position: absolute;
         left: 0;
-        margin-left: 350px;
+        margin-left: calc(45% + 50px);
         top: 50%;
         transform: translateY(-50%);
     }
     .lvinfoContent{
         position: absolute;
         left: 0;
-        margin-left: 380px;
+        margin-left: calc(45% + 80px);
         top: 50%;
         transform: translateY(-50%);
         a{
             line-height: 25px;
         }
     }
+    display: none;
+}
+.lvinfo1{
+    margin: auto;
+    width: 100%;
+    height: 245px;
+    overflow: hidden;
+    border-radius: 16px;
+    object-fit: contain;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    margin-bottom: 42px;
+    background-color: #333333;
+    iframe{
+        border-radius: 16px;
+        border-color: transparent;
+        width: 45%;
+        height: 210px;
+        top: 0;
+        margin-top: 17.5px;
+        margin-left: 17.5px;
+    }
+    .verticalLine{
+        width: 1px;
+        height: 80%;
+        background-color: #707070;
+        position: absolute;
+        left: 0;
+        margin-left: calc(45% + 50px);
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .lvinfoContent{
+        position: absolute;
+        left: 0;
+        margin-left: calc(45% + 80px);
+        top: 50%;
+        transform: translateY(-50%);
+        a{
+            line-height: 25px;
+        }
+    }
+    display: block;
 }
 .fadeEffect {
     position: absolute;
@@ -528,13 +572,13 @@ code {
     display: flex;
     justify-content: center;
 }
-.lvinfo{
-    display: none;
-}
+
 .levelWrapper:hover{
+    /*
     .lvinfo{
         display: block;
     }
+    */
     .fadeEffect{
         transition: 0.3s;
         opacity: 0.6;
@@ -574,6 +618,7 @@ code {
 #about{
     margin-left: 0;
 }
+
 @media screen and (max-width: 1450px) {
     .pageContent{
         margin-left: 100px;
@@ -679,36 +724,6 @@ code {
 
 }
 
-@media screen and (max-width: 1500px) and (min-width: 1250px) {
-    .lvinfo{
-        height: 100%;
-        iframe{
-            margin-top: 30px;
-            width: 80%;
-            height: 20vw;
-            padding-bottom: 200px;
-            border-radius: 0;
-            display: block;
-            margin:auto;
-            margin-top:30px;
-        }
-        .verticalLine{
-            height: 1px;
-            width: 80%;
-            top:0;
-            margin-top: calc(20vw + 70px);
-            //align line horizontally
-            margin-left: auto;
-            transform: translateX(12.5%);
-        }
-        .lvinfoContent{
-            top: 0;
-            transform: translateY(0%);
-            margin-top: calc(20vw + 100px);
-            margin-left: 6vw;
-        }
-    }
-}
 /*
 footer {
   margin-top: 3vh;

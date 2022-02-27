@@ -14,6 +14,7 @@ function Main() {
     getData();
   }, [])
 
+
   // Subsequent queries will use persistence, if it was enabled successfully
   return (
     <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
@@ -24,9 +25,21 @@ function Main() {
             return (
               <div>
                 {Object.keys(data[1]).map(i => {
-                    return (
-                      <div className="levelWrapper" key={i}>
-                      <div className='levelCard' data-aos="fade-up" data-aos-duration="600">
+                  function toggle_visibility() {
+                    var e = document.getElementById('lvf' + i);
+                    try {
+                      if (e.style.display == 'block')
+                        e.style.display = 'none';
+                      else
+                        e.style.display = 'block';
+                    }
+                    catch (err) {
+                      e.style.display = 'block';
+                    }
+                  }
+                  return (
+                    <div className="levelWrapper" key={i}>
+                      <div className='levelCard' data-aos="fade-up" data-aos-duration="600" onClick={toggle_visibility}>
                         <img src={`https://i.ytimg.com/vi/${data[1][i].thumbnail}/hqdefault.jpg`} alt=""></img>
                         <div className='fadeEffect'></div>
                         <p className='top'>#{parseInt(i) + 1}</p>
@@ -38,7 +51,7 @@ function Main() {
                         </div>
                       </div>
                       <div>
-                        <div className="lvinfo" id="lvf">
+                        <div className="lvinfo" id={`lvf${i}`}>
                           <iframe src={`https://www.youtube-nocookie.com/embed/${data[1][i].thumbnail}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                           <div className="verticalLine"></div>
                           <div className="lvinfoContent">
@@ -50,8 +63,8 @@ function Main() {
                         </div>
                       </div>
                     </div>
-                      
-                    )
+
+                  )
                 })}
               </div>
             )
