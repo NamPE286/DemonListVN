@@ -13,6 +13,7 @@ function Main() {
     };
     getData();
   }, [])
+  
 
   // Subsequent queries will use persistence, if it was enabled successfully
   return (
@@ -24,9 +25,14 @@ function Main() {
             return (
               <div>
                 {Object.keys(data[1]).map(i => {
+                    function toggleClass() {
+                      const oldStyle = document.getElementById('lvf').className;
+                      const newClassName = oldStyle === 'lvinfo' ? 'lvinfo1' : 'lvinfo'
+                      document.getElementById('lvf').className =  newClassName
+                    }
                     return (
                       <div className="levelWrapper" key={i}>
-                      <div className='levelCard' data-aos="fade-up" data-aos-duration="600">
+                      <div className='levelCard' data-aos="fade-up" data-aos-duration="600" onClick={toggleClass}>
                         <img src={`https://i.ytimg.com/vi/${data[1][i].thumbnail}/hqdefault.jpg`} alt=""></img>
                         <div className='fadeEffect'></div>
                         <p className='top'>#{parseInt(i) + 1}</p>
