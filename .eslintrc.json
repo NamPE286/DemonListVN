@@ -6,6 +6,7 @@
     "react/jsx-no-duplicate-props": "off",
     "react-hooks/rules-of-hooks":"warn",
     "react/no-unescaped-entities": "off",
-    "react-hooks/exhaustive-deps":"off"
+    "react-hooks/exhaustive-deps":"off",
+    "jsx-a11y/alt-text": "off"
   }
 }

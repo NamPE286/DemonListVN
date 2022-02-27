@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
     <div className="App">
       <title>Demon List VN</title>
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4605218533506777"
-     crossorigin="anonymous"></script>
+     crossOrigin="anonymous"></script>
       <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
       <Navbar />
       <Component {...pageProps} />
