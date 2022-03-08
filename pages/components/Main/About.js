@@ -34,7 +34,7 @@ function Main() {
             </div>
             <h3 id='role'>• Designer</h3>
             <div className="credit">
-                <img src="https://scontent-hkg4-1.xx.fbcdn.net/v/t39.30808-6/273035160_2692325094395542_7097861540497052311_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=iiaO5TUGREAAX82t1H3&_nc_ht=scontent-hkg4-1.xx&oh=00_AT_T0WfMTDUFUuvm-MSGF71lD4f2vobCVtUAjIhPXUnwoQ&oe=621F58B2"></img>
+                <img src="https://scontent.fhan5-8.fna.fbcdn.net/v/t39.30808-6/275017775_2701633393464712_7996914072184440323_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=RG8kVIvAPIIAX_tifc0&tn=zHyQflIajNN-4bdD&_nc_ht=scontent.fhan5-8.fna&oh=00_AT8FNQpqPD8-yn93jNOculrymjimzFwT0HalEzSckB1z-A&oe=622B42D5"></img>
                 <div className="creditContent">
                     <h3>NamPE</h3>
                     <hr></hr>
@@ -45,7 +45,7 @@ function Main() {
             </div>
             <h3 id='role'>• Developer</h3>
             <div className="credit">
-                <img src="https://scontent-hkg4-1.xx.fbcdn.net/v/t39.30808-6/273035160_2692325094395542_7097861540497052311_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=iiaO5TUGREAAX82t1H3&_nc_ht=scontent-hkg4-1.xx&oh=00_AT_T0WfMTDUFUuvm-MSGF71lD4f2vobCVtUAjIhPXUnwoQ&oe=621F58B2"></img>
+                <img src="https://scontent.fhan5-8.fna.fbcdn.net/v/t39.30808-6/275017775_2701633393464712_7996914072184440323_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=RG8kVIvAPIIAX_tifc0&tn=zHyQflIajNN-4bdD&_nc_ht=scontent.fhan5-8.fna&oh=00_AT8FNQpqPD8-yn93jNOculrymjimzFwT0HalEzSckB1z-A&oe=622B42D5"></img>
                 <div className="creditContent">
                     <h3>NamPE</h3>
                     <hr></hr>
