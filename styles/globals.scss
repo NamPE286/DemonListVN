@@ -168,6 +168,7 @@ code {
     }
     .annoucementPanel{
         background-color: #1d1d1d;
+        border-radius: 16px;
     }
     .mainlistPanel {
         background-color: #1d1d1d;
@@ -512,7 +513,7 @@ code {
 .dropbtn {
     display: none;
     transition: 0.3s;
-    border-radius: 15px;
+    border-radius: 16px;
     padding: 15px;
     padding-bottom: 10px;
     font-size: 16px;
@@ -551,7 +552,7 @@ code {
         text-decoration: none;
         display: block;
         transition: 0.3s;
-        border-radius: 15px;
+        border-radius: 16px;
     }
 }
 .dropdown-content{
