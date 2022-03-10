@@ -35,12 +35,12 @@ function Main() {
     }
     return (
         <div className='pageContent'>
-            <div className='sidePanel' data-aos="fade-right" data-aos-duration="800">
+            <div className='sidePanel'>
                 <div className='topSpacer' />
                 <JoinDiscordPanel />
                 <AnnoucementPanel />
             </div>
-            <div className="mainpanel" data-aos="fade-up" data-aos-duration="600">
+            <div className="mainpanel">
                 <h2>{id}'s Info</h2>
                 <div className="mainpanelContent">
                     {Object.keys(data).map(i => {
