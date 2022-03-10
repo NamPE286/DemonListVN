@@ -75,7 +75,7 @@ function Main() {
                                         </section>
                                         {Object.keys(data[2][id]).map(i => {
                                             return (
-                                                <section className="allPlayerInfo">
+                                                <section className="allPlayerInfo" key={i}>
                                                     <a id="levelRec">{data[2][id][i]}</a>
                                                 </section>
                                             )
