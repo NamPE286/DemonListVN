@@ -7,7 +7,7 @@ function Navbar() {
   }
 
   return (
-    <div className='navbar' data-aos="fade-down" data-aos-duration="800">
+    <div className='navbar'>
       <Link href='/'><a className='pageName'>Demon List VN <a id='beta'>Beta</a></a></Link>
       <div className='navItem'>
         <ul>
