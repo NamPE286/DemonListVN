@@ -39,7 +39,7 @@ function Main() {
                   }
                   return (
                     <div className="levelWrapper" key={i}>
-                      <div className='levelCard' data-aos="fade-up" data-aos-duration="600" onClick={toggle_visibility}>
+                      <div className='levelCard' onClick={toggle_visibility}>
                         <img src={`https://i.ytimg.com/vi/${data[1][i].thumbnail}/hqdefault.jpg`} alt=""></img>
                         <div className='fadeEffect'></div>
                         <p className='top'>#{parseInt(i) + 1}</p>
