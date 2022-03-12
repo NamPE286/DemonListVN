@@ -26,7 +26,7 @@ function Main() {
                   if (i < 50) {
                     return (
                       <div className="levelWrapper" key={i}>
-                        <div className='levelCard' data-aos="fade-up" data-aos-duration="600">
+                        <div className='levelCard'>
                           <img src={`https://i.ytimg.com/vi/${data[0][i].thumbnail}/hqdefault.jpg`} alt=""></img>
                           <div className='fadeEffect'></div>
                           <div className='levelInfo'>
