@@ -23,7 +23,7 @@ function Main() {
             return (
               <div>
                 {Object.keys(data[0]).map(i => {
-                  if (i < 50) {
+                  if (i >= 0) {
                     return (
                       <div className="levelWrapper" key={i}>
                         <div className='levelCard'>

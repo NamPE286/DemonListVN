@@ -37,34 +37,38 @@ function Main() {
                       e.style.display = 'block';
                     }
                   }
-                  return (
-                    <div className="levelWrapper" key={i}>
-                      <div className='levelCard' onClick={toggle_visibility}>
-                        <img src={`https://i.ytimg.com/vi/${data[1][i].thumbnail}/hqdefault.jpg`} alt=""></img>
-                        <div className='fadeEffect'></div>
-                        <p className='top'>#{parseInt(i) + 1}</p>
-                        <div className='levelInfo'>
-                          <h3>{data[1][i].name}</h3>
-                          <p>by {data[1][i].creator}</p>
-                          <br></br>
-                          <p>{data[1][i].points}pt</p>
+                  if(data[1][i].name != null){
+                    return (
+                      <div className="levelWrapper" key={i}>
+                        <div className='levelCard' onClick={toggle_visibility}>
+                          <img src={`https://i.ytimg.com/vi/${data[1][i].thumbnail}/hqdefault.jpg`} alt=""></img>
+                          <div className='fadeEffect'></div>
+                          <p className='top'>#{parseInt(i) + 1}</p>
+                          <div className='levelInfo'>
+                            <h3>{data[1][i].name}</h3>
+                            <p>by {data[1][i].creator}</p>
+                            <br></br>
+                            <p>{data[1][i].points}pt</p>
+                          </div>
                         </div>
-                      </div>
-                      <div>
-                        <div className="lvinfo" id={`lvf${i}`}>
-                          <iframe src={`https://www.youtube-nocookie.com/embed/${data[1][i].thumbnail}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                          <div className="verticalLine"></div>
-                          <div className="lvinfoContent">
-                            <a><b>ID: </b>{data[1][i].lvid}</a><br></br>
-                            <a><b>Verifier: </b>{data[1][i].verifier}</a><br></br>
-                            <a><b>First Victor: </b>N/a</a><br></br>
-                            <a><b>Rating: </b>N/a</a><br></br>
+                        <div>
+                          <div className="lvinfo" id={`lvf${i}`}>
+                            <iframe src={`https://www.youtube-nocookie.com/embed/${data[1][i].thumbnail}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                            <div className="verticalLine"></div>
+                            <div className="lvinfoContent">
+                              <a><b>ID: </b>{data[1][i].lvid}</a><br></br>
+                              <a><b>Verifier: </b>{data[1][i].verifier}</a><br></br>
+                              <a><b>First Victor: </b>N/a</a><br></br>
+                              <a><b>Rating: </b>N/a</a><br></br>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+  
+                    )
+  
+                  }
 
-                  )
                 })}
               </div>
             )
