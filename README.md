@@ -1,7 +1,8 @@
-<img src="https://cdn.discordapp.com/icons/877546680801697813/70f0b233a795e45de2afb39a53c149aa.png" alt="Vietnamese Featured Demons" align="center"></img>
-<h1 align="center">Vietnamese Featured Demons</h1>
-<h3 align="center">Home of the Vietnamese demons</h3>
-<hr>
+<p align="center">
+  <img src="https://cdn.discordapp.com/icons/877546680801697813/70f0b233a795e45de2afb39a53c149aa.png"></img>
+</p>
+<h3 lign="center">Vietnamese Featured Demons - Home of the Vietnamese demons</h3><hr/>
+
 ### Preface
 This is the official repository for Vietnamese Featured Demons. We rewrited this website in NextJS, SCSS and Firebase as the database.
 
