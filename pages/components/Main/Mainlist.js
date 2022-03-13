@@ -37,7 +37,8 @@ function Main() {
                       e.style.display = 'block';
                     }
                   }
-                  if(data[1][i].name != null){
+                  //test
+                  if (data[1][i].name != null) {
                     return (
                       <div className="levelWrapper" key={i}>
                         <div className='levelCard' onClick={toggle_visibility}>
@@ -56,17 +57,17 @@ function Main() {
                             <iframe src={`https://www.youtube-nocookie.com/embed/${data[1][i].thumbnail}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             <div className="verticalLine"></div>
                             <div className="lvinfoContent">
-                              <a><b>ID: </b>{data[1][i].lvid}</a><br></br>
+                              <a><b>ID: </b>{data[1][i].id}</a><br></br>
                               <a><b>Verifier: </b>{data[1][i].verifier}</a><br></br>
-                              <a><b>First Victor: </b>N/a</a><br></br>
+                              <a><b>Victor: <a href={`/mainlist/${data[1][i].id}`}>Click Here</a></b></a><br></br>
                               <a><b>Rating: </b>N/a</a><br></br>
                             </div>
                           </div>
                         </div>
                       </div>
-  
+
                     )
-  
+
                   }
 
                 })}
