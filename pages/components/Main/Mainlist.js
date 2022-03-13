@@ -60,7 +60,6 @@ function Main() {
                               <a><b>ID: </b>{data[1][i].id}</a><br></br>
                               <a><b>Verifier: </b>{data[1][i].verifier}</a><br></br>
                               <a><b>Victor: <a href={`/mainlist/${data[1][i].id}`}>Click Here</a></b></a><br></br>
-                              <a><b>Rating: </b>N/a</a><br></br>
                             </div>
                           </div>
                         </div>
