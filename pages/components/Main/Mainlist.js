@@ -37,7 +37,8 @@ function Main() {
                       e.style.display = 'block';
                     }
                   }
-                  if(data[1][i].name != null){
+                  //test
+                  if (data[1][i].name != null) {
                     return (
                       <div className="levelWrapper" key={i}>
                         <div className='levelCard' onClick={toggle_visibility}>
@@ -64,9 +65,9 @@ function Main() {
                           </div>
                         </div>
                       </div>
-  
+
                     )
-  
+
                   }
 
                 })}
