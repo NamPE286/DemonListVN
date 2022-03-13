@@ -1,8 +1,8 @@
-import AnnoucementPanel from './components/AnnoucementPanel.js';
-import JoinDiscordPanel from './components/JoinDiscordPanel.js';
+import AnnoucementPanel from '../components/AnnoucementPanel.js';
+import JoinDiscordPanel from '../components/JoinDiscordPanel.js';
 import dynamic from 'next/dynamic'
 const Main = dynamic(
-  () => import('./components/Main/Mainlist.js'),
+  () => import('../components/Main/Mainlist.js'),
   { ssr: false }
 )
 function App() {
