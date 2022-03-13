@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }) {
   // Initialize Firebase
   return (
     <div className="App">
-      <title>Demon List VN</title>
+      <title>VN Featured Demons</title>
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4605218533506777"
      crossOrigin="anonymous"></script>
      <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
