@@ -13,6 +13,8 @@ function Main() {
     };
     getData();
   }, [])
+
+
   // Subsequent queries will use persistence, if it was enabled successfully
   return (
     <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
@@ -23,23 +25,47 @@ function Main() {
             return (
               <div>
                 {Object.keys(data[0]).map(i => {
-                  if (i < 50) {
+                  function toggle_visibility() {
+                    var e = document.getElementById('lvf' + i);
+                    try {
+                      if (e.style.display == 'block')
+                        e.style.display = 'none';
+                      else
+                        e.style.display = 'block';
+                    }
+                    catch (err) {
+                      e.style.display = 'block';
+                    }
+                  }
+                  //test
+                  if (data[0][i].name != null) {
                     return (
                       <div className="levelWrapper" key={i}>
-                        <div className='levelCard'>
+                        <div className='levelCard' onClick={toggle_visibility}>
                           <img src={`https://i.ytimg.com/vi/${data[0][i].thumbnail}/hqdefault.jpg`} alt=""></img>
                           <div className='fadeEffect'></div>
                           <div className='levelInfo'>
                             <h3>{data[0][i].name}</h3>
                             <p>by {data[0][i].creator}</p>
-                            <br></br>
-                            <p>ID: {data[0][i].lvid}</p>
-                            <p>Verified by: {data[0][i].verifier}</p>
+                          </div>
+                        </div>
+                        <div>
+                          <div className="lvinfo" id={`lvf${i}`}>
+                            <iframe src={`https://www.youtube-nocookie.com/embed/${data[0][i].thumbnail}`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                            <div className="verticalLine"></div>
+                            <div className="lvinfoContent">
+                              <a><b>ID: </b>{data[0][i].id}</a><br></br>
+                              <a><b>Verifier: </b>{data[0][i].verifier}</a><br></br>
+                              <a><b>Victor: <a href={`/mainlist/${data[0][i].id}`}>Click Here</a></b></a><br></br>
+                            </div>
                           </div>
                         </div>
                       </div>
+
                     )
+
                   }
+
                 })}
               </div>
             )
