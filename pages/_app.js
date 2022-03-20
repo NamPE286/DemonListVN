@@ -6,6 +6,7 @@ import 'nprogress/nprogress.css'; //styles of nprogress
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
+import Helmet from 'react-helmet';
 
 // Import the functions you need from the SDKs you need
 
@@ -22,9 +23,10 @@ function MyApp({ Component, pageProps }) {
   return (
     <div className="App">
       <title>VN Featured Demons</title>
+      <Helmet>
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4605218533506777"
-     crossOrigin="anonymous"></script>
-     <script async custom-element="amp-ad" src="https://cdn.ampproject.org/v0/amp-ad-0.1.js"></script>
+        crossOrigin="anonymous"></script>
+      </Helmet>
       <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
       <Navbar />
       <Component {...pageProps} />
