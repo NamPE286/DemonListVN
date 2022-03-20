@@ -1,5 +1,6 @@
 import {getFirestore, enableIndexedDbPersistence} from "@firebase/firestore"
 import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBmzUUZJuNKp9cJZMb1oZsVO7pdHaOim88",
@@ -11,5 +12,8 @@ const firebaseConfig = {
   measurementId: "G-VGMHYZN5RP"
 };
 
+//google analytics
+
 const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics();
 export const db = getFirestore(app);
