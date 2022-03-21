@@ -36,11 +36,9 @@ function Main() {
     return (
         <div className='pageContent'>
             <div className='sidePanel'>
-                <div className='topSpacer' />
-                <JoinDiscordPanel />
-                <AnnoucementPanel />
+            <div className='topSpacer' />
             </div>
-            <div className="mainpanel">
+            <div className="mainpanel" id="center-div">
                 <h2>{id}'s Info</h2>
                 <div className="mainpanelContent">
                     {Object.keys(data).map(i => {

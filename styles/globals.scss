@@ -697,7 +697,14 @@ code {
     transition: 0.3s;
     color: white;
 }
-
+#meh{
+    text-align: center;
+    color: #ababab;
+}
+#center-div{
+    margin-left: 3vw;
+    margin-right: 3vw;
+}
 @media screen and (max-width: 1450px) {
     .pageContent{
         margin-left: 100px;
@@ -807,12 +814,12 @@ code {
         margin-left: auto;
         margin-right: auto;
     }
+    #center-div{
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}
 
-}
-#meh{
-    text-align: center;
-    color: #ababab;
-}
 /*
 footer {
   margin-top: 3vh;
