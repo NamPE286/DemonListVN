@@ -28,7 +28,6 @@ function MyApp({ Component, pageProps }) {
         crossOrigin="anonymous"></script>
       </Helmet>
       <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
-      <Navbar />
       <Component {...pageProps} />
     </div>
   )

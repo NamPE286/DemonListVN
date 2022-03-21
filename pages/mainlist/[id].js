@@ -2,8 +2,7 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
 import { collection, getDocs, query, orderBy, enableIndexedDbPersistence } from "firebase/firestore"
 import { db } from '../api/firebase-config.js'
-import AnnoucementPanel from '../components/AnnoucementPanel.js';
-import JoinDiscordPanel from '../components/JoinDiscordPanel.js';
+import Navbar from "../components/Navbar.js";
 
 function Main() {
     const router = useRouter();
@@ -33,49 +32,51 @@ function Main() {
         }
         return s;
     }
-    try{
+    try {
+        return (
+            <>
+                <Navbar />
+                <div className='pageContent'>
+                    <div className='sidePanel'>
+                        <div className='topSpacer' />
+                    </div>
+                    <div className="mainpanel" id='center-div'>
+                        <h2>{id}'s Victor</h2>
+                        <div className="mainpanelContent">
+                            {Object.keys(data).map(i => {
+                                if (i == 1) {
+                                    return (
+                                        <div className="recordList">
+                                            <div className="levelRecord">
+                                                <section className="allPlayerInfo">
+                                                    <a id="levelRec">Total Victor: {data[6][id].length}</a>
+                                                </section>
+                                                {Object.keys(data[6][id]).map(i => {
+                                                    return (
+                                                        <section className="allPlayerInfo" key={i}>
+                                                            <a id="levelRec">{data[6][id][i]}</a>
+                                                        </section>
+                                                    )
+
+                                                })}
+                                            </div>
+                                        </div>
+                                    )
+                                }
+                            })}
+
+                        </div>
+                    </div>
+                </div>
+
+            </>
+        );
+    }
+    catch (err) {
         return (
             <div className='pageContent'>
                 <div className='sidePanel'>
                 <div className='topSpacer' />
-                </div>
-                <div className="mainpanel" id='center-div'>
-                    <h2>{id}'s Victor</h2>
-                    <div className="mainpanelContent">
-                        {Object.keys(data).map(i => {
-                            if (i == 1) {
-                                return (
-                                    <div className="recordList">
-                                        <div className="levelRecord">
-                                            <section className="allPlayerInfo">
-                                                <a id="levelRec">Total Victor: {data[6][id].length}</a>
-                                            </section>
-                                            {Object.keys(data[6][id]).map(i => {
-                                                return (
-                                                    <section className="allPlayerInfo" key={i}>
-                                                        <a id="levelRec">{data[6][id][i]}</a>
-                                                    </section>
-                                                )
-    
-                                            })}
-                                        </div>
-                                    </div>
-                                )
-                            }
-                        })}
-    
-                    </div>
-                </div>
-            </div>
-        );
-    }
-    catch(err){
-        return (
-            <div className='pageContent'>
-                <div className='sidePanel'>
-                    <div className='topSpacer' />
-                    <JoinDiscordPanel />
-                    <AnnoucementPanel />
                 </div>
                 <div className="mainpanel">
                     <h2>{id}'s Victor</h2>
