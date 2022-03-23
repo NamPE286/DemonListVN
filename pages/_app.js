@@ -22,7 +22,6 @@ function MyApp({ Component, pageProps }) {
   // Initialize Firebase
   return (
     <div className="App">
-      <meta name="google-site-verification" content="X16WBQlc0YO_vA6usdN_KKfX0viP5rG8QVpgN497l84" />
       <Helmet>
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4605218533506777"
         crossOrigin="anonymous"></script>
