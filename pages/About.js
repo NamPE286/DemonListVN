@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <title>About - VN Featured Demons</title>
+      <title>About - Demon List VN</title>
       <div className='pageContent'>
         <div className='sidePanel' data-aos="fade-right" data-aos-duration="800">
           <div className='topSpacer' />
