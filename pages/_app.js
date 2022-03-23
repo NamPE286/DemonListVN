@@ -22,7 +22,6 @@ function MyApp({ Component, pageProps }) {
   // Initialize Firebase
   return (
     <div className="App">
-      <title>VN Featured Demons</title>
       <Helmet>
       <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4605218533506777"
         crossOrigin="anonymous"></script>

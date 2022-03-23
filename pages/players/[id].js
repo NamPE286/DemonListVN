@@ -35,6 +35,7 @@ function Main() {
     return (
         <>
             <Navbar />
+            <title>{id} - VN Featured Demons</title>
             <div className='pageContent'>
                 <div className='sidePanel'>
                     <div className='topSpacer' />
