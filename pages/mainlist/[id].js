@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { collection, getDocs, query, orderBy, enableIndexedDbPersistence } from "firebase/firestore"
 import { db } from '../api/firebase-config.js'
 import Navbar from "../components/Navbar.js";
+import Head from 'next/head';
 
 function Main() {
     const router = useRouter();
@@ -35,8 +36,10 @@ function Main() {
     try {
         return (
             <>
+                <Head>
+                    <title>{id}' Victor - Demon List VN</title>
+                </Head>
                 <Navbar />
-                <title>{id}'s Victor - Demon List VN</title>
                 <div className='pageContent'>
                     <div className='sidePanel'>
                         <div className='topSpacer' />
@@ -75,17 +78,23 @@ function Main() {
     }
     catch (err) {
         return (
-            <div className='pageContent'>
-                <div className='sidePanel'>
-                <div className='topSpacer' />
-                </div>
-                <div className="mainpanel">
-                    <h2>{id}'s Victor</h2>
-                    <div className="mainpanelContent">
-                        <p id="meh">No one has beaten this level yet</p>
+            <>
+                <Head>
+                    <title>{id}' Victor - Demon List VN</title>
+                </Head>
+                <div className='pageContent'>
+                    <div className='sidePanel'>
+                        <div className='topSpacer' />
+                    </div>
+                    <div className="mainpanel">
+                        <h2>{id}'s Victor</h2>
+                        <div className="mainpanelContent">
+                            <p id="meh">No one has beaten this level yet</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </>
+
         );
     }
 

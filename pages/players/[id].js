@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { collection, getDocs, query, orderBy, enableIndexedDbPersistence } from "firebase/firestore"
 import { db } from '../api/firebase-config.js'
 import Navbar from "../components/Navbar.js";
+import Head from 'next/head';
 
 function Main() {
     const router = useRouter();
@@ -34,8 +35,10 @@ function Main() {
     }
     return (
         <>
+            <Head>
+                <title>{id}' Info - Demon List VN</title>
+            </Head>
             <Navbar />
-            <title>{id}'s Info - Demon List VN</title>
             <div className='pageContent'>
                 <div className='sidePanel'>
                     <div className='topSpacer' />

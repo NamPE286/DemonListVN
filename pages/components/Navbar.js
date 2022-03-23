@@ -8,7 +8,7 @@ function Navbar() {
 
   return (
     <div className='navbar'>
-      <Link href='/'><a className='pageName'>VN Featured Demons <a id='beta'>Beta</a></a></Link>
+      <Link href='/'><a className='pageName'>Demon List VN <a id='beta'>Beta</a></a></Link>
       <div className='navItem'>
         <ul>
           <div className='a'>
