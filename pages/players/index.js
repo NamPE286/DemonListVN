@@ -5,6 +5,9 @@ import Main from '../components/Main/Topplayer';
 function App() {
   return (
     <>
+      <head>
+        <meta name="google-site-verification" content="X16WBQlc0YO_vA6usdN_KKfX0viP5rG8QVpgN497l84" />
+      </head>
       <Navbar />
       <title>Top Players - Demon List VN</title>
       <div className='pageContent'>
