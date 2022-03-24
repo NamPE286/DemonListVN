@@ -8,6 +8,7 @@
     "react/no-unescaped-entities": "off",
     "react-hooks/exhaustive-deps":"off",
     "jsx-a11y/alt-text": "off",
-    "@firebase":"off"
+    "@firebase":"off",
+    "react/jsx-no-target-blank":"off"
   }
 }
