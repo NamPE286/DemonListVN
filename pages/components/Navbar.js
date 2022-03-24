@@ -12,7 +12,7 @@ function Navbar() {
       <div className='navItem'>
         <ul>
           <div className='a'>
-            <li><Link href='/'><a>Main List</a></Link></li>
+            <li><Link href='/mainlist'><a>Main List</a></Link></li>
             <li><Link href='/Legacylist'><a>Legacy List</a></Link></li>
             <li><Link href="/players">Top Player</Link></li>
             <li><Link href="/About">About</Link></li>
@@ -21,7 +21,7 @@ function Navbar() {
           <li id="dropdown">
             <button className="dropbtn" onClick={toggle}><img src='dropdownMenu.svg' alt=""></img></button>
             <div className="dropdown-content" style={{display: open?'block':'none'}}>
-              <a><Link href='/'><a>Main List</a></Link></a>
+              <a><Link href='/mainlist'><a>Main List</a></Link></a>
               <a><Link href='/Legacylist'><a>Legacy List</a></Link></a>
               <a><Link href="/players">Top Player</Link></a>
               <a><Link href="/About">About</Link></a>
