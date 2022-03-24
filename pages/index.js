@@ -8,7 +8,7 @@ function App() {
     <>
       <Head>
         <meta name="google-site-verification" content="X16WBQlc0YO_vA6usdN_KKfX0viP5rG8QVpgN497l84" />
-        <title>Main List - Demon List VN</title>
+        <title>Demon List VN</title>
       </Head>
       <Navbar />
       <div className='pageContent'>
