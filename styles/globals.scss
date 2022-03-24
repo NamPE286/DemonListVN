@@ -93,7 +93,6 @@ code {
     .mainpanelContent {
         line-height: 10px;
     }
-
 }
 
 .sidePanel {
@@ -109,8 +108,8 @@ code {
     .topplayerPanel {
         margin-bottom: 40px;
         background-color: #1d1d1d;
-        iframe{
-            //center the iframe
+        .ytVid {
+            //center the .ytVid
             margin-left: auto;
             margin-right: auto;
             display: block;
@@ -165,7 +164,7 @@ code {
             }
         }
     }
-    .annoucementPanel{
+    .annoucementPanel {
         background-color: #1d1d1d;
         border-radius: 16px;
     }
@@ -226,7 +225,6 @@ code {
             margin-right: 5px;
         }
     }
-
 }
 .levelCard {
     margin: auto;
@@ -252,7 +250,7 @@ code {
         min-width: 100%;
     }
 }
-.lvinfo{
+.lvinfo {
     margin: auto;
     width: 100%;
     height: 245px;
@@ -264,7 +262,7 @@ code {
     position: relative;
     margin-bottom: 42px;
     background-color: #333333;
-    iframe{
+    .ytVid {
         background-color: black;
         border-radius: 16px;
         border-color: transparent;
@@ -274,7 +272,7 @@ code {
         margin-top: 17.5px;
         margin-left: 17.5px;
     }
-    .verticalLine{
+    .verticalLine {
         width: 1px;
         height: 80%;
         background-color: #707070;
@@ -284,19 +282,19 @@ code {
         top: 50%;
         transform: translateY(-50%);
     }
-    .lvinfoContent{
+    .lvinfoContent {
         position: absolute;
         left: 0;
         margin-left: calc(45% + 80px);
         top: 50%;
         transform: translateY(-50%);
-        a{
+        a {
             line-height: 25px;
         }
     }
     display: none;
 }
-.lvinfo1{
+.lvinfo1 {
     margin: auto;
     width: 100%;
     height: 245px;
@@ -308,7 +306,7 @@ code {
     position: relative;
     margin-bottom: 42px;
     background-color: #333333;
-    iframe{
+    .ytVid {
         border-radius: 16px;
         border-color: transparent;
         width: 45%;
@@ -317,7 +315,7 @@ code {
         margin-top: 17.5px;
         margin-left: 17.5px;
     }
-    .verticalLine{
+    .verticalLine {
         width: 1px;
         height: 80%;
         background-color: #707070;
@@ -327,13 +325,13 @@ code {
         top: 50%;
         transform: translateY(-50%);
     }
-    .lvinfoContent{
+    .lvinfoContent {
         position: absolute;
         left: 0;
         margin-left: calc(45% + 80px);
         top: 50%;
         transform: translateY(-50%);
-        a{
+        a {
             line-height: 25px;
         }
     }
@@ -524,7 +522,7 @@ code {
     position: fixed;
     top: 8px;
     right: 15px;
-    img{
+    img {
         filter: invert(1);
     }
 }
@@ -555,34 +553,34 @@ code {
         border-radius: 16px;
     }
 }
-.dropdown-content{
-    a:hover{
+.dropdown-content {
+    a:hover {
         background-color: #424242;
-    }   
+    }
 }
 .a {
     display: flex;
     justify-content: space-between;
 }
-.submissionRules{
+.submissionRules {
     margin-left: 30px;
 }
-.submitForm{
+.submitForm {
     display: flex;
     justify-content: center;
 }
-.submitP{
+.submitP {
     display: flex;
     justify-content: center;
 }
 
-.levelWrapper:hover{
+.levelWrapper:hover {
     /*
     .lvinfo{
         display: block;
     }
     */
-    .fadeEffect{
+    .fadeEffect {
         transition: 0.3s;
         opacity: 0.6;
     }
@@ -593,23 +591,23 @@ code {
     width: 100%;
     text-decoration: none;
 }
-.levelWrapper{
+.levelWrapper {
     width: 75%;
     margin: auto;
 }
-#discord{
+#discord {
     border-color: transparent;
     border-radius: 16px;
     display: block;
     margin: auto;
 }
-#discord2{
+#discord2 {
     border-color: transparent;
     border-radius: 16px;
     display: block;
     margin: auto;
 }
-#beta{
+#beta {
     font-weight: 100;
     font-size: 13px;
     color: white;
@@ -618,15 +616,15 @@ code {
     padding-right: 5px;
     border-radius: 16px;
 }
-#about{
-    p{
+#about {
+    p {
         text-align: center;
     }
-    #role{
+    #role {
         margin-left: 12%;
     }
 }
-.credit{
+.credit {
     display: flex;
     background-color: #333333;
     width: 65%;
@@ -635,37 +633,37 @@ code {
     padding: 20px;
     border-radius: 16px;
     margin-bottom: 30px;
-    h3{
+    h3 {
         margin-bottom: -1px;
         margin-top: 0px;
         margin-left: 15px;
     }
-    img{
+    img {
         height: 100px;
         width: 100px;
         border-radius: 50%;
         margin-top: auto;
         margin-bottom: auto;
     }
-    hr{
+    hr {
         margin-left: 15px;
         border: #707070 solid 1px;
         width: 10vw;
     }
-    .creditContent{
+    .creditContent {
         margin-top: auto;
         margin-bottom: auto;
-        a{
+        a {
             margin-left: 15px;
-            color:#c7c7c7;
+            color: #c7c7c7;
         }
     }
 }
 
-.recordList{
+.recordList {
     text-align: center;
 }
-.levelRecord{
+.levelRecord {
     display: table;
     padding: 10px;
     margin: auto;
@@ -690,39 +688,57 @@ code {
         text-align: center;
     }
 }
-#nvm{
+#nvm {
     margin-top: 40px;
 }
-#playerName:hover{
+#playerName:hover {
     transition: 0.3s;
     color: white;
 }
-#meh{
+#meh {
     text-align: center;
     color: #ababab;
 }
-#center-div{
+#center-div {
     margin-left: 3vw;
     margin-right: 3vw;
 }
+.ytVid{
+    position: inherit;
+    span {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    span {
+        height: 1.5em;
+        text-align: center;
+        font: 48px/1.5 sans-serif;
+        color: white;
+        text-shadow: 0 0 0.5em black;
+    }
+}
+
 @media screen and (max-width: 1450px) {
-    .pageContent{
+    .pageContent {
         margin-left: 100px;
         margin-right: 100px;
     }
 }
 
 @media screen and (max-width: 1250px) {
-    .credit{
+    .credit {
         width: 80%;
     }
     .levelThumbWrapper {
         display: none;
     }
-    #discord2{
+    #discord2 {
         width: 80%;
     }
-    .levelWrapper{
+    .levelWrapper {
         width: 100%;
     }
     .App {
@@ -757,10 +773,10 @@ code {
     .levelCard {
         width: 85%;
     }
-    .lvinfo{
+    .lvinfo {
         width: 85%;
         height: 100%;
-        iframe{
+        .ytVid {
             background-color: transparent;
             margin-top: 30px;
             margin-left: 10%;
@@ -769,16 +785,16 @@ code {
             padding-bottom: 200px;
             border-radius: 0;
         }
-        .verticalLine{
+        .verticalLine {
             height: 1px;
             width: 80%;
-            top:0;
+            top: 0;
             margin-top: calc(35vw + 70px);
             //align line horizontally
             margin-left: auto;
             transform: translateX(12.5%);
         }
-        .lvinfoContent{
+        .lvinfoContent {
             top: 0;
             transform: translateY(0%);
             margin-top: calc(35vw + 100px);
@@ -797,8 +813,8 @@ code {
     .dropdown {
         display: block;
     }
- 
-    #dropdown:hover{
+
+    #dropdown:hover {
         .dropbtn {
             background-color: #424242;
         }
@@ -809,12 +825,12 @@ code {
         */
     }
 
-    .pageContent{
+    .pageContent {
         width: 100%;
         margin-left: auto;
         margin-right: auto;
     }
-    #center-div{
+    #center-div {
         margin-left: 10px;
         margin-right: 10px;
     }
