@@ -8,6 +8,7 @@ function App() {
     <>
       <Head>
         <meta name="google-site-verification" content="X16WBQlc0YO_vA6usdN_KKfX0viP5rG8QVpgN497l84" />
+        <meta name="propeller" content="5271f7abb8c8589c942b7730da21530c"></meta>
         <title>Demon List VN</title>
       </Head>
       <Navbar />
