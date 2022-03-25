@@ -25,7 +25,7 @@ function Main() {
 
   // Subsequent queries will use persistence, if it was enabled successfully
   return (
-    <div className="mainpanel">
+    <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
       <h2>Main List</h2>
       <div className="mainpanelContent">
         {Object.keys(data).map(i => {
@@ -43,7 +43,7 @@ function Main() {
           }
           if (data[i].name != null) {
             return (
-              <div className="levelWrapper" key={i} data-aos="fade-up" data-aos-duration="800">
+              <div className="levelWrapper" key={i}>
                 <a href="#!">
                   <div className='levelCard' onClick={toggle_visibility}>
                     <Image src={`https://i.ytimg.com/vi/${data[i].thumbnail}/hqdefault.jpg`} alt="" layout="fill" objectFit='cover' priority='true' quality={35}></Image>
