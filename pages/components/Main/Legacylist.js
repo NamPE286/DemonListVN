@@ -52,8 +52,6 @@ function Main() {
                     <div className='levelInfo'>
                       <h3>{data[i].name}</h3>
                       <p>by {data[i].creator}</p>
-                      <br />
-                      <p>{data[i].points}pt</p>
                     </div>
                   </div>
                 </a>
