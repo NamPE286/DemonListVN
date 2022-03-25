@@ -1,18 +1,24 @@
-import { collection, getDocs, query, orderBy, enableIndexedDbPersistence } from "firebase/firestore"
+import { getDoc, doc } from "firebase/firestore"
 import { db } from '../../api/firebase-config.js'
 import { useState, useEffect } from 'react';
 
 function Main() {
-  const test = []
-  const [data, setData] = useState(test);
-  const lvCol = query(collection(db, "data"))
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     async function getData() {
-      const data = await getDocs(lvCol);
-      setData(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
-    };
-    getData();
+
+      const lvRef = doc(db, "data", "playerPt")
+      const docSnap = await getDoc(lvRef);
+
+      if (docSnap.exists()) {
+        setData(docSnap.data());
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    }
+    getData()
   }, [])
 
   function processTitle(s) {
@@ -34,21 +40,21 @@ function Main() {
         {Object.keys(data).map(i => {
           if (i < 3) {
             return (
-              <a href={`/players/${data[4][i].name}`}>
+              <a href={`/players/${data[i].name}`}>
                 <div className="topMostPlayer">
                   <section className="sect">
-                    <img src={data[4][i].avatar} alt="" />
+                    <img src={data[i].avatar} alt="" />
                   </section>
                   <div className="topMostPlayerInfo">
-                    <h3>#{parseInt(i) + 1} {data[4][i].name}</h3>
+                    <h3>#{parseInt(i) + 1} {data[i].name}</h3>
                     <hr></hr>
-                    <p>{data[4][i].points}pt <p>Best Play: {processTitle(data[4][i].bestplay)} by {processAuthor(data[4][i].bestplayCreator)}</p></p>
+                    <p>{data[i].points}pt <p>Best Play: {processTitle(data[i].bestplay)} by {processAuthor(data[i].bestplayCreator)}</p></p>
                   </div>
                   <div className="levelThumbWrapper">
                     <section className="levelThumb">
-                      <img src={`https://i.ytimg.com/vi/${data[4][i].bestplayThumbnail}/hqdefault.jpg`} alt=''></img>
+                      <img src={`https://i.ytimg.com/vi/${data[i].bestplayThumbnail}/hqdefault.jpg`} alt=''></img>
                       <div className="fadeEffect1"></div>
-                      <a><div id="bold">{processTitle(data[4][i].bestplay)}</div>by {processAuthor(data[4][i].bestplayCreator)} - {data[4][i].bestplayPt}pt</a>
+                      <a><div id="bold">{processTitle(data[i].bestplay)}</div>by {processAuthor(data[i].bestplayCreator)} - {data[i].bestplayPt}pt</a>
                     </section>
                   </div>
                 </div>
@@ -63,17 +69,26 @@ function Main() {
                   <a id="playerName"></a><a id="playerTotalPoint">Total Point</a><a id="playerBestplay">Best Play</a>
                 </section>
                 <section className="allPlayerInfo">
-                  <a id="playerName" href={`/players/${data[4][i].name}`}>#{parseInt(i) + 1} {data[4][i].name}</a><a id="playerTotalPoint">{data[4][i].points}pt</a><a id="playerBestplay">{data[4][i].bestplay}</a>
+                  <a id="playerName" href={`/players/${data[i].name}`}>#{parseInt(i) + 1} {data[i].name}</a><a id="playerTotalPoint">{data[i].points}pt</a><a id="playerBestplay">{data[i].bestplay}</a>
                 </section>
-                {Object.keys(data[4]).map(i => {
+                {Object.keys(data).map(i => {
                   if (i > 3) {
                     return (
                       <section className="allPlayerInfo">
-                        <a id="playerName" href={`/players/${data[4][i].name}`}>#{parseInt(i) + 1} {data[4][i].name}</a><a id="playerTotalPoint">{data[4][i].points}pt</a><a id="playerBestplay">{data[4][i].bestplay}</a>
+                        <a id="playerName" href={`/players/${data[i].name}`}>#{parseInt(i) + 1} {data[i].name}</a><a id="playerTotalPoint">{data[i].points}pt</a><a id="playerBestplay">{data[i].bestplay}</a>
                       </section>
                     )
                   }
                 })}
+              </div>
+            )
+          }
+          else {
+            return (
+              <div className="allPlayer1">
+                <section className="allPlayerInfo">
+                  <a id="playerName" href={`/players/${data[i].name}`}>#{parseInt(i) + 1} {data[i].name}</a><a id="playerTotalPoint">{data[i].points}pt</a><a id="playerBestplay">{data[i].bestplay}</a>
+                </section>
               </div>
             )
           }

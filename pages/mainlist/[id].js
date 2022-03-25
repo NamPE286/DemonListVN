@@ -1,38 +1,30 @@
 import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
-import { collection, getDocs, query, orderBy, enableIndexedDbPersistence } from "firebase/firestore"
+import { getDoc, doc } from "firebase/firestore"
 import { db } from '../api/firebase-config.js'
 import Navbar from "../components/Navbar.js";
 import Head from 'next/head';
 
 function Main() {
+    const [data, setData] = useState([]);
     const router = useRouter();
     const { id } = router.query;
-
-    const test = []
-    const [data, setData] = useState(test);
-    const lvCol = query(collection(db, "data"))
-
     useEffect(() => {
         async function getData() {
-            const data = await getDocs(lvCol);
-            setData(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
-        };
-        getData();
+
+            const lvRef = doc(db, "data", "victor")
+            const docSnap = await getDoc(lvRef);
+
+            if (docSnap.exists()) {
+                setData(docSnap.data());
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+        }
+        getData()
     }, [])
 
-    function processTitle(s) {
-        if (s.length > 13) {
-            return s.slice(0, 11) + "...";
-        }
-        return s;
-    }
-    function processAuthor(s) {
-        if (s.length > 10) {
-            return s.slice(0, 8) + "...";
-        }
-        return s;
-    }
     try {
         return (
             <>
@@ -47,27 +39,21 @@ function Main() {
                     <div className="mainpanel" id='center-div'>
                         <h2>{id}'s Victor</h2>
                         <div className="mainpanelContent">
-                            {Object.keys(data).map(i => {
-                                if (i == 1) {
-                                    return (
-                                        <div className="recordList">
-                                            <div className="levelRecord">
-                                                <section className="allPlayerInfo">
-                                                    <a id="levelRec">Total Victor: {data[6][id].length}</a>
-                                                </section>
-                                                {Object.keys(data[6][id]).map(i => {
-                                                    return (
-                                                        <section className="allPlayerInfo" key={i}>
-                                                            <a id="levelRec">{data[6][id][i]}</a>
-                                                        </section>
-                                                    )
+                            <div className="recordList">
+                                <div className="levelRecord">
+                                    <section className="allPlayerInfo">
+                                        <a id="levelRec">Total Victor: {data[id].length}</a>
+                                    </section>
+                                    {Object.keys(data[id]).map(i => {
+                                        return (
+                                            <section className="allPlayerInfo" key={i}>
+                                                <a id="levelRec">{data[id][i]}</a>
+                                            </section>
+                                        )
 
-                                                })}
-                                            </div>
-                                        </div>
-                                    )
-                                }
-                            })}
+                                    })}
+                                </div>
+                            </div>
 
                         </div>
                     </div>
