@@ -25,7 +25,7 @@ function Main() {
 
   // Subsequent queries will use persistence, if it was enabled successfully
   return (
-    <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
+    <div className="mainpanel">
       <h2>Main List</h2>
       <div className="mainpanelContent">
         {Object.keys(data).map(i => {
