@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }) {
       </Helmet>
       <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
       <meta name="description" content="Welcome to Demon List VN, this is where we keep track of the 50 hardest demons created and verified by Vietnamese and other Vietnamese players managed to beat one of those levels!" />
-      <meta name="keywords" content="gdvn,demon list vn,demon list,geometry dash,vn featured demons">
+      <meta name="keywords" content="gdvn,demon list vn,demon list,geometry dash,vn featured demons" />
       <Component {...pageProps} />
     </div>
   )
