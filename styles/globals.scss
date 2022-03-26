@@ -507,31 +507,6 @@ code {
         transition: 0.3s;
     }
 }
-.allPlayer1 {
-    display: table;
-    padding: 10px;
-    margin: auto;
-    section {
-        display: table-row;
-        padding: 10px;
-    }
-    a {
-        line-height: 20px;
-        display: table-cell;
-        padding: 10px;
-        width: 150px;
-        margin: 5px;
-        color: #ababab;
-        border-bottom: #5f5f5f solid 1px;
-        border-width: 2px;
-        text-align: center;
-    }
-    #playerName {
-        width: 60%;
-        text-align: left;
-        transition: 0.3s;
-    }
-}
 
 .dropbtn {
     display: none;
