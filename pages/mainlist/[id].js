@@ -125,7 +125,7 @@ function Main() {
                     <div className='sidePanel'>
                         <div className='topSpacer' />
                     </div>
-                    <div className="mainpanel">
+                    <div className="mainpanel mainpanelNoPadding" id='center-div'>
                         <div className="mainpanelContent">
                             <p id="meh">Something went wrong</p>
                         </div>
