@@ -53,7 +53,7 @@ function Main() {
 
 
     function showVictor() {
-        try{
+        try {
             return (
                 <div className="mainpanelContent">
                     <div className="recordList">
@@ -67,15 +67,15 @@ function Main() {
                                         <a id="levelRec">{data[id][i]}</a>
                                     </section>
                                 )
-    
+
                             })}
                         </div>
                     </div>
-    
+
                 </div>
             )
         }
-        catch(err){
+        catch (err) {
             return (
                 <div className="mainpanelContent">
                     <div className="recordList">
@@ -90,6 +90,26 @@ function Main() {
         }
     }
 
+    function showRating() {
+        if(lvDat[id].points != undefined){
+            return (
+                <div className="levelInfoContent1">
+                    <p>ID: {id}</p>
+                    <p>Verified by: {lvDat[id].verifier}</p>
+                    <p>Rating: {apilv.difficulty} ({lvDat[id].points}pt)</p>
+                </div>
+            )
+        }
+        else {
+            return (
+                <div className="levelInfoContent1">
+                    <p>ID: {id}</p>
+                    <p>Verified by: {lvDat[id].verifier}</p>
+                    <p>Rating: {apilv.difficulty} (legacy)</p>
+                </div>
+            )
+        }
+    }
     try {
         return (
             <>
@@ -111,11 +131,7 @@ function Main() {
                                 <h1>{lvDat[id].name}</h1>
                                 <p>by {lvDat[id].creator}</p>
                             </div>
-                            <div className="levelInfoContent1">
-                                <p>ID: {id}</p>
-                                <p>Verified by: {lvDat[id].verifier}</p>
-                                <p>Difficulty: {apilv.difficulty}</p>
-                            </div>
+                            {showRating()}
                         </div>
                         <hr></hr>
                         <div className="levelInfoContent2">
