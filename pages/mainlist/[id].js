@@ -51,6 +51,45 @@ function Main() {
             console.error(error)
         })
 
+
+    function showVictor() {
+        try{
+            return (
+                <div className="mainpanelContent">
+                    <div className="recordList">
+                        <div className="levelRecord">
+                            <section className="allPlayerInfo">
+                                <a id="levelRec"><b>Total Victor: {data[id].length}</b></a>
+                            </section>
+                            {Object.keys(data[id]).map(i => {
+                                return (
+                                    <section className="allPlayerInfo" key={i}>
+                                        <a id="levelRec">{data[id][i]}</a>
+                                    </section>
+                                )
+    
+                            })}
+                        </div>
+                    </div>
+    
+                </div>
+            )
+        }
+        catch(err){
+            return (
+                <div className="mainpanelContent">
+                    <div className="recordList">
+                        <div className="levelRecord">
+                            <section className="allPlayerInfo">
+                                <a id="levelRec"><b>No one has beaten this level yet</b></a>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            )
+        }
+    }
+
     try {
         return (
             <>
@@ -82,32 +121,15 @@ function Main() {
                         <div className="levelInfoContent2">
                             <iframe src={`https://www.youtube.com/embed/${lvDat[id].thumbnail}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             <p>
-                                <b>Description:<br /></b>{apilv.description}<br/><br/>
-                                <b>Downloads: </b>{apilv.downloads}<br/>
-                                <b>Likes: </b>{apilv.likes}<br/>
-                                <b>Coins: </b>{apilv.coins}<br/>
-                                <b>Length: </b>{apilv.length}<br/>
+                                <b>Description:<br /></b>{apilv.description}<br /><br />
+                                <b>Downloads: </b>{apilv.downloads}<br />
+                                <b>Likes: </b>{apilv.likes}<br />
+                                <b>Coins: </b>{apilv.coins}<br />
+                                <b>Length: </b>{apilv.length}<br />
                             </p>
 
                         </div>
-                        <div className="mainpanelContent">
-                            <div className="recordList">
-                                <div className="levelRecord">
-                                    <section className="allPlayerInfo">
-                                        <a id="levelRec"><b>Total Victor: {data[id].length}</b></a>
-                                    </section>
-                                    {Object.keys(data[id]).map(i => {
-                                        return (
-                                            <section className="allPlayerInfo" key={i}>
-                                                <a id="levelRec">{data[id][i]}</a>
-                                            </section>
-                                        )
-
-                                    })}
-                                </div>
-                            </div>
-
-                        </div>
+                        {showVictor()}
                     </div>
                 </div>
 
@@ -115,6 +137,7 @@ function Main() {
         );
     }
     catch (err) {
+        console.log(err)
         return (
             <>
                 <Head>
