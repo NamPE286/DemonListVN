@@ -90,12 +90,12 @@ function Main() {
     }
 
     function showRating() {
-        if(lvDat[id].points != undefined){
+        if (lvDat[id].points != undefined) {
             return (
                 <div className="levelInfoContent1">
-                    <p>ID: {id}<br/>
-                    Verified by: {lvDat[id].verifier}<br/>
-                    Rating: {apilv.difficulty} ({lvDat[id].points}pt)</p>
+                    <p>ID: {id}<br />
+                        Verified by: {lvDat[id].verifier}<br />
+                        Rating: {apilv.difficulty} ({lvDat[id].points}pt)</p>
                 </div>
             )
         }
@@ -113,7 +113,7 @@ function Main() {
         return (
             <>
                 <Head>
-                    <title>{lvDat[id].name}'s Victor - Demon List VN</title>
+                    <title>{lvDat[id].name}'s Info - Demon List VN</title>
                 </Head>
                 <Navbar />
                 <div className='pageContent'>
@@ -122,7 +122,7 @@ function Main() {
                     </div>
                     <div className="mainpanel mainpanelNoPadding" id='center-div'>
                         <div className="levelThumb0">
-                            <Image src={`https://img.youtube.com/vi/${lvDat[id].thumbnail}/maxresdefault.jpg`} alt="" layout="fill" objectFit='cover' priority='true' quality={25}></Image>
+                            <Image src={`https://i.ytimg.com/vi/${lvDat[id].thumbnail}/hqdefault.jpg`} alt="" layout="fill" objectFit='cover' priority='true' quality={75}></Image>
                             <div className="fadeEffectUp"></div>
                         </div>
                         <div className="levelInfoContentWrapper">
