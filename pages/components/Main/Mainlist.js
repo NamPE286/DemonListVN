@@ -29,11 +29,23 @@ function Main() {
       <h2>Main List</h2>
       <div className="mainpanelContent">
         {Object.keys(data).map(i => {
+          function toggle_visibility() {
+            var e = document.getElementById('lvf' + i);
+            try {
+              if (e.style.display == 'block')
+                e.style.display = 'none';
+              else
+                e.style.display = 'block';
+            }
+            catch (err) {
+              e.style.display = 'block';
+            }
+          }
           if (data[i].name != null) {
             return (
               <div className="levelWrapper" key={i}>
-                <a href={`/mainlist/${data[i].id}`}>
-                  <div className='levelCard'>
+                <a href="#!">
+                  <div className='levelCard' onClick={toggle_visibility}>
                     <Image src={`https://i.ytimg.com/vi/${data[i].thumbnail}/hqdefault.jpg`} alt="" layout="fill" objectFit='cover' priority='true' quality={35}></Image>
                     <div className='fadeEffect'></div>
                     <p className='top'>#{parseInt(i) + 1}</p>
@@ -45,6 +57,19 @@ function Main() {
                     </div>
                   </div>
                 </a>
+                <div>
+                  <div className="lvinfo" id={`lvf${i}`}>
+                    <div className="ytVid">
+                      <a href={`https://www.youtube.com/watch?v=${data[i].thumbnail}`} target="_blank"><span>▶</span></a>
+                    </div>
+                    <div className="verticalLine"></div>
+                    <div className="lvinfoContent">
+                      <a><b>ID: </b>{data[i].id}</a><br></br>
+                      <a><b>Verifier: </b>{data[i].verifier}</a><br></br>
+                      <a><b>Victor: <a href={`/mainlist/${data[i].id}`}>Click Here</a></b></a><br></br>
+                    </div>
+                  </div>
+                </div>
               </div>
 
             )
