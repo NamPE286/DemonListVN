@@ -44,7 +44,6 @@ function Main() {
     axios
         .get(url)
         .then(res => {
-            console.log(`statusCode: ${res.status}`)
             setapilv(res.data);
         })
         .catch(error => {
@@ -94,9 +93,9 @@ function Main() {
         if(lvDat[id].points != undefined){
             return (
                 <div className="levelInfoContent1">
-                    <p>ID: {id}</p>
-                    <p>Verified by: {lvDat[id].verifier}</p>
-                    <p>Rating: {apilv.difficulty} ({lvDat[id].points}pt)</p>
+                    <p>ID: {id}<br/>
+                    Verified by: {lvDat[id].verifier}<br/>
+                    Rating: {apilv.difficulty} ({lvDat[id].points}pt)</p>
                 </div>
             )
         }
@@ -153,7 +152,7 @@ function Main() {
         );
     }
     catch (err) {
-        console.log(err)
+        console.error(err)
         return (
             <>
                 <Head>
