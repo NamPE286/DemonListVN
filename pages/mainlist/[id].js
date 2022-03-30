@@ -122,7 +122,7 @@ function Main() {
                     </div>
                     <div className="mainpanel mainpanelNoPadding" id='center-div'>
                         <div className="levelThumb0">
-                            <img src={`https://i.ytimg.com/vi/${lvDat[id].thumbnail}/hqdefault.jpg`} alt=""></img>
+                            <Image src={`https://img.youtube.com/vi/${lvDat[id].thumbnail}/maxresdefault.jpg`} alt="" layout="fill" objectFit='cover' priority='true' quality={25}></Image>
                             <div className="fadeEffectUp"></div>
                         </div>
                         <div className="levelInfoContentWrapper">
