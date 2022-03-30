@@ -81,7 +81,7 @@ function Main() {
                         </div>
                         <hr></hr>
                         <div className="levelInfoContent2">
-                            <iframe src={`https://www.youtube.com/embed/${lvDat[id].thumbnail}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe src={`https://www.youtube.com/embed/${lvDat[id].thumbnail}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             <p>
                                 <b>Description:<br /></b>{apilv.description}<br/><br/>
                                 <b>Downloads: </b>{apilv.downloads}<br/>
