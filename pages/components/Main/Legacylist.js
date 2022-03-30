@@ -26,7 +26,7 @@ function Main() {
   // Subsequent queries will use persistence, if it was enabled successfully
   return (
     <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
-      <h2>Legacy List</h2>
+      <h2>Main List</h2>
       <div className="mainpanelContent">
         {Object.keys(data).map(i => {
           function toggle_visibility() {
@@ -48,6 +48,7 @@ function Main() {
                   <div className='levelCard' onClick={toggle_visibility}>
                     <Image src={`https://i.ytimg.com/vi/${data[i].thumbnail}/hqdefault.jpg`} alt="" layout="fill" objectFit='cover' priority='true' quality={35}></Image>
                     <div className='fadeEffect'></div>
+                    <p className='top'>#{parseInt(i) + 1}</p>
                     <div className='levelInfo'>
                       <h3>{data[i].name}</h3>
                       <p>by {data[i].creator}</p>

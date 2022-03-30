@@ -83,6 +83,15 @@ function Main() {
               </div>
             )
           }
+          else {
+            return (
+              <div className="allPlayer1">
+                <section className="allPlayerInfo">
+                  <a id="playerName" href={`/players/${data[i].name}`}>#{parseInt(i) + 1} {data[i].name}</a><a id="playerTotalPoint">{data[i].points}pt</a><a id="playerBestplay">{data[i].bestplay}</a>
+                </section>
+              </div>
+            )
+          }
         })}
 
       </div>
