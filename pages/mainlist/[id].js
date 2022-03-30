@@ -51,7 +51,6 @@ function Main() {
             console.error(error)
         })
 
-    console.log(apilv);
     try {
         return (
             <>
