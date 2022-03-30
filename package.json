@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "aos": "^2.3.4",
+    "axios": "^0.26.1",
     "cors": "^2.8.5",
     "firebase": "^9.6.7",
     "firebase-admin": "^10.0.2",
@@ -20,7 +21,8 @@
     "react-dom": "17.0.2",
     "react-helmet": "^6.1.0",
     "sass": "^1.49.7",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "xhr2": "^0.2.1"
   },
   "devDependencies": {
     "eslint": "8.8.0",

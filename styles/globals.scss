@@ -78,6 +78,37 @@ code {
         line-height: 10px;
     }
 }
+.mainpanelNoPadding {
+    background-color: #1d1d1d;
+    margin-left: 395px;
+    border-radius: 16px;
+    padding: 0;
+    height: auto;
+    min-height: 1000px;
+    width: 100%;
+    h2 {
+        text-align: center;
+        padding-bottom: 10px;
+    }
+    .mainpanelContent {
+        line-height: 10px;
+    }
+}
+#no-padding {
+    background-color: #1d1d1d;
+    margin-left: 395px;
+    border-radius: 16px;
+    height: auto;
+    min-height: 1000px;
+    width: 100%;
+    h2 {
+        text-align: center;
+        padding-bottom: 10px;
+    }
+    .mainpanelContent {
+        line-height: 10px;
+    }
+}
 
 .mainpanelNoMargin {
     background-color: #1d1d1d;
@@ -703,7 +734,7 @@ code {
     margin-left: 3vw;
     margin-right: 3vw;
 }
-.ytVid{
+.ytVid {
     position: inherit;
     span {
         position: absolute;
@@ -720,7 +751,96 @@ code {
         text-shadow: 0 0 0.5em black;
     }
 }
+.thumbWrapper {
+    margin: auto;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 16px;
+    object-fit: contain;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    margin-bottom: 42px;
+}
+.levelThumb0 {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    img {
+        position: absolute;
+        border-radius: 16px 16px 0 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+    }
+}
+.fadeEffectUp {
+    position: absolute;
+    transition: 0.3s;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: rgb(46, 46, 46);
+    background: linear-gradient(180deg, rgba(46, 46, 46, 0) 0%, rgba(29, 29, 29, 1) 100%);
+}
 
+.levelInfoContentWrapper {
+    display: flex;
+    margin-top: 20px;
+}
+.levelInfoContent {
+    margin-left: 100px;
+    h1 {
+        text-align: left;
+    }
+    p {
+        color: #ababab;
+        margin-top: -14px;
+    }
+}
+
+.levelInfoContent1 {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: 100px;
+    text-align: right;
+    line-height: 10px;
+    p {
+        color: #ababab;
+        font-weight: bold;
+    }
+}
+.mainpanel {
+    hr {
+        overflow: auto;
+        width: 75%;
+        height: 0;
+        border: #424242 solid 1px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 32px;
+        margin-top: 20px;
+    }
+}
+.levelInfoContent2 {
+    display: flex;
+    width: 100%;
+    iframe {
+        margin-left: 100px;
+        width: 800px;
+        min-width: 400px;
+        height: 260px;
+        margin-bottom: 35px;
+    }
+    p {
+        margin-left: 80px;
+        padding-right: 100px;
+        color: #ababab;
+    }
+}
 @media screen and (max-width: 1450px) {
     .pageContent {
         margin-left: 100px;
