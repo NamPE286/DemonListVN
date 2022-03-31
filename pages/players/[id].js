@@ -128,9 +128,25 @@ function Main() {
         );
     }
     catch (err) {
+        console.error(err)
         return (
-            <></>
-        )
+            <>
+                <Head>
+                    <title>An error occured</title>
+                </Head>
+                <div className='pageContent'>
+                    <div className='sidePanel'>
+                        <div className='topSpacer' />
+                    </div>
+                    <div className="mainpanel mainpanelNoPadding" id='center-div'>
+                        <div className="mainpanelContent">
+                            <p id="meh">Something went wrong</p>
+                        </div>
+                    </div>
+                </div>
+            </>
+
+        );
     }
 }
 
