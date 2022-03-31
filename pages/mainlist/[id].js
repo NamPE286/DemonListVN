@@ -13,11 +13,12 @@ function Main() {
     const [cmt, setCmt] = useState([]);
     const [mode, setMode] = useState(0);
     const [trig, setTrig] = useState(0);
+    const [page, setPage] = useState(0);
     const router = useRouter();
     const { id } = router.query;
     const axios = require('axios');
     const url = "https://gdbrowser.com/api/level/" + id;
-    const cmtUrl = "https://gdbrowser.com/api/comments/" + id + "?page=0";
+    let cmtUrl = "https://gdbrowser.com/api/comments/" + id + "?page=" + page;
 
     
 
@@ -47,7 +48,7 @@ function Main() {
 
         }
         axios
-            .get(url)
+            .get(url, console.log('ok'))
             .then(res => {
                 setapilv(res.data);
                 setTimeout(10000)
@@ -112,27 +113,41 @@ function Main() {
         }
     }
 
+    function nextPage(){
+        setPage(page+1)
+        cmtUrl = "https://gdbrowser.com/api/comments/" + id + "?page=" + page
+        setTrig(0)
+    }
+    function prevPage(){
+        if(page != 0){
+            setPage(page-1)
+            cmtUrl = "https://gdbrowser.com/api/comments/" + id + "?page=" + page
+            setTrig(0)
+        }
+    }
+
     function showComment() {
         try {
             return (
                 <div className="mainpanelContent">
                     <div className="recordList">
-                        <div className="levelRecord">
+                        <div className="levelRecord1">
                             <section className="allPlayerInfo">
-                                <a id="levelRec"><b>Comment</b></a>
                             </section>
                             {Object.keys(cmt).map(i => {
                                 return (
-                                    <section className="allPlayerInfo" key={i}>
-                                        <a>{cmt[i].username} • {cmt[i].date}</a>
-                                        <a id="levelRec">{cmt[i].content}</a>
+                                    <section key={i}>
+                                        <a id="levelRec1"><b>{cmt[i].username}</b> • <a id='date'>{cmt[i].date}</a> • <a id='date'>{cmt[i].likes}</a></a>
+                                        <p>{cmt[i].content}</p>
                                     </section>
                                 )
 
                             })}
                         </div>
                     </div>
-
+                    <div className="pageSwitcher">
+                        <a href="#!" onClick={prevPage}>❮</a><a>{page + 1}</a><a href="#!" onClick={nextPage}>❯</a>
+                    </div>
                 </div>
             )
         }
@@ -214,8 +229,8 @@ function Main() {
 
                         </div>
                         <div className="selector">
-                            <a href="#!" id="marleft" onClick={changetoVictor}>Victor</a>
-                            <a href="#!" onClick={changetoComment}>Comment</a>
+                            <a href="#!" onClick={changetoVictor}>Victor</a>
+                            <a href="#!" id="spacing" onClick={changetoComment}>Comment</a>
                             <hr id="sel"></hr>
                         </div>
                         {nextPanel()}

@@ -57,6 +57,7 @@ code {
             }
         }
     }
+
 }
 .pageContent {
     display: flex;
@@ -710,15 +711,52 @@ code {
         width: 150px;
         margin: 5px;
         color: #ababab;
-        border-bottom: #424242 solid 1px;
-        border-width: 2px;
         text-align: center;
     }
     #levelRec {
         width: 60%;
         text-align: center;
     }
+    b{
+        color:white;
+    }
 }
+.levelRecord1 {
+    display: block;
+    margin-left: 80px;
+    text-align: left;
+    transform: translateY(-25px);
+    section {
+        padding: 10px;
+    }
+    a {
+        line-height: 20px;
+        padding: 10px;
+        width: 150px;
+        margin: 5px;
+        color: white;
+        border-width: 2px;
+        text-align: justify;
+    }
+    #levelRec1 {
+        color: #ababab;
+        font-size: 13px;
+        width: 60%;
+        text-align: right;
+    }
+    #date{
+        color: #ababab;
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+    p{
+        margin-left: 15px;
+        margin-top: 8px;
+        margin-bottom: 0px;
+        line-height: 20px;
+    }
+}
+
 #nvm {
     margin-top: 40px;
 }
@@ -845,17 +883,33 @@ code {
 }
 .selector{
     position: relative;
-    #marleft{
-        margin-left: 100px;
+    margin-left: 100px;
+    #spacing{
+        margin-left: 10px;
     }
     a{
-        margin-left: 10px;
+        margin-left: 0px;
         font-weight: bold;
+        transition: 0.3s;
     }
     #sel{
         margin-top: 10px;
-        margin-left: 100px;
         width: 120px;
+        margin-left: 0;
+    }
+    a:hover{
+        color: #ababab;
+        transition: 0.3s;
+    }
+}
+.pageSwitcher{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    a{
+        margin-left: 10px;
+        margin-right: 10px;
+        font-size: 20px;
     }
 }
 @media screen and (max-width: 1450px) {
@@ -863,9 +917,18 @@ code {
         margin-left: 100px;
         margin-right: 100px;
     }
+    .levelRecord1{
+        margin-top: -15px;
+    }
 }
 
 @media screen and (max-width: 1250px) {
+    .levelRecord1{
+        margin-left: 25px;
+    }
+    .selector{
+        margin-left: 50px;
+    }
     .credit {
         width: 80%;
     }
