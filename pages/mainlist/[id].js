@@ -12,9 +12,13 @@ function Main() {
     const [apilv, setapilv] = useState([]);
     const [cmt, setCmt] = useState([]);
     const [mode, setMode] = useState(0);
+    const [trig, setTrig] = useState(1);
     const router = useRouter();
     const { id } = router.query;
     const axios = require('axios');
+    const url = "https://gdbrowser.com/api/level/" + id;
+    const cmtUrl = "https://gdbrowser.com/api/comments/" + id + "?page=0";
+
     useEffect(() => {
         async function getData() {
 
@@ -39,29 +43,27 @@ function Main() {
             }
 
         }
+
+        axios
+            .get(url)
+            .then(res => {
+                setapilv(res.data);
+            })
+            .catch(error => {
+                console.error(error)
+            })
+
+        axios
+            .get(cmtUrl)
+            .then(res => {
+                setCmt(res.data);
+            })
+            .catch(error => {
+                console.error(error)
+            })
         getData()
-    }, [])
+    }, [data])
 
-    const url = "https://gdbrowser.com/api/level/" + id;
-    const cmtUrl = "https://gdbrowser.com/api/comment/" + id;
-
-    axios
-        .get(url)
-        .then(res => {
-            setapilv(res.data);
-        })
-        .catch(error => {
-            console.error(error)
-        })
-
-    axios
-        .get(cmtUrl)
-        .then(res => {
-            setCmt(res.data);
-        })
-        .catch(error => {
-            console.error(error)
-        })
     function nextPanel() {
         if (mode == 0) return showVictor();
         else if (mode == 1) return showComment();
@@ -107,11 +109,40 @@ function Main() {
 
     function showComment() {
         try {
-            <>
-            </>
+            return (
+                <div className="mainpanelContent">
+                    <div className="recordList">
+                        <div className="levelRecord">
+                            <section className="allPlayerInfo">
+                                <a id="levelRec"><b>Comment</b></a>
+                            </section>
+                            {Object.keys(cmt).map(i => {
+                                return (
+                                    <section className="allPlayerInfo" key={i}>
+                                        <a>{cmt[i].username} • {cmt[i].date}</a>
+                                        <a id="levelRec">{cmt[i].content}</a>
+                                    </section>
+                                )
+
+                            })}
+                        </div>
+                    </div>
+
+                </div>
+            )
         }
         catch (err) {
-
+            return (
+                <div className="mainpanelContent">
+                    <div className="recordList">
+                        <div className="levelRecord">
+                            <section className="allPlayerInfo">
+                                <a id="levelRec"><b>No comment</b></a>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            )
         }
     }
 
@@ -139,7 +170,7 @@ function Main() {
     function changetoVictor() {
         setMode(0);
     }
-    function changetoComment(){
+    function changetoComment() {
         setMode(1);
     }
     try {
@@ -177,7 +208,7 @@ function Main() {
                             </p>
 
                         </div>
-                            <div className="selector">
+                        <div className="selector">
                             <a href="#!" id="marleft" onClick={changetoVictor}>Victor</a>
                             <a href="#!" onClick={changetoComment}>Comment</a>
                             <hr id="sel"></hr>
@@ -185,7 +216,6 @@ function Main() {
                         {nextPanel()}
                     </div>
                 </div>
-
             </>
         );
     }
