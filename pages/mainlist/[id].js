@@ -7,17 +7,19 @@ import Head from 'next/head';
 import Image from "next/image";
 
 function Main() {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState({});
     const [lvDat, setlvDat] = useState([]);
     const [apilv, setapilv] = useState([]);
     const [cmt, setCmt] = useState([]);
     const [mode, setMode] = useState(0);
-    const [trig, setTrig] = useState(1);
+    const [trig, setTrig] = useState(0);
     const router = useRouter();
     const { id } = router.query;
     const axios = require('axios');
     const url = "https://gdbrowser.com/api/level/" + id;
     const cmtUrl = "https://gdbrowser.com/api/comments/" + id + "?page=0";
+
+    
 
     useEffect(() => {
         async function getData() {
@@ -27,6 +29,7 @@ function Main() {
 
             if (docSnap.exists()) {
                 setData(docSnap.data());
+                setTrig(1)
             } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
@@ -43,15 +46,8 @@ function Main() {
             }
 
         }
-        var CancelToken = axios.CancelToken;
-        var cancel;
         axios
-            .get(url, {
-                cancelToken: new CancelToken(function executor(c) {
-                    // An executor function receives a cancel function as a parameter
-                    cancel = c;
-                })
-            })
+            .get(url)
             .then(res => {
                 setapilv(res.data);
                 setTimeout(10000)
@@ -61,12 +57,7 @@ function Main() {
             })
 
         axios
-            .get(cmtUrl, {
-                cancelToken: new CancelToken(function executor(c) {
-                    // An executor function receives a cancel function as a parameter
-                    cancel = c;
-                })
-            })
+            .get(cmtUrl)
             .then(res => {
                 setCmt(res.data);
                 setTimeout(10000)
@@ -74,8 +65,9 @@ function Main() {
             .catch(error => {
                 console.error(error)
             })
+
         getData()
-    }, [data])
+    }, [trig])
 
     function nextPanel() {
         if (mode == 0) return showVictor();
