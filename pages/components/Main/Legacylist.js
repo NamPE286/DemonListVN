@@ -34,10 +34,11 @@ function Main() {
   // Subsequent queries will use persistence, if it was enabled successfully
   return (
     <>
-      <Head>
+      <head>
         <script type='text/javascript' src='//pl17157169.safestgatetocontent.com/ff/57/6c/ff576c334835b26609495b1e5cc64180.js'></script>
         <script async="async" data-cfasync="false" src="//pl17157193.safestgatetocontent.com/ad80a2f0f05651f1a5916edbc7b4e0ab/invoke.js"></script>
-      </Head>
+      </head>
+      <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
       <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
         <h2>Legacy List</h2>
         <div className="mainpanelContent">
