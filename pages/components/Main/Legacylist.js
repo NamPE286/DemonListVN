@@ -24,7 +24,7 @@ function Main() {
   }, [])
 
   function showAds(i){
-    if(i == 0){
+    if(i == 2){
     return(
       <div id="container-ad80a2f0f05651f1a5916edbc7b4e0ab"></div>
     )

@@ -23,6 +23,13 @@ function Main() {
     getData()
   }, [])
 
+  function showAds(i){
+    if(i == 2){
+    return(
+      <div id="container-ad80a2f0f05651f1a5916edbc7b4e0ab"></div>
+    )
+    }
+  }
 
   // Subsequent queries will use persistence, if it was enabled successfully
   return (
@@ -36,7 +43,6 @@ function Main() {
         <div className="mainpanelContent">
           {Object.keys(data).map(i => {
             if (data[i].name != null) {
-              if (i == 0) {
                 return (
                   <>
                   <div className="levelWrapper" key={i}>
@@ -48,37 +54,16 @@ function Main() {
                         <div className='levelInfo'>
                           <h3>{data[i].name}</h3>
                           <p>by {data[i].creator}</p>
-                          <br />
+                          <br/>
                           <p>{data[i].points}pt</p>
                         </div>
                       </div>
                     </a>
                   </div>
-                  <div id="container-ad80a2f0f05651f1a5916edbc7b4e0ab"></div>
+                  {showAds(i)}
                   </>
-
                 )
-              }
-              else {
-                return (
-                  <div className="levelWrapper" key={i}>
-                    <a href={`/mainlist/${data[i].id}`}>
-                      <div className='levelCard'>
-                        <Image src={`https://i.ytimg.com/vi/${data[i].thumbnail}/hqdefault.jpg`} alt="" layout="fill" objectFit='cover' priority='true' quality={35}></Image>
-                        <div className='fadeEffect'></div>
-                        <p className='top'>#{parseInt(i) + 1}</p>
-                        <div className='levelInfo'>
-                          <h3>{data[i].name}</h3>
-                          <p>by {data[i].creator}</p>
-                          <br />
-                          <p>{data[i].points}pt</p>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-
-                )
-              }
+              
             }
           })}
         </div>
