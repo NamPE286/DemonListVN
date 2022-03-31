@@ -1,7 +1,8 @@
-import {getDoc, doc} from "firebase/firestore"
+import { getDoc, doc } from "firebase/firestore"
 import { db } from '../../api/firebase-config.js'
 import { useState, useEffect } from 'react';
 import Image from "next/image";
+import Head from "next/head";
 
 function Main() {
   const [data, setData] = useState([]);
@@ -25,34 +26,39 @@ function Main() {
 
   // Subsequent queries will use persistence, if it was enabled successfully
   return (
-    <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
-      <h2>Main List</h2>
-      <div className="mainpanelContent">
-        {Object.keys(data).map(i => {
-          if (data[i].name != null) {
-            return (
-              <div className="levelWrapper" key={i}>
-                <a href={`/mainlist/${data[i].id}`}>
-                  <div className='levelCard'>
-                    <Image src={`https://i.ytimg.com/vi/${data[i].thumbnail}/hqdefault.jpg`} alt="" layout="fill" objectFit='cover' priority='true' quality={35}></Image>
-                    <div className='fadeEffect'></div>
-                    <p className='top'>#{parseInt(i) + 1}</p>
-                    <div className='levelInfo'>
-                      <h3>{data[i].name}</h3>
-                      <p>by {data[i].creator}</p>
-                      <br />
-                      <p>{data[i].points}pt</p>
+    <>
+      <Head>
+        <script type='text/javascript' src='//pl17157169.safestgatetocontent.com/ff/57/6c/ff576c334835b26609495b1e5cc64180.js'></script>
+      </Head>
+      <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
+        <h2>Main List</h2>
+        <div className="mainpanelContent">
+          {Object.keys(data).map(i => {
+            if (data[i].name != null) {
+              return (
+                <div className="levelWrapper" key={i}>
+                  <a href={`/mainlist/${data[i].id}`}>
+                    <div className='levelCard'>
+                      <Image src={`https://i.ytimg.com/vi/${data[i].thumbnail}/hqdefault.jpg`} alt="" layout="fill" objectFit='cover' priority='true' quality={35}></Image>
+                      <div className='fadeEffect'></div>
+                      <p className='top'>#{parseInt(i) + 1}</p>
+                      <div className='levelInfo'>
+                        <h3>{data[i].name}</h3>
+                        <p>by {data[i].creator}</p>
+                        <br />
+                        <p>{data[i].points}pt</p>
+                      </div>
                     </div>
-                  </div>
-                </a>
-              </div>
+                  </a>
+                </div>
 
-            )
+              )
 
-          }
-        })}
+            }
+          })}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
