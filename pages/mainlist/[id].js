@@ -43,20 +43,33 @@ function Main() {
             }
 
         }
-
+        var CancelToken = axios.CancelToken;
+        var cancel;
         axios
-            .get(url)
+            .get(url, {
+                cancelToken: new CancelToken(function executor(c) {
+                    // An executor function receives a cancel function as a parameter
+                    cancel = c;
+                })
+            })
             .then(res => {
                 setapilv(res.data);
+                setTimeout(10000)
             })
             .catch(error => {
                 console.error(error)
             })
 
         axios
-            .get(cmtUrl)
+            .get(cmtUrl, {
+                cancelToken: new CancelToken(function executor(c) {
+                    // An executor function receives a cancel function as a parameter
+                    cancel = c;
+                })
+            })
             .then(res => {
                 setCmt(res.data);
+                setTimeout(10000)
             })
             .catch(error => {
                 console.error(error)
