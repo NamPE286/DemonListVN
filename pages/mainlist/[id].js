@@ -102,9 +102,9 @@ function Main() {
         else {
             return (
                 <div className="levelInfoContent1">
-                    <p>ID: {id}</p>
-                    <p>Verified by: {lvDat[id].verifier}</p>
-                    <p>Rating: {apilv.difficulty} (legacy)</p>
+                    <p>ID: {id}<br/>
+                    Verified by: {lvDat[id].verifier}<br/>
+                    Rating: {apilv.difficulty} (legacy)</p>
                 </div>
             )
         }
