@@ -843,6 +843,21 @@ code {
         color: #ababab;
     }
 }
+.selector{
+    position: relative;
+    #marleft{
+        margin-left: 100px;
+    }
+    a{
+        margin-left: 10px;
+        font-weight: bold;
+    }
+    #sel{
+        margin-top: 10px;
+        margin-left: 100px;
+        width: 120px;
+    }
+}
 @media screen and (max-width: 1450px) {
     .pageContent {
         margin-left: 100px;

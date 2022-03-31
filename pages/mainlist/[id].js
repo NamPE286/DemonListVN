@@ -10,6 +10,8 @@ function Main() {
     const [data, setData] = useState([]);
     const [lvDat, setlvDat] = useState([]);
     const [apilv, setapilv] = useState([]);
+    const [cmt, setCmt] = useState([]);
+    const [mode, setMode] = useState(0);
     const router = useRouter();
     const { id } = router.query;
     const axios = require('axios');
@@ -41,6 +43,8 @@ function Main() {
     }, [])
 
     const url = "https://gdbrowser.com/api/level/" + id;
+    const cmtUrl = "https://gdbrowser.com/api/comment/" + id;
+
     axios
         .get(url)
         .then(res => {
@@ -50,6 +54,18 @@ function Main() {
             console.error(error)
         })
 
+    axios
+        .get(cmtUrl)
+        .then(res => {
+            setCmt(res.data);
+        })
+        .catch(error => {
+            console.error(error)
+        })
+    function nextPanel() {
+        if (mode == 0) return showVictor();
+        else if (mode == 1) return showComment();
+    }
 
     function showVictor() {
         try {
@@ -89,6 +105,16 @@ function Main() {
         }
     }
 
+    function showComment() {
+        try {
+            <>
+            </>
+        }
+        catch (err) {
+
+        }
+    }
+
     function showRating() {
         if (lvDat[id].points != undefined) {
             return (
@@ -102,12 +128,19 @@ function Main() {
         else {
             return (
                 <div className="levelInfoContent1">
-                    <p>ID: {id}<br/>
-                    Verified by: {lvDat[id].verifier}<br/>
-                    Rating: {apilv.difficulty} (legacy)</p>
+                    <p>ID: {id}<br />
+                        Verified by: {lvDat[id].verifier}<br />
+                        Rating: {apilv.difficulty} (legacy)</p>
                 </div>
             )
         }
+    }
+
+    function changetoVictor() {
+        setMode(0);
+    }
+    function changetoComment(){
+        setMode(1);
     }
     try {
         return (
@@ -144,7 +177,12 @@ function Main() {
                             </p>
 
                         </div>
-                        {showVictor()}
+                            <div className="selector">
+                            <a href="#!" id="marleft" onClick={changetoVictor}>Victor</a>
+                            <a href="#!" onClick={changetoComment}>Comment</a>
+                            <hr id="sel"></hr>
+                        </div>
+                        {nextPanel()}
                     </div>
                 </div>
 
