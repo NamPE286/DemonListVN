@@ -47,7 +47,7 @@ function Main() {
                   </section>
                   <div className="topMostPlayerInfo">
                     <h3>#{parseInt(i) + 1} {data[i].name}</h3>
-                    <hr></hr>
+                    <hr id="topplayerLine"></hr>
                     <p>{data[i].points}pt <p>Best Play: {processTitle(data[i].bestplay)} by {processAuthor(data[i].bestplayCreator)}</p></p>
                   </div>
                   <div className="levelThumbWrapper">

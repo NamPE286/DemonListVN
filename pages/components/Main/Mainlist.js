@@ -23,20 +23,10 @@ function Main() {
     getData()
   }, [])
 
-  function showAds(i){
-    if(i == 2){
-    return(
-      <div id="container-ad80a2f0f05651f1a5916edbc7b4e0ab"></div>
-    )
-    }
-  }
 
   // Subsequent queries will use persistence, if it was enabled successfully
   return (
     <>
-      <head>
-        <script async="async" data-cfasync="false" src="//pl17157193.safestgatetocontent.com/ad80a2f0f05651f1a5916edbc7b4e0ab/invoke.js"></script>
-      </head>
       <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
 
       <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
@@ -61,7 +51,6 @@ function Main() {
                       </div>
                     </a>
                   </div>
-                  {showAds(i)}
                   </>
                 )
               
