@@ -35,7 +35,6 @@ function Main() {
   return (
     <>
       <head>
-        <script type='text/javascript' src='//pl17157169.safestgatetocontent.com/ff/57/6c/ff576c334835b26609495b1e5cc64180.js'></script>
         <script async="async" data-cfasync="false" src="//pl17157193.safestgatetocontent.com/ad80a2f0f05651f1a5916edbc7b4e0ab/invoke.js"></script>
       </head>
       <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
