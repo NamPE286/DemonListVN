@@ -216,7 +216,7 @@ function Main() {
                             </div>
                             {showRating()}
                         </div>
-                        <hr></hr>
+                        <hr id='line'></hr>
                         <div className="levelInfoContent2">
                             <iframe src={`https://www.youtube.com/embed/${lvDat[id].thumbnail}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             <p>

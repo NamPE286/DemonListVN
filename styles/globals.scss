@@ -859,7 +859,7 @@ code {
         border: #424242 solid 1px;
         margin-right: auto;
         margin-left: auto;
-        margin-bottom: 32px;
+        margin-bottom: 0;
         margin-top: 20px;
     }
 }
@@ -912,8 +912,8 @@ code {
         font-size: 20px;
     }
 }
-#topplayerLine{
-    margin-bottom: 0px;
+#line{
+    margin-bottom: 32px;
 }
 @media screen and (max-width: 1450px) {
     .pageContent {
