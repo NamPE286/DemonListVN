@@ -858,7 +858,7 @@ code {
         border: #424242 solid 1px;
         margin-right: auto;
         margin-left: auto;
-        margin-bottom: 0;
+        margin-bottom: 32px;
         margin-top: 20px;
     }
 }
@@ -927,8 +927,8 @@ code {
         font-size: 20px;
     }
 }
-#line{
-    margin-bottom: 32px;
+#topplayerLine{
+    margin-bottom: 0px;
 }
 #selector1{
     margin-left: 80px;
