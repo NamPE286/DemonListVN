@@ -52,7 +52,7 @@ function Main() {
     }, [])
     useEffect(() => {
         axios
-            .get(url, console.log('ok'))
+            .get(url)
             .then(res => {
                 setapilv(res.data);
                 setTimeout(10000)
@@ -214,18 +214,62 @@ function Main() {
             )
         }
         else {
-            if(lvDat[id].ldm == true){
+            if (apilv.ldm == true && lvDat[id].ldm.length != 0) {
                 return (
+                    <>
+                        <p>
+                            <b>This level has native LDM</b>
+                        </p>
+                        <p>
+                            <b>Alternative recommended LDM:</b>
+                        </p>
+                        <ul>
+                            {Object.keys(lvDat[id]['ldm']).map(i => {
+                                return (
+                                    <li id="recLDM" key={i}>{lvDat[id]['ldm'][i]}</li>
+                                )
+                            })}
+                        </ul>
+                    </>
+                )
+            }
+            else if (apilv.ldm == true && lvDat[id].ldm.length == 0) {
+                <>
                     <p>
                         <b>This level has native LDM</b>
                     </p>
+                    <p>
+                        <b>No alternative LDM avalible</b>
+                    </p>
+                </>
+            }
+            else {
+                if (lvDat[id].ldm.length != 0) {
+                    return (
+                        <>
+                            <p>
+                                <b>Recommended LDM:</b>
+                            </p>
+                            <ul>
+                                {Object.keys(lvDat[id]['ldm']).map(i => {
+                                    return (
+                                        <li id="recLDM" key={i}>{lvDat[id]['ldm'][i]}</li>
+                                    )
+                                })}
+                            </ul>
+                        </>
+
+                    )
+                }
+                return (
+                    <>
+                        <p>
+                            <b>LDM is unavalible</b>
+                        </p>
+                    </>
+
                 )
             }
-            return (
-                <p>
-                    <b>LDM:<br /></b>
-                </p>
-            )
         }
     }
     try {
