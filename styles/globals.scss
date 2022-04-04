@@ -85,7 +85,7 @@ code {
     border-radius: 16px;
     padding: 0;
     height: auto;
-    min-height: 1000px;
+    min-height: none;
     width: 100%;
     h2 {
         text-align: center;
@@ -110,7 +110,6 @@ code {
         line-height: 10px;
     }
 }
-
 .mainpanelNoMargin {
     background-color: #1d1d1d;
     margin-left: 30px;
@@ -863,6 +862,19 @@ code {
         margin-top: 20px;
     }
 }
+.mainpanelNoPadding {
+    hr {
+        overflow: auto;
+        width: 75%;
+        height: 0;
+        border: #424242 solid 1px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-bottom: 0;
+        margin-top: 20px;
+    }
+}
+
 .levelInfoContent2 {
     display: flex;
     width: 100%;
@@ -884,6 +896,9 @@ code {
 .selector{
     position: relative;
     margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
     #spacing{
         margin-left: 10px;
     }
@@ -892,9 +907,9 @@ code {
         font-weight: bold;
         transition: 0.3s;
     }
-    #sel{
+    hr{
         margin-top: 10px;
-        width: 120px;
+        width: 100%;
         margin-left: 0;
     }
     a:hover{
@@ -914,6 +929,19 @@ code {
 }
 #line{
     margin-bottom: 32px;
+}
+#selector1{
+    margin-left: 80px;
+}
+.mainpanelflexdown{
+    flex-direction: column;
+}
+.panel1{
+    margin-top: 30px;
+    padding-top: 50px;
+}
+.panel2{
+    margin-top: 30px;
 }
 @media screen and (max-width: 1450px) {
     .pageContent {

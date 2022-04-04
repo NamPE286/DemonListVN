@@ -14,13 +14,14 @@ function Main() {
     const [mode, setMode] = useState(0);
     const [trig, setTrig] = useState(0);
     const [page, setPage] = useState(0);
+    const [mode0, setMode0] = useState(0);
     const router = useRouter();
     const { id } = router.query;
     const axios = require('axios');
     const url = "https://gdbrowser.com/api/level/" + id;
     let cmtUrl = "https://gdbrowser.com/api/comments/" + id + "?page=" + page;
 
-    
+
 
     useEffect(() => {
         async function getData() {
@@ -47,6 +48,9 @@ function Main() {
             }
 
         }
+        getData()
+    }, [])
+    useEffect(() => {
         axios
             .get(url, console.log('ok'))
             .then(res => {
@@ -66,8 +70,6 @@ function Main() {
             .catch(error => {
                 console.error(error)
             })
-
-        getData()
     }, [trig])
 
     function nextPanel() {
@@ -113,16 +115,16 @@ function Main() {
         }
     }
 
-    function nextPage(){
-        setPage(page+1)
+    function nextPage() {
+        setPage(page + 1)
         cmtUrl = "https://gdbrowser.com/api/comments/" + id + "?page=" + page
-        setTrig(0)
+        setTrig(trig * -1)
     }
-    function prevPage(){
-        if(page != 0){
-            setPage(page-1)
+    function prevPage() {
+        if (page != 0) {
+            setPage(page - 1)
             cmtUrl = "https://gdbrowser.com/api/comments/" + id + "?page=" + page
-            setTrig(0)
+            setTrig(trig * -1)
         }
     }
 
@@ -193,6 +195,39 @@ function Main() {
     function changetoComment() {
         setMode(1);
     }
+    function changetoInfo() {
+        setMode0(0);
+    }
+    function changetoLDM() {
+        setMode0(1);
+    }
+    function showDetail() {
+        if (mode0 == 0) {
+            return (
+                <p>
+                    <b>Description:<br /></b>{apilv.description}<br /><br />
+                    <b>Downloads: </b>{apilv.downloads}<br />
+                    <b>Likes: </b>{apilv.likes}<br />
+                    <b>Coins: </b>{apilv.coins}<br />
+                    <b>Length: </b>{apilv.length}<br />
+                </p>
+            )
+        }
+        else {
+            if(lvDat[id].ldm == true){
+                return (
+                    <p>
+                        <b>This level has native LDM</b>
+                    </p>
+                )
+            }
+            return (
+                <p>
+                    <b>LDM:<br /></b>
+                </p>
+            )
+        }
+    }
     try {
         return (
             <>
@@ -200,13 +235,13 @@ function Main() {
                     <title>{lvDat[id].name}'s Info - Demon List VN</title>
                 </Head>
                 <Navbar />
-                <div className='pageContent'>
+                <div className='pageContent mainpanelflexdown'>
                     <div className='sidePanel'>
                         <div className='topSpacer' />
                     </div>
-                    <div className="mainpanel mainpanelNoPadding" id='center-div'>
+                    <div className="mainpanelNoPadding" id='center-div'>
                         <div className="levelThumb0">
-                            <Image src={`https://i.ytimg.com/vi/${lvDat[id].thumbnail}/hqdefault.jpg`} alt="" layout="fill" objectFit='cover' priority='true' quality={100}></Image>
+                            <img src={`https://i.ytimg.com/vi/${lvDat[id].thumbnail}/hqdefault.jpg`} alt="" id='bigLvThumb'></img>
                             <div className="fadeEffectUp"></div>
                         </div>
                         <div className="levelInfoContentWrapper">
@@ -219,23 +254,34 @@ function Main() {
                         <hr id='line'></hr>
                         <div className="levelInfoContent2">
                             <iframe src={`https://www.youtube.com/embed/${lvDat[id].thumbnail}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
-                            <p>
-                                <b>Description:<br /></b>{apilv.description}<br /><br />
-                                <b>Downloads: </b>{apilv.downloads}<br />
-                                <b>Likes: </b>{apilv.likes}<br />
-                                <b>Coins: </b>{apilv.coins}<br />
-                                <b>Length: </b>{apilv.length}<br />
-                            </p>
+                            <div>
+                                <div className="selector" id="selector1">
+                                    <div>
+                                        <a href="#!" onClick={changetoInfo}>Info</a>
+                                        <a href="#!" id="spacing" onClick={changetoLDM}>LDM</a>
+                                    </div>
+                                    <hr id="sel"></hr>
+                                </div>
+                                {showDetail()}
+
+                            </div>
 
                         </div>
+                    </div>
+                    <div className="mainpanel mainpanelNoPadding panel1" id='center-div'>
                         <div className="selector">
-                            <a href="#!" onClick={changetoVictor}>Victor</a>
-                            <a href="#!" id="spacing" onClick={changetoComment}>Comment</a>
-                            <hr id="sel"></hr>
+                            <div>
+                                <a href="#!" onClick={changetoVictor}>Victor</a>
+                                <a href="#!" id="spacing" onClick={changetoComment}>Comment</a>
+                            </div>
+                            <hr></hr>
                         </div>
-                        {nextPanel()}
+                        <div className="panel2">
+                            {nextPanel()}
+                        </div>
                     </div>
                 </div>
+
             </>
         );
     }
