@@ -268,7 +268,7 @@ function Main() {
 
                         </div>
                     </div>
-                    <div className="mainpanel mainpanelNoPadding panel1" id='center-div'>
+                    <div className="mainpanelNoPadding panel1" id='center-div'>
                         <div className="selector">
                             <div>
                                 <a href="#!" onClick={changetoVictor}>Victor</a>
