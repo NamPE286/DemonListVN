@@ -878,6 +878,7 @@ code {
 .levelInfoContent2 {
     display: flex;
     width: 100%;
+    margin-top: 32px;
     iframe {
         border-radius: 16px;
         margin-left: 100px;
@@ -929,9 +930,6 @@ code {
         margin-right: 10px;
         font-size: 20px;
     }
-}
-#topplayerLine{
-    margin-bottom: 0px;
 }
 #selector1{
     margin-left: 80px;
