@@ -279,7 +279,7 @@ function Main() {
                     <title>{lvDat[id].name}'s Info - Demon List VN</title>
                 </Head>
                 <Navbar />
-                <div className='pageContent mainpanelflexdown'>
+                <div className='pageContent mainpanelflexdown' id='res'>
                     <div className='sidePanel'>
                         <div className='topSpacer' />
                     </div>
