@@ -768,8 +768,8 @@ code {
     color: #ababab;
 }
 #center-div {
-    margin-left: 3vw;
-    margin-right: 3vw;
+    margin-left: auto;
+    margin-right: auto;
 }
 .ytVid {
     position: inherit;
@@ -1065,8 +1065,9 @@ code {
         margin-right: auto;
     }
     #center-div {
-        margin-left: 10px;
-        margin-right: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 98.5%;
     }
     .levelInfoContent2{
         display: block;
