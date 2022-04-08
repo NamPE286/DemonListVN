@@ -264,7 +264,7 @@ function Main() {
                 return (
                     <>
                         <p>
-                            <b>LDM is unavalible</b>
+                            <b>LDM is unavailable</b>
                         </p>
                     </>
 
