@@ -294,7 +294,7 @@ function Main() {
                     <button onClick={() => {addNewLevel('mainlist')}}>Add new level</button>
                     {Object.keys(data['mainlist']).map(i => {
                         return (
-                            <a href="#!" onClick={() => showMainlistInfo(i)}><p>{data['mainlist'][i].name}</p></a>
+                            <a href="#!" onClick={() => showMainlistInfo(i)}><p>#{i} {data['mainlist'][i].name}</p></a>
                         )
                     })}
                 </div>
