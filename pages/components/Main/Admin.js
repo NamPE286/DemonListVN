@@ -10,6 +10,7 @@ function Main() {
     const [d, setD] = useState("");
     const [d1, setD1] = useState({});
     const [index, setIndex] = useState(0);
+    const [add, setAdd] = useState(false);
 
     useEffect(() => {
         async function getData() {
@@ -113,6 +114,12 @@ function Main() {
             x[i].points = 2100 / (0.3 * parseInt(x[i].top) + 9) - 80
             x[i].points = Math.round(x[i].points * 100) / 100
         }
+        for(const i in x){
+            if(x[i].ldm == undefined || x[i].ldm.length == 0){
+                x[i].ldm = []
+            }
+            data['mainlist0'][x[i].id] = x[i]
+        }
         return x
     }
     function showMainlistInfo(x) {
@@ -130,6 +137,7 @@ function Main() {
         setD("mainlist")
         setD1(a)
         setIndex(x)
+        setAdd(false)
         setModal(!modal)
     }
     function showLegacylisttInfo(x) {
@@ -138,6 +146,7 @@ function Main() {
         setD("legacylist")
         setD1(a)
         setIndex(x)
+        setAdd(false)
         setModal(!modal)
     }
     function deletelv(){
@@ -148,8 +157,24 @@ function Main() {
             console.log(e)
             data[d].splice(index,1)
         }
+        if(d == 'mainlist') data['mainlist'] = Object.assign({}, refactor(Object.values(data['mainlist'])))
         setModal(!modal)
         addData()
+    }
+    function addNewLevel(x){
+        setD1({
+            name: "",
+            creator: "",
+            top: 0,
+            verifier: "",
+            id: "",
+            thumbnail: "",
+            ldm: []
+        })
+        setD(x)
+        setAdd(true)
+        setIndex(0)
+        setModal(!modal)
     }
     function showModal() {
         if (modal) {
@@ -162,20 +187,17 @@ function Main() {
                     d1.verifier = document.getElementById("verifier").value
                     d1.id = document.getElementById("lvid").value
                     document.getElementById("LDM").value = "[" + document.getElementById("LDM").value + "]"
-
-                    if (document.getElementById("top").value < d1.top) d1.top = document.getElementById("top").value - 0.5
-                    else d1.top = document.getElementById("top").value
-                    data['mainlist'].splice(index, 1)
-                    data['mainlist'].push(d1)
+                    if (parseInt(document.getElementById("top").value) < d1.top) d1.top = parseInt(document.getElementById("top").value) - 0.5
+                    else d1.top = parseInt(document.getElementById("top").value) + 0.5
+                    if(!add) data['mainlist'][index] = d1
+                    else data['mainlist'].push(d1)
                     data['mainlist'] = refactor(data['mainlist'])
-                    data['mainlist0'][d1.id] = d1
                     try {
                         data['mainlist0'][d1.id].ldm = JSON.parse(document.getElementById("LDM").value)
                     }
                     catch (e) {
                         console.error(e)
                     }
-
                     console.log(data['mainlist'])
                     addData()
                     setModal(!modal)
@@ -225,8 +247,15 @@ function Main() {
                     catch (e) {
                         console.error(e)
                     }
-                    console.log(data['legacylist'])
-                    addData()
+                    if(!add) data['legacylist'][index] = d1
+                    else{
+                        let a = Object.values(data['legacylist'])
+                        a.unshift(d1)
+                        a = Object.assign({}, a)
+                        console.log(a)
+                        data['legacylist'] = a
+                    }
+                    //addData()
                     setModal(!modal)
                 }
                 return (
@@ -270,19 +299,7 @@ function Main() {
         /* Alert the copied text */
         alert("Copied JSON to clipboard")
     }
-    function addNewLevel(x){
-        setD1({
-            name: "",
-            creator: "",
-            top: 0,
-            verifier: "",
-            id: "",
-            thumbnail: "",
-            ldm: []
-        })
-        setD(x)
-        setModal(!modal)
-    }
+    console.log(data)
 
     try {
         return (
@@ -294,7 +311,7 @@ function Main() {
                     <button onClick={() => {addNewLevel('mainlist')}}>Add new level</button>
                     {Object.keys(data['mainlist']).map(i => {
                         return (
-                            <a href="#!" onClick={() => showMainlistInfo(i)}><p>#{i} {data['mainlist'][i].name}</p></a>
+                            <a href="#!" onClick={() => showMainlistInfo(i)}><p>#{data['mainlist'][i].top} {data['mainlist'][i].name}</p></a>
                         )
                     })}
                 </div>
