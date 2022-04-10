@@ -243,6 +243,21 @@ function Main() {
                 }
             }
     }
+    function copy() {
+        /* Get the text field */
+        var copyText = document.getElementById("json");
+      
+        /* Select the text field */
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); /* For mobile devices */
+      
+         /* Copy the text inside the text field */
+        navigator.clipboard.writeText(copyText.value);
+      
+        /* Alert the copied text */
+        alert("Copied JSON to clipboard")
+      }
+
     try {
         return (
 
@@ -272,6 +287,11 @@ function Main() {
                             <p>{data['playerPt'][i].name}</p>
                         )
                     })}
+                </div>
+                <div className="lvDat">
+                    <br/>
+                    <button onClick={copy}>Copy JSON</button>
+                    <input type="text" id="json" name="json" value={JSON.stringify({"data": data})} readOnly></input>
                 </div>
 
 
