@@ -25,6 +25,7 @@ function Main() {
 
     function calc() {
         console.log('Calculating')
+
         var dat = JSON.parse(JSON.stringify(data['mainlist0']));
         for (const i in data['mainlist']) {
             var a2 = data['mainlist'][i].id
@@ -115,7 +116,16 @@ function Main() {
         return x
     }
     function showMainlistInfo(x) {
-        const a = data['mainlist0'][data['mainlist'][x]['id']]
+        let a = data['mainlist0'][data['mainlist'][x]['id']]
+        if(a == undefined){
+            data['mainlist0'][data['mainlist'][x]['id']] = data['mainlist'][x]
+            data['mainlist0'][data['mainlist'][x]['id']].ldm = []
+            a = data['mainlist0'][data['mainlist'][x]['id']]
+        }
+        if(a == undefined) {
+            console.log('not ok')
+            return
+        }
         console.log(a)
         setD("mainlist")
         setD1(a)
@@ -131,105 +141,107 @@ function Main() {
         setModal(!modal)
     }
     function showModal() {
-        if (modal) {
-            if(d == "mainlist") {
-                function update(){
-                    data['mainlist'] = Object.values(data['mainlist'])
-                    d1.name = document.getElementById("lvname").value
-                    d1.creator = document.getElementById("creator").value
-                    d1.thumbnail = document.getElementById("thumbnail").value
-                    d1.verifier = document.getElementById("verifier").value
-                    d1.id = document.getElementById("lvid").value
-                    document.getElementById("LDM").value = "[" + document.getElementById("LDM").value + "]"
+            if (modal) {
+                if(d == "mainlist") {
+                    function update(){
+                        data['mainlist'] = Object.values(data['mainlist'])
+                        d1.name = document.getElementById("lvname").value
+                        d1.creator = document.getElementById("creator").value
+                        d1.thumbnail = document.getElementById("thumbnail").value
+                        d1.verifier = document.getElementById("verifier").value
+                        d1.id = document.getElementById("lvid").value
+                        document.getElementById("LDM").value = "[" + document.getElementById("LDM").value + "]"
 
-                    if(document.getElementById("top").value < d1.top) d1.top = document.getElementById("top").value - 0.5
-                    else d1.top = document.getElementById("top").value
-                    data['mainlist'].splice(index, 1)
-                    data['mainlist'].push(d1)
-                    data['mainlist'] = refactor(data['mainlist'])
-                    data['mainlist0'][d1.id] = d1
-                    try {
-                        data['mainlist0'][d1.id].ldm = JSON.parse(document.getElementById("LDM").value)
+                        if(document.getElementById("top").value < d1.top) d1.top = document.getElementById("top").value - 0.5
+                        else d1.top = document.getElementById("top").value
+                        data['mainlist'].splice(index, 1)
+                        data['mainlist'].push(d1)
+                        data['mainlist'] = refactor(data['mainlist'])
+                        data['mainlist0'][d1.id] = d1
+                        try {
+                            data['mainlist0'][d1.id].ldm = JSON.parse(document.getElementById("LDM").value)
+                        }
+                        catch (e) {
+                            console.error(e)
+                        }
+
+                        console.log(data['mainlist'])
+                        addData()
+                        setModal(!modal)
+                        
+
                     }
-                    catch (e) {
-                        console.error(e)
-                    }
-                    console.log(data['mainlist'])
-                    addData()
-                    setModal(!modal)
-                }
-                return (
-                    <div className="popup">
-                        <div className="overlay">
-                            <div className="popupContent">
-                                <h2>Edit level info</h2>
-                                <a id='close' onClick={() => { setModal(!modal) }}>x</a>
-                                <label for="lvname">Level name: </label>
-                                <input type="text" id="lvname" name="lvname" defaultValue={d1.name}></input><br/>
-                                <label for="creator">Level creator: </label>
-                                <input type="text" id="creator" name="creator" defaultValue={d1.creator}></input><br/>
-                                <label for="top">Top: </label>
-                                <input type="text" id="top" name="top" defaultValue={d1.top}></input><br/>
-                                <label for="verifier">Verifier: </label>
-                                <input type="text" id="verifier" name="verifier" defaultValue={d1.verifier}></input><br/>
-                                <label for="lvid">ID: </label>
-                                <input type="text" id="lvid" name="lvid" defaultValue={d1.id}></input><br/>
-                                <label for="thumbnail">Youtube video ID: </label>
-                                <input type="text" id="thumbnail" name="thumbnail" defaultValue={d1.thumbnail}></input><br/>
-                                <label for="LDM">LDM: </label>
-                                <input type="text" id="LDM" name="LDM" defaultValue={JSON.stringify(d1.ldm).substring(1, JSON.stringify(d1.ldm).length - 1)}></input><br/>
-                                <button onClick={update}>Update</button>
+                    return (
+                        <div className="popup">
+                            <div className="overlay">
+                                <div className="popupContent">
+                                    <h2>Edit level info</h2>
+                                    <a id='close' onClick={() => { setModal(!modal) }}>x</a>
+                                    <label for="lvname">Level name: </label>
+                                    <input type="text" id="lvname" name="lvname" defaultValue={d1.name}></input><br/>
+                                    <label for="creator">Level creator: </label>
+                                    <input type="text" id="creator" name="creator" defaultValue={d1.creator}></input><br/>
+                                    <label for="top">Top: </label>
+                                    <input type="text" id="top" name="top" defaultValue={d1.top}></input><br/>
+                                    <label for="verifier">Verifier: </label>
+                                    <input type="text" id="verifier" name="verifier" defaultValue={d1.verifier}></input><br/>
+                                    <label for="lvid">ID: </label>
+                                    <input type="text" id="lvid" name="lvid" defaultValue={d1.id}></input><br/>
+                                    <label for="thumbnail">Youtube video ID: </label>
+                                    <input type="text" id="thumbnail" name="thumbnail" defaultValue={d1.thumbnail}></input><br/>
+                                    <label for="LDM">LDM: </label>
+                                    <input type="text" id="LDM" name="LDM" defaultValue={JSON.stringify(d1.ldm).substring(1, JSON.stringify(d1.ldm).length - 1)}></input><br/>
+                                    <button onClick={update}>Update</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                )
-            }
-            else if(d == "legacylist") {
-                function update(){
-                    data['legacylist'] = Object.values(data['legacylist'])
-                    d1.name = document.getElementById("lvname").value
-                    d1.creator = document.getElementById("creator").value
-                    d1.thumbnail = document.getElementById("thumbnail").value
-                    d1.verifier = document.getElementById("verifier").value
-                    d1.id = document.getElementById("lvid").value
-                    document.getElementById("LDM").value = "[" + document.getElementById("LDM").value + "]"
-                    data['mainlist0'][d1.id] = d1
-                    try {
-                        data['mainlist0'][d1.id].ldm = JSON.parse(document.getElementById("LDM").value)
-                    }
-                    catch (e) {
-                        console.error(e)
-                    }
-                    console.log(data['legacylist'])
-                    addData()
-                    setModal(!modal)
+                    )
                 }
-                return (
-                    <div className="popup">
-                        <div className="overlay">
-                            <div className="popupContent">
-                                <h2>Edit level info</h2>
-                                <a id='close' onClick={() => { setModal(!modal) }}>x</a>
-                                <label for="lvname">Level name: </label>
-                                <input type="text" id="lvname" name="lvname" defaultValue={d1.name}></input><br/>
-                                <label for="creator">Level creator: </label>
-                                <input type="text" id="creator" name="creator" defaultValue={d1.creator}></input><br/>
-                                <label for="verifier">Verifier: </label>
-                                <input type="text" id="verifier" name="verifier" defaultValue={d1.verifier}></input><br/>
-                                <label for="lvid">ID: </label>
-                                <input type="text" id="lvid" name="lvid" defaultValue={d1.id}></input><br/>
-                                <label for="thumbnail">Youtube video ID: </label>
-                                <input type="text" id="thumbnail" name="thumbnail" defaultValue={d1.thumbnail}></input><br/>
-                                <label for="LDM">LDM: </label>
-                                <input type="text" id="LDM" name="LDM" defaultValue={JSON.stringify(d1.ldm).substring(1, JSON.stringify(d1.ldm).length - 1)}></input><br/>
-                                <button onClick={update}>Update</button>
+                else if(d == "legacylist") {
+                    function update(){
+                        data['legacylist'] = Object.values(data['legacylist'])
+                        d1.name = document.getElementById("lvname").value
+                        d1.creator = document.getElementById("creator").value
+                        d1.thumbnail = document.getElementById("thumbnail").value
+                        d1.verifier = document.getElementById("verifier").value
+                        d1.id = document.getElementById("lvid").value
+                        document.getElementById("LDM").value = "[" + document.getElementById("LDM").value + "]"
+                        data['mainlist0'][d1.id] = d1
+                        try {
+                            data['mainlist0'][d1.id].ldm = JSON.parse(document.getElementById("LDM").value)
+                        }
+                        catch (e) {
+                            console.error(e)
+                        }
+                        console.log(data['legacylist'])
+                        addData()
+                        setModal(!modal)
+                    }
+                    return (
+                        <div className="popup">
+                            <div className="overlay">
+                                <div className="popupContent">
+                                    <h2>Edit level info</h2>
+                                    <a id='close' onClick={() => { setModal(!modal) }}>x</a>
+                                    <label for="lvname">Level name: </label>
+                                    <input type="text" id="lvname" name="lvname" defaultValue={d1.name}></input><br/>
+                                    <label for="creator">Level creator: </label>
+                                    <input type="text" id="creator" name="creator" defaultValue={d1.creator}></input><br/>
+                                    <label for="verifier">Verifier: </label>
+                                    <input type="text" id="verifier" name="verifier" defaultValue={d1.verifier}></input><br/>
+                                    <label for="lvid">ID: </label>
+                                    <input type="text" id="lvid" name="lvid" defaultValue={d1.id}></input><br/>
+                                    <label for="thumbnail">Youtube video ID: </label>
+                                    <input type="text" id="thumbnail" name="thumbnail" defaultValue={d1.thumbnail}></input><br/>
+                                    <label for="LDM">LDM: </label>
+                                    <input type="text" id="LDM" name="LDM" defaultValue={JSON.stringify(d1.ldm).substring(1, JSON.stringify(d1.ldm).length - 1)}></input><br/>
+                                    <button onClick={update}>Update</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                )
+                    )
+                }
             }
-
-        }
     }
     try {
         return (
@@ -261,19 +273,15 @@ function Main() {
                         )
                     })}
                 </div>
-                <div className="lvdat">
-                    <h2>Victor</h2>
-                    {Object.keys(data['victor']).map(i => {
-                        return (
-                            <p>{i} - {data['mainlist0'][i].name}</p>
-                        )
-                    })}
-                </div>
+
 
             </div>
         )
     }
     catch (e) {
+        console.error(e)
+        console.log(data)
+        {calc}
         return (
             <div>
                 <p>Loading...</p>
