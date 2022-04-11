@@ -1,22 +1,6 @@
-:root {
-  --bg: black;
-  --text: white;
-  --black1: var(--black1);
-  --black2: var(--black2);
-}
-
-[data-theme='light'] {
-  --bg: #f4f4f4;
-  --text: #111111;
-  --black1: #eaeaea;
-  --black2: #c1c1c1; 
-}
-
-
-
 html {
-    background: var(--bg);
-    color: var(--text);
+    background: black;
+    color: white;
     a {
         text-decoration: none;
         color: white;
@@ -80,7 +64,7 @@ code {
 }
 
 .mainpanel {
-    background-color: var(--black1);
+    background-color: #1d1d1d;
     margin-left: 395px;
     border-radius: 16px;
     padding: 10px;
@@ -96,7 +80,7 @@ code {
     }
 }
 .mainpanelNoPadding {
-    background-color: var(--black1);
+    background-color: #1d1d1d;
     margin-left: 395px;
     border-radius: 16px;
     padding: 0;
@@ -112,7 +96,7 @@ code {
     }
 }
 #no-padding {
-    background-color: var(--black1);
+    background-color: #1d1d1d;
     margin-left: 395px;
     border-radius: 16px;
     height: auto;
@@ -127,7 +111,7 @@ code {
     }
 }
 .mainpanelNoMargin {
-    background-color: var(--black1);
+    background-color: #1d1d1d;
     margin-left: 30px;
     margin-right: 30px;
     border-radius: 16px;
@@ -154,7 +138,7 @@ code {
     }
     .topplayerPanel {
         margin-bottom: 40px;
-        background-color: var(--black1);
+        background-color: #1d1d1d;
         .ytVid {
             //center the .ytVid
             margin-left: auto;
@@ -201,7 +185,7 @@ code {
             padding: 10px;
             margin-top: 20px;
             margin-bottom: 10px;
-            background-color: var(--black2);
+            background-color: #333333;
             transform: translateY(-80px);
             display: flex;
             justify-content: center;
@@ -212,11 +196,11 @@ code {
         }
     }
     .annoucementPanel {
-        background-color: var(--black1);
+        background-color: #1d1d1d;
         border-radius: 16px;
     }
     .mainlistPanel {
-        background-color: var(--black1);
+        background-color: #1d1d1d;
         margin-left: 30px;
         margin-right: 30px;
         border-radius: 16px;
@@ -308,7 +292,7 @@ code {
     justify-content: flex-end;
     position: relative;
     margin-bottom: 42px;
-    background-color: var(--black2);
+    background-color: #333333;
     .ytVid {
         background-color: black;
         border-radius: 16px;
@@ -352,7 +336,7 @@ code {
     justify-content: flex-end;
     position: relative;
     margin-bottom: 42px;
-    background-color: var(--black2);
+    background-color: #333333;
     .ytVid {
         border-radius: 16px;
         border-color: transparent;
@@ -422,7 +406,7 @@ code {
     text-shadow: 3px 6px 12px black;
 }
 .submitBtn {
-    background-color: var(--black2);
+    background-color: #333333;
     border-radius: 16px;
     transition: 0.3s;
     display: flex;
@@ -588,7 +572,7 @@ code {
     border-radius: 0.5em;
     display: none;
     position: absolute;
-    background-color: var(--black2);
+    background-color: #333333;
     min-width: 160px;
     z-index: 100;
     transition: 0.3s;
@@ -673,7 +657,7 @@ code {
 }
 .credit {
     display: flex;
-    background-color: var(--black2);
+    background-color: #333333;
     width: 65%;
     margin-left: auto;
     margin-right: auto;
@@ -987,7 +971,7 @@ code {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: var(--black2);
+    background-color: #333333;
     padding: 20px;
     border-radius: 15px;
     width: 500px;
@@ -1159,7 +1143,6 @@ footer {
   border-top: 2px solid #777;
   display: flex;
   justify-content: center;
-
   .footerTitle {
     font-size: 0.9em;
     height: 3vh;
