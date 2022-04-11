@@ -16,6 +16,7 @@ function Navbar() {
             <li><Link href='/Legacylist'><a>Legacy List</a></Link></li>
             <li><Link href="/players">Top Player</Link></li>
             <li><Link href="/About">About</Link></li>
+            <li><Link href="/Setting">Setting</Link></li>
             <li className='submitBtn'><Link href="/Submit">Submit</Link></li>
           </div>
           <li id="dropdown">
@@ -25,6 +26,7 @@ function Navbar() {
               <a><Link href='/Legacylist'><a>Legacy List</a></Link></a>
               <a><Link href="/players">Top Player</Link></a>
               <a><Link href="/About">About</Link></a>
+              <a><Link href="/Setting">Setting</Link></a>
               <a><Link href="/Submit">Submit</Link></a>
             </div>
           </li>
