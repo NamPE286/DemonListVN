@@ -1,8 +1,7 @@
-import { getDoc, doc, collection, getDocs, setDoc } from "firebase/firestore"
+import { doc, collection, getDocs, setDoc } from "firebase/firestore"
 import { db } from '../../api/firebase-config.js'
 import { useState, useEffect } from 'react';
-import Image from "next/image";
-import { async } from "@firebase/util";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
 function Main() {
     const [data, setData] = useState({});
@@ -11,7 +10,9 @@ function Main() {
     const [d1, setD1] = useState({});
     const [index, setIndex] = useState(0);
     const [add, setAdd] = useState(false);
-
+    const [u, setU] = useState({})
+    const provider = new GoogleAuthProvider();
+    const auth = getAuth();
     useEffect(() => {
         async function getData() {
             let a = {}
@@ -114,8 +115,8 @@ function Main() {
             x[i].points = 2100 / (0.3 * parseInt(x[i].top) + 9) - 80
             x[i].points = Math.round(x[i].points * 100) / 100
         }
-        for(const i in x){
-            if(x[i].ldm == undefined || x[i].ldm.length == 0){
+        for (const i in x) {
+            if (x[i].ldm == undefined || x[i].ldm.length == 0) {
                 x[i].ldm = []
             }
             data['mainlist0'][x[i].id] = x[i]
@@ -149,19 +150,19 @@ function Main() {
         setAdd(false)
         setModal(!modal)
     }
-    function deletelv(){
-        try{
+    function deletelv() {
+        try {
             delete data[d][index]
         }
-        catch(e){
+        catch (e) {
             console.log(e)
-            data[d].splice(index,1)
+            data[d].splice(index, 1)
         }
-        if(d == 'mainlist') data['mainlist'] = Object.assign({}, refactor(Object.values(data['mainlist'])))
+        if (d == 'mainlist') data['mainlist'] = Object.assign({}, refactor(Object.values(data['mainlist'])))
         setModal(!modal)
         addData()
     }
-    function addNewLevel(x){
+    function addNewLevel(x) {
         setD1({
             name: "",
             creator: "",
@@ -189,7 +190,7 @@ function Main() {
                     document.getElementById("LDM").value = "[" + document.getElementById("LDM").value + "]"
                     if (parseInt(document.getElementById("top").value) < d1.top) d1.top = parseInt(document.getElementById("top").value) - 0.5
                     else d1.top = parseInt(document.getElementById("top").value) + 0.5
-                    if(!add) data['mainlist'][index] = d1
+                    if (!add) data['mainlist'][index] = d1
                     else data['mainlist'].push(d1)
                     data['mainlist'] = refactor(data['mainlist'])
                     try {
@@ -224,7 +225,7 @@ function Main() {
                                 <input type="text" id="thumbnail" name="thumbnail" defaultValue={d1.thumbnail}></input><br />
                                 <label for="LDM">LDM: </label>
                                 <input type="text" id="LDM" name="LDM" defaultValue={JSON.stringify(d1.ldm).substring(1, JSON.stringify(d1.ldm).length - 1)}></input><br />
-                                <br/><button onClick={update}>Update</button><br/><br/><br/><br/>
+                                <br /><button onClick={update}>Update</button><br /><br /><br /><br />
                                 <button onClick={deletelv}>Delete level</button>
                             </div>
                         </div>
@@ -247,8 +248,8 @@ function Main() {
                     catch (e) {
                         console.error(e)
                     }
-                    if(!add) data['legacylist'][index] = d1
-                    else{
+                    if (!add) data['legacylist'][index] = d1
+                    else {
                         let a = Object.values(data['legacylist'])
                         a.unshift(d1)
                         a = Object.assign({}, a)
@@ -276,7 +277,7 @@ function Main() {
                                 <input type="text" id="thumbnail" name="thumbnail" defaultValue={d1.thumbnail}></input><br />
                                 <label for="LDM">LDM: </label>
                                 <input type="text" id="LDM" name="LDM" defaultValue={JSON.stringify(d1.ldm).substring(1, JSON.stringify(d1.ldm).length - 1)}></input><br />
-                                <br/><button onClick={update}>Update</button><br/><br/><br/><br/>
+                                <br /><button onClick={update}>Update</button><br /><br /><br /><br />
                                 <button onClick={deletelv}>Delete level</button>
                             </div>
                         </div>
@@ -299,57 +300,115 @@ function Main() {
         /* Alert the copied text */
         alert("Copied JSON to clipboard")
     }
-    console.log(data)
+    function logIn() {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                setU(user)
+                // ...
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+            });
+    }
+    function showLogIn() {
+        if (u.email == undefined) {
+            return (
+                <button onClick={logIn}>Log in</button>
+            )
+        }
+        else {
+            return (
+                <>
+                    <p>Name: {u.displayName}</p>
+                    <p>Email: {u.email}</p>
+                    {console.log(u.email in data['admin'])}
+                </>
 
-    try {
+            )
+        }
+    }
+    if (u.email == undefined) {
         return (
-
-            <div className="adminMainpanel">
-                {showModal()}
-                <div className="lvdat">
-                    <h2>Mainlist</h2>
-                    <button onClick={() => {addNewLevel('mainlist')}}>Add new level</button>
-                    {Object.keys(data['mainlist']).map(i => {
-                        return (
-                            <a href="#!" onClick={() => showMainlistInfo(i)}><p>#{data['mainlist'][i].top} {data['mainlist'][i].name}</p></a>
-                        )
-                    })}
-                </div>
-                <div className="lvdat">
-                    <h2>Legacy List</h2>
-                    <button onClick={() => {addNewLevel('legacylist')}}>Add new level</button>
-                    {Object.keys(data['legacylist']).map(i => {
-                        return (
-                            <a href="#!" onClick={() => showLegacylisttInfo(i)}><p>{data['legacylist'][i].name}</p></a>
-                        )
-                    })}
-                </div>
-                <div className="lvdat">
-                    <h2>Player</h2>
-                    <button onClick={calc}>Calc</button>
-                    {Object.keys(data['playerPt']).map(i => {
-                        return (
-                            <p>{data['playerPt'][i].name}</p>
-                        )
-                    })}
-                </div>
+            <div className="adminMainPanel">
                 <div className="lvDat">
                     <br />
-                    <button onClick={copy}>Copy JSON</button>
-                    <input type="text" id="json" name="json" value={JSON.stringify({ "data": data })} readOnly></input>
+                    {showLogIn()}
                 </div>
 
-
             </div>
+
         )
     }
-    catch (e) {
-        console.error(e)
-        console.log(data)
-        { calc }
+    if (u.email in data['admin']) {
+        try {
+            return (
+
+                <div className="adminMainpanel">
+                    {showModal()}
+                    <div className="lvdat">
+                        <h2>Mainlist</h2>
+                        <button onClick={() => { addNewLevel('mainlist') }}>Add new level</button>
+                        {Object.keys(data['mainlist']).map(i => {
+                            return (
+                                <a href="#!" onClick={() => showMainlistInfo(i)}><p>#{data['mainlist'][i].top} {data['mainlist'][i].name}</p></a>
+                            )
+                        })}
+                    </div>
+                    <div className="lvdat">
+                        <h2>Legacy List</h2>
+                        <button onClick={() => { addNewLevel('legacylist') }}>Add new level</button>
+                        {Object.keys(data['legacylist']).map(i => {
+                            return (
+                                <a href="#!" onClick={() => showLegacylisttInfo(i)}><p>{data['legacylist'][i].name}</p></a>
+                            )
+                        })}
+                    </div>
+                    <div className="lvdat">
+                        <h2>Player</h2>
+                        <button onClick={calc}>Calc</button>
+                        {Object.keys(data['playerPt']).map(i => {
+                            return (
+                                <p>{data['playerPt'][i].name}</p>
+                            )
+                        })}
+                    </div>
+                    <div className="lvDat">
+                        <br />
+                        <button onClick={copy}>Copy JSON</button>
+                        <input type="text" id="json" name="json" value={JSON.stringify({ "data": data })} readOnly></input><br />
+                        {showLogIn()}
+                    </div>
+
+
+                </div>
+            )
+        }
+        catch (e) {
+            console.error(e)
+            console.log(data)
+            { calc }
+            return (
+                <div>
+                    <p>Loading...</p>
+                </div>
+            )
+        }
+    }
+    else {
         return (
             <div>
-                <p>Loading...</p>
+                <p>You do not have permission to access this page</p>
             </div>
         )
     }
