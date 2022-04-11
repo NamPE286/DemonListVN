@@ -1,9 +1,69 @@
+:root {
+    --bg: var(--bg);
+    --text: var(--text);
+    --text1: white;
+    --a1: var(--a1);
+    --a2: var(--a2);
+    --a3: var(--a3);
+    --a4: var(--a4);
+    --a5: var(--a5);
+    --a6: var(--a6);
+    --a7: var(--a7);
+    --a8: var(--a8);
+    --a9: var(--a9);
+    --a10: var(--a10);
+    --a11: var(--a11);
+    --a12: var(--a12);
+    --a13: var(--a13);
+    --a14: var(--a14);
+    --a15: var(--a15);
+}
+
+[data-theme="light"] {
+    --bg: white;
+    --text: black;
+    --a1: #e2e2e2;
+    --a2: #cccccc;
+    --a3: #bdbdbd;
+    --a4: #555555;
+    --a5: #aaaaaa;
+    --a6: #8f8f8f;
+    --a7: #545454;
+    --a8: #464646;
+    --a9: #383838;
+    --a10: #313131;
+    --a11: #0b0b0b;
+    --a12: linear-gradient(90deg, #d1d1e300 0%, #f3f3f3 95%);
+    --a13: linear-gradient(90deg, #d1d1e300 0%, #f0f0f0 90%);
+    --a14: linear-gradient(0deg, #d1d1ff00 0%, #dedede 100%);
+    --a15: linear-gradient(180deg, #d1d1ff00 0%, #e2e2e2 100%);
+}
+[data-theme="dark"] {
+    --bg: black;
+    --text: white;
+    --a1: #1d1d1d;
+    --a2: #333333;
+    --a3: #424242;
+    --a4: #555555;
+    --a5: #5f5f5f;
+    --a6: #707070;
+    --a7: #ababab;
+    --a8: #b9b9b9;
+    --a9: #c7c7c7;
+    --a10: #cecece;
+    --a11: #f4f4f4;
+    --a12: linear-gradient(90deg, #2e2e2e1c 0%, #000000 95%);
+    --a13: linear-gradient(90deg, #2e2e2e1c 0%, #000000 90%);
+    --a14: linear-gradient(0deg, #2e2e2e00 0%, #212121 100%);
+    --a15: linear-gradient(180deg, #2e2e2e00 0%, #1d1d1d 100%);
+}
+
 html {
-    background: black;
-    color: white;
+    background: var(--bg);
+    color: var(--text);
     a {
         text-decoration: none;
-        color: white;
+        color: var(--text);
     }
     padding-bottom: 30px;
 }
@@ -36,8 +96,7 @@ code {
     pointer-events: none;
     justify-content: space-between;
     padding-bottom: 150px;
-    background: rgb(46, 46, 46);
-    background: linear-gradient(0deg, rgba(46, 46, 46, 0) 0%, rgba(33, 33, 33, 1) 100%);
+    background: var(--a14);
     .pageName {
         padding: 10px;
         margin-left: 100px;
@@ -57,14 +116,13 @@ code {
             }
         }
     }
-
 }
 .pageContent {
     display: flex;
 }
 
 .mainpanel {
-    background-color: #1d1d1d;
+    background-color: var(--a1);
     margin-left: 395px;
     border-radius: 16px;
     padding: 10px;
@@ -80,7 +138,7 @@ code {
     }
 }
 .mainpanelNoPadding {
-    background-color: #1d1d1d;
+    background-color: var(--a1);
     margin-left: 395px;
     border-radius: 16px;
     padding: 0;
@@ -96,7 +154,7 @@ code {
     }
 }
 #no-padding {
-    background-color: #1d1d1d;
+    background-color: var(--a1);
     margin-left: 395px;
     border-radius: 16px;
     height: auto;
@@ -111,7 +169,7 @@ code {
     }
 }
 .mainpanelNoMargin {
-    background-color: #1d1d1d;
+    background-color: var(--a1);
     margin-left: 30px;
     margin-right: 30px;
     border-radius: 16px;
@@ -138,7 +196,7 @@ code {
     }
     .topplayerPanel {
         margin-bottom: 40px;
-        background-color: #1d1d1d;
+        background-color: var(--a1);
         .ytVid {
             //center the .ytVid
             margin-left: auto;
@@ -185,7 +243,7 @@ code {
             padding: 10px;
             margin-top: 20px;
             margin-bottom: 10px;
-            background-color: #333333;
+            background-color: var(--a2);
             transform: translateY(-80px);
             display: flex;
             justify-content: center;
@@ -196,11 +254,11 @@ code {
         }
     }
     .annoucementPanel {
-        background-color: #1d1d1d;
+        background-color: var(--a1);
         border-radius: 16px;
     }
     .mainlistPanel {
-        background-color: #1d1d1d;
+        background-color: var(--a1);
         margin-left: 30px;
         margin-right: 30px;
         border-radius: 16px;
@@ -292,7 +350,7 @@ code {
     justify-content: flex-end;
     position: relative;
     margin-bottom: 42px;
-    background-color: #333333;
+    background-color: var(--a2);
     .ytVid {
         background-color: black;
         border-radius: 16px;
@@ -306,7 +364,7 @@ code {
     .verticalLine {
         width: 1px;
         height: 80%;
-        background-color: #707070;
+        background-color: var(--a6);
         position: absolute;
         left: 0;
         margin-left: calc(45% + 50px);
@@ -336,7 +394,7 @@ code {
     justify-content: flex-end;
     position: relative;
     margin-bottom: 42px;
-    background-color: #333333;
+    background-color: var(--a2);
     .ytVid {
         border-radius: 16px;
         border-color: transparent;
@@ -349,7 +407,7 @@ code {
     .verticalLine {
         width: 1px;
         height: 80%;
-        background-color: #707070;
+        background-color: var(--a6);
         position: absolute;
         left: 0;
         margin-left: calc(45% + 50px);
@@ -374,7 +432,7 @@ code {
     z-index: 1;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, rgba(46, 46, 46, 0.10968137254901966) 0%, rgba(0, 0, 0, 1) 95%);
+    background: var(--a12);
 }
 
 .fadeEffect1 {
@@ -383,7 +441,7 @@ code {
     width: 100%;
     height: 100%;
     background: rgb(46, 46, 46);
-    background: linear-gradient(90deg, rgba(46, 46, 46, 0.10968137254901966) 0%, rgba(0, 0, 0, 1) 90%);
+    background: var(--a13);
 }
 
 .levelInfo {
@@ -404,9 +462,10 @@ code {
     font-size: 50px;
     margin-left: 10px;
     text-shadow: 3px 6px 12px black;
+    color: var(--text1)
 }
 .submitBtn {
-    background-color: #333333;
+    background-color: var(--a2);
     border-radius: 16px;
     transition: 0.3s;
     display: flex;
@@ -415,7 +474,7 @@ code {
     pointer-events: auto;
 }
 .submitBtn:hover {
-    background-color: #424242;
+    background-color: var(--a3);
     transition: 0.3s;
 }
 .topMostPlayer {
@@ -496,20 +555,20 @@ code {
         margin-left: 20px;
         p {
             margin-bottom: 0;
-            color: #b9b9b9;
+            color: var(--a8);
         }
         hr {
             overflow: auto;
             width: 230px;
             height: 0;
-            border: #707070 solid 1px;
+            border: var(--a6) solid 1px;
             margin-right: 30px;
         }
     }
 }
 .topMostPlayer:hover {
     transition: 0.3s;
-    background-color: #424242;
+    background-color: var(--a3);
 }
 
 .allPlayer {
@@ -527,8 +586,8 @@ code {
         padding: 10px;
         width: 150px;
         margin: 5px;
-        color: #ababab;
-        border-bottom: #5f5f5f solid 1px;
+        color: var(--a7);
+        border-bottom: var(--a5) solid 1px;
         border-width: 2px;
         text-align: center;
     }
@@ -548,7 +607,7 @@ code {
     font-size: 16px;
     border: none;
     background-color: transparent;
-    color: white;
+    color: var(--text);
     //move div to the top of the website
     position: fixed;
     top: 8px;
@@ -572,7 +631,7 @@ code {
     border-radius: 0.5em;
     display: none;
     position: absolute;
-    background-color: #333333;
+    background-color: var(--a2);
     min-width: 160px;
     z-index: 100;
     transition: 0.3s;
@@ -586,7 +645,7 @@ code {
 }
 .dropdown-content {
     a:hover {
-        background-color: #424242;
+        background-color: var(--a3);
     }
 }
 .a {
@@ -641,7 +700,7 @@ code {
 #beta {
     font-weight: 100;
     font-size: 13px;
-    color: white;
+    color: var(--text);
     padding: -3px;
     padding-left: 5px;
     padding-right: 5px;
@@ -657,7 +716,7 @@ code {
 }
 .credit {
     display: flex;
-    background-color: #333333;
+    background-color: var(--a2);
     width: 65%;
     margin-left: auto;
     margin-right: auto;
@@ -678,7 +737,7 @@ code {
     }
     hr {
         margin-left: 15px;
-        border: #707070 solid 1px;
+        border: var(--a6) solid 1px;
         width: 10vw;
     }
     .creditContent {
@@ -686,7 +745,7 @@ code {
         margin-bottom: auto;
         a {
             margin-left: 15px;
-            color: #c7c7c7;
+            color: var(--a9);
         }
     }
 }
@@ -709,15 +768,15 @@ code {
         padding: 10px;
         width: 150px;
         margin: 5px;
-        color: #ababab;
+        color: var(--a7);
         text-align: center;
     }
     #levelRec {
         width: 60%;
         text-align: center;
     }
-    b{
-        color:white;
+    b {
+        color: var(--text);
     }
 }
 .levelRecord1 {
@@ -733,22 +792,22 @@ code {
         padding: 10px;
         width: 150px;
         margin: 5px;
-        color: white;
+        color: var(--text);
         border-width: 2px;
         text-align: justify;
     }
     #levelRec1 {
-        color: #ababab;
+        color: var(--a7);
         font-size: 13px;
         width: 60%;
         text-align: right;
     }
-    #date{
-        color: #ababab;
+    #date {
+        color: var(--a7);
         margin-left: -10px;
         margin-right: -10px;
     }
-    p{
+    p {
         margin-left: 15px;
         margin-top: 8px;
         margin-bottom: 0px;
@@ -761,11 +820,11 @@ code {
 }
 #playerName:hover {
     transition: 0.3s;
-    color: white;
+    color: var(--text);
 }
 #meh {
     text-align: center;
-    color: #ababab;
+    color: var(--a7);
 }
 #center-div {
     margin-left: auto;
@@ -784,7 +843,7 @@ code {
         height: 1.5em;
         text-align: center;
         font: 48px/1.5 sans-serif;
-        color: white;
+        color: var(--text);
         text-shadow: 0 0 0.5em black;
     }
 }
@@ -820,7 +879,7 @@ code {
     width: 100%;
     height: 100%;
     background: rgb(46, 46, 46);
-    background: linear-gradient(180deg, rgba(46, 46, 46, 0) 0%, rgba(29, 29, 29, 1) 100%);
+    background: var(--a15);
 }
 
 .levelInfoContentWrapper {
@@ -833,7 +892,7 @@ code {
         text-align: left;
     }
     p {
-        color: #ababab;
+        color: var(--a7);
         margin-top: -14px;
     }
 }
@@ -846,7 +905,7 @@ code {
     text-align: right;
     line-height: 27px;
     p {
-        color: #ababab;
+        color: var(--a7);
         font-weight: bold;
     }
 }
@@ -855,7 +914,7 @@ code {
         overflow: auto;
         width: 75%;
         height: 0;
-        border: #424242 solid 1px;
+        border: var(--a3) solid 1px;
         margin-right: auto;
         margin-left: auto;
         margin-bottom: 32px;
@@ -867,7 +926,7 @@ code {
         overflow: auto;
         width: 75%;
         height: 0;
-        border: #424242 solid 1px;
+        border: var(--a3) solid 1px;
         margin-right: auto;
         margin-left: auto;
         margin-bottom: 0;
@@ -891,98 +950,98 @@ code {
     p {
         margin-left: 80px;
         padding-right: 100px;
-        color: #ababab;
+        color: var(--a7);
     }
-    li{
-        color:#ababab;
+    li {
+        color: var(--a7);
     }
 }
-.selector{
+.selector {
     position: relative;
     margin-left: 100px;
     display: flex;
     flex-direction: column;
     width: fit-content;
-    #spacing{
+    #spacing {
         margin-left: 10px;
     }
-    a{
+    a {
         margin-left: 0px;
         font-weight: bold;
         transition: 0.3s;
     }
-    hr{
+    hr {
         margin-top: 10px;
         width: 100%;
         margin-left: 0;
     }
-    a:hover{
-        color: #cecece;
+    a:hover {
+        color: var(--a10);
         transition: 0.3s;
     }
 }
-.pageSwitcher{
+.pageSwitcher {
     display: flex;
     justify-content: center;
     margin-bottom: 40px;
-    a{
+    a {
         margin-left: 10px;
         margin-right: 10px;
         font-size: 20px;
     }
 }
-#selector1{
+#selector1 {
     margin-left: 80px;
 }
-.mainpanelflexdown{
+.mainpanelflexdown {
     flex-direction: column;
 }
-.panel1{
+.panel1 {
     margin-top: 30px;
     padding-top: 50px;
 }
-.panel2{
+.panel2 {
     margin-top: 30px;
 }
-#recLDM{
-    margin-left:70px;
+#recLDM {
+    margin-left: 70px;
 }
-.adminMainpanel{
+.adminMainpanel {
     margin-inline: 30px;
     display: flex;
 }
-.lvdat{
+.lvdat {
     margin-right: 20px;
 }
-.popup{
+.popup {
     position: absolute;
 }
-.overlay{
+.overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 2;
 }
-.popupContent{
+.popupContent {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #333333;
+    background-color: var(--a2);
     padding: 20px;
     border-radius: 15px;
     width: 500px;
     height: 500px;
     z-index: 3;
-    #close{
+    #close {
         position: absolute;
         top: 0;
         right: 0;
         font-size: 30px;
-        color: #cecece;
+        color: var(--a10);
         cursor: pointer;
         margin-right: 15px;
     }
@@ -992,19 +1051,19 @@ code {
         margin-left: 100px;
         margin-right: 100px;
     }
-    .levelRecord1{
+    .levelRecord1 {
         margin-top: -15px;
     }
 }
 
 @media screen and (max-width: 1250px) {
-    .levelRecord1{
+    .levelRecord1 {
         margin-left: 25px;
     }
-    .selector{
+    .selector {
         margin-left: 50px;
     }
-    #selector1{
+    #selector1 {
         margin-left: 50px;
     }
     .credit {
@@ -1093,7 +1152,7 @@ code {
 
     #dropdown:hover {
         .dropbtn {
-            background-color: #424242;
+            background-color: var(--a3);
         }
         /*
         .dropdown-content {
@@ -1112,9 +1171,9 @@ code {
         margin-right: auto;
         width: 98.5%;
     }
-    .levelInfoContent2{
+    .levelInfoContent2 {
         display: block;
-        iframe{
+        iframe {
             border-radius: 0;
             margin-left: 0;
             width: 100%;
@@ -1123,17 +1182,16 @@ code {
             height: 300px;
             margin-bottom: 35px;
         }
-        p{
+        p {
             margin-left: 50px;
         }
     }
-    .levelInfoContent{
+    .levelInfoContent {
         margin-left: 50px;
     }
-    .levelInfoContent1{
+    .levelInfoContent1 {
         margin-right: 50px;
     }
-
 }
 
 /*
