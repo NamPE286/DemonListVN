@@ -286,6 +286,114 @@ function Main() {
             }
         }
     }
+    function showModal1() {
+        if (modal) {
+            if (d == "mainlist") {
+                function update() {
+                    data['mainlist'] = Object.values(data['mainlist'])
+                    d1.name = document.getElementById("lvname").value
+                    d1.creator = document.getElementById("creator").value
+                    d1.thumbnail = document.getElementById("thumbnail").value
+                    d1.verifier = document.getElementById("verifier").value
+                    d1.id = document.getElementById("lvid").value
+                    document.getElementById("LDM").value = "[" + document.getElementById("LDM").value + "]"
+                    if (parseInt(document.getElementById("top").value) < d1.top) d1.top = parseInt(document.getElementById("top").value) - 0.5
+                    else d1.top = parseInt(document.getElementById("top").value) + 0.5
+                    if (!add) data['mainlist'][index] = d1
+                    else data['mainlist'].push(d1)
+                    data['mainlist'] = refactor(data['mainlist'])
+                    try {
+                        data['mainlist0'][d1.id].ldm = JSON.parse(document.getElementById("LDM").value)
+                    }
+                    catch (e) {
+                        console.error(e)
+                    }
+                    console.log(data['mainlist'])
+                    addData()
+                    setModal(!modal)
+
+
+                }
+                return (
+                    <div className="popup">
+                        <div className="overlay">
+                            <div className="popupContent">
+                                <h2>Edit level info</h2>
+                                <a id='close' onClick={() => { setModal(!modal) }}>x</a>
+                                <label for="lvname">Level name: </label>
+                                <input type="text" id="lvname" name="lvname" defaultValue={d1.name} readOnly></input><br />
+                                <label for="creator">Level creator: </label>
+                                <input type="text" id="creator" name="creator" defaultValue={d1.creator} readOnly></input><br />
+                                <label for="top">Top: </label>
+                                <input type="text" id="top" name="top" defaultValue={d1.top} readOnly></input><br />
+                                <label for="verifier">Verifier: </label>
+                                <input type="text" id="verifier" name="verifier" defaultValue={d1.verifier} readOnly></input><br />
+                                <label for="lvid">ID: </label>
+                                <input type="text" id="lvid" name="lvid" defaultValue={d1.id} readOnly></input><br />
+                                <label for="thumbnail">Youtube video ID: </label>
+                                <input type="text" id="thumbnail" name="thumbnail" defaultValue={d1.thumbnail} readOnly></input><br />
+                                <label for="LDM">LDM: </label>
+                                <input type="text" id="LDM" name="LDM" defaultValue={JSON.stringify(d1.ldm).substring(1, JSON.stringify(d1.ldm).length - 1)}></input><br />
+                                <br /><button onClick={update}>Update</button>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+            else if (d == "legacylist") {
+                function update() {
+                    data['legacylist'] = Object.values(data['legacylist'])
+                    d1.name = document.getElementById("lvname").value
+                    d1.creator = document.getElementById("creator").value
+                    d1.thumbnail = document.getElementById("thumbnail").value
+                    d1.verifier = document.getElementById("verifier").value
+                    d1.id = document.getElementById("lvid").value
+                    document.getElementById("LDM").value = "[" + document.getElementById("LDM").value + "]"
+                    data['mainlist0'][d1.id] = d1
+                    try {
+                        data['mainlist0'][d1.id].ldm = JSON.parse(document.getElementById("LDM").value)
+                    }
+                    catch (e) {
+                        console.error(e)
+                    }
+                    if (!add) data['legacylist'][index] = d1
+                    else {
+                        let a = Object.values(data['legacylist'])
+                        a.unshift(d1)
+                        a = Object.assign({}, a)
+                        console.log(a)
+                        data['legacylist'] = a
+                    }
+                    //addData()
+                    setModal(!modal)
+                }
+                return (
+                    <div className="popup">
+                        <div className="overlay">
+                            <div className="popupContent">
+                                <h2>Edit level info</h2>
+                                <a id='close' onClick={() => { setModal(!modal) }}>x</a>
+                                <label for="lvname">Level name: </label>
+                                <input type="text" id="lvname" name="lvname" defaultValue={d1.name} readOnly></input><br />
+                                <label for="creator">Level creator: </label>
+                                <input type="text" id="creator" name="creator" defaultValue={d1.creator} readOnly></input><br />
+                                <label for="verifier">Verifier: </label>
+                                <input type="text" id="verifier" name="verifier" defaultValue={d1.verifier} readOnly></input><br />
+                                <label for="lvid">ID: </label>
+                                <input type="text" id="lvid" name="lvid" defaultValue={d1.id} readOnly></input><br />
+                                <label for="thumbnail">Youtube video ID: </label>
+                                <input type="text" id="thumbnail" name="thumbnail" defaultValue={d1.thumbnail} readOnly></input><br />
+                                <label for="LDM">LDM: </label>
+                                <input type="text" id="LDM" name="LDM" defaultValue={JSON.stringify(d1.ldm).substring(1, JSON.stringify(d1.ldm).length - 1)}></input><br />
+                                <br /><button onClick={update}>Update</button>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+        }
+    }
+
     function copy() {
         /* Get the text field */
         var copyText = document.getElementById("json");
@@ -351,58 +459,112 @@ function Main() {
         )
     }
     if (u.email in data['admin']) {
-        try {
-            return (
+        if (data['admin'][u.email] == true) {
+            try {
+                return (
 
-                <div className="adminMainpanel">
-                    {showModal()}
-                    <div className="lvdat">
-                        <h2>Mainlist</h2>
-                        <button onClick={() => { addNewLevel('mainlist') }}>Add new level</button>
-                        {Object.keys(data['mainlist']).map(i => {
-                            return (
-                                <a href="#!" onClick={() => showMainlistInfo(i)}><p>#{data['mainlist'][i].top} {data['mainlist'][i].name}</p></a>
-                            )
-                        })}
-                    </div>
-                    <div className="lvdat">
-                        <h2>Legacy List</h2>
-                        <button onClick={() => { addNewLevel('legacylist') }}>Add new level</button>
-                        {Object.keys(data['legacylist']).map(i => {
-                            return (
-                                <a href="#!" onClick={() => showLegacylisttInfo(i)}><p>{data['legacylist'][i].name}</p></a>
-                            )
-                        })}
-                    </div>
-                    <div className="lvdat">
-                        <h2>Player</h2>
-                        <button onClick={calc}>Calc</button>
-                        {Object.keys(data['playerPt']).map(i => {
-                            return (
-                                <p>{data['playerPt'][i].name}</p>
-                            )
-                        })}
-                    </div>
-                    <div className="lvDat">
-                        <br />
-                        <button onClick={copy}>Copy JSON</button>
-                        <input type="text" id="json" name="json" value={JSON.stringify({ "data": data })} readOnly></input><br />
-                        {showLogIn()}
-                    </div>
+                    <div className="adminMainpanel">
+                        {showModal()}
+                        <div className="lvdat">
+                            <h2>Mainlist</h2>
+                            <button onClick={() => { addNewLevel('mainlist') }}>Add new level</button>
+                            {Object.keys(data['mainlist']).map(i => {
+                                return (
+                                    <a href="#!" onClick={() => showMainlistInfo(i)}><p>#{data['mainlist'][i].top} {data['mainlist'][i].name}</p></a>
+                                )
+                            })}
+                        </div>
+                        <div className="lvdat">
+                            <h2>Legacy List</h2>
+                            <button onClick={() => { addNewLevel('legacylist') }}>Add new level</button>
+                            {Object.keys(data['legacylist']).map(i => {
+                                return (
+                                    <a href="#!" onClick={() => showLegacylisttInfo(i)}><p>{data['legacylist'][i].name}</p></a>
+                                )
+                            })}
+                        </div>
+                        <div className="lvdat">
+                            <h2>Player</h2>
+                            <button onClick={calc}>Calc</button>
+                            {Object.keys(data['playerPt']).map(i => {
+                                return (
+                                    <p>{data['playerPt'][i].name}</p>
+                                )
+                            })}
+                        </div>
+                        <div className="lvDat">
+                            <br />
+                            <button onClick={copy}>Copy JSON</button>
+                            <input type="text" id="json" name="json" value={JSON.stringify({ "data": data })} readOnly></input><br />
+                            {showLogIn()}
+                        </div>
 
 
-                </div>
-            )
+                    </div>
+                )
+            }
+            catch (e) {
+                console.error(e)
+                console.log(data)
+                { calc }
+                return (
+                    <div>
+                        <p>Loading...</p>
+                    </div>
+                )
+            }
         }
-        catch (e) {
-            console.error(e)
-            console.log(data)
-            { calc }
-            return (
-                <div>
-                    <p>Loading...</p>
-                </div>
-            )
+        else {
+            try {
+                return (
+
+                    <div className="adminMainpanel">
+                        {showModal1()}
+                        <div className="lvdat">
+                            <h2>Mainlist</h2>
+                            {Object.keys(data['mainlist']).map(i => {
+                                return (
+                                    <a href="#!" onClick={() => showMainlistInfo(i)}><p>#{data['mainlist'][i].top} {data['mainlist'][i].name}</p></a>
+                                )
+                            })}
+                        </div>
+                        <div className="lvdat">
+                            <h2>Legacy List</h2>
+                            {Object.keys(data['legacylist']).map(i => {
+                                return (
+                                    <a href="#!" onClick={() => showLegacylisttInfo(i)}><p>{data['legacylist'][i].name}</p></a>
+                                )
+                            })}
+                        </div>
+                        <div className="lvdat">
+                            <h2>Player</h2>
+                            <button onClick={calc}>Calc</button>
+                            {Object.keys(data['playerPt']).map(i => {
+                                return (
+                                    <p>{data['playerPt'][i].name}</p>
+                                )
+                            })}
+                        </div>
+                        <div className="lvDat">
+                            <br />
+                            {showLogIn()}
+                        </div>
+
+
+                    </div>
+                )
+            }
+            catch (e) {
+                console.error(e)
+                console.log(data)
+                { calc }
+                return (
+                    <div>
+                        <p>Loading...</p>
+                    </div>
+                )
+            }
+
         }
     }
     else {
