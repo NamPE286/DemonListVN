@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Head>
-        <title>GDVNAL Main List - Demon List VN</title>
+        <title>GDVNAL - Demon List VN</title>
       </Head>
       <Navbar />
       <div className='pageContent'>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Image from "next/image";
+import Link from 'next/link';
 
 function Main() {
     const [data, setData] = useState([]);
@@ -60,7 +61,8 @@ function Main() {
             <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
 
             <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
-                <h2>Main List</h2>
+                <h2>GDVN Achivement List</h2>
+                <a className='submitBtn' id="subm" href="https://docs.google.com/forms/d/e/1FAIpQLScnysX6n-jJZJV-Y5acianEVF7hML-tEdGa78qTh6hX0C8gTg/viewform" target="_blank">Submit<br/>(you will be redirected to external link)</a>
                 <div className="mainpanelContent">
                     {Object.keys(data).map(i => {
                             return (
