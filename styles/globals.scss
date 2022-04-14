@@ -565,7 +565,6 @@ code {
     .topMostPlayerInfo {
         margin-left: 20px;
         p {
-            margin-bottom: 0;
             color: var(--a8);
         }
         hr {
@@ -574,6 +573,7 @@ code {
             height: 0;
             border: var(--a6) solid 1px;
             margin-right: 30px;
+            margin-bottom: 0;
         }
     }
 }
