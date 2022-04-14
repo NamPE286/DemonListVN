@@ -123,6 +123,40 @@ function Main() {
         }
         return x
     }
+    function roundNumber(num, scale) {
+        if (!("" + num).includes("e")) {
+            return +(Math.round(num + "e+" + scale) + "e-" + scale);
+        } else {
+            var arr = ("" + num).split("e");
+            var sig = ""
+            if (+arr[1] + scale > 0) {
+                sig = "+";
+            }
+            return +(Math.round(+arr[0] + "e" + sig + (+arr[1] + scale)) + "e-" + scale);
+        }
+    }
+    function getPoint(rank) {
+        if (rank > 100) {
+            return roundNumber(15, 3);
+        } else {
+            return roundNumber((100 / Math.sqrt(((rank - 1) / 50) + 0.444444)) - 50, 3);
+        }
+    }
+    function refactor1(x) {
+        x.sort((a, b) => (a.top < b.top) ? -1 : 1)
+        for (const i in x) {
+            x[i].top = parseInt(i) + 1
+            x[i].points = getPoint(x[i].top)
+            x[i].points = Math.round(x[i].points * 100) / 100
+        }
+        for (const i in x) {
+            if (x[i].ldm == undefined || x[i].ldm.length == 0) {
+                x[i].ldm = []
+            }
+            data['mainlist0'][x[i].id] = x[i]
+        }
+        return x
+    }
     function showMainlistInfo(x) {
         let a = data['mainlist0'][data['mainlist'][x]['id']]
         if (a == undefined) {
@@ -136,6 +170,28 @@ function Main() {
         }
         console.log(a)
         setD("mainlist")
+        setD1(a)
+        setIndex(x)
+        setAdd(false)
+        setModal(!modal)
+    }
+    function showGDVNALInfo(x) {
+        if (data['GDVNAL'][x]['id'] == null) {
+            data['mainlist0'][data['GDVNAL'][x]['id']] = data['GDVNAL'][x]
+            data['mainlist0'][data['GDVNAL'][x]['id']].ldm = []
+        }
+        let a = data['mainlist0'][data['GDVNAL'][x]['id']]
+        if (a == undefined) {
+            data['mainlist0'][data['mainlist'][x]['id']] = data['mainlist'][x]
+            data['mainlist0'][data['mainlist'][x]['id']].ldm = []
+            a = data['mainlist0'][data['mainlist'][x]['id']]
+        }
+        if (a == undefined) {
+            console.log('not ok')
+            return
+        }
+        console.log(a)
+        setD("GDVNAL")
         setD1(a)
         setIndex(x)
         setAdd(false)
@@ -159,19 +215,41 @@ function Main() {
             data[d].splice(index, 1)
         }
         if (d == 'mainlist') data['mainlist'] = Object.assign({}, refactor(Object.values(data['mainlist'])))
+        else if (d == 'GDVNAL') data['GDVNAL'] = Object.assign({}, refactor1(Object.values(data['GDVNAL'])))
         setModal(!modal)
         addData()
     }
     function addNewLevel(x) {
-        setD1({
-            name: "",
-            creator: "",
-            top: 0,
-            verifier: "",
-            id: "",
-            thumbnail: "",
-            ldm: []
-        })
+        if(x == 'mainlist'){
+            setD1({
+                name: "",
+                creator: "",
+                top: 0,
+                verifier: "",
+                id: "",
+                thumbnail: "",
+                ldm: []
+            })
+        }
+        else if(x == 'legacylist'){
+            setD1({
+                name: "",
+                creator: "",
+                verifier: "",
+                id: "",
+                thumbnail: "",
+                ldm: []
+            })
+        }
+        else if(x == 'GDVNAL'){
+            setD1({
+                name: "",
+                creator: "",
+                top: 0,
+                id: "",
+                thumbnail: "",
+            })
+        }
         setD(x)
         setAdd(true)
         setIndex(0)
@@ -277,6 +355,47 @@ function Main() {
                                 <input type="text" id="thumbnail" name="thumbnail" defaultValue={d1.thumbnail}></input><br />
                                 <label for="LDM">LDM: </label>
                                 <input type="text" id="LDM" name="LDM" defaultValue={JSON.stringify(d1.ldm).substring(1, JSON.stringify(d1.ldm).length - 1)}></input><br />
+                                <br /><button onClick={update}>Update</button><br /><br /><br /><br />
+                                <button onClick={deletelv}>Delete level</button>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
+            else if (d == "GDVNAL") {
+                function update() {
+                    data['GDVNAL'] = Object.values(data['GDVNAL'])
+                    d1.name = document.getElementById("lvname").value
+                    d1.creator = document.getElementById("creator").value
+                    d1.thumbnail = document.getElementById("thumbnail").value
+                    d1.id = document.getElementById("lvid").value
+                    if (parseInt(document.getElementById("top").value) < d1.top) d1.top = parseInt(document.getElementById("top").value) - 0.5
+                    else d1.top = parseInt(document.getElementById("top").value) + 0.5
+                    if (!add) data['GDVNAL'][index] = d1
+                    else data['GDVNAL'].push(d1)
+                    data['GDVNAL'] = refactor1(data['GDVNAL'])
+                    console.log(data['GDVNAL'])
+                    addData()
+                    setModal(!modal)
+
+
+                }
+                return (
+                    <div className="popup">
+                        <div className="overlay">
+                            <div className="popupContent">
+                                <h2>Edit level info</h2>
+                                <a id='close' onClick={() => { setModal(!modal) }}>x</a>
+                                <label for="lvname">Level name: </label>
+                                <input type="text" id="lvname" name="lvname" defaultValue={d1.name}></input><br />
+                                <label for="creator">Level creator: </label>
+                                <input type="text" id="creator" name="creator" defaultValue={d1.creator}></input><br />
+                                <label for="top">Top: </label>
+                                <input type="text" id="top" name="top" defaultValue={d1.top}></input><br />
+                                <label for="lvid">ID: </label>
+                                <input type="text" id="lvid" name="lvid" defaultValue={d1.id}></input><br />
+                                <label for="thumbnail">Youtube video ID: </label>
+                                <input type="text" id="thumbnail" name="thumbnail" defaultValue={d1.thumbnail}></input><br />
                                 <br /><button onClick={update}>Update</button><br /><br /><br /><br />
                                 <button onClick={deletelv}>Delete level</button>
                             </div>
@@ -489,6 +608,15 @@ function Main() {
                             {Object.keys(data['playerPt']).map(i => {
                                 return (
                                     <p>{data['playerPt'][i].name}</p>
+                                )
+                            })}
+                        </div>
+                        <div className="lvdat">
+                            <h2>GDVNAL</h2>
+                            <button onClick={() => { addNewLevel('GDVNAL') }}>Add new level</button>
+                            {Object.keys(data['GDVNAL']).map(i => {
+                                return (
+                                    <a href="#!" onClick={() => showGDVNALInfo(i)}><p>{data['GDVNAL'][i].name}</p></a>
                                 )
                             })}
                         </div>
