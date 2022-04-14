@@ -30,14 +30,14 @@ function Main() {
       <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
 
       <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
-        <h2>Main List</h2>
+        <h2>GDVN Achievement List</h2>
         <div className="mainpanelContent">
           {Object.keys(data).map(i => {
             if (data[i].name != null) {
                 return (
                   <>
                   <div className="levelWrapper" key={i}>
-                    <a href={`/mainlist/${data[i].id}`}>
+                    <a href={`/GDVNAL/${data[i].id}`}>
                       <div className='levelCard'>
                         <Image src={`https://i.ytimg.com/vi/${data[i].thumbnail}/hqdefault.jpg`} alt="" layout="fill" objectFit='cover' priority='true' quality={35}></Image>
                         <div className='fadeEffect'></div>
