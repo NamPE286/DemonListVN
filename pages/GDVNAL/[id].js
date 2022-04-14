@@ -272,6 +272,27 @@ function Main() {
             }
         }
     }
+    if (id == 'null') {
+        return (
+            <>
+                <Navbar />
+                <Head>
+                    <title>This level data is not available</title>
+                </Head>
+                <div className='pageContent'>
+                    <div className='sidePanel'>
+                        <div className='topSpacer' />
+                    </div>
+                    <div className="mainpanel mainpanelNoPadding" id='center-div'>
+                        <div className="mainpanelContent">
+                            <p id="meh">This level data is not available</p>
+                        </div>
+                    </div>
+                </div>
+            </>
+
+        );
+    }
     try {
         return (
             <>
