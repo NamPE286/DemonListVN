@@ -17,6 +17,7 @@
     --a13: var(--a13);
     --a14: var(--a14);
     --a15: var(--a15);
+    --a16: var(--a16);
 }
 
 [data-theme="light"] {
@@ -56,6 +57,7 @@
     --a13: linear-gradient(90deg, #2e2e2e1c 0%, #000000 90%);
     --a14: linear-gradient(0deg, #2e2e2e00 0%, #212121 100%);
     --a15: linear-gradient(180deg, #2e2e2e00 0%, #1d1d1d 100%);
+
 }
 
 html {
@@ -667,6 +669,7 @@ code {
 .submitForm {
     display: flex;
     justify-content: center;
+    
 }
 .submitP {
     display: flex;
@@ -1053,6 +1056,25 @@ code {
         color: var(--a10);
         cursor: pointer;
         margin-right: 15px;
+    }
+}
+.submitSelect{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: -10px;
+    border-bottom: white;
+    border-width: 10px;
+    a{
+        margin-left: 1vw;
+        margin-right: 1vw;
+        transition: 0.3s;
+        padding:10px;
+        border-radius: 16px;
+    }
+    a:hover{
+        background-color: var(--a4);
+        transition: 0.3s;
     }
 }
 @media screen and (max-width: 1450px) {
