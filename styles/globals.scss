@@ -748,9 +748,8 @@ code {
         margin-bottom: auto;
     }
     hr {
-        margin-left: 15px;
         border: var(--a6) solid 1px;
-        width: 10vw;
+
     }
     .creditContent {
         margin-top: auto;
@@ -758,6 +757,12 @@ code {
         a {
             margin-left: 15px;
             color: var(--a9);
+        }
+        hr{
+            margin-bottom: 10px;
+            margin-top: 10px;
+            width: 200px;
+            margin-left: 15px;
         }
     }
 }
