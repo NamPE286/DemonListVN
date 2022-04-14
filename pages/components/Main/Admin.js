@@ -220,7 +220,7 @@ function Main() {
         addData()
     }
     function addNewLevel(x) {
-        if(x == 'mainlist'){
+        if (x == 'mainlist') {
             setD1({
                 name: "",
                 creator: "",
@@ -231,7 +231,7 @@ function Main() {
                 ldm: []
             })
         }
-        else if(x == 'legacylist'){
+        else if (x == 'legacylist') {
             setD1({
                 name: "",
                 creator: "",
@@ -241,7 +241,7 @@ function Main() {
                 ldm: []
             })
         }
-        else if(x == 'GDVNAL'){
+        else if (x == 'GDVNAL') {
             setD1({
                 name: "",
                 creator: "",
@@ -578,7 +578,7 @@ function Main() {
         )
     }
     if (u.email in data['admin']) {
-        if (data['admin'][u.email] == true) {
+        if (data['admin'][u.email] == "Admin") {
             try {
                 return (
 
@@ -642,7 +642,7 @@ function Main() {
                 )
             }
         }
-        else {
+        else if (data['admin'][u.email] == "LDM Mod") {
             try {
                 return (
 
@@ -684,8 +684,6 @@ function Main() {
             }
             catch (e) {
                 console.error(e)
-                console.log(data)
-                { calc }
                 return (
                     <div>
                         <p>Loading...</p>
@@ -694,6 +692,94 @@ function Main() {
             }
 
         }
+        else if (data['admin'][u.email] == "FDLVN Mod") {
+            try {
+                return (
+
+                    <div className="adminMainpanel">
+                        {showModal()}
+                        <div className="lvdat">
+                            <h2>Mainlist</h2>
+                            <button onClick={() => { addNewLevel('mainlist') }}>Add new level</button>
+                            {Object.keys(data['mainlist']).map(i => {
+                                return (
+                                    <a href="#!" onClick={() => showMainlistInfo(i)}><p>#{data['mainlist'][i].top} {data['mainlist'][i].name}</p></a>
+                                )
+                            })}
+                        </div>
+                        <div className="lvdat">
+                            <h2>Legacy List</h2>
+                            <button onClick={() => { addNewLevel('legacylist') }}>Add new level</button>
+                            {Object.keys(data['legacylist']).map(i => {
+                                return (
+                                    <a href="#!" onClick={() => showLegacylisttInfo(i)}><p>{data['legacylist'][i].name}</p></a>
+                                )
+                            })}
+                        </div>
+                        <div className="lvdat">
+                            <h2>Player</h2>
+                            <button onClick={calc}>Calc</button>
+                            {Object.keys(data['playerPt']).map(i => {
+                                return (
+                                    <p>{data['playerPt'][i].name}</p>
+                                )
+                            })}
+                        </div>
+                        <div className="lvDat">
+                            <br />
+                            <button onClick={copy}>Copy JSON</button>
+                            <input type="text" id="json" name="json" value={JSON.stringify({ "data": data })} readOnly></input><br />
+                            {showLogIn()}
+                        </div>
+
+
+                    </div>
+                )
+            }
+            catch (e) {
+                console.error(e)
+                return (
+                    <div>
+                        <p>Loading...</p>
+                    </div>
+                )
+            }
+        }
+        else if (data['admin'][u.email] == "GDVNAL Mod") {
+            try {
+                return (
+                    <div className="adminMainpanel">
+                        {showModal()}
+                        <div className="lvdat">
+                            <h2>GDVNAL</h2>
+                            <button onClick={() => { addNewLevel('GDVNAL') }}>Add new level</button>
+                            {Object.keys(data['GDVNAL']).map(i => {
+                                return (
+                                    <a href="#!" onClick={() => showGDVNALInfo(i)}><p>{data['GDVNAL'][i].name}</p></a>
+                                )
+                            })}
+                        </div>
+                        <div className="lvDat">
+                            <br />
+                            <button onClick={copy}>Copy JSON</button>
+                            <input type="text" id="json" name="json" value={JSON.stringify({ "data": data })} readOnly></input><br />
+                            {showLogIn()}
+                        </div>
+                    </div>
+                )
+            }
+            catch (e) {
+                console.error(e)
+                console.log(data)
+                { calc }
+                return (
+                    <div>
+                        <p>Loading...</p>
+                    </div>
+                )
+            }
+        }
+
     }
     else {
         return (
@@ -702,6 +788,7 @@ function Main() {
             </div>
         )
     }
+
 }
 
 export default Main;
