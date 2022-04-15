@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://cdn.discordapp.com/icons/877546680801697813/70f0b233a795e45de2afb39a53c149aa.png"></img>
+  <img src="https://media.discordapp.net/attachments/955026244427210812/964587844330979439/Custom_Size_1.png"></img>
 </p>
 <h2 align="center">Vietnamese Featured Demons</h2>
 <p align="center">Home of the Vietnamese demons</p><hr/>
