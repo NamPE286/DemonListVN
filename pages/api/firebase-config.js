@@ -3,13 +3,13 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBmzUUZJuNKp9cJZMb1oZsVO7pdHaOim88",
-  authDomain: "demon-list-vn.firebaseapp.com",
-  projectId: "demon-list-vn",
-  storageBucket: "demon-list-vn.appspot.com",
-  messagingSenderId: "160004010760",
-  appId: "1:160004010760:web:34e34ba411844e8492b2bd",
-  measurementId: "G-VGMHYZN5RP"
+  apiKey: process.env.NEXT_PUBLIC_APIKEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTHDOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECTID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGEBUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGINGSENDERID,
+  appId: process.env.NEXT_PUBLIC_APPID,
+  measurementId: process.env.NEXT_PUBLIC_MID
 };
 
 //google analytics
