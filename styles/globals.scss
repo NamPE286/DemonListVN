@@ -441,7 +441,7 @@ code {
     position: absolute;
     transition: 0.3s;
     z-index: 1;
-    width: 100%;
+    width: 95%;
     height: 100%;
     background: var(--a12);
 }
@@ -684,7 +684,7 @@ code {
     */
     .fadeEffect {
         transition: 0.3s;
-        opacity: 0.6;
+        opacity: 0;
     }
 }
 .fill-div {
