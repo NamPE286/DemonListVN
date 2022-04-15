@@ -37,7 +37,7 @@ function Main() {
                 console.log("No such document!");
             }
 
-            const lvRef0 = doc(db, "data", "mainlist0")
+            const lvRef0 = doc(db, "data", "mainlist1")
             const docSnap0 = await getDoc(lvRef0);
 
             if (docSnap0.exists()) {
@@ -84,12 +84,12 @@ function Main() {
                     <div className="recordList">
                         <div className="levelRecord">
                             <section className="allPlayerInfo">
-                                <a id="levelRec"><b>Total Victor: {data[id].length}</b></a>
+                                <a id="levelRec"><b>Total Victor: {lvDat[id]['vids'].length}</b></a>
                             </section>
-                            {Object.keys(data[id]).map(i => {
+                            {Object.keys(lvDat[id]['vids']).map(i => {
                                 return (
                                     <section className="allPlayerInfo" key={i}>
-                                        <a id="levelRec">{data[id][i]}</a>
+                                        <a id="levelRec">{lvDat[id]['vids'][i].user + ' - ' + lvDat[id]['vids'][i].link}</a>
                                     </section>
                                 )
 

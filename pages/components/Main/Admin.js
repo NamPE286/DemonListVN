@@ -149,12 +149,6 @@ function Main() {
             x[i].points = getPoint(x[i].top)
             x[i].points = Math.round(x[i].points * 100) / 100
         }
-        for (const i in x) {
-            if (x[i].ldm == undefined || x[i].ldm.length == 0) {
-                x[i].ldm = []
-            }
-            data['mainlist0'][x[i].id] = x[i]
-        }
         return x
     }
     function showMainlistInfo(x) {
@@ -177,14 +171,14 @@ function Main() {
     }
     function showGDVNALInfo(x) {
         if (data['GDVNAL'][x]['id'] == null) {
-            data['mainlist0'][data['GDVNAL'][x]['id']] = data['GDVNAL'][x]
-            data['mainlist0'][data['GDVNAL'][x]['id']].ldm = []
+            data['mainlist1'][data['GDVNAL'][x]['id']] = data['GDVNAL'][x]
+            data['mainlist1'][data['GDVNAL'][x]['id']].ldm = []
         }
-        let a = data['mainlist0'][data['GDVNAL'][x]['id']]
+        let a = data['mainlist1'][data['GDVNAL'][x]['id']]
         if (a == undefined) {
-            data['mainlist0'][data['mainlist'][x]['id']] = data['mainlist'][x]
-            data['mainlist0'][data['mainlist'][x]['id']].ldm = []
-            a = data['mainlist0'][data['mainlist'][x]['id']]
+            data['mainlist1'][data['mainlist'][x]['id']] = data['mainlist'][x]
+            data['mainlist1'][data['mainlist'][x]['id']].ldm = []
+            a = data['mainlist1'][data['mainlist'][x]['id']]
         }
         if (a == undefined) {
             console.log('not ok')
@@ -334,7 +328,7 @@ function Main() {
                         console.log(a)
                         data['legacylist'] = a
                     }
-                    //addData()
+                    addData()
                     setModal(!modal)
                 }
                 return (
@@ -374,11 +368,10 @@ function Main() {
                     if (!add) data['GDVNAL'][index] = d1
                     else data['GDVNAL'].push(d1)
                     data['GDVNAL'] = refactor1(data['GDVNAL'])
+                    data['mainlist1'][d1.id] = d1
                     console.log(data['GDVNAL'])
                     addData()
                     setModal(!modal)
-
-
                 }
                 return (
                     <div className="popup">
@@ -483,7 +476,7 @@ function Main() {
                         console.log(a)
                         data['legacylist'] = a
                     }
-                    //addData()
+                    addData()
                     setModal(!modal)
                 }
                 return (
