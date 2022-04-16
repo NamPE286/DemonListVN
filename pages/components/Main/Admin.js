@@ -34,7 +34,6 @@ function Main() {
             if (a2 in data['mainlist0']) {
             }
             else {
-                console.log(a2)
                 dat[data['mainlist'][i].id] = JSON.parse(JSON.stringify(data['mainlist'][i]))
                 dat[data['mainlist'][i].id].ldm = [];
             }
@@ -47,7 +46,6 @@ function Main() {
             if (a2 in data['mainlist0']) {
             }
             else {
-                console.log(a2)
                 dat[data['legacylist'][i].id] = JSON.parse(JSON.stringify(data['legacylist'][i]))
                 dat[data['legacylist'][i].id].ldm = [];
             }
@@ -114,6 +112,7 @@ function Main() {
                             'vids': {},
                             'bestplay': '',
                             'maxPt': 0,
+                            'avatar': '',
                         }
                     }
                     p[u].points = Math.round((p[u].points + data['GDVNAL'][i].points * a[j].percent / 100)*100)/100;
@@ -123,6 +122,12 @@ function Main() {
                     }
                     p[u].lv.push(parseInt(data['GDVNAL'][i].id))
                     p[u].vids[data['GDVNAL'][i].id] = a[j]
+                    if(data['playerAvatar'][u] != undefined) {
+                        p[u].avatar = data['playerAvatar'][u]
+                    }
+                    else{
+                        p[u].avatar = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPfCfynXv42fOnrTQAs-99j09O8uz7mDilOQ&usqp=CAU"
+                    }
                 }
             }
             catch(e){
@@ -135,8 +140,6 @@ function Main() {
         
         data['GDVNALPlayer'] = p2
         data['GDVNALPlayer0'] = p
-
-        console.log(data)
 
         console.log('Calculation finished')
         addData()
@@ -199,10 +202,8 @@ function Main() {
             a = data['mainlist0'][data['mainlist'][x]['id']]
         }
         if (a == undefined) {
-            console.log('not ok')
             return
         }
-        console.log(a)
         setD("mainlist")
         setD1(a)
         setIndex(x)
@@ -221,7 +222,6 @@ function Main() {
             a = data['mainlist1'][data['mainlist'][x]['id']]
         }
         if (a == undefined) {
-            console.log('not ok')
             return
         }
         console.log(a)
@@ -233,7 +233,6 @@ function Main() {
     }
     function showLegacylisttInfo(x) {
         const a = data['mainlist0'][data['legacylist'][x]['id']]
-        console.log(a)
         setD("legacylist")
         setD1(a)
         setIndex(x)
@@ -311,7 +310,6 @@ function Main() {
                     catch (e) {
                         console.error(e)
                     }
-                    console.log(data['mainlist'])
                     addData()
                     setModal(!modal)
 
@@ -365,7 +363,6 @@ function Main() {
                         let a = Object.values(data['legacylist'])
                         a.unshift(d1)
                         a = Object.assign({}, a)
-                        console.log(a)
                         data['legacylist'] = a
                     }
                     addData()
@@ -409,7 +406,6 @@ function Main() {
                     else data['GDVNAL'].push(d1)
                     data['GDVNAL'] = refactor1(data['GDVNAL'])
                     data['mainlist1'][d1.id] = d1
-                    console.log(data['GDVNAL'])
                     addData()
                     setModal(!modal)
                 }
@@ -460,7 +456,6 @@ function Main() {
                     catch (e) {
                         console.error(e)
                     }
-                    console.log(data['mainlist'])
                     addData()
                     setModal(!modal)
 
@@ -513,7 +508,6 @@ function Main() {
                         let a = Object.values(data['legacylist'])
                         a.unshift(d1)
                         a = Object.assign({}, a)
-                        console.log(a)
                         data['legacylist'] = a
                     }
                     addData()
@@ -592,7 +586,6 @@ function Main() {
                 <>
                     <p>Name: {u.displayName}</p>
                     <p>Email: {u.email}</p>
-                    {console.log(u.email in data['admin'])}
                 </>
 
             )
@@ -666,7 +659,6 @@ function Main() {
             }
             catch (e) {
                 console.error(e)
-                console.log(data)
                 { calc }
                 return (
                     <div>
@@ -803,7 +795,6 @@ function Main() {
             }
             catch (e) {
                 console.error(e)
-                console.log(data)
                 { calc }
                 return (
                     <div>
