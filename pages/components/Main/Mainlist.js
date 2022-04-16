@@ -6,11 +6,14 @@ import Head from "next/head";
 
 function Main() {
   const [data, setData] = useState([]);
+  const [data0, setData0] = useState([]);
+  const [mode, setMode] = useState('mainlist');
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function getData() {
 
-      const lvRef = doc(db, "data", "mainlist")
+      const lvRef = doc(db, "data", 'mainlist')
       const docSnap = await getDoc(lvRef);
 
       if (docSnap.exists()) {
@@ -19,48 +22,106 @@ function Main() {
         // doc.data() will be undefined in this case
         console.log("No such document!");
       }
+
+      const lvRef0 = doc(db, "data", 'GDVNAL')
+      const docSnap0 = await getDoc(lvRef0);
+
+      if (docSnap0.exists()) {
+        setData0(docSnap0.data());
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+      setLoading(true);
     }
     getData()
-  }, [])
+  }, [loading])
+
+  function showList() {
+    if (mode === 'mainlist') {
+      return (
+        <>
+          <div className="mainpanelContent">
+            {Object.keys(data).map(i => {
+              if (data[i].name != null) {
+                return (
+                  <>
+                    <div className="levelWrapper" key={i}>
+                      <a href={`/mainlist/${data[i].id}`}>
+                        <div className='levelCard'>
+                          <Image src={`https://i.ytimg.com/vi/${data[i].thumbnail}/hqdefault.jpg`} alt="" layout="fill" objectFit='cover' priority='true' quality={35}></Image>
+                          <div className='fadeEffect'></div>
+                          <p className='top'>#{parseInt(i) + 1}</p>
+                          <div className='levelInfo'>
+                            <h3>{data[i].name}</h3>
+                            <p>by {data[i].creator}</p>
+                            <br />
+                            <p>{data[i].points}pt</p>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </>
+                )
+
+              }
+            })}
+          </div>
+        </>
+      )
+    }
+    else if (mode === 'GDVNAL') {
+      return (
+        <>
+          <div className="mainpanelContent">
+            {Object.keys(data0).map(i => {
+              if (data0[i].name != null) {
+                return (
+                  <>
+                    <div className="levelWrapper" key={i}>
+                      <a href={`/GDVNAL/${data0[i].id}`}>
+                        <div className='levelCard'>
+                          <Image src={`https://i.ytimg.com/vi/${data0[i].thumbnail}/hqdefault.jpg`} alt="" layout="fill" objectFit='cover' priority='true' quality={35}></Image>
+                          <div className='fadeEffect'></div>
+                          <p className='top'>#{parseInt(i) + 1}</p>
+                          <div className='levelInfo'>
+                            <h3>{data0[i].name}</h3>
+                            <p>by {data0[i].creator}</p>
+                            <br />
+                            <p>{data0[i].points}pt</p>
+                          </div>
+                        </div>
+                      </a>
+                    </div>
+                  </>
+                )
+
+              }
+            })}
+          </div>
+        </>
+      )
+    }
+  }
 
 
-  // Subsequent queries will use persistence, if it was enabled successfully
   return (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
 
       <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
-        <h2>Main List</h2>
-        <div className="mainpanelContent">
-          {Object.keys(data).map(i => {
-            if (data[i].name != null) {
-                return (
-                  <>
-                  <div className="levelWrapper" key={i}>
-                    <a href={`/mainlist/${data[i].id}`}>
-                      <div className='levelCard'>
-                        <Image src={`https://i.ytimg.com/vi/${data[i].thumbnail}/hqdefault.jpg`} alt="" layout="fill" objectFit='cover' priority='true' quality={35}></Image>
-                        <div className='fadeEffect'></div>
-                        <p className='top'>#{parseInt(i) + 1}</p>
-                        <div className='levelInfo'>
-                          <h3>{data[i].name}</h3>
-                          <p>by {data[i].creator}</p>
-                          <br/>
-                          <p>{data[i].points}pt</p>
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  </>
-                )
-              
-            }
-          })}
+        <h2 id="title">Main List</h2>
+        <div className="submitSelect">
+          <a href="#!" onClick={() => setMode('mainlist')}>VNFDL</a>
+          <a href="#!" onClick={() => setMode('GDVNAL')}>GDVNAL</a>
         </div>
+        <hr></hr>
+        {showList()}
       </div>
     </>
   )
 }
+
 
 
 // If data == null

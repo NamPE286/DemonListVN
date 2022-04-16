@@ -98,6 +98,34 @@ function Main() {
         for (const i in player) {
             data['playerPt0'][player[i].name] = player[i]
         }
+
+        var p = {}
+
+        for (const i in data['GDVNAL']) {
+            const a = data['GDVNAL'][i].vids;
+            if (a.length > 0)
+                for (const j in a) {
+                    const u = a[j].user
+                    if (u in p == false) {
+                        p[u] = {
+                            'name': u,
+                            'points': 0,
+                            'lv': [],
+                            'vids': {}
+                        }
+                    }
+                    p[u].points = p[u].points + data['GDVNAL'][i].points * a[j].percent / 100
+                    p[u].lv.push(parseInt(data['GDVNAL'][i].id))
+                    p[u].vids[data['GDVNAL'][i].id] = a[j]
+                }
+        }
+        var p2 = Object.values(p)
+        p2.sort((a, b) => b.points - a.points)
+        data['GDVNALPlayer'] = p2
+        data['GDVNALPlayer0'] = p
+
+        console.log(data)
+
         console.log('Calculation finished')
         addData()
 
