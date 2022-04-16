@@ -100,9 +100,9 @@ function Main() {
         }
 
         var p = {}
-
         for (const i in data['GDVNAL']) {
             const a = data['GDVNAL'][i].vids;
+            try{
             if (a.length > 0)
                 for (const j in a) {
                     const u = a[j].user
@@ -111,16 +111,28 @@ function Main() {
                             'name': u,
                             'points': 0,
                             'lv': [],
-                            'vids': {}
+                            'vids': {},
+                            'bestplay': '',
+                            'maxPt': 0,
                         }
                     }
-                    p[u].points = p[u].points + data['GDVNAL'][i].points * a[j].percent / 100
+                    p[u].points = Math.round((p[u].points + data['GDVNAL'][i].points * a[j].percent / 100)*100)/100;
+                    if(p[u].maxPt < data['GDVNAL'][i].points * a[j].percent / 100) {
+                        p[u].maxPt = Math.round(p[u].points*100)/100;
+                        p[u].bestplay = data['GDVNAL'][i].name + ' (' + a[j].percent + '%' + ')';
+                    }
                     p[u].lv.push(parseInt(data['GDVNAL'][i].id))
                     p[u].vids[data['GDVNAL'][i].id] = a[j]
                 }
+            }
+            catch(e){
+                console.log(a)
+            }
         }
+
         var p2 = Object.values(p)
         p2.sort((a, b) => b.points - a.points)
+        
         data['GDVNALPlayer'] = p2
         data['GDVNALPlayer0'] = p
 
