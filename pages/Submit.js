@@ -15,7 +15,7 @@ function App() {
       </Head>
       <Navbar />
       <div className='pageContent'>
-        <div className='sidePanel' data-aos="fade-right" data-aos-duration="800">
+        <div className='sidePanel'>
           <div className='topSpacer' />
           <JoinDiscordPanel />
           <AnnoucementPanel />

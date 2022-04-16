@@ -34,7 +34,7 @@ function Main() {
     return s;
   }
   return (
-    <div className="mainpanel" data-aos="fade-up" data-aos-duration="600">
+    <div className="mainpanel">
       <h2>Top Player</h2>
       <div className="mainpanelContent">
         {Object.keys(data).map(i => {

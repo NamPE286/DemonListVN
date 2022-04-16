@@ -3,7 +3,7 @@ import { useTheme } from 'next-themes'
 function Main() {
   const { theme, setTheme } = useTheme()
   return (
-    <div className="mainpanel" data-aos="fade-up" data-aos-duration="600">
+    <div className="mainpanel">
       <h2>Settings</h2>
       <div>
         The current theme is: {theme}
