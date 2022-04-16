@@ -79,26 +79,41 @@ function Main() {
 
     function showVictor() {
         try {
-            return (
-                <div className="mainpanelContent">
-                    <div className="recordList">
-                        <div className="levelRecord">
-                            <section className="allPlayerInfo">
-                                <a id="levelRec"><b>Total Victor: {lvDat[id]['vids'].length}</b></a>
-                            </section>
-                            {Object.keys(lvDat[id]['vids']).map(i => {
-                                return (
-                                    <section className="allPlayerInfo" key={i}>
-                                        <a id="levelRec">{lvDat[id]['vids'][i].user + ' - ' + lvDat[id]['vids'][i].link}</a>
-                                    </section>
-                                )
+            if (lvDat[id]['vids'].length != 0) {
+                return (
+                    <div className="mainpanelContent">
+                        <div className="recordList">
+                            <div className="levelRecord">
+                                <section className="allPlayerInfo">
+                                    <a id="levelRec"><b>Total Victor: {lvDat[id]['vids'].length}</b></a>
+                                </section>
+                                {Object.keys(lvDat[id]['vids']).map(i => {
+                                    return (
+                                        <section className="allPlayerInfo" key={i}>
+                                            <a id="levelRec">{lvDat[id]['vids'][i].user + ' (' + lvDat[id]['vids'][i].percent + '%)' + ' - ' + lvDat[id]['vids'][i].link}</a>
+                                        </section>
+                                    )
 
-                            })}
+                                })}
+                            </div>
+                        </div>
+
+                    </div>
+                )
+            }
+            else {
+                return (
+                    <div className="mainpanelContent">
+                        <div className="recordList">
+                            <div className="levelRecord">
+                                <section className="allPlayerInfo">
+                                    <a id="levelRec"><b>No one has beaten this level yet</b></a>
+                                </section>
+                            </div>
                         </div>
                     </div>
-
-                </div>
-            )
+                )
+            }
         }
         catch (err) {
             return (
@@ -113,6 +128,7 @@ function Main() {
                 </div>
             )
         }
+
     }
 
     function nextPage() {
