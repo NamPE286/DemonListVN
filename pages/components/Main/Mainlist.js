@@ -39,6 +39,13 @@ function Main() {
 
   function showList() {
     if (mode === 'mainlist') {
+      try {
+        document.getElementById('ab').style.background = 'var(--a2)';
+        document.getElementById('ac').style.background = 'none';
+      }
+      catch (err) {
+      }
+
       return (
         <>
           <div className="mainpanelContent">
@@ -71,6 +78,11 @@ function Main() {
       )
     }
     else if (mode === 'GDVNAL') {
+      try{
+        document.getElementById('ab').style.background = 'none';
+        document.getElementById('ac').style.background = 'var(--a2)';  
+      }
+      catch(err){}
       return (
         <>
           <div className="mainpanelContent">
@@ -104,7 +116,6 @@ function Main() {
     }
   }
 
-
   return (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
@@ -112,8 +123,8 @@ function Main() {
       <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
         <h2 id="title">Main List</h2>
         <div className="submitSelect">
-          <a href="#!" onClick={() => setMode('mainlist')}>VNFDL</a>
-          <a href="#!" onClick={() => setMode('GDVNAL')}>GDVNAL</a>
+          <a href="#!" id="ab" onClick={() => setMode('mainlist')} style={{background:"var(--a2)"}}>VNFDL</a>
+          <a href="#!" id="ac" onClick={() => setMode('GDVNAL')} >GDVNAL</a>
         </div>
         <hr></hr>
         {showList()}

@@ -26,6 +26,22 @@ function Main() {
             )
         }
     }
+
+    if(sel == 0){
+        try{
+            document.getElementById('ab').style.background = 'var(--a2)';
+            document.getElementById('ac').style.background = 'none';   
+        }
+        catch(err){
+        }
+    }
+    else{
+        try{
+            document.getElementById('ab').style.background = 'none';
+            document.getElementById('ac').style.background = 'var(--a2)';    
+        }
+        catch(err){}
+    }
     return (
         <div className="mainpanel" data-aos="fade-up" data-aos-duration="600">
             <h2>Submit</h2>
@@ -38,8 +54,8 @@ function Main() {
                 </ul>
             </div>
             <div className="submitSelect">
-                <a href="#!" onClick={() => setSel(0)}>Submit to VNFDL</a>
-                <a href="#!" onClick={() => setSel(1)}>Submit to GDVNAL</a>
+                <a href="#!" id="ab" onClick={() => setSel(0)} style={{background:"var(--a2)"}}>Submit to VNFDL</a>
+                <a href="#!" id="ac" onClick={() => setSel(1)}>Submit to GDVNAL</a>
             </div>
             <hr></hr>
             {showGGF()}
