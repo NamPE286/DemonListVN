@@ -100,57 +100,57 @@ function Main() {
         var p = {}
         for (const i in data['GDVNAL']) {
             const a = data['GDVNAL'][i].vids;
-            try{
-            if (a.length > 0)
-                for (const j in a) {
-                    const u = a[j].user
-                    if (u in p == false) {
-                        p[u] = {
-                            'name': u,
-                            'points': 0,
-                            'lv': [],
-                            'vids': {},
-                            'bestplay': '',
-                            'bestplayPt': 0,
-                            'bestplayThumbnail': '',
-                            'bestplayCreator': '',
-                            'top': 0,
-                            'avatar': ''
+            try {
+                if (a.length > 0)
+                    for (const j in a) {
+                        const u = a[j].user
+                        if (u in p == false) {
+                            p[u] = {
+                                'name': u,
+                                'points': 0,
+                                'lv': [],
+                                'vids': {},
+                                'bestplay': '',
+                                'bestplayPt': 0,
+                                'bestplayThumbnail': '',
+                                'bestplayCreator': '',
+                                'top': 0,
+                                'avatar': ''
+                            }
+                        }
+                        p[u].points = Math.round((p[u].points + data['GDVNAL'][i].points * a[j].percent / 100) * 100) / 100;
+                        if (p[u].bestplayPt < data['GDVNAL'][i].points * a[j].percent / 100) {
+                            p[u].bestplayPt = Math.round(p[u].points * 100) / 100;
+                            p[u].bestplay = data['GDVNAL'][i].name + ' (' + a[j].percent + '%' + ')';
+                            p[u].bestplayThumbnail = data['GDVNAL'][i].thumbnail;
+                            p[u].bestplayCreator = data['GDVNAL'][i].creator;
+                        }
+                        p[u].lv.push(parseInt(data['GDVNAL'][i].id))
+                        p[u].vids[data['GDVNAL'][i].id] = a[j]
+                        if (data['playerAvatar'][u] != undefined) {
+                            p[u].avatar = data['playerAvatar'][u]
+                        }
+                        else {
+                            p[u].avatar = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPfCfynXv42fOnrTQAs-99j09O8uz7mDilOQ&usqp=CAU"
                         }
                     }
-                    p[u].points = Math.round((p[u].points + data['GDVNAL'][i].points * a[j].percent / 100)*100)/100;
-                    if(p[u].bestplayPt < data['GDVNAL'][i].points * a[j].percent / 100) {
-                        p[u].bestplayPt = Math.round(p[u].points*100)/100;
-                        p[u].bestplay = data['GDVNAL'][i].name + ' (' + a[j].percent + '%' + ')';
-                        p[u].bestplayThumbnail = data['GDVNAL'][i].thumbnail;
-                        p[u].bestplayCreator = data['GDVNAL'][i].creator;
-                    }
-                    p[u].lv.push(parseInt(data['GDVNAL'][i].id))
-                    p[u].vids[data['GDVNAL'][i].id] = a[j]
-                    if(data['playerAvatar'][u] != undefined) {
-                        p[u].avatar = data['playerAvatar'][u]
-                    }
-                    else{
-                        p[u].avatar = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPfCfynXv42fOnrTQAs-99j09O8uz7mDilOQ&usqp=CAU"
-                    }
-                }
             }
-            catch(e){
+            catch (e) {
                 console.log(a)
             }
         }
 
         var p2 = Object.values(p)
         p2.sort((a, b) => b.points - a.points)
-        for(const i in p2) {
+        for (const i in p2) {
             p2[i].top = parseInt(i) + 1
             p[p2[i].name] = p2[i]
         }
-        
+
         data['GDVNALPlayer'] = p2
         data['GDVNALPlayer0'] = p
 
-        for(const i in data['GDVNALPlayer']){
+        for (const i in data['GDVNALPlayer']) {
             data['GDVNAL'][i]['vids'].sort((a, b) => b.percent - a.percent)
         }
         data['mainlist'] = Object.assign({}, refactor(Object.values(data['mainlist'])))
@@ -193,8 +193,8 @@ function Main() {
         }
     }
     function getPoint(rank) {
-            return roundNumber((100 / Math.sqrt(((rank - 1) / 50) + 0.444444)) - 50, 3);
-        
+        return roundNumber((100 / Math.sqrt(((rank - 1) / 50) + 0.444444)) - 50, 3);
+
     }
     function refactor1(x) {
         x.sort((a, b) => (a.top < b.top) ? -1 : 1)
@@ -420,17 +420,17 @@ function Main() {
                     addData()
                     setModal(!modal)
                 }
-                function addVictor(){
+                function addVictor() {
                     document.getElementsByClassName('victor')[0].style.display = 'block'
                     document.getElementById("userName").value = ""
                     document.getElementById("percent").value = ""
                     document.getElementById("YTLink").value = ""
                     document.getElementById("hz").value = ""
                 }
-                function cancel(){
+                function cancel() {
                     document.getElementsByClassName('victor')[0].style.display = 'none'
                 }
-                function addVictor1(){
+                function addVictor1() {
                     document.getElementsByClassName('victor')[0].style.display = 'none'
                     var c = {}
                     c.user = document.getElementById("userName").value
@@ -452,7 +452,7 @@ function Main() {
                         <div className="overlay">
                             <div className="popupContent">
                                 <h2>Edit level info</h2>
-                                <a id='close' onClick={() => { setModal(!modal)}}>x</a>
+                                <a id='close' onClick={() => { setModal(!modal) }}>x</a>
                                 <label for="lvname">Level name: </label>
                                 <input type="text" id="lvname" name="lvname" defaultValue={d1.name}></input><br />
                                 <label for="creator">Level creator: </label>
@@ -464,7 +464,7 @@ function Main() {
                                 <label for="thumbnail">Youtube video ID: </label>
                                 <input type="text" id="thumbnail" name="thumbnail" defaultValue={d1.thumbnail}></input><br />
                                 <label>Victor: </label><button onClick={addVictor}>Add victor</button><hr></hr>
-                                <div className={`victor`} style={{display: "none"}}>
+                                <div className={`victor`} style={{ display: "none" }}>
                                     <label for={`userName`}>Player name:  </label>
                                     <input type="text" id={`userName`} name={`userName`}></input><br />
                                     <label for={`percent`}>Percent:  </label>
@@ -475,11 +475,11 @@ function Main() {
                                     <input type="text" id={`hz`} name={`hz`}></input><br />
                                     <button onClick={addVictor1}>Add</button>
                                     <button onClick={cancel}>Cancel</button>
-                                    <hr/>
+                                    <hr />
                                 </div>
                                 <div className="victorCard">
                                     {Object.keys(d1.vids).map((i) => {
-                                        function update1(){
+                                        function update1() {
                                             d1.vids[i].user = document.getElementById("userName" + i).value
                                             d1.vids[i].percent = document.getElementById("percent" + i).value
                                             d1.vids[i].link = document.getElementById("YTLink" + i).value
@@ -489,7 +489,7 @@ function Main() {
                                             setD1(d1)
                                             addData()
                                         }
-                                        function delete2(){
+                                        function delete2() {
                                             d1.vids.splice(i, 1)
                                             data['GDVNAL'][index] = d1
                                             data['mainlist1'][d1.id] = d1
@@ -511,7 +511,7 @@ function Main() {
                                                     <input type="text" id={`hz${i}`} name={`hz${i}`} defaultValue={d1.vids[i].hz}></input><br />
                                                     <button onClick={update1}>Update</button>
                                                     <button onClick={delete2}>Delete</button>
-                                                    <hr/>
+                                                    <hr />
                                                 </div>
 
                                             </>
@@ -724,7 +724,6 @@ function Main() {
                         </div>
                         <div className="lvdat">
                             <h2>Player</h2>
-                            <button onClick={calc}>Calc</button>
                             {Object.keys(data['playerPt']).map(i => {
                                 return (
                                     <p>{data['playerPt'][i].name}</p>
@@ -743,7 +742,8 @@ function Main() {
                         <div className="lvDat">
                             <br />
                             <button onClick={copy}>Copy JSON</button>
-                            <input type="text" id="json" name="json" value={JSON.stringify({ "data": data })} readOnly></input><br />
+                            <input type="text" id="json" name="json" value={JSON.stringify({ "data": data })} readOnly></input><br /><br />
+                            <button onClick={calc}>Refresh List / Update List</button>
                             {showLogIn()}
                         </div>
 
@@ -785,7 +785,6 @@ function Main() {
                         </div>
                         <div className="lvdat">
                             <h2>Player</h2>
-                            <button onClick={calc}>Calc</button>
                             {Object.keys(data['playerPt']).map(i => {
                                 return (
                                     <p>{data['playerPt'][i].name}</p>
@@ -794,6 +793,7 @@ function Main() {
                         </div>
                         <div className="lvDat">
                             <br />
+                            <button onClick={calc}>Refresh List / Update List</button>
                             {showLogIn()}
                         </div>
 
@@ -837,7 +837,6 @@ function Main() {
                         </div>
                         <div className="lvdat">
                             <h2>Player</h2>
-                            <button onClick={calc}>Calc</button>
                             {Object.keys(data['playerPt']).map(i => {
                                 return (
                                     <p>{data['playerPt'][i].name}</p>
@@ -847,7 +846,9 @@ function Main() {
                         <div className="lvDat">
                             <br />
                             <button onClick={copy}>Copy JSON</button>
-                            <input type="text" id="json" name="json" value={JSON.stringify({ "data": data })} readOnly></input><br />
+                            <input type="text" id="json" name="json" value={JSON.stringify({ "data": data })} readOnly></input><br /><br></br>
+                            <button onClick={calc}>Refresh List / Update List</button>
+
                             {showLogIn()}
                         </div>
 
@@ -874,14 +875,15 @@ function Main() {
                             <button onClick={() => { addNewLevel('GDVNAL') }}>Add new level</button>
                             {Object.keys(data['GDVNAL']).map(i => {
                                 return (
-                                    <a href="#!" onClick={() => showGDVNALInfo(i)}><p>{data['GDVNAL'][i].name}</p></a>
+                                    <a href="#!" onClick={() => showGDVNALInfo(i)}><p>#{data['GDVNAL'][i].top} {data['GDVNAL'][i].name}</p></a>
                                 )
                             })}
                         </div>
                         <div className="lvDat">
                             <br />
                             <button onClick={copy}>Copy JSON</button>
-                            <input type="text" id="json" name="json" value={JSON.stringify({ "data": data })} readOnly></input><br />
+                            <input type="text" id="json" name="json" value={JSON.stringify({ "data": data })} readOnly></input><br /><br></br>
+                            <button onClick={calc}>Refresh List / Update List</button>
                             {showLogIn()}
                         </div>
                     </div>
