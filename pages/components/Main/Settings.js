@@ -8,7 +8,10 @@ function Main() {
       <div>
         <label for="themes">Theme: </label>
         <select name="themes" id="themes">
-          <option value={theme} selected disabled hidden>{theme.charAt(0).toUpperCase() + theme.slice(1)}</option>
+          <option value={theme} selected disabled hidden>{() => {
+            theme[0] = theme[0].toUpperCase()
+            return theme
+          }}</option>
           <option value="light">Light</option>
           <option value="dark">Dark</option>
         </select>
