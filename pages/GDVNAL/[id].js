@@ -226,6 +226,7 @@ function Main() {
                     <b>Likes: </b>{apilv.likes}<br />
                     <b>Coins: </b>{apilv.coins}<br />
                     <b>Length: </b>{apilv.length}<br />
+                    <b>Percent to qualify: </b>{lvDat[id].percentToQualify}%<br />
                 </p>
             )
         }
