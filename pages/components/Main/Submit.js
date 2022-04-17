@@ -57,7 +57,7 @@ function Main() {
                 <a href="#!" id="ab" onClick={() => setSel(0)} style={{background:"var(--a2)"}}>Submit to VNFDL</a>
                 <a href="#!" id="ac" onClick={() => setSel(1)}>Submit to GDVNAL</a>
             </div>
-            <hr></hr>
+            <hr id='lineUnderBtn1'></hr>
             {showGGF()}
         </div>
     )

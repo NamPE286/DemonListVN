@@ -122,11 +122,13 @@ function Main() {
 
       <div className="mainpanel">
         <h2 id="title">Main List</h2>
+        <div>
         <div className="submitSelect">
           <a href="#!" id="ab" onClick={() => setMode('mainlist')} style={{background:"var(--a2)"}}>VNFDL</a>
           <a href="#!" id="ac" onClick={() => setMode('GDVNAL')} >GDVNAL</a>
         </div>
-        <hr></hr>
+        <hr id='lineUnderBtn'></hr>
+        </div>
         {showList()}
       </div>
     </>

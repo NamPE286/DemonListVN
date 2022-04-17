@@ -173,7 +173,7 @@ function Main() {
         <a href="#!" id="ab" onClick={() => setMode('mainlist')} style={{ background: "var(--a2)" }}>VNFDL</a>
         <a href="#!" id="ac" onClick={() => setMode('GDVNAL')} >GDVNAL</a>
       </div>
-      <hr></hr>
+      <hr id='lineUnderBtn'></hr>
       {showContent()}
     </div>
 
