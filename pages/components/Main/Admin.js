@@ -141,6 +141,10 @@ function Main() {
         data['GDVNALPlayer'] = p2
         data['GDVNALPlayer0'] = p
 
+        for(const i in data['GDVNALPlayer']){
+            data['GDVNAL'][i]['vids'].sort((a, b) => b.percent - a.percent)
+        }
+
         console.log('Calculation finished')
         addData()
 
@@ -425,6 +429,47 @@ function Main() {
                                 <input type="text" id="lvid" name="lvid" defaultValue={d1.id}></input><br />
                                 <label for="thumbnail">Youtube video ID: </label>
                                 <input type="text" id="thumbnail" name="thumbnail" defaultValue={d1.thumbnail}></input><br />
+                                <label>Victor:</label><hr></hr>
+                                <div className="victorCard">
+                                    {Object.keys(d1.vids).map((i) => {
+                                        function update1(){
+                                            d1.vids[i].user = document.getElementById("userName" + i).value
+                                            d1.vids[i].percent = document.getElementById("percent" + i).value
+                                            d1.vids[i].link = document.getElementById("YTLink" + i).value
+                                            d1.vids[i].hz = document.getElementById("hz" + i).value
+                                            data['GDVNAL'][index] = d1
+                                            data['mainlist1'][d1.id] = d1
+                                            addData()
+                                        }
+                                        function delete2(){
+                                            delete d1.vids[i]
+                                            data['GDVNAL'][index] = d1
+                                            data['mainlist1'][d1.id] = d1
+                                            document.getElementsByClassName('victor' + i)[0].remove()
+                                            console.log(d1.vids)
+                                            addData()
+                                        }
+                                        return (
+                                            <>
+                                                <div className={`victor${i}`}>
+                                                    <label for={`userName${i}`}>Player name:  </label>
+                                                    <input type="text" id={`userName${i}`} name={`userName${i}`} defaultValue={d1.vids[i].user}></input><br />
+                                                    <label for={`percent${i}`}>Percent:  </label>
+                                                    <input type="text" id={`percent${i}`} name={`percent${i}`} defaultValue={d1.vids[i].percent}></input><br />
+                                                    <label for={`YTLink${i}`}>Video Link:  </label>
+                                                    <input type="text" id={`YTLink${i}`} name={`YTLink${i}`} defaultValue={d1.vids[i].link}></input><br />
+                                                    <label for={`hz${i}`}>HZ:  </label>
+                                                    <input type="text" id={`hz${i}`} name={`hz${i}`} defaultValue={d1.vids[i].hz}></input><br />
+                                                    <button onClick={update1}>Update</button>
+                                                    <button onClick={delete2}>Delete</button>
+                                                    <hr/>
+                                                </div>
+
+                                            </>
+
+                                        )
+                                    })}
+                                </div>
                                 <br /><button onClick={update}>Update</button><br /><br /><br /><br />
                                 <button onClick={deletelv}>Delete level</button>
                             </div>
