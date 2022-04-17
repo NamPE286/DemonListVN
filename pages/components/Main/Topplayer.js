@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 function Main() {
   const [data, setData] = useState([]);
   const [data0, setData0] = useState([]);
-  const [mode, setMode] = useState(0)
+  const [mode, setMode] = useState('mainlist')
 
   useEffect(() => {
     async function getData() {
@@ -45,59 +45,136 @@ function Main() {
     }
     return s;
   }
+  function showContent() {
+    if (mode == 'mainlist') {
+      try {
+        document.getElementById('ab').style.background = 'var(--a2)';
+        document.getElementById('ac').style.background = 'none';
+      }
+      catch (err) {
+      }
+      return (
+        <div className="mainpanelContent">
+          {Object.keys(data).map(i => {
+            if (i < 3) {
+              return (
+                <a href={`/players/${data[i].name}`}>
+                  <div className="topMostPlayer">
+                    <section className="sect">
+                      <img src={data[i].avatar} alt="" />
+                    </section>
+                    <div className="topMostPlayerInfo">
+                      <h3>#{parseInt(i) + 1} {data[i].name}</h3>
+                      <hr id="topplayerLine"></hr>
+                      <p>{data[i].points}pt <p>Best Play: {processTitle(data[i].bestplay)} by {processAuthor(data[i].bestplayCreator)}</p></p>
+                    </div>
+                    <div className="levelThumbWrapper">
+                      <section className="levelThumb">
+                        <img src={`https://i.ytimg.com/vi/${data[i].bestplayThumbnail}/hqdefault.jpg`} alt=''></img>
+                        <div className="fadeEffect1"></div>
+                        <a><div id="bold">{processTitle(data[i].bestplay)}</div>by {processAuthor(data[i].bestplayCreator)} - {data[i].bestplayPt}pt</a>
+                      </section>
+                    </div>
+                  </div>
+                </a>
+
+              )
+            }
+            else if (i == 3) {
+              return (
+                <div className="allPlayer">
+                  <section>
+                    <a id="playerName"></a><a id="playerTotalPoint">Total Point</a><a id="playerBestplay">Best Play</a>
+                  </section>
+                  <section className="allPlayerInfo">
+                    <a id="playerName" href={`/players/${data[i].name}`}>#{parseInt(i) + 1} {data[i].name}</a><a id="playerTotalPoint">{data[i].points}pt</a><a id="playerBestplay">{data[i].bestplay}</a>
+                  </section>
+                  {Object.keys(data).map(i => {
+                    if (i > 3) {
+                      return (
+                        <section className="allPlayerInfo">
+                          <a id="playerName" href={`/players/${data[i].name}`}>#{parseInt(i) + 1} {data[i].name}</a><a id="playerTotalPoint">{data[i].points}pt</a><a id="playerBestplay">{data[i].bestplay}</a>
+                        </section>
+                      )
+                    }
+                  })}
+                </div>
+              )
+            }
+          })}
+
+        </div>
+      )
+    }
+    else if (mode == 'GDVNAL') {
+      try{
+        document.getElementById('ab').style.background = 'none';
+        document.getElementById('ac').style.background = 'var(--a2)';  
+      }
+      catch(err){}
+      return (
+        <div className="mainpanelContent">
+          {Object.keys(data0).map(i => {
+            if (i < 3) {
+              return (
+                <a href={`/GDVNALPlayer/${data0[i].name}`}>
+                  <div className="topMostPlayer">
+                    <section className="sect">
+                      <img src={data0[i].avatar} alt="" />
+                    </section>
+                    <div className="topMostPlayerInfo">
+                      <h3>#{parseInt(i) + 1} {data0[i].name}</h3>
+                      <hr id="topplayerLine"></hr>
+                      <p>{data0[i].points}pt <p>Best Play: {processTitle(data0[i].bestplay)} by {processAuthor(data0[i].bestplayCreator)}</p></p>
+                    </div>
+                    <div className="levelThumbWrapper">
+                      <section className="levelThumb">
+                        <img src={`https://i.ytimg.com/vi/${data0[i].bestplayThumbnail}/hqdefault.jpg`} alt=''></img>
+                        <div className="fadeEffect1"></div>
+                        <a><div id="bold">{processTitle(data0[i].bestplay)}</div>by {processAuthor(data0[i].bestplayCreator)} - {data0[i].bestplayPt}pt</a>
+                      </section>
+                    </div>
+                  </div>
+                </a>
+
+              )
+            }
+            else if (i == 3) {
+              return (
+                <div className="allPlayer">
+                  <section>
+                    <a id="playerName"></a><a id="playerTotalPoint">Total Point</a><a id="playerBestplay">Best Play</a>
+                  </section>
+                  <section className="allPlayerInfo">
+                    <a id="playerName" href={`/GDVNALPlayer/${data0[i].name}`}>#{parseInt(i) + 1} {data0[i].name}</a><a id="playerTotalPoint">{data0[i].points}pt</a><a id="playerBestplay">{data0[i].bestplay}</a>
+                  </section>
+                  {Object.keys(data0).map(i => {
+                    if (i > 3) {
+                      return (
+                        <section className="allPlayerInfo">
+                          <a id="playerName" href={`/GDVNALPlayer/${data0[i].name}`}>#{parseInt(i) + 1} {data0[i].name}</a><a id="playerTotalPoint">{data0[i].points}pt</a><a id="playerBestplay">{data0[i].bestplay}</a>
+                        </section>
+                      )
+                    }
+                  })}
+                </div>
+              )
+            }
+          })}
+
+        </div>
+      )
+    }
+  }
   return (
     <div className="mainpanel">
-      <h2>Top Player</h2>
-      <div className="mainpanelContent">
-        {Object.keys(data).map(i => {
-          if (i < 3) {
-            return (
-              <a href={`/players/${data[i].name}`}>
-                <div className="topMostPlayer">
-                  <section className="sect">
-                    <img src={data[i].avatar} alt="" />
-                  </section>
-                  <div className="topMostPlayerInfo">
-                    <h3>#{parseInt(i) + 1} {data[i].name}</h3>
-                    <hr id="topplayerLine"></hr>
-                    <p>{data[i].points}pt <p>Best Play: {processTitle(data[i].bestplay)} by {processAuthor(data[i].bestplayCreator)}</p></p>
-                  </div>
-                  <div className="levelThumbWrapper">
-                    <section className="levelThumb">
-                      <img src={`https://i.ytimg.com/vi/${data[i].bestplayThumbnail}/hqdefault.jpg`} alt=''></img>
-                      <div className="fadeEffect1"></div>
-                      <a><div id="bold">{processTitle(data[i].bestplay)}</div>by {processAuthor(data[i].bestplayCreator)} - {data[i].bestplayPt}pt</a>
-                    </section>
-                  </div>
-                </div>
-              </a>
-
-            )
-          }
-          else if (i == 3) {
-            return (
-              <div className="allPlayer">
-                <section>
-                  <a id="playerName"></a><a id="playerTotalPoint">Total Point</a><a id="playerBestplay">Best Play</a>
-                </section>
-                <section className="allPlayerInfo">
-                  <a id="playerName" href={`/players/${data[i].name}`}>#{parseInt(i) + 1} {data[i].name}</a><a id="playerTotalPoint">{data[i].points}pt</a><a id="playerBestplay">{data[i].bestplay}</a>
-                </section>
-                {Object.keys(data).map(i => {
-                  if (i > 3) {
-                    return (
-                      <section className="allPlayerInfo">
-                        <a id="playerName" href={`/players/${data[i].name}`}>#{parseInt(i) + 1} {data[i].name}</a><a id="playerTotalPoint">{data[i].points}pt</a><a id="playerBestplay">{data[i].bestplay}</a>
-                      </section>
-                    )
-                  }
-                })}
-              </div>
-            )
-          }
-        })}
-
+      <h2 id="title">Top Player</h2>
+      <div className="submitSelect">
+        <a href="#!" id="ab" onClick={() => setMode('mainlist')} style={{ background: "var(--a2)" }}>VNFDL</a>
+        <a href="#!" id="ac" onClick={() => setMode('GDVNAL')} >GDVNAL</a>
       </div>
+      <hr></hr>
+      {showContent()}
     </div>
 
   )
