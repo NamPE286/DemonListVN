@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 
 function Main() {
   const [data, setData] = useState([]);
+  const [data0, setData0] = useState([]);
+  const [mode, setMode] = useState(0)
 
   useEffect(() => {
     async function getData() {
@@ -13,6 +15,16 @@ function Main() {
 
       if (docSnap.exists()) {
         setData(docSnap.data());
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+
+      const lvRef0 = doc(db, "data", "GDVNALPlayer")
+      const docSnap0 = await getDoc(lvRef0);
+
+      if (docSnap0.exists()) {
+        setData0(docSnap0.data());
       } else {
         // doc.data() will be undefined in this case
         console.log("No such document!");
