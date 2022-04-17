@@ -242,7 +242,7 @@ function Main() {
         setD1(a)
         setIndex(x)
         setAdd(false)
-        setModal(!modal)
+        setModal(true)
     }
     function showLegacylisttInfo(x) {
         const a = data['mainlist0'][data['legacylist'][x]['id']]
@@ -422,12 +422,38 @@ function Main() {
                     addData()
                     setModal(!modal)
                 }
+                function addVictor(){
+                    document.getElementsByClassName('victor')[0].style.display = 'block'
+                    document.getElementById("userName").value = ""
+                    document.getElementById("percent").value = ""
+                    document.getElementById("YTLink").value = ""
+                    document.getElementById("hz").value = ""
+                }
+                function cancel(){
+                    document.getElementsByClassName('victor')[0].style.display = 'none'
+                }
+                function addVictor1(){
+                    document.getElementsByClassName('victor')[0].style.display = 'none'
+                    var c = {}
+                    c.user = document.getElementById("userName").value
+                    c.percent = document.getElementById("percent").value
+                    c.link = document.getElementById("YTLink").value
+                    c.hz = document.getElementById("hz").value
+                    d1.vids.push(c)
+                    data['GDVNAL'][index] = d1
+                    data['mainlist1'][d1.id] = d1
+                    setD1(d1)
+                    setModal(!modal)
+                    console.log(data['mainlist1'][d1.id])
+                    addData()
+
+                }
                 return (
                     <div className="popup">
                         <div className="overlay">
                             <div className="popupContent">
                                 <h2>Edit level info</h2>
-                                <a id='close' onClick={() => { setModal(!modal) }}>x</a>
+                                <a id='close' onClick={() => { setModal(!modal)}}>x</a>
                                 <label for="lvname">Level name: </label>
                                 <input type="text" id="lvname" name="lvname" defaultValue={d1.name}></input><br />
                                 <label for="creator">Level creator: </label>
@@ -438,7 +464,20 @@ function Main() {
                                 <input type="text" id="lvid" name="lvid" defaultValue={d1.id}></input><br />
                                 <label for="thumbnail">Youtube video ID: </label>
                                 <input type="text" id="thumbnail" name="thumbnail" defaultValue={d1.thumbnail}></input><br />
-                                <label>Victor:</label><hr></hr>
+                                <label>Victor: </label><button onClick={addVictor}>Add victor</button><hr></hr>
+                                <div className={`victor`} style={{display: "none"}}>
+                                    <label for={`userName`}>Player name:  </label>
+                                    <input type="text" id={`userName`} name={`userName`}></input><br />
+                                    <label for={`percent`}>Percent:  </label>
+                                    <input type="text" id={`percent`} name={`percent`}></input><br />
+                                    <label for={`YTLink`}>Video Link:  </label>
+                                    <input type="text" id={`YTLink`} name={`YTLink`}></input><br />
+                                    <label for={`hz`}>HZ:  </label>
+                                    <input type="text" id={`hz`} name={`hz`}></input><br />
+                                    <button onClick={addVictor1}>Add</button>
+                                    <button onClick={cancel}>Cancel</button>
+                                    <hr/>
+                                </div>
                                 <div className="victorCard">
                                     {Object.keys(d1.vids).map((i) => {
                                         function update1(){
@@ -448,14 +487,16 @@ function Main() {
                                             d1.vids[i].hz = document.getElementById("hz" + i).value
                                             data['GDVNAL'][index] = d1
                                             data['mainlist1'][d1.id] = d1
+                                            setD1(d1)
                                             addData()
                                         }
                                         function delete2(){
-                                            delete d1.vids[i]
+                                            d1.vids.splice(i, 1)
                                             data['GDVNAL'][index] = d1
                                             data['mainlist1'][d1.id] = d1
                                             document.getElementsByClassName('victor' + i)[0].remove()
                                             console.log(d1.vids)
+                                            setD1(d1)
                                             addData()
                                         }
                                         return (
@@ -696,7 +737,7 @@ function Main() {
                             <button onClick={() => { addNewLevel('GDVNAL') }}>Add new level</button>
                             {Object.keys(data['GDVNAL']).map(i => {
                                 return (
-                                    <a href="#!" onClick={() => showGDVNALInfo(i)}><p>{data['GDVNAL'][i].name}</p></a>
+                                    <a href="#!" onClick={() => showGDVNALInfo(i)}><p>#{data['GDVNAL'][i].top} {data['GDVNAL'][i].name}</p></a>
                                 )
                             })}
                         </div>
