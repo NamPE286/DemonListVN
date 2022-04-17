@@ -1,7 +1,7 @@
 import AnnoucementPanel from './components/AnnoucementPanel.js';
 import JoinDiscordPanel from './components/JoinDiscordPanel.js';
 import Navbar from './components/Navbar.js';
-import Main from './components/Main/Mainlist.js';
+import Main from './components/Main/Index.js';
 import Head from 'next/head';
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
           <JoinDiscordPanel />
           <AnnoucementPanel />
         </div>
-        <Main />
+        <Main/>
       </div>
     </>
 

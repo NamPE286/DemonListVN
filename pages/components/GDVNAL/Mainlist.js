@@ -29,7 +29,7 @@ function Main() {
     <>
       <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
 
-      <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
+      <div className="mainpanel">
         <h2>GDVN Achievement List</h2>
         <div className="mainpanelContent">
           {Object.keys(data).map(i => {

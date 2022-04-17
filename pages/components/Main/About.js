@@ -6,7 +6,7 @@ function Main() {
         return s;
       }
     return (
-        <div className="mainpanel" id="about" data-aos="fade-up" data-aos-duration="600">
+        <div className="mainpanel" id="about">
             <h2>About</h2>
             <p>This page was made in NextJS with SCSS and Firebase.</p>
             <h2>Join Our Discord Server</h2>

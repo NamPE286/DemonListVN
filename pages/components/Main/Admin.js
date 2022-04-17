@@ -34,7 +34,6 @@ function Main() {
             if (a2 in data['mainlist0']) {
             }
             else {
-                console.log(a2)
                 dat[data['mainlist'][i].id] = JSON.parse(JSON.stringify(data['mainlist'][i]))
                 dat[data['mainlist'][i].id].ldm = [];
             }
@@ -47,7 +46,6 @@ function Main() {
             if (a2 in data['mainlist0']) {
             }
             else {
-                console.log(a2)
                 dat[data['legacylist'][i].id] = JSON.parse(JSON.stringify(data['legacylist'][i]))
                 dat[data['legacylist'][i].id].ldm = [];
             }
@@ -98,6 +96,65 @@ function Main() {
         for (const i in player) {
             data['playerPt0'][player[i].name] = player[i]
         }
+
+        var p = {}
+        for (const i in data['GDVNAL']) {
+            const a = data['GDVNAL'][i].vids;
+            try {
+                if (a.length > 0)
+                    for (const j in a) {
+                        const u = a[j].user
+                        if (u in p == false) {
+                            p[u] = {
+                                'name': u,
+                                'points': 0,
+                                'lv': [],
+                                'vids': {},
+                                'bestplay': '',
+                                'bestplayPt': 0,
+                                'bestplayThumbnail': '',
+                                'bestplayCreator': '',
+                                'top': 0,
+                                'avatar': ''
+                            }
+                        }
+                        p[u].points = Math.round((p[u].points + data['GDVNAL'][i].points * a[j].percent / 100) * 100) / 100;
+                        if (p[u].bestplayPt < data['GDVNAL'][i].points * a[j].percent / 100) {
+                            p[u].bestplayPt = Math.round(p[u].points * 100) / 100;
+                            p[u].bestplay = data['GDVNAL'][i].name + ' (' + a[j].percent + '%' + ')';
+                            p[u].bestplayThumbnail = data['GDVNAL'][i].thumbnail;
+                            p[u].bestplayCreator = data['GDVNAL'][i].creator;
+                        }
+                        p[u].lv.push(parseInt(data['GDVNAL'][i].id))
+                        p[u].vids[data['GDVNAL'][i].id] = a[j]
+                        if (data['playerAvatar'][u] != undefined) {
+                            p[u].avatar = data['playerAvatar'][u]
+                        }
+                        else {
+                            p[u].avatar = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPfCfynXv42fOnrTQAs-99j09O8uz7mDilOQ&usqp=CAU"
+                        }
+                    }
+            }
+            catch (e) {
+                console.log(a)
+            }
+        }
+
+        var p2 = Object.values(p)
+        p2.sort((a, b) => b.points - a.points)
+        for (const i in p2) {
+            p2[i].top = parseInt(i) + 1
+            p[p2[i].name] = p2[i]
+        }
+
+        data['GDVNALPlayer'] = p2
+        data['GDVNALPlayer0'] = p
+
+        for (const i in data['GDVNALPlayer']) {
+            data['GDVNAL'][i]['vids'].sort((a, b) => b.percent - a.percent)
+        }
+        data['mainlist'] = Object.assign({}, refactor(Object.values(data['mainlist'])))
+        data['GDVNAL'] = Object.assign({}, refactor1(Object.values(data['GDVNAL'])))
         console.log('Calculation finished')
         addData()
 
@@ -136,11 +193,8 @@ function Main() {
         }
     }
     function getPoint(rank) {
-        if (rank > 100) {
-            return roundNumber(15, 3);
-        } else {
-            return roundNumber((100 / Math.sqrt(((rank - 1) / 50) + 0.444444)) - 50, 3);
-        }
+        return roundNumber((100 / Math.sqrt(((rank - 1) / 50) + 0.444444)) - 50, 3);
+
     }
     function refactor1(x) {
         x.sort((a, b) => (a.top < b.top) ? -1 : 1)
@@ -159,10 +213,8 @@ function Main() {
             a = data['mainlist0'][data['mainlist'][x]['id']]
         }
         if (a == undefined) {
-            console.log('not ok')
             return
         }
-        console.log(a)
         setD("mainlist")
         setD1(a)
         setIndex(x)
@@ -181,7 +233,6 @@ function Main() {
             a = data['mainlist1'][data['mainlist'][x]['id']]
         }
         if (a == undefined) {
-            console.log('not ok')
             return
         }
         console.log(a)
@@ -189,11 +240,10 @@ function Main() {
         setD1(a)
         setIndex(x)
         setAdd(false)
-        setModal(!modal)
+        setModal(true)
     }
     function showLegacylisttInfo(x) {
         const a = data['mainlist0'][data['legacylist'][x]['id']]
-        console.log(a)
         setD("legacylist")
         setD1(a)
         setIndex(x)
@@ -271,7 +321,6 @@ function Main() {
                     catch (e) {
                         console.error(e)
                     }
-                    console.log(data['mainlist'])
                     addData()
                     setModal(!modal)
 
@@ -325,7 +374,6 @@ function Main() {
                         let a = Object.values(data['legacylist'])
                         a.unshift(d1)
                         a = Object.assign({}, a)
-                        console.log(a)
                         data['legacylist'] = a
                     }
                     addData()
@@ -369,9 +417,35 @@ function Main() {
                     else data['GDVNAL'].push(d1)
                     data['GDVNAL'] = refactor1(data['GDVNAL'])
                     data['mainlist1'][d1.id] = d1
-                    console.log(data['GDVNAL'])
                     addData()
                     setModal(!modal)
+                }
+                function addVictor() {
+                    document.getElementsByClassName('victor')[0].style.display = 'block'
+                    document.getElementById("userName").value = ""
+                    document.getElementById("percent").value = ""
+                    document.getElementById("YTLink").value = ""
+                    document.getElementById("hz").value = ""
+                }
+                function cancel() {
+                    document.getElementsByClassName('victor')[0].style.display = 'none'
+                }
+                function addVictor1() {
+                    document.getElementsByClassName('victor')[0].style.display = 'none'
+                    var c = {}
+                    c.user = document.getElementById("userName").value
+                    c.percent = document.getElementById("percent").value
+                    c.link = document.getElementById("YTLink").value
+                    c.hz = document.getElementById("hz").value
+                    d1.vids.push(c)
+                    data['GDVNAL'][index] = d1
+                    data['mainlist1'][d1.id] = d1
+                    setD1(d1)
+                    setModal(!modal)
+                    console.log(data['mainlist1'][d1.id])
+                    alert("Added victor!")
+                    addData()
+
                 }
                 return (
                     <div className="popup">
@@ -389,6 +463,62 @@ function Main() {
                                 <input type="text" id="lvid" name="lvid" defaultValue={d1.id}></input><br />
                                 <label for="thumbnail">Youtube video ID: </label>
                                 <input type="text" id="thumbnail" name="thumbnail" defaultValue={d1.thumbnail}></input><br />
+                                <label>Victor: </label><button onClick={addVictor}>Add victor</button><hr></hr>
+                                <div className={`victor`} style={{ display: "none" }}>
+                                    <label for={`userName`}>Player name:  </label>
+                                    <input type="text" id={`userName`} name={`userName`}></input><br />
+                                    <label for={`percent`}>Percent:  </label>
+                                    <input type="text" id={`percent`} name={`percent`}></input><br />
+                                    <label for={`YTLink`}>Video Link:  </label>
+                                    <input type="text" id={`YTLink`} name={`YTLink`}></input><br />
+                                    <label for={`hz`}>HZ:  </label>
+                                    <input type="text" id={`hz`} name={`hz`}></input><br />
+                                    <button onClick={addVictor1}>Add</button>
+                                    <button onClick={cancel}>Cancel</button>
+                                    <hr />
+                                </div>
+                                <div className="victorCard">
+                                    {Object.keys(d1.vids).map((i) => {
+                                        function update1() {
+                                            d1.vids[i].user = document.getElementById("userName" + i).value
+                                            d1.vids[i].percent = document.getElementById("percent" + i).value
+                                            d1.vids[i].link = document.getElementById("YTLink" + i).value
+                                            d1.vids[i].hz = document.getElementById("hz" + i).value
+                                            data['GDVNAL'][index] = d1
+                                            data['mainlist1'][d1.id] = d1
+                                            setD1(d1)
+                                            addData()
+                                        }
+                                        function delete2() {
+                                            d1.vids.splice(i, 1)
+                                            data['GDVNAL'][index] = d1
+                                            data['mainlist1'][d1.id] = d1
+                                            document.getElementsByClassName('victor' + i)[0].remove()
+                                            console.log(d1.vids)
+                                            setD1(d1)
+                                            addData()
+                                        }
+                                        return (
+                                            <>
+                                                <div className={`victor${i}`}>
+                                                    <label for={`userName${i}`}>Player name:  </label>
+                                                    <input type="text" id={`userName${i}`} name={`userName${i}`} defaultValue={d1.vids[i].user}></input><br />
+                                                    <label for={`percent${i}`}>Percent:  </label>
+                                                    <input type="text" id={`percent${i}`} name={`percent${i}`} defaultValue={d1.vids[i].percent}></input><br />
+                                                    <label for={`YTLink${i}`}>Video Link:  </label>
+                                                    <input type="text" id={`YTLink${i}`} name={`YTLink${i}`} defaultValue={d1.vids[i].link}></input><br />
+                                                    <label for={`hz${i}`}>HZ:  </label>
+                                                    <input type="text" id={`hz${i}`} name={`hz${i}`} defaultValue={d1.vids[i].hz}></input><br />
+                                                    <button onClick={update1}>Update</button>
+                                                    <button onClick={delete2}>Delete</button>
+                                                    <hr />
+                                                </div>
+
+                                            </>
+
+                                        )
+                                    })}
+                                </div>
                                 <br /><button onClick={update}>Update</button><br /><br /><br /><br />
                                 <button onClick={deletelv}>Delete level</button>
                             </div>
@@ -420,7 +550,6 @@ function Main() {
                     catch (e) {
                         console.error(e)
                     }
-                    console.log(data['mainlist'])
                     addData()
                     setModal(!modal)
 
@@ -473,7 +602,6 @@ function Main() {
                         let a = Object.values(data['legacylist'])
                         a.unshift(d1)
                         a = Object.assign({}, a)
-                        console.log(a)
                         data['legacylist'] = a
                     }
                     addData()
@@ -552,7 +680,6 @@ function Main() {
                 <>
                     <p>Name: {u.displayName}</p>
                     <p>Email: {u.email}</p>
-                    {console.log(u.email in data['admin'])}
                 </>
 
             )
@@ -597,7 +724,6 @@ function Main() {
                         </div>
                         <div className="lvdat">
                             <h2>Player</h2>
-                            <button onClick={calc}>Calc</button>
                             {Object.keys(data['playerPt']).map(i => {
                                 return (
                                     <p>{data['playerPt'][i].name}</p>
@@ -609,14 +735,15 @@ function Main() {
                             <button onClick={() => { addNewLevel('GDVNAL') }}>Add new level</button>
                             {Object.keys(data['GDVNAL']).map(i => {
                                 return (
-                                    <a href="#!" onClick={() => showGDVNALInfo(i)}><p>{data['GDVNAL'][i].name}</p></a>
+                                    <a href="#!" onClick={() => showGDVNALInfo(i)}><p>#{data['GDVNAL'][i].top} {data['GDVNAL'][i].name}</p></a>
                                 )
                             })}
                         </div>
                         <div className="lvDat">
                             <br />
                             <button onClick={copy}>Copy JSON</button>
-                            <input type="text" id="json" name="json" value={JSON.stringify({ "data": data })} readOnly></input><br />
+                            <input type="text" id="json" name="json" value={JSON.stringify({ "data": data })} readOnly></input><br /><br />
+                            <button onClick={calc}>Refresh List / Update List</button>
                             {showLogIn()}
                         </div>
 
@@ -626,7 +753,6 @@ function Main() {
             }
             catch (e) {
                 console.error(e)
-                console.log(data)
                 { calc }
                 return (
                     <div>
@@ -659,7 +785,6 @@ function Main() {
                         </div>
                         <div className="lvdat">
                             <h2>Player</h2>
-                            <button onClick={calc}>Calc</button>
                             {Object.keys(data['playerPt']).map(i => {
                                 return (
                                     <p>{data['playerPt'][i].name}</p>
@@ -668,6 +793,7 @@ function Main() {
                         </div>
                         <div className="lvDat">
                             <br />
+                            <button onClick={calc}>Refresh List / Update List</button>
                             {showLogIn()}
                         </div>
 
@@ -711,7 +837,6 @@ function Main() {
                         </div>
                         <div className="lvdat">
                             <h2>Player</h2>
-                            <button onClick={calc}>Calc</button>
                             {Object.keys(data['playerPt']).map(i => {
                                 return (
                                     <p>{data['playerPt'][i].name}</p>
@@ -721,7 +846,9 @@ function Main() {
                         <div className="lvDat">
                             <br />
                             <button onClick={copy}>Copy JSON</button>
-                            <input type="text" id="json" name="json" value={JSON.stringify({ "data": data })} readOnly></input><br />
+                            <input type="text" id="json" name="json" value={JSON.stringify({ "data": data })} readOnly></input><br /><br></br>
+                            <button onClick={calc}>Refresh List / Update List</button>
+
                             {showLogIn()}
                         </div>
 
@@ -748,14 +875,15 @@ function Main() {
                             <button onClick={() => { addNewLevel('GDVNAL') }}>Add new level</button>
                             {Object.keys(data['GDVNAL']).map(i => {
                                 return (
-                                    <a href="#!" onClick={() => showGDVNALInfo(i)}><p>{data['GDVNAL'][i].name}</p></a>
+                                    <a href="#!" onClick={() => showGDVNALInfo(i)}><p>#{data['GDVNAL'][i].top} {data['GDVNAL'][i].name}</p></a>
                                 )
                             })}
                         </div>
                         <div className="lvDat">
                             <br />
                             <button onClick={copy}>Copy JSON</button>
-                            <input type="text" id="json" name="json" value={JSON.stringify({ "data": data })} readOnly></input><br />
+                            <input type="text" id="json" name="json" value={JSON.stringify({ "data": data })} readOnly></input><br /><br></br>
+                            <button onClick={calc}>Refresh List / Update List</button>
                             {showLogIn()}
                         </div>
                     </div>
@@ -763,7 +891,6 @@ function Main() {
             }
             catch (e) {
                 console.error(e)
-                console.log(data)
                 { calc }
                 return (
                     <div>

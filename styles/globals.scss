@@ -80,6 +80,9 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
+#title{
+    margin-bottom: -10px;
+}
 #subm{
     width: 300px;
     height: 60px;
@@ -1062,6 +1065,7 @@ code {
         cursor: pointer;
         margin-right: 15px;
     }
+    overflow-y: auto;
 }
 .submitSelect{
     display: flex;
@@ -1077,10 +1081,12 @@ code {
         padding:10px;
         border-radius: 16px;
     }
-    a:hover{
-        background-color: var(--a3);
-        transition: 0.3s;
-    }
+}
+#lineUnderBtn {
+    width: 160px;
+}
+#lineUnderBtn1 {
+    width: 300px;
 }
 @media screen and (max-width: 1450px) {
     .pageContent {

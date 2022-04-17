@@ -120,15 +120,13 @@ function Main() {
     <>
       <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
 
-      <div className="mainpanel">
+      <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
         <h2 id="title">Main List</h2>
-        <div>
         <div className="submitSelect">
           <a href="#!" id="ab" onClick={() => setMode('mainlist')} style={{background:"var(--a2)"}}>VNFDL</a>
           <a href="#!" id="ac" onClick={() => setMode('GDVNAL')} >GDVNAL</a>
         </div>
-        <hr id='lineUnderBtn'></hr>
-        </div>
+        <hr></hr>
         {showList()}
       </div>
     </>
