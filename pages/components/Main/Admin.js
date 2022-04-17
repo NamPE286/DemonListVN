@@ -292,6 +292,9 @@ function Main() {
                 top: 0,
                 id: "",
                 thumbnail: "",
+                vids: [],
+                percentToQualify: 0,
+                firstVictor: '',
             })
         }
         setD(x)
@@ -411,6 +414,7 @@ function Main() {
                     d1.creator = document.getElementById("creator").value
                     d1.thumbnail = document.getElementById("thumbnail").value
                     d1.id = document.getElementById("lvid").value
+                    d1.firstVictor = document.getElementById("firstVictor").value
                     if (parseInt(document.getElementById("top").value) < d1.top) d1.top = parseInt(document.getElementById("top").value) - 0.5
                     else d1.top = parseInt(document.getElementById("top").value) + 0.5
                     if (!add) data['GDVNAL'][index] = d1
@@ -447,84 +451,117 @@ function Main() {
                     addData()
 
                 }
-                return (
-                    <div className="popup">
-                        <div className="overlay">
-                            <div className="popupContent">
-                                <h2>Edit level info</h2>
-                                <a id='close' onClick={() => { setModal(!modal) }}>x</a>
-                                <label for="lvname">Level name: </label>
-                                <input type="text" id="lvname" name="lvname" defaultValue={d1.name}></input><br />
-                                <label for="creator">Level creator: </label>
-                                <input type="text" id="creator" name="creator" defaultValue={d1.creator}></input><br />
-                                <label for="top">Top: </label>
-                                <input type="text" id="top" name="top" defaultValue={d1.top}></input><br />
-                                <label for="lvid">ID: </label>
-                                <input type="text" id="lvid" name="lvid" defaultValue={d1.id}></input><br />
-                                <label for="thumbnail">Youtube video ID: </label>
-                                <input type="text" id="thumbnail" name="thumbnail" defaultValue={d1.thumbnail}></input><br />
-                                <label>Victor: </label><button onClick={addVictor}>Add victor</button><hr></hr>
-                                <div className={`victor`} style={{ display: "none" }}>
-                                    <label for={`userName`}>Player name:  </label>
-                                    <input type="text" id={`userName`} name={`userName`}></input><br />
-                                    <label for={`percent`}>Percent:  </label>
-                                    <input type="text" id={`percent`} name={`percent`}></input><br />
-                                    <label for={`YTLink`}>Video Link:  </label>
-                                    <input type="text" id={`YTLink`} name={`YTLink`}></input><br />
-                                    <label for={`hz`}>HZ:  </label>
-                                    <input type="text" id={`hz`} name={`hz`}></input><br />
-                                    <button onClick={addVictor1}>Add</button>
-                                    <button onClick={cancel}>Cancel</button>
-                                    <hr />
-                                </div>
-                                <div className="victorCard">
-                                    {Object.keys(d1.vids).map((i) => {
-                                        function update1() {
-                                            d1.vids[i].user = document.getElementById("userName" + i).value
-                                            d1.vids[i].percent = document.getElementById("percent" + i).value
-                                            d1.vids[i].link = document.getElementById("YTLink" + i).value
-                                            d1.vids[i].hz = document.getElementById("hz" + i).value
-                                            data['GDVNAL'][index] = d1
-                                            data['mainlist1'][d1.id] = d1
-                                            setD1(d1)
-                                            addData()
-                                        }
-                                        function delete2() {
-                                            d1.vids.splice(i, 1)
-                                            data['GDVNAL'][index] = d1
-                                            data['mainlist1'][d1.id] = d1
-                                            document.getElementsByClassName('victor' + i)[0].remove()
-                                            console.log(d1.vids)
-                                            setD1(d1)
-                                            addData()
-                                        }
-                                        return (
-                                            <>
-                                                <div className={`victor${i}`}>
-                                                    <label for={`userName${i}`}>Player name:  </label>
-                                                    <input type="text" id={`userName${i}`} name={`userName${i}`} defaultValue={d1.vids[i].user}></input><br />
-                                                    <label for={`percent${i}`}>Percent:  </label>
-                                                    <input type="text" id={`percent${i}`} name={`percent${i}`} defaultValue={d1.vids[i].percent}></input><br />
-                                                    <label for={`YTLink${i}`}>Video Link:  </label>
-                                                    <input type="text" id={`YTLink${i}`} name={`YTLink${i}`} defaultValue={d1.vids[i].link}></input><br />
-                                                    <label for={`hz${i}`}>HZ:  </label>
-                                                    <input type="text" id={`hz${i}`} name={`hz${i}`} defaultValue={d1.vids[i].hz}></input><br />
-                                                    <button onClick={update1}>Update</button>
-                                                    <button onClick={delete2}>Delete</button>
-                                                    <hr />
-                                                </div>
+                try{
+                    return (
+                        <div className="popup">
+                            <div className="overlay">
+                                <div className="popupContent">
+                                    <h2>Edit level info</h2>
+                                    <a id='close' onClick={() => { setModal(!modal) }}>x</a>
+                                    <label for="lvname">Level name: </label>
+                                    <input type="text" id="lvname" name="lvname" defaultValue={d1.name}></input><br />
+                                    <label for="creator">Level creator: </label>
+                                    <input type="text" id="creator" name="creator" defaultValue={d1.creator}></input><br />
+                                    <label for="top">Top: </label>
+                                    <input type="text" id="top" name="top" defaultValue={d1.top}></input><br />
+                                    <label for="lvid">ID: </label>
+                                    <input type="text" id="lvid" name="lvid" defaultValue={d1.id}></input><br />
+                                    <label for="thumbnail">Youtube video ID: </label>
+                                    <input type="text" id="thumbnail" name="thumbnail" defaultValue={d1.thumbnail}></input><br />
+                                    <label for="firstVictor">First Victor: </label>
+                                    <input type="text" id="firstVictor" name="firstVictor" defaultValue={d1.firstVictor}></input><br />
+                                    <label for="percentToQualify">Percent to qualify: </label>
+                                    <input type="text" id="percentToQualify" name="percentToQualify" defaultValue={d1.percentToQualify}></input><br />
+                                    <label>Victor: </label><button onClick={addVictor}>Add victor</button><hr></hr>
+                                    <div className={`victor`} style={{ display: "none" }}>
+                                        <label for={`userName`}>Player name:  </label>
+                                        <input type="text" id={`userName`} name={`userName`}></input><br />
+                                        <label for={`percent`}>Percent:  </label>
+                                        <input type="text" id={`percent`} name={`percent`}></input><br />
+                                        <label for={`YTLink`}>Video Link:  </label>
+                                        <input type="text" id={`YTLink`} name={`YTLink`}></input><br />
+                                        <label for={`hz`}>HZ:  </label>
+                                        <input type="text" id={`hz`} name={`hz`}></input><br />
+                                        <button onClick={addVictor1}>Add</button>
+                                        <button onClick={cancel}>Cancel</button>
+                                        <hr />
+                                    </div>
+                                    <div className="victorCard">
+                                        {
+                                            Object.keys(d1.vids).map((i) => {
+                                            function update1() {
+                                                d1.vids[i].user = document.getElementById("userName" + i).value
+                                                d1.vids[i].percent = document.getElementById("percent" + i).value
+                                                d1.vids[i].link = document.getElementById("YTLink" + i).value
+                                                d1.vids[i].hz = document.getElementById("hz" + i).value
+                                                data['GDVNAL'][index] = d1
+                                                data['mainlist1'][d1.id] = d1
+                                                setD1(d1)
+                                                addData()
+                                            }
+                                            function delete2() {
+                                                d1.vids.splice(i, 1)
+                                                data['GDVNAL'][index] = d1
+                                                data['mainlist1'][d1.id] = d1
+                                                document.getElementsByClassName('victor' + i)[0].remove()
+                                                console.log(d1.vids)
+                                                setD1(d1)
+                                                addData()
+                                            }
+                                            return (
+                                                <>
+                                                    <div className={`victor${i}`}>
+                                                        <label for={`userName${i}`}>Player name:  </label>
+                                                        <input type="text" id={`userName${i}`} name={`userName${i}`} defaultValue={d1.vids[i].user}></input><br />
+                                                        <label for={`percent${i}`}>Percent:  </label>
+                                                        <input type="text" id={`percent${i}`} name={`percent${i}`} defaultValue={d1.vids[i].percent}></input><br />
+                                                        <label for={`YTLink${i}`}>Video Link:  </label>
+                                                        <input type="text" id={`YTLink${i}`} name={`YTLink${i}`} defaultValue={d1.vids[i].link}></input><br />
+                                                        <label for={`hz${i}`}>HZ:  </label>
+                                                        <input type="text" id={`hz${i}`} name={`hz${i}`} defaultValue={d1.vids[i].hz}></input><br />
+                                                        <button onClick={update1}>Update</button>
+                                                        <button onClick={delete2}>Delete</button>
+                                                        <hr />
+                                                    </div>
 
-                                            </>
+                                                </>
 
-                                        )
-                                    })}
+                                            )
+                                        })}
+                                    
+                                    </div>
+                                    <br /><button onClick={update}>Update</button><br /><br /><br /><br />
+                                    <button onClick={deletelv}>Delete level</button>
                                 </div>
-                                <br /><button onClick={update}>Update</button><br /><br /><br /><br />
-                                <button onClick={deletelv}>Delete level</button>
                             </div>
                         </div>
-                    </div>
-                )
+                    )
+                }
+                catch(err){
+                    return (
+                        <div className="popup">
+                            <div className="overlay">
+                                <div className="popupContent">
+                                    <h2>Edit level info</h2>
+                                    <a id='close' onClick={() => { setModal(!modal) }}>x</a>
+                                    <label for="lvname">Level name: </label>
+                                    <input type="text" id="lvname" name="lvname" defaultValue={d1.name}></input><br />
+                                    <label for="creator">Level creator: </label>
+                                    <input type="text" id="creator" name="creator" defaultValue={d1.creator}></input><br />
+                                    <label for="top">Top: </label>
+                                    <input type="text" id="top" name="top" defaultValue={d1.top}></input><br />
+                                    <label for="lvid">ID: </label>
+                                    <input type="text" id="lvid" name="lvid" defaultValue={d1.id}></input><br />
+                                    <label for="thumbnail">Youtube video ID: </label>
+                                    <input type="text" id="thumbnail" name="thumbnail" defaultValue={d1.thumbnail}></input><br />
+                                    <label for="firstVictor">First Victor: </label>
+                                    <input type="text" id="firstVictor" name="firstVictor" defaultValue={d1.firstVictor}></input><br />
+                                    <br /><button onClick={update}>Update</button><br /><br /><br /><br />
+                                </div>
+                            </div>
+                        </div>
+                    )
+                }
             }
         }
     }
