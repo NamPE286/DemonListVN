@@ -153,7 +153,8 @@ function Main() {
         for(const i in data['GDVNALPlayer']){
             data['GDVNAL'][i]['vids'].sort((a, b) => b.percent - a.percent)
         }
-
+        data['mainlist'] = Object.assign({}, refactor(Object.values(data['mainlist'])))
+        data['GDVNAL'] = Object.assign({}, refactor1(Object.values(data['GDVNAL'])))
         console.log('Calculation finished')
         addData()
 
