@@ -445,6 +445,7 @@ function Main() {
                     setD1(d1)
                     setModal(!modal)
                     console.log(data['mainlist1'][d1.id])
+                    alert("Added victor!")
                     addData()
 
                 }
