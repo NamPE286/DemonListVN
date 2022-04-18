@@ -184,20 +184,28 @@ function Main() {
         }
         return x
     }
-    function getProgressPoint(q, r, i){
-        const pt = (Math.pow(10*5, (q - r)/(100 - r))*getPoint(i))/100
-        return Math.round(pt*100)/100
+    function roundNumber(num, scale) {
+        if (!("" + num).includes("e")) {
+            return +(Math.round(num + "e+" + scale) + "e-" + scale);
+        } else {
+            var arr = ("" + num).split("e");
+            var sig = ""
+            if (+arr[1] + scale > 0) {
+                sig = "+";
+            }
+            return +(Math.round(+arr[0] + "e" + sig + (+arr[1] + scale)) + "e-" + scale);
+        }
     }
     function getPoint(rank) {
-        const total = data['GDVNAL'].length
-        const rankPt = Math.pow(total*Math.E, ((1 - rank)*Math.log(30))/149)
-        return Math.round(rankPt * 100) / 100
+        return roundNumber((100 / Math.sqrt(((rank - 1) / 50) + 0.444444)) - 50, 3);
+
     }
     function refactor1(x) {
         x.sort((a, b) => (a.top < b.top) ? -1 : 1)
         for (const i in x) {
             x[i].top = parseInt(i) + 1
             x[i].points = getPoint(x[i].top)
+            x[i].points = Math.round(x[i].points * 100) / 100
         }
         return x
     }
