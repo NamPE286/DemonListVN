@@ -122,7 +122,7 @@ function Main() {
                                 'avatar': ''
                             }
                         }
-                        p[u].points = p[u].points + getProgressPoint(parseInt(a[j].percent), parseInt(data['GDVNAL'][i].percentToQualify), parseInt(i))
+                        p[u].points = Math.round((p[u].points + data['GDVNAL'][i].points * a[j].percent / 100) * 100) / 100;
                         p[u].points = Math.round(p[u].points * 100) / 100
                         if (p[u].bestplayPt < p[u].points) {
                             p[u].bestplayPt = Math.round(p[u].points * 100) / 100;
