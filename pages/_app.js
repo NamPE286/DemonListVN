@@ -8,6 +8,7 @@ import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 import Helmet from 'react-helmet';
 import { ThemeProvider } from 'next-themes';
+import Script from 'next/script'
 
 // Import the functions you need from the SDKs you need
 
@@ -21,17 +22,20 @@ function MyApp({ Component, pageProps }) {
   }, [])
   // Initialize Firebase
   return (
-    <div className="App">
-      <Helmet>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4605218533506777"
-          crossOrigin="anonymous"></script>
-      </Helmet>
-      <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
-      <meta name="description" content="Welcome to Demon List VN, this is where we keep track of the 50 hardest demons created and verified by Vietnamese and other Vietnamese players managed to beat one of those levels!" />
-      <ThemeProvider defaultTheme="dark">
-        <Component {...pageProps} />
-      </ThemeProvider>  
-    </div>
+    <>
+      <head>
+        <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4605218533506777"
+          crossorigin="anonymous"></Script>
+      </head>
+      <div className="App">
+        <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
+        <meta name="description" content="Welcome to Demon List VN, this is where we keep track of the 50 hardest demons created and verified by Vietnamese and other Vietnamese players managed to beat one of those levels!" />
+        <ThemeProvider defaultTheme="dark">
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </div>
+    </>
+
   )
 }
 
