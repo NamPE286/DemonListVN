@@ -50,6 +50,10 @@ function Main() {
                 dat[data['legacylist'][i].id].ldm = [];
             }
         }
+
+        data['mainlist'] = Object.assign({}, refactor(Object.values(data['mainlist'])))
+        data['GDVNAL'] = Object.assign({}, refactor1(Object.values(data['GDVNAL'])))
+
         var player = []
         for (const i in data['player']) {
             var a = {}
@@ -118,8 +122,9 @@ function Main() {
                                 'avatar': ''
                             }
                         }
-                        p[u].points = Math.round((p[u].points + data['GDVNAL'][i].points * a[j].percent / 100) * 100) / 100;
-                        if (p[u].bestplayPt < data['GDVNAL'][i].points * a[j].percent / 100) {
+                        p[u].points = p[u].points + getProgressPoint(parseInt(a[j].percent), parseInt(data['GDVNAL'][i].percentToQualify), parseInt(i))
+                        p[u].points = Math.round(p[u].points * 100) / 100
+                        if (p[u].bestplayPt < p[u].points) {
                             p[u].bestplayPt = Math.round(p[u].points * 100) / 100;
                             p[u].bestplay = data['GDVNAL'][i].name + ' (' + a[j].percent + '%' + ')';
                             p[u].bestplayThumbnail = data['GDVNAL'][i].thumbnail;
@@ -153,8 +158,7 @@ function Main() {
         for (const i in data['GDVNALPlayer']) {
             data['GDVNAL'][i]['vids'].sort((a, b) => b.percent - a.percent)
         }
-        data['mainlist'] = Object.assign({}, refactor(Object.values(data['mainlist'])))
-        data['GDVNAL'] = Object.assign({}, refactor1(Object.values(data['GDVNAL'])))
+
         console.log('Calculation finished')
         addData()
 
@@ -180,28 +184,20 @@ function Main() {
         }
         return x
     }
-    function roundNumber(num, scale) {
-        if (!("" + num).includes("e")) {
-            return +(Math.round(num + "e+" + scale) + "e-" + scale);
-        } else {
-            var arr = ("" + num).split("e");
-            var sig = ""
-            if (+arr[1] + scale > 0) {
-                sig = "+";
-            }
-            return +(Math.round(+arr[0] + "e" + sig + (+arr[1] + scale)) + "e-" + scale);
-        }
+    function getProgressPoint(q, r, i){
+        const pt = (Math.pow(10*5, (q - r)/(100 - r))*getPoint(i))/100
+        return Math.round(pt*100)/100
     }
     function getPoint(rank) {
-        return roundNumber((100 / Math.sqrt(((rank - 1) / 50) + 0.444444)) - 50, 3);
-
+        const total = data['GDVNAL'].length
+        const rankPt = Math.pow(total*Math.E, ((1 - rank)*Math.log(30))/149)
+        return Math.round(rankPt * 100) / 100
     }
     function refactor1(x) {
         x.sort((a, b) => (a.top < b.top) ? -1 : 1)
         for (const i in x) {
             x[i].top = parseInt(i) + 1
             x[i].points = getPoint(x[i].top)
-            x[i].points = Math.round(x[i].points * 100) / 100
         }
         return x
     }
@@ -415,6 +411,7 @@ function Main() {
                     d1.thumbnail = document.getElementById("thumbnail").value
                     d1.id = document.getElementById("lvid").value
                     d1.firstVictor = document.getElementById("firstVictor").value
+                    d1.percentToQualify = document.getElementById("percentToQualify").value
                     if (parseInt(document.getElementById("top").value) < d1.top) d1.top = parseInt(document.getElementById("top").value) - 0.5
                     else d1.top = parseInt(document.getElementById("top").value) + 0.5
                     if (!add) data['GDVNAL'][index] = d1
