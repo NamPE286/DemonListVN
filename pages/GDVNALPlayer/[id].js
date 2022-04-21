@@ -49,7 +49,6 @@ function Main() {
         }
         return s;
     }
-
     function recList() {
         if (data[id].vids.length == 0) {
             return (
@@ -75,11 +74,21 @@ function Main() {
                             <a id="levelRec">Completed demon(s): {ab.length}</a>
                         </section>
                         {Object.values(ab).map(i => {
-                            return (
-                                <section className="allPlayerInfo">
-                                    <a id="levelRec" href={i[1].link} target="_blank">{data0[i[0]].name} ({i[1].percent}%) ({i[1].hz})</a>
-                                </section>
-                            )
+                            try {
+                                return (
+                                    <section className="allPlayerInfo">
+                                        <a id="levelRec" href={i[1].link} target="_blank">{data0[i[0]].name} ({i[1].percent}%) ({i[1].hz})</a>
+                                    </section>
+                                )
+                            }
+                            catch (err) {
+                                console.log(i)
+                                return (
+                                    <section className="allPlayerInfo">
+                                        <a id="levelRec" href={i[1].link} target="_blank">Error</a>
+                                    </section>
+                                )
+                            }
 
                         })}
                     </div>

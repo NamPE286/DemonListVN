@@ -159,6 +159,10 @@ function Main() {
             data['GDVNAL'][i]['vids'].sort((a, b) => b.percent - a.percent)
         }
 
+        for (const i in data['GDVNAL']) {
+            data['mainlist1'][data['GDVNAL'][i].id] = JSON.parse(JSON.stringify(data['GDVNAL'][i]))
+        }
+
         console.log('Calculation finished')
         console.log(data)
         addData()
