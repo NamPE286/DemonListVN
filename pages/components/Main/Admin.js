@@ -124,8 +124,8 @@ function Main() {
                         }
                         p[u].points = Math.round((p[u].points + data['GDVNAL'][i].points * a[j].percent / 100) * 100) / 100;
                         p[u].points = Math.round(p[u].points * 100) / 100
-                        if (p[u].bestplayPt < p[u].points) {
-                            p[u].bestplayPt = Math.round(p[u].points * 100) / 100;
+                        if (p[u].bestplayPt < data['GDVNAL'][i].points) {
+                            p[u].bestplayPt = JSON.parse(JSON.stringify(data['GDVNAL'][i].points))
                             p[u].bestplay = data['GDVNAL'][i].name + ' (' + a[j].percent + '%' + ')';
                             p[u].bestplayThumbnail = data['GDVNAL'][i].thumbnail;
                             p[u].bestplayCreator = data['GDVNAL'][i].creator;
@@ -160,6 +160,7 @@ function Main() {
         }
 
         console.log('Calculation finished')
+        console.log(data)
         addData()
 
     }
