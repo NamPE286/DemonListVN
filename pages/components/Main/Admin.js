@@ -231,14 +231,7 @@ function Main() {
             data['mainlist1'][data['GDVNAL'][x]['id']].ldm = []
         }
         let a = data['mainlist1'][data['GDVNAL'][x]['id']]
-        if (a == undefined) {
-            data['mainlist1'][data['mainlist'][x]['id']] = data['mainlist'][x]
-            data['mainlist1'][data['mainlist'][x]['id']].ldm = []
-            a = data['mainlist1'][data['mainlist'][x]['id']]
-        }
-        if (a == undefined) {
-            return
-        }
+
         console.log(a)
         setD("GDVNAL")
         setD1(a)
@@ -543,6 +536,7 @@ function Main() {
                     )
                 }
                 catch(err){
+                    setD1(data['GDVNAL'][index])
                     return (
                         <div className="popup">
                             <div className="overlay">
@@ -556,12 +550,73 @@ function Main() {
                                     <label for="top">Top: </label>
                                     <input type="text" id="top" name="top" defaultValue={d1.top}></input><br />
                                     <label for="lvid">ID: </label>
-                                    <input type="text" id="lvid" name="lvid" defaultValue={d1.id}></input><br />
+                                    <input type="text" id="lvid" name="lvid"></input><br />
                                     <label for="thumbnail">Youtube video ID: </label>
                                     <input type="text" id="thumbnail" name="thumbnail" defaultValue={d1.thumbnail}></input><br />
                                     <label for="firstVictor">First Victor: </label>
                                     <input type="text" id="firstVictor" name="firstVictor" defaultValue={d1.firstVictor}></input><br />
+                                    <label for="percentToQualify">Percent to qualify: </label>
+                                    <input type="text" id="percentToQualify" name="percentToQualify" defaultValue={d1.percentToQualify}></input><br />
+                                    <label>Victor: </label><button onClick={addVictor}>Add victor</button><hr></hr>
+                                    <div className={`victor`} style={{ display: "none" }}>
+                                        <label for={`userName`}>Player name:  </label>
+                                        <input type="text" id={`userName`} name={`userName`}></input><br />
+                                        <label for={`percent`}>Percent:  </label>
+                                        <input type="text" id={`percent`} name={`percent`}></input><br />
+                                        <label for={`YTLink`}>Video Link:  </label>
+                                        <input type="text" id={`YTLink`} name={`YTLink`}></input><br />
+                                        <label for={`hz`}>HZ:  </label>
+                                        <input type="text" id={`hz`} name={`hz`}></input><br />
+                                        <button onClick={addVictor1}>Add</button>
+                                        <button onClick={cancel}>Cancel</button>
+                                        <hr />
+                                    </div>
+                                    <div className="victorCard">
+                                        {
+                                            Object.keys(d1.vids).map((i) => {
+                                            function update1() {
+                                                d1.vids[i].user = document.getElementById("userName" + i).value
+                                                d1.vids[i].percent = document.getElementById("percent" + i).value
+                                                d1.vids[i].link = document.getElementById("YTLink" + i).value
+                                                d1.vids[i].hz = document.getElementById("hz" + i).value
+                                                data['GDVNAL'][index] = d1
+                                                data['mainlist1'][d1.id] = d1
+                                                setD1(d1)
+                                                addData()
+                                            }
+                                            function delete2() {
+                                                d1.vids.splice(i, 1)
+                                                data['GDVNAL'][index] = d1
+                                                data['mainlist1'][d1.id] = d1
+                                                document.getElementsByClassName('victor' + i)[0].remove()
+                                                console.log(d1.vids)
+                                                setD1(d1)
+                                                addData()
+                                            }
+                                            return (
+                                                <>
+                                                    <div className={`victor${i}`}>
+                                                        <label for={`userName${i}`}>Player name:  </label>
+                                                        <input type="text" id={`userName${i}`} name={`userName${i}`} defaultValue={d1.vids[i].user}></input><br />
+                                                        <label for={`percent${i}`}>Percent:  </label>
+                                                        <input type="text" id={`percent${i}`} name={`percent${i}`} defaultValue={d1.vids[i].percent}></input><br />
+                                                        <label for={`YTLink${i}`}>Video Link:  </label>
+                                                        <input type="text" id={`YTLink${i}`} name={`YTLink${i}`} defaultValue={d1.vids[i].link}></input><br />
+                                                        <label for={`hz${i}`}>HZ:  </label>
+                                                        <input type="text" id={`hz${i}`} name={`hz${i}`} defaultValue={d1.vids[i].hz}></input><br />
+                                                        <button onClick={update1}>Update</button>
+                                                        <button onClick={delete2}>Delete</button>
+                                                        <hr />
+                                                    </div>
+
+                                                </>
+
+                                            )
+                                        })}
+                                    
+                                    </div>
                                     <br /><button onClick={update}>Update</button><br /><br /><br /><br />
+                                    <button onClick={deletelv}>Delete level</button>
                                 </div>
                             </div>
                         </div>
