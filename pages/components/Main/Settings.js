@@ -4,9 +4,14 @@ function Main() {
   const { theme, setTheme } = useTheme()
   console.log(theme)
   function processThing(x) {
-    let v = JSON.parse(JSON.stringify(x))
-    v = v.charAt(0).toUpperCase() + v.slice(1)
-    return v
+    try{
+      let v = JSON.parse(JSON.stringify(x))
+      v = v.charAt(0).toUpperCase() + v.slice(1)
+      return v
+    }
+    catch(err){
+      return "Dark"
+    }
   }
   return (
     <div className="mainpanel">
