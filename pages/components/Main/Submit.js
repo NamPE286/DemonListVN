@@ -54,8 +54,8 @@ function Main() {
                 </ul>
             </div>
             <div className="submitSelect">
-                <a href="#!" id="ab" onClick={() => setSel(0)} style={{background:"var(--a2)"}}>Submit to VNFDL</a>
-                <a href="#!" id="ac" onClick={() => setSel(1)}>Submit to GDVNAL</a>
+                <a href="#!" id="ab" onClick={() => setSel(0)} style={{background:"var(--a2)"}}>Submit to Featured List</a>
+                <a href="#!" id="ac" onClick={() => setSel(1)}>Submit to Demon List</a>
             </div>
             <hr id='lineUnderBtn1'></hr>
             {showGGF()}
