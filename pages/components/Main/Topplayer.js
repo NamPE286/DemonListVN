@@ -170,8 +170,8 @@ function Main() {
     <div className="mainpanel">
       <h2 id="title">Top Player</h2>
       <div className="submitSelect">
-        <a href="#!" id="ab" onClick={() => setMode('mainlist')} style={{ background: "var(--a2)" }}>VNFDL</a>
-        <a href="#!" id="ac" onClick={() => setMode('GDVNAL')} >GDVNAL</a>
+        <a href="#!" id="ab" onClick={() => setMode('mainlist')} style={{ background: "var(--a2)" }}>Featured List</a>
+        <a href="#!" id="ac" onClick={() => setMode('GDVNAL')} >Demon List</a>
       </div>
       <hr id='lineUnderBtn'></hr>
       {showContent()}
