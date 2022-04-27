@@ -315,7 +315,7 @@ function Main() {
                     <div className="mainpanelNoPadding panel1" id='center-div'>
                         <div className="selector">
                             <div>
-                                <a href="#!" onClick={changetoVictor}>Victor</a>
+                                <a href="#!" onClick={changetoVictor}>Record</a>
                                 <a href="#!" id="spacing" onClick={changetoComment}>Comment</a>
                             </div>
                             <hr></hr>

@@ -10,6 +10,8 @@ function Main() {
     const [data, setData] = useState({});
     const [lvDat, setlvDat] = useState([]);
     const [apilv, setapilv] = useState([]);
+    const [victorOnly, setVictorOnly] = useState(1);
+    const [data1, setData1] = useState([]);
     const [cmt, setCmt] = useState([]);
     const [mode, setMode] = useState(0);
     const [trig, setTrig] = useState(0);
@@ -50,6 +52,15 @@ function Main() {
         }
         getData()
     }, [])
+
+    useEffect(() => {
+        try {
+            setData1(lvDat[id].vids)
+        } catch (e) {
+            console.error(e)
+        }
+    }, [lvDat])
+
     useEffect(() => {
         axios
             .get(url)
@@ -71,7 +82,28 @@ function Main() {
                 console.error(error)
             })
     }, [trig])
-
+    function getVictorOnly() {
+        console.log(victorOnly)
+        try {
+            if (victorOnly == 1) {
+                var c = []
+                for (const i in lvDat[id].vids) {
+                    if (parseInt(lvDat[id].vids[i].percent) == 100) {
+                        c.push(lvDat[id].vids[i])
+                    }
+                }
+                lvDat[id].vids = c
+                console.log(c)
+            }
+            else {
+                lvDat[id].vids = data1
+                console.log('ok')
+            }
+        }
+        catch (err) {
+            console.error(err);
+        }
+    }
     function nextPanel() {
         if (mode == 0) return showVictor();
         else if (mode == 1) return showComment();
@@ -82,6 +114,13 @@ function Main() {
             if (lvDat[id]['vids'].length != 0) {
                 return (
                     <div className="mainpanelContent">
+                        <div className="selector4">
+                            <input type='checkbox' id='ifShowVictorOnly' onChange={() =>{
+                                setVictorOnly(!victorOnly)
+                                getVictorOnly()
+                            }}/>
+                            <label for='ifShowVictor'>Show victor only</label>
+                        </div>
                         <div className="recordList">
                             <div className="levelRecord">
                                 <section className="allPlayerInfo">
@@ -346,7 +385,7 @@ function Main() {
                     <div className="mainpanelNoPadding panel1" id='center-div'>
                         <div className="selector">
                             <div>
-                                <a href="#!" onClick={changetoVictor}>Victor</a>
+                                <a href="#!" onClick={changetoVictor}>Record</a>
                                 <a href="#!" id="spacing" onClick={changetoComment}>Comment</a>
                             </div>
                             <hr></hr>

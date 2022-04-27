@@ -78,11 +78,11 @@ function Main() {
       )
     }
     else if (mode === 'GDVNAL') {
-      try{
+      try {
         document.getElementById('ab').style.background = 'none';
-        document.getElementById('ac').style.background = 'var(--a2)';  
+        document.getElementById('ac').style.background = 'var(--a2)';
       }
-      catch(err){}
+      catch (err) { }
       return (
         <>
           <div className="mainpanelContent">
@@ -122,11 +122,13 @@ function Main() {
 
       <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
         <h2 id="title">Main List</h2>
-        <div className="submitSelect">
-          <a href="#!" id="ab" onClick={() => setMode('mainlist')} style={{background:"var(--a2)"}}>Featured List</a>
-          <a href="#!" id="ac" onClick={() => setMode('GDVNAL')} >Demon List</a>
+        <div>
+          <div className="submitSelect">
+            <a href="#!" id="ab" onClick={() => setMode('mainlist')} style={{ background: "var(--a2)" }}>Featured List</a>
+            <a href="#!" id="ac" onClick={() => setMode('GDVNAL')} >Demon List</a>
+          </div>
+          <hr id='lineUnderBtn'></hr>
         </div>
-        <hr></hr>
         {showList()}
       </div>
     </>
