@@ -245,6 +245,8 @@ function Main() {
     }
 
     function changetoVictor() {
+        lvDat[id].vids = data1
+        setVictorOnly(true)
         setMode(0);
     }
     function changetoComment() {
