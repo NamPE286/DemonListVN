@@ -18,6 +18,9 @@
     --a14: var(--a14);
     --a15: var(--a15);
     --a16: var(--a16);
+    --a17: var(--a17);
+    --a17: var(--a18);
+
 }
 
 [data-theme="light"] {
@@ -34,10 +37,12 @@
     --a9: #383838;
     --a10: #313131;
     --a11: #0b0b0b;
-    --a12: linear-gradient(90deg, #d1d1e300 0%, #ebebeb 100%);
+    --a12: linear-gradient(90deg, #d1d1e300 0%, #fffffff3 100%);
     --a13: linear-gradient(90deg, #d1d1e300 0%, #f0f0f0 90%);
     --a14: linear-gradient(0deg, #d1d1ff00 0%, #eeeeee 100%);
     --a15: linear-gradient(180deg, #d1d1ff00 0%, #e2e2e2 100%);
+    --a17: rgb(172, 172, 172);
+    --a18: rgb(87, 87, 87);
 }
 [data-theme="dark"] {
     --bg: black;
@@ -53,11 +58,10 @@
     --a9: #c7c7c7;
     --a10: #cecece;
     --a11: #f4f4f4;
-    --a12: linear-gradient(90deg, #2e2e2e1c 0%, #000000 95%);
+    --a12: linear-gradient(90deg, #2e2e2e1c 0%, #000000ef 95%);
     --a13: linear-gradient(90deg, #2e2e2e1c 0%, #000000 90%);
     --a14: linear-gradient(0deg, #2e2e2e00 0%, #212121 100%);
     --a15: linear-gradient(180deg, #2e2e2e00 0%, #1d1d1d 100%);
-
 }
 
 html {
@@ -199,11 +203,13 @@ code {
 }
 
 .sidePanel {
-    padding-bottom: 30px;
+    padding: 30px;
     position: fixed;
     overflow-y: scroll;
     top: 0;
     bottom: 0;
+    margin-left: -30px;
+    margin-top: -30px;
 
     .topSpacer {
         height: 200px;
@@ -211,122 +217,14 @@ code {
     .topplayerPanel {
         margin-bottom: 40px;
         background-color: var(--a1);
-        .ytVid {
-            //center the .ytVid
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-            margin-bottom: 20px;
-        }
-        .player {
-            margin-bottom: 15px;
-        }
         border-radius: 16px;
         width: 350px;
-        h2 {
-            text-align: center;
-            padding-bottom: 10px;
-        }
-        section {
-            width: 70px;
-            height: 70px;
-            overflow: hidden;
-            position: relative;
-            border-radius: 50%;
-            margin-left: 15px;
-            img {
-                position: absolute;
-                z-index: 1;
-                width: 100%;
-                left: -1000%;
-                right: -1000%;
-                top: -1000%;
-                bottom: -1000%;
-                margin: auto;
-                min-height: 100%;
-                min-width: 100%;
-            }
-        }
-        .topplayerInfo {
-            position: absolute;
-            margin-left: 50px;
-            z-index: 0;
-            width: 250px;
-            height: 30px;
-            border-radius: 16px;
-            padding: 10px;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            background-color: var(--a2);
-            transform: translateY(-80px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            p {
-                margin-left: 5px;
-            }
-        }
+        box-shadow: 0 0 30px var(--a17);
     }
     .annoucementPanel {
         background-color: var(--a1);
         border-radius: 16px;
-    }
-    .mainlistPanel {
-        background-color: var(--a1);
-        margin-left: 30px;
-        margin-right: 30px;
-        border-radius: 16px;
-        padding: 10px;
-        width: 350px;
-        margin-bottom: 40px;
-        h2 {
-            text-align: center;
-            padding-bottom: 10px;
-        }
-        section {
-            width: 90%;
-            height: 50px;
-            margin: auto;
-            overflow: hidden;
-            border-radius: 16px;
-            object-fit: contain;
-            display: flex;
-            justify-content: flex-end;
-            position: relative;
-            margin-bottom: 15px;
-            img {
-                position: absolute;
-                z-index: 0;
-                width: 100%;
-                left: -1000%;
-                right: -1000%;
-                top: -1000%;
-                bottom: -1000%;
-                margin: auto;
-                min-height: 100%;
-                min-width: 100%;
-            }
-        }
-        .smalltop {
-            position: absolute;
-            z-index: 1;
-            left: 0;
-            margin-left: 15px;
-            font-size: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-            text-shadow: 3px 6px 12px black;
-        }
-        a {
-            z-index: 1;
-            display: flex;
-            align-items: center;
-            margin-right: 20px;
-        }
-        #bold {
-            font-weight: bold;
-            margin-right: 5px;
-        }
+        box-shadow: 0 0 30px var(--a17);
     }
 }
 .levelCard {
@@ -352,6 +250,8 @@ code {
         min-height: 100%;
         min-width: 100%;
     }
+    box-shadow: 0 0 30px var(--a18);
+
 }
 .lvinfo {
     margin: auto;
@@ -1104,6 +1004,9 @@ code {
     color: var(--a7);
     display: flex;
     align-items: center;
+}
+.mainpanel{
+    box-shadow: 0 0 30px var(--a17);
 }
 @media screen and (max-width: 1500px) {
     .pageContent {
