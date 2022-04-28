@@ -1252,8 +1252,18 @@ code {
         margin-right: 50px;
     }
     .selector4{
-        margin-left: 50px;
-        margin-bottom: 10px;
+        margin-left: 80px;
+        margin-bottom: 20px;
+        font-size: 18px;
+        label{
+            margin-left: 10px;
+        }
+        input{
+            position: absolute;
+            transform: scale(2);
+            width: 500px;
+            margin-left: -260px;
+        }
     }
     
 }
