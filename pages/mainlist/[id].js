@@ -84,7 +84,7 @@ function Main() {
                     <div className="recordList">
                         <div className="levelRecord">
                             <section className="allPlayerInfo">
-                                <a id="levelRec"><b>Total Victor: {data[id].length}</b></a>
+                                <a id="levelRec"><b>Total Record: {data[id].length}</b></a>
                             </section>
                             {Object.keys(data[id]).map(i => {
                                 return (
