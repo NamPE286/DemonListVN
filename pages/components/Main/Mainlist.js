@@ -56,7 +56,7 @@ function Main() {
                     <div className="levelWrapper" key={i}>
                       <a href={`/mainlist/${data[i].id}`}>
                         <div className='levelCard'>
-                          <Image src={`https://i.ytimg.com/vi/${data[i].thumbnail}/hqdefault.jpg`} alt="" layout="fill" objectFit='cover' priority='true' quality={35}></Image>
+                          <Image src={`https://i.ytimg.com/vi/${data[i].thumbnail}/hqdefault.jpg`} alt="" layout="fill" objectFit='cover' loading='lazy' quality={35}></Image>
                           <div className='fadeEffect'></div>
                           <p className='top'>#{parseInt(i) + 1}</p>
                           <div className='levelInfo'>
@@ -93,7 +93,7 @@ function Main() {
                     <div className="levelWrapper" key={i}>
                       <a href={`/GDVNAL/${data0[i].id}`}>
                         <div className='levelCard'>
-                          <Image src={`https://i.ytimg.com/vi/${data0[i].thumbnail}/hqdefault.jpg`} alt="" layout="fill" objectFit='cover' priority='true' quality={35}></Image>
+                          <Image src={`https://i.ytimg.com/vi/${data0[i].thumbnail}/hqdefault.jpg`} alt="" layout="fill" objectFit='cover' loading='lazy' quality={35}></Image>
                           <div className='fadeEffect'></div>
                           <p className='top'>#{parseInt(i) + 1}</p>
                           <div className='levelInfo'>

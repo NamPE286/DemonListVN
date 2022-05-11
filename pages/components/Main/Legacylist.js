@@ -45,7 +45,7 @@ function Main() {
                   <div className="levelWrapper" key={i}>
                     <a href={`/mainlist/${data[i].id}`}>
                       <div className='levelCard'>
-                        <Image src={`https://i.ytimg.com/vi/${data[i].thumbnail}/hqdefault.jpg`} alt="" layout="fill" objectFit='cover' priority='true' quality={35}></Image>
+                        <Image src={`https://i.ytimg.com/vi/${data[i].thumbnail}/hqdefault.jpg`} alt="" layout="fill" objectFit='cover' loading='lazy' quality={35}></Image>
                         <div className='fadeEffect'></div>
                         <div className='levelInfo'>
                           <h3>{data[i].name}</h3>
