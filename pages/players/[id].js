@@ -203,18 +203,30 @@ function Main() {
     function showInfo(){
         try{
             return(
-                <>
+                <div className="basicInfo">
                     <img src={data[id].avatar} alt="" />
                     <h2 id="playerName">{data[id].name}</h2>
-                </>
+                    <hr></hr>
+                    <div className="socialInfo1">
+                    <a href="#!"><img src="/icon/facebook.ico" id='socialIcon' alt="" /></a>
+                        <a href="#!"><img src="/icon/youtube.ico" id='socialIcon' alt="" /></a>
+                        <a href="#!"><img src="/icon/discord.ico" id='socialIcon' onClick={copyDiscordTag} alt="" title="Click to copy Discord tag" /></a>
+                    </div>
+                </div>
             )
         }
         catch(err){
             return(
-                <>
+                <div className="basicInfo">
                     <img src={data1[id].avatar} alt="" />
                     <h2 id="playerName">{data1[id].name}</h2>
-                </>
+                    <hr></hr>
+                    <div className="socialInfo1">
+                    <a href="#!"><img src="/icon/facebook.ico" id='socialIcon' alt="" /></a>
+                        <a href="#!"><img src="/icon/youtube.ico" id='socialIcon' alt="" /></a>
+                        <a href="#!"><img src="/icon/discord.ico" id='socialIcon' onClick={copyDiscordTag} alt="" title="Click to copy Discord tag" /></a>
+                    </div>
+                </div>
             )
         }
     }
@@ -239,12 +251,6 @@ function Main() {
                         <div className="mainpanel4">
                             <div className="socialInfo">
                                 {showInfo()}
-                                <hr></hr>
-                                <div className="socialInfo1">
-                                <a href="#!"><img src="/icon/facebook.ico" id='socialIcon' alt="" /></a>
-                                    <a href="#!"><img src="/icon/youtube.ico" id='socialIcon' alt="" /></a>
-                                    <a href="#!"><img src="/icon/discord.ico" id='socialIcon' onClick={copyDiscordTag} alt="" title="Click to copy Discord tag" /></a>
-                                </div>
                             </div>
                             <hr id='verticalLine'></hr>
                             <div className="playerRecord">
