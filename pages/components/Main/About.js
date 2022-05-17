@@ -8,11 +8,11 @@ function Main() {
     return (
         <div className="mainpanel" id="about">
             <h2>About</h2>
-            <p>This page was made in NextJS with SCSS and Firebase.</p>
+            <p>This page was made in NextJS with SCSS and Firebase. <a href='https://github.com/NamPE286/DemonListVN'> Source code (click here)</a></p>
             <h2>Join Our Discord Server</h2>
             <iframe id="discord2" src="https://discord.com/widget?id=877546680801697813&theme=dark" width="50%" height="300" allowtransparency="true" frameBorder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
             <h2>Credit</h2>
-            <h3 id='role'>• Owner</h3>
+            <h3 id='role'>• Featured List VN Owner</h3>
             <div className="credit">
                 <img src="https://avatars.githubusercontent.com/u/80624167?v=4"></img>
                 <div className="creditContent">
@@ -30,6 +30,33 @@ function Main() {
                     <a href="https://www.youtube.com/channel/UCYw-j3PO02FCfEL-M-VZqGg">YouTube</a>
                     <a href="https://www.facebook.com/profile.php?id=100015875652073">Facebook</a>
                     <a>Discord: Hito73#4105</a>
+                </div>
+            </div>
+            <h3 id='role'>• Demon List VN Owner</h3>
+            <div className="credit">
+                <img src="https://yt3.ggpht.com/OBeTi6u8XxufbZxeJRe9jYx9nmBkAdYVBrZLQlke8BQXoMznrmQsoqD5V3K7fHMfx8fJfaeI=s88-c-k-c0x00ffffff-no-rj"></img>
+                <div className="creditContent">
+                    <h3>Noeru</h3>
+                    <hr></hr>
+                    <a href='https://m.youtube.com/c/noeruchangd/featured'>Youtube</a>
+                    <a>Discord: noeru#0563</a>
+                </div>
+            </div>
+            <div className="credit">
+                <img src="https://yt3.ggpht.com/LPuxniDbgFswSgusUD_P4LCSYVPObpOMcbBdBD31ZDWrehS-7wSakq17bCc29fN3OCAV6BtEIg=s88-c-k-c0x00ffffff-no-rj"></img>
+                <div className="creditContent">
+                    <h3>Axyb</h3>
+                    <hr></hr>
+                    <a href="https://m.youtube.com/channel/UCcdpyP7JZZima9_Ukaguj-w">YouTube</a>
+                    <a>Discord: shiraaaaaa;#6309</a>
+                </div>
+            </div>
+            <div className="credit">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPfCfynXv42fOnrTQAs-99j09O8uz7mDilOQ&usqp=CAU"></img>
+                <div className="creditContent">
+                    <h3>Kanota</h3>
+                    <hr></hr>
+                    <a>Discord: Kanota#1191</a>
                 </div>
             </div>
             <h3 id='role'>• Designer</h3>
