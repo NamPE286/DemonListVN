@@ -9,16 +9,26 @@ function Main() {
     const router = useRouter();
     const { id } = router.query;
     const [data, setData] = useState([]);
+    const [data1, setData1] = useState([]);
     const [player, setPlayer] = useState([]);
 
     useEffect(() => {
         async function getData() {
-
             const lvRef = doc(db, "data", "playerPt0")
             const docSnap = await getDoc(lvRef);
 
             if (docSnap.exists()) {
                 setData(docSnap.data());
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+
+            const lvRef1 = doc(db, "data", "GDVNALPlayer0")
+            const docSnap1 = await getDoc(lvRef1);
+
+            if (docSnap1.exists()) {
+                setData1(docSnap1.data());
             } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
@@ -87,6 +97,74 @@ function Main() {
             )
         }
     }
+    function copyDiscordTag() {
+        var text = "test#1234"
+        var dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        dummy.value = text;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+        alert("Copied Discord tag clipboard!");
+    }
+    function showData(){
+        try{
+            return(
+                <div className="playerRank1">
+                    <a id='rank1'>FDLNV Rank</a><br/>
+                    <a id='top1'>#{data[id].top}</a><br/>
+                    <a id='pt1'>{data[id].points}pt</a><br/>
+                </div>
+            )
+        }
+        catch(err){
+            return(
+                <div className="playerRank1">
+                    <a id='rank1'>FDLNV Rank</a><br/>
+                    <a id='top1'>#N/A</a><br/>
+                    <a id='pt1'>N/A pt</a><br/>
+                </div>
+            )   
+        }
+    }
+    function showData1(){
+        try{
+            return(
+                <div className="playerRank1">
+                    <a id='rank1'>Demon List VN Rank</a><br/>
+                    <a id='top1'>#{data1[id].top}</a><br/>
+                    <a id='pt1'>{data1[id].points}pt</a><br/>
+                </div>
+            )
+        }
+        catch(err){
+            return(
+                <div className="playerRank1">
+                    <a id='rank1'>Demon List VN Rank</a><br/>
+                    <a id='top1'>#N/A</a><br/>
+                    <a id='pt1'>N/A pt</a><br/>
+                </div>
+            )   
+        }
+    }
+    function showInfo(){
+        try{
+            return(
+                <>
+                    <img src={data[id].avatar} alt="" />
+                    <h2 id="playerName">{data[id].name}</h2>
+                </>
+            )
+        }
+        catch(err){
+            return(
+                <>
+                    <img src={data1[id].avatar} alt="" />
+                    <h2 id="playerName">{data1[id].name}</h2>
+                </>
+            )
+        }
+    }
     try {
         return (
             <>
@@ -99,26 +177,26 @@ function Main() {
                         <div className='topSpacer' />
                     </div>
                     <div className="mainpanel" id="center-div">
-                        <h2>{id}'s Info</h2>
-                        <div className="mainpanelContent">
-                            <div className="topMostPlayer">
-                                <section className="sect">
-                                    <img src={data[id].avatar} alt="" />
-                                </section>
-                                <div className="topMostPlayerInfo">
-                                    <h3>#{data[id].top} {data[id].name}</h3>
-                                    <hr></hr>
-                                    <p>{data[id].points}pt <p>Best Play: {processTitle(data[id].bestplay)} by {processAuthor(data[id].bestplayCreator)}</p></p>
-                                </div>
-                                <div className="levelThumbWrapper">
-                                    <section className="levelThumb">
-                                        <img src={`https://i.ytimg.com/vi/${data[id].bestplayThumbnail}/hqdefault.jpg`} alt=''></img>
-                                        <div className="fadeEffect1"></div>
-                                        <a><div id="bold">{processTitle(data[id].bestplay)}</div>by {processAuthor(data[id].bestplayCreator)} - {data[id].bestplayPt}pt</a>
-                                    </section>
+                        <div className="spacer1"/>
+                        <div className="mainpanel4">
+                            <div className="socialInfo">
+                                {showInfo()}
+                                <hr></hr>
+                                <div className="socialInfo1">
+                                <a href="#!"><img src="/icon/facebook.ico" id='socialIcon' alt="" /></a>
+                                    <a href="#!"><img src="/icon/youtube.ico" id='socialIcon' alt="" /></a>
+                                    <a href="#!"><img src="/icon/discord.ico" id='socialIcon' onClick={copyDiscordTag} alt="" title="Click to copy Discord tag" /></a>
                                 </div>
                             </div>
-                            {recList()}
+                            <hr id='verticalLine'></hr>
+                            <div className="playerRecord">
+                                <div className="playerRank">
+                                    {showData()}
+                                    <hr id='verticalLine1'></hr>
+                                    {showData1()}
+                                </div>
+                                {recList()}
+                            </div>
                         </div>
                     </div>
                 </div>

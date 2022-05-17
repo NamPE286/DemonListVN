@@ -117,7 +117,7 @@ function Main() {
           {Object.keys(data0).map(i => {
             if (i < 3) {
               return (
-                <a href={`/GDVNALPlayer/${data0[i].name}`}>
+                <a href={`/players/${data0[i].name}`}>
                   <div className="topMostPlayer">
                     <section className="sect">
                       <img src={data0[i].avatar} alt="" />

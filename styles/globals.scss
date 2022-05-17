@@ -844,6 +844,7 @@ code {
         width: 75%;
         height: 0;
         border: var(--a3) solid 1px;
+        background-color: var(--a3);
         margin-right: auto;
         margin-left: auto;
         margin-bottom: 32px;
@@ -1007,6 +1008,84 @@ code {
 }
 .mainpanel{
     box-shadow: 0 0 30px var(--a17);
+}
+.spacer1{
+    height: 80px;
+}
+.mainpanel4{
+    display: flex;
+    box-sizing: border-box;
+    .socialInfo{
+        img{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+        }
+        hr{
+            width: 100%;
+            margin-top: -15px;
+            margin-bottom: 15px;
+        }
+        .socialInfo1{
+            display: flex;
+            justify-content: center;
+        }
+        #socialIcon{
+            height: 30px;
+            width: 30px;
+            margin-inline: 10px;
+        }
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+    #verticalLine{
+        width: 1px;
+        height: 500px;
+        background-color: var(--a3);
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .playerRecord{
+        margin-inline: auto;
+        #verticalLine1{
+            width: 1px;
+            height: 120px;
+            background-color: var(--a3);
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+    }
+    .playerRank{
+        display: flex;
+        background-color: var(--a2);
+        border-radius: 16px;
+        height: 180px;
+        width: 600px;
+        justify-content: center;
+    }
+    .playerRank1{
+        box-sizing: border-box;
+        width: 300px;
+        padding-inline: 50px;
+        #rank1{
+            color:var(--a7);
+            font-size: 14px;
+        }
+        #top1{
+            font-size: 50px;
+        }
+        #pt1{
+            color:var(--a7);
+            font-size: 14px;
+        }
+        #bestplay1{
+            font-size: 14px;
+        }
+        margin-top: auto;
+        margin-bottom: auto;
+    }
 }
 @media screen and (max-width: 1500px) {
     .pageContent {
