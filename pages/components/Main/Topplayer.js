@@ -146,13 +146,13 @@ function Main() {
                     <a id="playerName"></a><a id="playerTotalPoint">Total Point</a><a id="playerBestplay">Best Play</a>
                   </section>
                   <section className="allPlayerInfo">
-                    <a id="playerName" href={`/GDVNALPlayer/${data0[i].name}`}>#{parseInt(i) + 1} {data0[i].name}</a><a id="playerTotalPoint">{data0[i].points}pt</a><a id="playerBestplay">{data0[i].bestplay}</a>
+                    <a id="playerName" href={`/players/${data0[i].name}`}>#{parseInt(i) + 1} {data0[i].name}</a><a id="playerTotalPoint">{data0[i].points}pt</a><a id="playerBestplay">{data0[i].bestplay}</a>
                   </section>
                   {Object.keys(data0).map(i => {
                     if (i > 3) {
                       return (
                         <section className="allPlayerInfo">
-                          <a id="playerName" href={`/GDVNALPlayer/${data0[i].name}`}>#{parseInt(i) + 1} {data0[i].name}</a><a id="playerTotalPoint">{data0[i].points}pt</a><a id="playerBestplay">{data0[i].bestplay}</a>
+                          <a id="playerName" href={`/players/${data0[i].name}`}>#{parseInt(i) + 1} {data0[i].name}</a><a id="playerTotalPoint">{data0[i].points}pt</a><a id="playerBestplay">{data0[i].bestplay}</a>
                         </section>
                       )
                     }
