@@ -10,7 +10,9 @@ function Main() {
     const { id } = router.query;
     const [data, setData] = useState([]);
     const [data1, setData1] = useState([]);
+    const [data2, setData2] = useState([]);
     const [player, setPlayer] = useState([]);
+    const [mode, setMode] = useState(0);
 
     useEffect(() => {
         async function getData() {
@@ -29,6 +31,16 @@ function Main() {
 
             if (docSnap1.exists()) {
                 setData1(docSnap1.data());
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+
+            const lvRef2 = doc(db, "data", "mainlist1")
+            const docSnap2 = await getDoc(lvRef2);
+
+            if (docSnap2.exists()) {
+                setData2(docSnap2.data());
             } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
@@ -59,42 +71,83 @@ function Main() {
         }
         return s;
     }
-
     function recList() {
-        if (player[id] == undefined) {
-            return (
-                <div className="recordList">
-                    <h2 id='nvm'>Record List</h2>
-                    <div className="levelRecord">
-                        <section className="allPlayerInfo">
-                            <a id="levelRec">This player did not beat any level yet</a>
-                        </section>
+        if(mode == 0) {
+            if (player[id] == undefined || player[id].length == 0) {
+                return (
+                    <div className="recordList">
+                        <br></br><br></br>
+                        <div className="levelRecord">
+                            <section className="allPlayerInfo">
+                                <a id="levelRec">This player did not beat any level yet</a>
+                            </section>
+                        </div>
                     </div>
-                </div>
 
-            )
+                )
 
+            }
+            else {
+                var c = -1
+                return (
+                    <div className="recordList">
+                        <br></br><br></br>
+                        <div className="levelRecord">
+                            <section className="allPlayerInfo">
+                                <a id="levelRec">Completed demon(s): {player[id].length}</a>
+                            </section>
+                            {Object.keys(player[id]).map(i => {
+                                c = c*-1
+                                return (
+                                    <section className="allPlayerInfo" id={`lvGrid${c}`} key={i}>
+                                        <a id="levelRec">{player[id][i]}</a>
+                                    </section>
+                                )
+
+                            })}
+                        </div>
+                    </div>
+
+                )
+            }
         }
-        else {
-            return (
-                <div className="recordList">
-                    <h2 id='nvm'>Record List</h2>
-                    <div className="levelRecord">
-                        <section className="allPlayerInfo">
-                            <a id="levelRec">Completed demon(s): {player[id].length}</a>
-                        </section>
-                        {Object.keys(player[id]).map(i => {
-                            return (
-                                <section className="allPlayerInfo" key={i}>
-                                    <a id="levelRec">{player[id][i]}</a>
-                                </section>
-                            )
-
-                        })}
+        else if (mode == 1){
+            if (data1[id] == undefined || data1[id].lv.length == 0) {
+                return (
+                    <div className="recordList">
+                        <br></br><br></br>
+                        <div className="levelRecord">
+                            <section className="allPlayerInfo">
+                                <a id="levelRec">This player did not beat any level yet</a>
+                            </section>
+                        </div>
                     </div>
-                </div>
 
-            )
+                )
+
+            }
+            else {
+                var c = -1;
+                return (
+                    <div className="recordList">
+                        <br></br><br></br>
+                        <div className="levelRecord">
+                            <section className="allPlayerInfo">
+                                <a id="levelRec">Completed demon(s): {data1[id].lv.length}</a>
+                            </section>
+                            {Object.keys(data1[id].vids).map(i => {
+                                c = c*-1
+                                return (
+                                    <section className="allPlayerInfo" id={`lvGrid${c}`} key={i}>
+                                        <a id="levelRec" href={data1[id].vids[i].link} target='_blank'>{data2[i].name} ({data1[id].vids[i].percent}%) ({data1[id].vids[i].hz})</a>
+                                    </section>
+                                )
+                            })}
+                        </div>
+                    </div>
+
+                )
+            }
         }
     }
     function copyDiscordTag() {
@@ -165,6 +218,11 @@ function Main() {
             )
         }
     }
+    function nah(x){
+        if(x == 0) return "FDLVN"
+        return "Demon List VN"
+    }
+
     try {
         return (
             <>
@@ -194,13 +252,19 @@ function Main() {
                                     {showData()}
                                     <hr id='verticalLine1'></hr>
                                     {showData1()}
-                                </div>
+                                </div><br/>
+                                <label for="mode12" id="mode123">Show Record: </label>
+                                <select name="mode12" id="mode12">
+                                    <option value={mode} selected disabled hidden>{nah(mode)}</option>
+                                    <option value="0">FDLVN</option>
+                                    <option value="1">Demon List VN</option>
+                                </select>
+                                <button onClick={() => setMode(document.getElementById('mode12').value)}>Apply</button>
                                 {recList()}
                             </div>
                         </div>
                     </div>
                 </div>
-
 
             </>
         );

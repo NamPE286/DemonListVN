@@ -684,6 +684,9 @@ code {
 }
 .levelRecord {
     display: table;
+    border-collapse: separate; 
+    border-spacing: 0 5px; 
+    margin-top: -5px;
     padding: 10px;
     margin: auto;
     transform: translateY(-25px);
@@ -1087,6 +1090,11 @@ code {
         margin-bottom: auto;
     }
 }
+#lvGrid1{
+    background-color: var(--a2);
+    border-radius: 16px;
+}
+
 @media screen and (max-width: 1500px) {
     .pageContent {
         margin-left: 100px;
