@@ -1273,7 +1273,17 @@ code {
         margin-inline: auto;
     }
     #mode123{
-        margin-left: 15vw;
+        //put in center
+        display: flex;
+        justify-content: center;
+        button{
+            margin-left: 20px;
+            transform: scale(1.2);
+        }
+        select{
+            margin-left: 15px;
+            transform: scale(1.2);
+        }
     }
 }
 @media screen and (max-width: 700px) {

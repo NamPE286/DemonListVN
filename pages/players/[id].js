@@ -263,13 +263,15 @@ function Main() {
                                     <hr id='verticalLine1'></hr>
                                     {showData1()}
                                 </div><br/>
-                                <label for="mode12" id="mode123">Show Record: </label>
-                                <select name="mode12" id="mode12">
-                                    <option value={mode} selected disabled hidden>{nah(mode)}</option>
-                                    <option value="0">FDLVN</option>
-                                    <option value="1">Demon List VN</option>
-                                </select>
-                                <button onClick={() => setMode(document.getElementById('mode12').value)}>Apply</button>
+                                <section id="mode123">
+                                    <label for="mode12">Show Record: </label>
+                                    <select name="mode12" id="mode12">
+                                        <option value={mode} selected disabled hidden>{nah(mode)}</option>
+                                        <option value="0">FDLVN</option>
+                                        <option value="1">Demon List VN</option>
+                                    </select>
+                                    <button onClick={() => setMode(document.getElementById('mode12').value)}>Apply</button>
+                                </section>
                                 {recList()}
                             </div>
                         </div>
