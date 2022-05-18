@@ -12,8 +12,7 @@ function Main() {
     const [data1, setData1] = useState([]);
     const [data2, setData2] = useState([]);
     const [player, setPlayer] = useState([]);
-    const [mode, setMode] = useState(0);
-
+    const [mode, setMode] = useState();
     useEffect(() => {
         async function getData() {
             const lvRef = doc(db, "data", "playerPt0")
@@ -58,6 +57,11 @@ function Main() {
         }
         getData()
     }, [])
+    useEffect(() => {
+        if(router.query.mode){
+            setMode(router.query.mode)
+        }
+    }, [router.query.mode])
 
     function processTitle(s) {
         if (s.length > 13) {
@@ -79,7 +83,7 @@ function Main() {
                         <br></br><br></br>
                         <div className="levelRecord">
                             <section className="allPlayerInfo">
-                                <a id="levelRec">This player did not beat any level yet</a>
+                                <a id="levelRec">This player haven't beaten any level yet</a>
                             </section>
                         </div>
                     </div>
@@ -118,7 +122,7 @@ function Main() {
                         <br></br><br></br>
                         <div className="levelRecord">
                             <section className="allPlayerInfo">
-                                <a id="levelRec">This player did not beat any level yet</a>
+                                <a id="levelRec">This player haven't beaten any level yet</a>
                             </section>
                         </div>
                     </div>
