@@ -58,7 +58,7 @@ function Main() {
           {Object.keys(data).map(i => {
             if (i < 3) {
               return (
-                <a href={`/players/${data[i].name}`}>
+                <a href={`/players/${data[i].name}?mode=0`}>
                   <div className="topMostPlayer">
                     <section className="sect">
                       <img src={data[i].avatar} alt="" />
@@ -87,13 +87,13 @@ function Main() {
                     <a id="playerName"></a><a id="playerTotalPoint">Total Point</a><a id="playerBestplay">Best Play</a>
                   </section>
                   <section className="allPlayerInfo">
-                    <a id="playerName" href={`/players/${data[i].name}`}>#{parseInt(i) + 1} {data[i].name}</a><a id="playerTotalPoint">{data[i].points}pt</a><a id="playerBestplay">{data[i].bestplay}</a>
+                    <a id="playerName" href={`/players/${data[i].name}?mode=0`}>#{parseInt(i) + 1} {data[i].name}</a><a id="playerTotalPoint">{data[i].points}pt</a><a id="playerBestplay">{data[i].bestplay}</a>
                   </section>
                   {Object.keys(data).map(i => {
                     if (i > 3) {
                       return (
                         <section className="allPlayerInfo">
-                          <a id="playerName" href={`/players/${data[i].name}`}>#{parseInt(i) + 1} {data[i].name}</a><a id="playerTotalPoint">{data[i].points}pt</a><a id="playerBestplay">{data[i].bestplay}</a>
+                          <a id="playerName" href={`/players/${data[i].name}?mode=0`}>#{parseInt(i) + 1} {data[i].name}</a><a id="playerTotalPoint">{data[i].points}pt</a><a id="playerBestplay">{data[i].bestplay}</a>
                         </section>
                       )
                     }
@@ -117,7 +117,7 @@ function Main() {
           {Object.keys(data0).map(i => {
             if (i < 3) {
               return (
-                <a href={`/players/${data0[i].name}`}>
+                <a href={`/players/${data0[i].name}?mode=1`}>
                   <div className="topMostPlayer">
                     <section className="sect">
                       <img src={data0[i].avatar} alt="" />
@@ -146,13 +146,13 @@ function Main() {
                     <a id="playerName"></a><a id="playerTotalPoint">Total Point</a><a id="playerBestplay">Best Play</a>
                   </section>
                   <section className="allPlayerInfo">
-                    <a id="playerName" href={`/players/${data0[i].name}`}>#{parseInt(i) + 1} {data0[i].name}</a><a id="playerTotalPoint">{data0[i].points}pt</a><a id="playerBestplay">{data0[i].bestplay}</a>
+                    <a id="playerName" href={`/players/${data0[i].name}?mode=1`}>#{parseInt(i) + 1} {data0[i].name}</a><a id="playerTotalPoint">{data0[i].points}pt</a><a id="playerBestplay">{data0[i].bestplay}</a>
                   </section>
                   {Object.keys(data0).map(i => {
                     if (i > 3) {
                       return (
                         <section className="allPlayerInfo">
-                          <a id="playerName" href={`/players/${data0[i].name}`}>#{parseInt(i) + 1} {data0[i].name}</a><a id="playerTotalPoint">{data0[i].points}pt</a><a id="playerBestplay">{data0[i].bestplay}</a>
+                          <a id="playerName" href={`/players/${data0[i].name}?mode=1`}>#{parseInt(i) + 1} {data0[i].name}</a><a id="playerTotalPoint">{data0[i].points}pt</a><a id="playerBestplay">{data0[i].bestplay}</a>
                         </section>
                       )
                     }
