@@ -14,15 +14,6 @@ function Main() {
             <h2>Credit</h2>
             <h3 id='role'>• Featured List VN Owner</h3>
             <div className="credit">
-                <img src="https://avatars.githubusercontent.com/u/80624167?v=4"></img>
-                <div className="creditContent">
-                    <h3>VnPower</h3>
-                    <hr></hr>
-                    <a>Discord: VnPower#5919</a>
-                    <a href="https://github.com/rVnPower">GitHub</a>
-                </div>
-            </div>
-            <div className="credit">
                 <img src="https://yt3.ggpht.com/ytc/AAUvwnjglRqQfBFknV54s-A7rDqU41E4mCyCUxLk9eT7wA=s88-c-k-c0x00ffffff-no-rj"></img>
                 <div className="creditContent">
                     <h3>Hito73</h3>
@@ -30,6 +21,15 @@ function Main() {
                     <a href="https://www.youtube.com/channel/UCYw-j3PO02FCfEL-M-VZqGg">YouTube</a>
                     <a href="https://www.facebook.com/profile.php?id=100015875652073">Facebook</a>
                     <a>Discord: Hito73#4105</a>
+                </div>
+            </div>
+            <div className="credit">
+                <img src="https://avatars.githubusercontent.com/u/80624167?v=4"></img>
+                <div className="creditContent">
+                    <h3>VnPower</h3>
+                    <hr></hr>
+                    <a>Discord: VnPower#5919</a>
+                    <a href="https://github.com/rVnPower">GitHub</a>
                 </div>
             </div>
             <h3 id='role'>• Demon List VN Owner</h3>
