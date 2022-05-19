@@ -162,7 +162,7 @@ function Main() {
         dummy.select();
         document.execCommand("copy");
         document.body.removeChild(dummy);
-        alert("Copied Discord tag clipboard!");
+        alert("Copied Discord tag to clipboard!");
     }
     function showData(){
         try{
