@@ -36,7 +36,7 @@ function Main() {
             <div className="credit">
                 <img src="https://yt3.ggpht.com/OBeTi6u8XxufbZxeJRe9jYx9nmBkAdYVBrZLQlke8BQXoMznrmQsoqD5V3K7fHMfx8fJfaeI=s88-c-k-c0x00ffffff-no-rj"></img>
                 <div className="creditContent">
-                    <h3>Noeru</h3>
+                    <h3>noeruchan</h3>
                     <hr></hr>
                     <a href='https://m.youtube.com/c/noeruchangd/featured'>Youtube</a>
                     <a>Discord: noeru#0563</a>
@@ -45,17 +45,18 @@ function Main() {
             <div className="credit">
                 <img src="https://yt3.ggpht.com/LPuxniDbgFswSgusUD_P4LCSYVPObpOMcbBdBD31ZDWrehS-7wSakq17bCc29fN3OCAV6BtEIg=s88-c-k-c0x00ffffff-no-rj"></img>
                 <div className="creditContent">
-                    <h3>Axyb</h3>
+                    <h3>axyb</h3>
                     <hr></hr>
                     <a href="https://m.youtube.com/channel/UCcdpyP7JZZima9_Ukaguj-w">YouTube</a>
                     <a>Discord: shiraaaaaa;#6309</a>
                 </div>
             </div>
             <div className="credit">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPfCfynXv42fOnrTQAs-99j09O8uz7mDilOQ&usqp=CAU"></img>
+                <img src="https://yt3.ggpht.com/u-NToatBL5sFU64lmf2jpr8VTGQ0JpwfHnd5hAB6KiXrvfcFygwjRAvqfCqQkIk-6qx4txCwyw=s88-c-k-c0x00ffffff-no-rj"></img>
                 <div className="creditContent">
                     <h3>Kanota</h3>
                     <hr></hr>
+                    <a href="https://www.youtube.com/channel/UCyHGYrLHvmZ-5rDTOxcCwAw">YouTube</a>
                     <a>Discord: Kanota#1191</a>
                 </div>
             </div>
