@@ -100,11 +100,11 @@ function Main() {
                             <section className="allPlayerInfo">
                                 <a id="levelRec">Completed demon(s): {player[id].length}</a>
                             </section>
-                            {Object.keys(player[id]['lv']).map(i => {
+                            {Object.keys(player[id]['vids']).map(i => {
                                 c = c*-1
                                 return (
                                     <section className="allPlayerInfo" id={`lvGrid${c}`} key={i}>
-                                        <a id="levelRec">{player[id]['lv'][i]}</a>
+                                        <a id="levelRec" href={player[id]['vids'][i].link} target='_blank'>{player[id]['vids'][i].name}</a>
                                     </section>
                                 )
 
