@@ -12,4 +12,9 @@ This is the official repository for Vietnamese Featured Demons. We rewrited this
 This website's code is distributed under <insert an open source license here>. All of it's terms apply here.
 
 #### Copying
-We do not have an official documentation for making a copy of our website. However, since all of the website's code is open-sourced, you can still make a copy of this website. We do not support any issue related to copies.
+```
+git clone https://github.com/NamPE286/DemonListVN.git
+cd DemonListVN
+npm i
+npm run dev
+```
