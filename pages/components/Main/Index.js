@@ -13,7 +13,7 @@ function Main() {
   useEffect(() => {
     async function getData() {
 
-      const lvRef = doc(db, "data", 'mainlist')
+      const lvRef = doc(db, "FDLVN", 'list')
       const docSnap = await getDoc(lvRef);
 
       if (docSnap.exists()) {
@@ -23,7 +23,7 @@ function Main() {
         console.log("No such document!");
       }
 
-      const lvRef0 = doc(db, "data", 'GDVNAL')
+      const lvRef0 = doc(db, "DLVN", 'list')
       const docSnap0 = await getDoc(lvRef0);
 
       if (docSnap0.exists()) {

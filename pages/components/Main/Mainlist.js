@@ -13,7 +13,7 @@ function Main() {
   useEffect(() => {
     async function getData() {
 
-      const lvRef = doc(db, "data", 'mainlist')
+      const lvRef = doc(db, "FDLVN", 'list')
       const docSnap = await getDoc(lvRef);
 
       if (docSnap.exists()) {
@@ -23,7 +23,7 @@ function Main() {
         console.log("No such document!");
       }
 
-      const lvRef0 = doc(db, "data", 'GDVNAL')
+      const lvRef0 = doc(db, "DLVN", 'list')
       const docSnap0 = await getDoc(lvRef0);
 
       if (docSnap0.exists()) {
@@ -78,11 +78,11 @@ function Main() {
       )
     }
     else if (mode === 'GDVNAL') {
-      try{
+      try {
         document.getElementById('ab').style.background = 'none';
-        document.getElementById('ac').style.background = 'var(--a2)';  
+        document.getElementById('ac').style.background = 'var(--a2)';
       }
-      catch(err){}
+      catch (err) { }
       return (
         <>
           <div className="mainpanelContent">
@@ -120,14 +120,14 @@ function Main() {
     <>
       <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
 
-      <div className="mainpanel">
+      <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
         <h2 id="title">Main List</h2>
         <div>
-        <div className="submitSelect">
-          <a href="#!" id="ab" onClick={() => setMode('mainlist')} style={{background:"var(--a2)"}}>Featured List</a>
-          <a href="#!" id="ac" onClick={() => setMode('GDVNAL')} >Demon List</a>
-        </div>
-        <hr id='lineUnderBtn'></hr>
+          <div className="submitSelect">
+            <a href="#!" id="ab" onClick={() => setMode('mainlist')} style={{ background: "var(--a2)" }}>Featured List</a>
+            <a href="#!" id="ac" onClick={() => setMode('GDVNAL')} >Demon List</a>
+          </div>
+          <hr id='lineUnderBtn'></hr>
         </div>
         {showList()}
       </div>

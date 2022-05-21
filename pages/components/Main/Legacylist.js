@@ -10,7 +10,7 @@ function Main() {
   useEffect(() => {
     async function getData() {
 
-      const lvRef = doc(db, "data", "legacylist")
+      const lvRef = doc(db, "FDLVNLegacy", "list")
       const docSnap = await getDoc(lvRef);
 
       if (docSnap.exists()) {

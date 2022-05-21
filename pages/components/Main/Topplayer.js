@@ -10,7 +10,7 @@ function Main() {
   useEffect(() => {
     async function getData() {
 
-      const lvRef = doc(db, "data", "playerPt")
+      const lvRef = doc(db, "FDLVNPlayer", "list")
       const docSnap = await getDoc(lvRef);
 
       if (docSnap.exists()) {
@@ -20,7 +20,7 @@ function Main() {
         console.log("No such document!");
       }
 
-      const lvRef0 = doc(db, "data", "GDVNALPlayer")
+      const lvRef0 = doc(db, "FLVNPlayer", "GDVNALPlayer")
       const docSnap0 = await getDoc(lvRef0);
 
       if (docSnap0.exists()) {

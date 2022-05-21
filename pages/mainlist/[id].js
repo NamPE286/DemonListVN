@@ -8,7 +8,6 @@ import Image from "next/image";
 
 function Main() {
     const [data, setData] = useState({});
-    const [lvDat, setlvDat] = useState([]);
     const [apilv, setapilv] = useState([]);
     const [cmt, setCmt] = useState([]);
     const [mode, setMode] = useState(0);
@@ -26,7 +25,7 @@ function Main() {
     useEffect(() => {
         async function getData() {
 
-            const lvRef = doc(db, "data", "victor")
+            const lvRef = doc(db, "FDLVN", "index")
             const docSnap = await getDoc(lvRef);
 
             if (docSnap.exists()) {
@@ -36,17 +35,6 @@ function Main() {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
             }
-
-            const lvRef0 = doc(db, "data", "mainlist0")
-            const docSnap0 = await getDoc(lvRef0);
-
-            if (docSnap0.exists()) {
-                setlvDat(docSnap0.data());
-            } else {
-                // doc.data() will be undefined in this case
-                console.log("No such document!");
-            }
-
         }
         getData()
     }, [])
@@ -84,12 +72,12 @@ function Main() {
                     <div className="recordList">
                         <div className="levelRecord">
                             <section className="allPlayerInfo">
-                                <a id="levelRec"><b>Total Record: {data[id].length}</b></a>
+                                <a id="levelRec"><b>Total Record: {data[id].vids.length}</b></a>
                             </section>
-                            {Object.keys(data[id]).map(i => {
+                            {Object.keys(data[id].vids).map(i => {
                                 return (
                                     <section className="allPlayerInfo" key={i}>
-                                        <a id="levelRec">{data[id][i]}</a>
+                                        <a id="levelRec" href={data[id].vids[i].link} target='_blank'>{data[id].vids[i].user}</a>
                                     </section>
                                 )
 
@@ -169,12 +157,12 @@ function Main() {
     }
 
     function showRating() {
-        if (lvDat[id].points != undefined) {
+        if (data[id].points != undefined) {
             return (
                 <div className="levelInfoContent1">
                     <p>ID: {id}<br />
-                        Verified by: {lvDat[id].verifier}<br />
-                        Rating: {apilv.difficulty} ({lvDat[id].points}pt)</p>
+                        Verified by: {data[id].verifier}<br />
+                        Rating: {apilv.difficulty} ({data[id].points}pt)</p>
                 </div>
             )
         }
@@ -182,7 +170,7 @@ function Main() {
             return (
                 <div className="levelInfoContent1">
                     <p>ID: {id}<br />
-                        Verified by: {lvDat[id].verifier}<br />
+                        Verified by: {data[id].verifier}<br />
                         Rating: {apilv.difficulty} (legacy)</p>
                 </div>
             )
@@ -214,7 +202,7 @@ function Main() {
             )
         }
         else {
-            if (apilv.ldm == true && lvDat[id].ldm.length != 0) {
+            if (apilv.ldm == true && data[id].ldm.length != 0) {
                 return (
                     <>
                         <p>
@@ -224,16 +212,16 @@ function Main() {
                             <b>Alternative recommended LDM:</b>
                         </p>
                         <ul>
-                            {Object.keys(lvDat[id]['ldm']).map(i => {
+                            {Object.keys(data[id]['ldm']).map(i => {
                                 return (
-                                    <li id="recLDM" key={i}>{lvDat[id]['ldm'][i]}</li>
+                                    <li id="recLDM" key={i}>{data[id]['ldm'][i]}</li>
                                 )
                             })}
                         </ul>
                     </>
                 )
             }
-            else if (apilv.ldm == true && lvDat[id].ldm.length == 0) {
+            else if (apilv.ldm == true && data[id].ldm.length == 0) {
                 <>
                     <p>
                         <b>This level has native LDM</b>
@@ -244,16 +232,16 @@ function Main() {
                 </>
             }
             else {
-                if (lvDat[id].ldm.length != 0) {
+                if (data[id].ldm.length != 0) {
                     return (
                         <>
                             <p>
                                 <b>Recommended LDM:</b>
                             </p>
                             <ul>
-                                {Object.keys(lvDat[id]['ldm']).map(i => {
+                                {Object.keys(data[id]['ldm']).map(i => {
                                     return (
-                                        <li id="recLDM" key={i}>{lvDat[id]['ldm'][i]}</li>
+                                        <li id="recLDM" key={i}>{data[id]['ldm'][i]}</li>
                                     )
                                 })}
                             </ul>
@@ -276,7 +264,7 @@ function Main() {
         return (
             <>
                 <Head>
-                    <title>{lvDat[id].name}'s Info - Demon List VN</title>
+                    <title>{data[id].name}'s Info - Demon List VN</title>
                 </Head>
                 <Navbar />
                 <div className='pageContent mainpanelflexdown' id='res'>
@@ -285,19 +273,19 @@ function Main() {
                     </div>
                     <div className="mainpanelNoPadding" id='center-div'>
                         <div className="levelThumb0">
-                            <img src={`https://i.ytimg.com/vi/${lvDat[id].thumbnail}/hqdefault.jpg`} alt="" id='bigLvThumb'></img>
+                            <img src={`https://i.ytimg.com/vi/${data[id].thumbnail}/hqdefault.jpg`} alt="" id='bigLvThumb'></img>
                             <div className="fadeEffectUp"></div>
                         </div>
                         <div className="levelInfoContentWrapper">
                             <div className="levelInfoContent">
-                                <h1>{lvDat[id].name}</h1>
-                                <p>by {lvDat[id].creator}</p>
+                                <h1>{data[id].name}</h1>
+                                <p>by {data[id].creator}</p>
                             </div>
                             {showRating()}
                         </div>
                         <hr></hr>
                         <div className="levelInfoContent2">
-                            <iframe src={`https://www.youtube.com/embed/${lvDat[id].thumbnail}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                            <iframe src={`https://www.youtube.com/embed/${data[id].thumbnail}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             <div>
                                 <div className="selector" id="selector1">
                                     <div>
