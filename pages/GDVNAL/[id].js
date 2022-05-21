@@ -8,10 +8,9 @@ import Image from "next/image";
 
 function Main() {
     const [data, setData] = useState({});
-    const [lvDat, setlvDat] = useState([]);
+    const [data1, setData1] = useState([])
     const [apilv, setapilv] = useState([]);
     const [victorOnly, setVictorOnly] = useState(1);
-    const [data1, setData1] = useState([]);
     const [cmt, setCmt] = useState([]);
     const [mode, setMode] = useState(0);
     const [trig, setTrig] = useState(0);
@@ -28,7 +27,7 @@ function Main() {
     useEffect(() => {
         async function getData() {
 
-            const lvRef = doc(db, "data", "victor")
+            const lvRef = doc(db, "DLVN", "index")
             const docSnap = await getDoc(lvRef);
 
             if (docSnap.exists()) {
@@ -38,29 +37,9 @@ function Main() {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
             }
-
-            const lvRef0 = doc(db, "data", "mainlist1")
-            const docSnap0 = await getDoc(lvRef0);
-
-            if (docSnap0.exists()) {
-                setlvDat(docSnap0.data());
-            } else {
-                // doc.data() will be undefined in this case
-                console.log("No such document!");
-            }
-
         }
         getData()
     }, [])
-
-    useEffect(() => {
-        try {
-            setData1(lvDat[id].vids)
-        } catch (e) {
-            console.error(e)
-        }
-    }, [lvDat])
-
     useEffect(() => {
         axios
             .get(url)
@@ -82,21 +61,30 @@ function Main() {
                 console.error(error)
             })
     }, [trig])
+
+    useEffect(() => {
+        try {
+            setData1(data[id].vids)
+        } catch (e) {
+            console.error(e)
+        }
+    }, [data])
+
     function getVictorOnly() {
         console.log(victorOnly)
         try {
             if (victorOnly == 1) {
                 var c = []
-                for (const i in lvDat[id].vids) {
-                    if (parseInt(lvDat[id].vids[i].percent) == 100) {
-                        c.push(lvDat[id].vids[i])
+                for (const i in data[id].vids) {
+                    if (parseInt(data[id].vids[i].percent) == 100) {
+                        c.push(data[id].vids[i])
                     }
                 }
-                lvDat[id].vids = c
+                data[id].vids = c
                 console.log(c)
             }
             else {
-                lvDat[id].vids = data1
+                data[id].vids = data1
                 console.log('ok')
             }
         }
@@ -104,6 +92,7 @@ function Main() {
             console.error(err);
         }
     }
+
     function nextPanel() {
         if (mode == 0) return showVictor();
         else if (mode == 1) return showComment();
@@ -111,48 +100,33 @@ function Main() {
 
     function showVictor() {
         try {
-            if (lvDat[id]['vids'].length != 0) {
-                return (
-                    <div className="mainpanelContent">
-                        <div className="selector4">
-                            <input type='checkbox' id='ifShowVictorOnly' onChange={() =>{
-                                setVictorOnly(!victorOnly)
-                                getVictorOnly()
-                            }}/>
-                            <label for='ifShowVictor'>Show victor only</label>
-                        </div>
-                        <div className="recordList">
-                            <div className="levelRecord">
-                                <section className="allPlayerInfo">
-                                    <a id="levelRec"><b>Total Record: {lvDat[id]['vids'].length}</b></a>
-                                </section>
-                                {Object.keys(lvDat[id]['vids']).map(i => {
-                                    return (
-                                        <section className="allPlayerInfo" key={i}>
-                                            <a id="levelRec">{lvDat[id]['vids'][i].user + ' (' + lvDat[id]['vids'][i].percent + '%)' + ' - ' + lvDat[id]['vids'][i].link}</a>
-                                        </section>
-                                    )
-
-                                })}
-                            </div>
-                        </div>
-
+            return (
+                <div className="mainpanelContent">
+                    <div className="selector4">
+                        <input type='checkbox' id='ifShowVictorOnly' onChange={() =>{
+                            setVictorOnly(!victorOnly)
+                            getVictorOnly()
+                        }}/>
+                        <label for='ifShowVictor'>Show victor only</label>
                     </div>
-                )
-            }
-            else {
-                return (
-                    <div className="mainpanelContent">
-                        <div className="recordList">
-                            <div className="levelRecord">
-                                <section className="allPlayerInfo">
-                                    <a id="levelRec"><b>No one has beaten this level yet</b></a>
-                                </section>
-                            </div>
+                    <div className="recordList">
+                        <div className="levelRecord">
+                            <section className="allPlayerInfo">
+                                <a id="levelRec"><b>Total Record: {data[id].vids.length}</b></a>
+                            </section>
+                            {Object.keys(data[id].vids).map(i => {
+                                return (
+                                    <section className="allPlayerInfo" key={i}>
+                                        <a id="levelRec" href={data[id].vids[i].link} target='_blank'>{data[id].vids[i].user} ({data[id].vids[i].percent}%) ({data[id].vids[i].hz})</a>
+                                    </section>
+                                )
+
+                            })}
                         </div>
                     </div>
-                )
-            }
+
+                </div>
+            )
         }
         catch (err) {
             return (
@@ -167,7 +141,6 @@ function Main() {
                 </div>
             )
         }
-
     }
 
     function nextPage() {
@@ -224,12 +197,12 @@ function Main() {
     }
 
     function showRating() {
-        if (lvDat[id].points != undefined) {
+        if (data[id].points != undefined) {
             return (
                 <div className="levelInfoContent1">
                     <p>ID: {id}<br />
-                        First Victor: {lvDat[id].firstVictor}<br />
-                        Rating: {apilv.difficulty} ({lvDat[id].points}pt)</p>
+                        First Victor: {data[id].firstVictor}<br />
+                        Rating: {apilv.difficulty} ({data[id].points}pt)</p>
                 </div>
             )
         }
@@ -237,7 +210,7 @@ function Main() {
             return (
                 <div className="levelInfoContent1">
                     <p>ID: {id}<br />
-                        Verified by: {lvDat[id].verifier}<br />
+                        Verified by: {data[id].verifier}<br />
                         Rating: {apilv.difficulty} (legacy)</p>
                 </div>
             )
@@ -245,8 +218,6 @@ function Main() {
     }
 
     function changetoVictor() {
-        lvDat[id].vids = data1
-        setVictorOnly(true)
         setMode(0);
     }
     function changetoComment() {
@@ -267,12 +238,11 @@ function Main() {
                     <b>Likes: </b>{apilv.likes}<br />
                     <b>Coins: </b>{apilv.coins}<br />
                     <b>Length: </b>{apilv.length}<br />
-                    <b>Percent to qualify: </b>{lvDat[id].percentToQualify}%<br />
                 </p>
             )
         }
         else {
-            if (apilv.ldm == true && lvDat[id].ldm.length != 0) {
+            if (apilv.ldm == true && data[id].ldm.length != 0) {
                 return (
                     <>
                         <p>
@@ -282,16 +252,16 @@ function Main() {
                             <b>Alternative recommended LDM:</b>
                         </p>
                         <ul>
-                            {Object.keys(lvDat[id]['ldm']).map(i => {
+                            {Object.keys(data[id]['ldm']).map(i => {
                                 return (
-                                    <li id="recLDM" key={i}>{lvDat[id]['ldm'][i]}</li>
+                                    <li id="recLDM" key={i}>{data[id]['ldm'][i]}</li>
                                 )
                             })}
                         </ul>
                     </>
                 )
             }
-            else if (apilv.ldm == true && lvDat[id].ldm.length == 0) {
+            else if (apilv.ldm == true && data[id].ldm.length == 0) {
                 <>
                     <p>
                         <b>This level has native LDM</b>
@@ -302,16 +272,16 @@ function Main() {
                 </>
             }
             else {
-                if (lvDat[id].ldm.length != 0) {
+                if (data[id].ldm.length != 0) {
                     return (
                         <>
                             <p>
                                 <b>Recommended LDM:</b>
                             </p>
                             <ul>
-                                {Object.keys(lvDat[id]['ldm']).map(i => {
+                                {Object.keys(data[id]['ldm']).map(i => {
                                     return (
-                                        <li id="recLDM" key={i}>{lvDat[id]['ldm'][i]}</li>
+                                        <li id="recLDM" key={i}>{data[id]['ldm'][i]}</li>
                                     )
                                 })}
                             </ul>
@@ -330,32 +300,11 @@ function Main() {
             }
         }
     }
-    if (id == 'null') {
-        return (
-            <>
-                <Navbar />
-                <Head>
-                    <title>This level data is not available</title>
-                </Head>
-                <div className='pageContent'>
-                    <div className='sidePanel'>
-                        <div className='topSpacer' />
-                    </div>
-                    <div className="mainpanel mainpanelNoPadding" id='center-div'>
-                        <div className="mainpanelContent">
-                            <p id="meh">This level data is not available</p>
-                        </div>
-                    </div>
-                </div>
-            </>
-
-        );
-    }
     try {
         return (
             <>
                 <Head>
-                    <title>{lvDat[id].name}'s Info - Demon List VN</title>
+                    <title>{data[id].name}'s Info - Demon List VN</title>
                 </Head>
                 <Navbar />
                 <div className='pageContent mainpanelflexdown' id='res'>
@@ -364,20 +313,27 @@ function Main() {
                     </div>
                     <div className="mainpanelNoPadding" id='center-div'>
                         <div className="levelThumb0">
-                            <img src={`https://i.ytimg.com/vi/${lvDat[id].thumbnail}/hqdefault.jpg`} alt="" id='bigLvThumb'></img>
+                            <img src={`https://i.ytimg.com/vi/${data[id].thumbnail}/hqdefault.jpg`} alt="" id='bigLvThumb'></img>
                             <div className="fadeEffectUp"></div>
                         </div>
                         <div className="levelInfoContentWrapper">
                             <div className="levelInfoContent">
-                                <h1>{lvDat[id].name}</h1>
-                                <p>by {lvDat[id].creator}</p>
+                                <h1>{data[id].name}</h1>
+                                <p>by {data[id].creator}</p>
                             </div>
                             {showRating()}
                         </div>
                         <hr></hr>
                         <div className="levelInfoContent2">
-                            <iframe src={`https://www.youtube.com/embed/${lvDat[id].thumbnail}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+                            <iframe src={`https://www.youtube.com/embed/${data[id].thumbnail}`} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                             <div>
+                                <div className="selector" id="selector1">
+                                    <div>
+                                        <a href="#!" onClick={changetoInfo}>Info</a>
+                                        <a href="#!" id="spacing" onClick={changetoLDM}>LDM</a>
+                                    </div>
+                                    <hr id="sel"></hr>
+                                </div>
                                 {showDetail()}
 
                             </div>

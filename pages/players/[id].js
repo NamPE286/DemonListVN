@@ -15,7 +15,7 @@ function Main() {
     const [mode, setMode] = useState();
     useEffect(() => {
         async function getData() {
-            const lvRef = doc(db, "data", "playerPt0")
+            const lvRef = doc(db, "FDLVNPlayer", "index")
             const docSnap = await getDoc(lvRef);
 
             if (docSnap.exists()) {
@@ -25,7 +25,7 @@ function Main() {
                 console.log("No such document!");
             }
 
-            const lvRef1 = doc(db, "data", "GDVNALPlayer0")
+            const lvRef1 = doc(db, "DLVNPlayer", "index")
             const docSnap1 = await getDoc(lvRef1);
 
             if (docSnap1.exists()) {
@@ -35,7 +35,7 @@ function Main() {
                 console.log("No such document!");
             }
 
-            const lvRef2 = doc(db, "data", "mainlist1")
+            const lvRef2 = doc(db, "DLVN", "index")
             const docSnap2 = await getDoc(lvRef2);
 
             if (docSnap2.exists()) {
@@ -45,7 +45,7 @@ function Main() {
                 console.log("No such document!");
             }
 
-            const pRef = doc(db, "data", "player")
+            const pRef = doc(db, "FDLVNPlayer", "index")
             const pSnap = await getDoc(pRef);
 
             if (pSnap.exists()) {
@@ -100,11 +100,11 @@ function Main() {
                             <section className="allPlayerInfo">
                                 <a id="levelRec">Completed demon(s): {player[id].length}</a>
                             </section>
-                            {Object.keys(player[id]).map(i => {
+                            {Object.keys(player[id]['lv']).map(i => {
                                 c = c*-1
                                 return (
                                     <section className="allPlayerInfo" id={`lvGrid${c}`} key={i}>
-                                        <a id="levelRec">{player[id][i]}</a>
+                                        <a id="levelRec">{player[id]['lv'][i]}</a>
                                     </section>
                                 )
 
