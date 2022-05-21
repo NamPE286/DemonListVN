@@ -168,7 +168,7 @@ function Main() {
         try{
             return(
                 <div className="playerRank1">
-                    <a id='rank1'>FDLNV Rank</a><br/>
+                    <a id='rank1'>FDLVN Rank</a><br/>
                     <a id='top1'>#{data[id].top}</a><br/>
                     <a id='pt1'>{data[id].points}pt</a><br/>
                 </div>
@@ -177,7 +177,7 @@ function Main() {
         catch(err){
             return(
                 <div className="playerRank1">
-                    <a id='rank1'>FDLNV Rank</a><br/>
+                    <a id='rank1'>FDLVN Rank</a><br/>
                     <a id='top1'>#N/A</a><br/>
                     <a id='pt1'>N/A pt</a><br/>
                 </div>
