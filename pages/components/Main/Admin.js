@@ -88,6 +88,24 @@ function Main() {
         getData()
     }, [])
 
+    async function addData(){
+        await setDoc(doc(db, "DLVN", 'index'), DLVN.index);
+        await setDoc(doc(db, "DLVNPlayer", 'index'), DLVNPlayer.index);
+        await setDoc(doc(db, "FDLVN", 'index'), FDLVN.index);
+        await setDoc(doc(db, "FDLVNPlayer", 'index'), FDLVNPlayer.index);
+        await setDoc(doc(db, "FDLVNLegacy", 'index'), FDLVNLegacy.index);
+        await setDoc(doc(db, "auth", 'index'), au.index);
+        await setDoc(doc(db, "player", 'index'), player.index);
+
+        await setDoc(doc(db, "DLVN", 'list'), Object.assign({},DLVN.index));
+        await setDoc(doc(db, "DLVNPlayer", 'list'), Object.assign({},DLVNPlayer.index));
+        await setDoc(doc(db, "FDLVN", 'list'), Object.assign({},FDLVN.index));
+        await setDoc(doc(db, "FDLVNPlayer", 'list'), Object.assign({},FDLVNPlayer.index));
+        await setDoc(doc(db, "FDLVNLegacy", 'list'), Object.assign({},FDLVNLegacy.index));
+        await setDoc(doc(db, "auth", 'list'), Object.assign({},au.index));
+        await setDoc(doc(db, "player", 'list'), Object.assign({},player.index));
+    }
+
     function logIn() {
         signInWithPopup(auth, provider)
             .then((result) => {
