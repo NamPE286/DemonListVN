@@ -162,6 +162,7 @@ function Main() {
                     FDLVN.list = Object.assign({}, Object.values(FDLVN.list));
                     for(const i in FDLVN.list){
                         FDLVN.list[i].top = parseInt(i) + 1;
+                        FDLVN.list[i].points = Math.round((2100 / (0.3 * parseInt(FDLVN.list[i].top) + 9) - 80) * 100) / 100;
                     }
                     console.log(FDLVN)
                 }
@@ -273,6 +274,48 @@ function Main() {
                 function getPoint(rank) {
                     return roundNumber((100 / Math.sqrt(((rank - 1) / 50) + 0.444444)) - 50, 3);
                 }
+                async function update(){
+                    const prevTop = d.top
+                    d.name = document.getElementById('lvname').value;
+                    d.creator = document.getElementById('creator').value;
+                    d.top = parseInt(document.getElementById('top').value);
+                    d.firstVictor = document.getElementById('firstVictor').value;
+                    d.id = document.getElementById('lvid').value;
+                    d.thumbnail = document.getElementById('thumbnail').value;
+                    d.percentToQualify = parseInt(document.getElementById('percentToQualify').value);
+
+                    delete DLVN.list[parseInt(prevTop) - 1];
+                    delete DLVN.index[parseInt(d.id)];
+                    setModal(0);
+                    DLVN.list = Object.assign({}, Object.values(DLVN.list));
+                    for(const i in DLVN.list){
+                        DLVN.list[i].top = parseInt(i) + 1;
+                    }
+                    const d1 = Object.values(DLVN.list);
+                    d.top = parseInt(d.top) - 0.5
+                    d1.push(d)
+                    d1.sort((a, b) => (a.top > b.top) ? 1 : -1)
+                    for(const i in d1){
+                        d1[i].top = parseInt(i) + 1;
+                        d1[i].points = getPoint(parseInt(i) + 1);
+                    }
+                    DLVN.list = Object.assign({}, d1);
+                    DLVN.index[parseInt(d.id)] = d;
+                    setModal(0);
+                    console.log(DLVN)
+                }
+                async function delete0(){
+                    const prevTop = d.top
+                    delete DLVN.list[parseInt(prevTop) - 1];
+                    delete DLVN.index[parseInt(d.id)];
+                    setModal(0);
+                    DLVN.list = Object.assign({}, Object.values(DLVN.list));
+                    for(const i in DLVN.list){
+                        DLVN.list[i].top = parseInt(i) + 1;
+                        DLVN.list[i].points = getPoint(parseInt(i) + 1);
+                    }
+                    console.log(DLVN)
+                }
                 return (
                     <div className="popup">
                         <div className="overlay">
@@ -338,8 +381,8 @@ function Main() {
                                         })}
 
                                 </div>
-                                <br /><button>Update</button><br /><br /><br /><br />
-                                <button>Delete level</button>
+                                <br /><button onClick={update}>Update</button><br /><br /><br /><br />
+                                <button onClick={delete0}>Delete level</button>
                             </div>
                         </div>
                     </div>
