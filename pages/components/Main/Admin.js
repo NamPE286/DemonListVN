@@ -123,73 +123,116 @@ function Main() {
 
     function showModal1() {
         if (modal) {
-            if (list == 'FDLVN') return (
-                <div className="popup">
-                    <div className="overlay">
-                        <div className="popupContent">
-                            <h2>Edit level info</h2>
-                            <a id='close' onClick={() => { setModal(!modal) }}>x</a>
-                            <label for="lvname">Level name: </label>
-                            <input type="text" id="lvname" name="lvname" defaultValue={d.name} ></input><br />
-                            <label for="creator">Level creator: </label>
-                            <input type="text" id="creator" name="creator" defaultValue={d.creator} ></input><br />
-                            <label for="top">Top: </label>
-                            <input type="text" id="top" name="top" defaultValue={d.top} ></input><br />
-                            <label for="verifier">Verifier: </label>
-                            <input type="text" id="verifier" name="verifier" defaultValue={d.verifier} ></input><br />
-                            <label for="lvid">ID: </label>
-                            <input type="text" id="lvid" name="lvid" defaultValue={d.id} ></input><br />
-                            <label for="thumbnail">Youtube video ID: </label>
-                            <input type="text" id="thumbnail" name="thumbnail" defaultValue={d.thumbnail} ></input><br />
-                            <label for="LDM">LDM: </label>
-                            <input type="text" id="LDM" name="LDM" defaultValue={JSON.stringify(d.ldm).substring(1, JSON.stringify(d.ldm).length - 1)}></input><br />
-                            <label>Victor: </label><button>Add victor</button><hr></hr>
-                            <div className={`victor`} style={{ display: "none" }}>
-                                <label for={`userName`}>Player name:  </label>
-                                <input type="text" id={`userName`} name={`userName`}></input><br />
-                                <label for={`percent`}>Percent:  </label>
-                                <input type="text" id={`percent`} name={`percent`}></input><br />
-                                <label for={`YTLink`}>Video Link:  </label>
-                                <input type="text" id={`YTLink`} name={`YTLink`}></input><br />
-                                <label for={`hz`}>HZ:  </label>
-                                <input type="text" id={`hz`} name={`hz`}></input><br />
-                                <button>Add</button>
-                                <button>Cancel</button>
-                                <hr />
+            if (list == 'FDLVN') {
+                async function update(){
+                    const prevTop = d.top
+                    d.name = document.getElementById('lvname').value;
+                    d.creator = document.getElementById('creator').value;
+                    d.top = parseInt(document.getElementById('top').value);
+                    d.verifier = document.getElementById('verifier').value;
+                    d.id = document.getElementById('lvid').value;
+                    d.thumbnail = document.getElementById('thumbnail').value;
+                    d.ldm = JSON.parse('[' + document.getElementById('LDM').value + ']');
+
+                    delete FDLVN.list[parseInt(prevTop) - 1];
+                    delete FDLVN.index[parseInt(d.id)];
+                    setModal(0);
+                    FDLVN.list = Object.assign({}, Object.values(FDLVN.list));
+                    for(const i in FDLVN.list){
+                        FDLVN.list[i].top = parseInt(i) + 1;
+                    }
+                    const d1 = Object.values(FDLVN.list);
+                    d.top = parseInt(d.top) - 0.5
+                    d1.push(d)
+                    d1.sort((a, b) => (a.top > b.top) ? 1 : -1)
+                    for(const i in d1){
+                        d1[i].top = parseInt(i) + 1;
+                        d1[i].points = Math.round((2100 / (0.3 * parseInt(d1[i].top) + 9) - 80) * 100) / 100;
+                    }
+                    FDLVN.list = Object.assign({}, d1);
+                    FDLVN.index[parseInt(d.id)] = d;
+                    setModal(0);
+                    console.log(FDLVN)
+                }
+                async function delete0(){
+                    const prevTop = d.top
+                    delete FDLVN.list[parseInt(prevTop) - 1];
+                    delete FDLVN.index[parseInt(d.id)];
+                    setModal(0);
+                    FDLVN.list = Object.assign({}, Object.values(FDLVN.list));
+                    for(const i in FDLVN.list){
+                        FDLVN.list[i].top = parseInt(i) + 1;
+                    }
+                    console.log(FDLVN)
+                }
+                return (
+                    <div className="popup">
+                        <div className="overlay">
+                            <div className="popupContent">
+                                <h2>Edit level info</h2>
+                                <a id='close' onClick={() => { setModal(!modal) }}>x</a>
+                                <label for="lvname">Level name: </label>
+                                <input type="text" id="lvname" name="lvname" defaultValue={d.name} ></input><br />
+                                <label for="creator">Level creator: </label>
+                                <input type="text" id="creator" name="creator" defaultValue={d.creator} ></input><br />
+                                <label for="top">Top: </label>
+                                <input type="text" id="top" name="top" defaultValue={d.top} ></input><br />
+                                <label for="verifier">Verifier: </label>
+                                <input type="text" id="verifier" name="verifier" defaultValue={d.verifier} ></input><br />
+                                <label for="lvid">ID: </label>
+                                <input type="text" id="lvid" name="lvid" defaultValue={d.id} ></input><br />
+                                <label for="thumbnail">Youtube video ID: </label>
+                                <input type="text" id="thumbnail" name="thumbnail" defaultValue={d.thumbnail} ></input><br />
+                                <label for="LDM">LDM: </label>
+                                <input type="text" id="LDM" name="LDM" defaultValue={JSON.stringify(d.ldm).substring(1, JSON.stringify(d.ldm).length - 1)}></input><br />
+                                <label>Victor: </label><button>Add victor</button><hr></hr>
+                                <div className={`victor`} style={{ display: "none" }}>
+                                    <label for={`userName`}>Player name:  </label>
+                                    <input type="text" id={`userName`} name={`userName`}></input><br />
+                                    <label for={`percent`}>Percent:  </label>
+                                    <input type="text" id={`percent`} name={`percent`}></input><br />
+                                    <label for={`YTLink`}>Video Link:  </label>
+                                    <input type="text" id={`YTLink`} name={`YTLink`}></input><br />
+                                    <label for={`hz`}>HZ:  </label>
+                                    <input type="text" id={`hz`} name={`hz`}></input><br />
+                                    <button>Add</button>
+                                    <button>Cancel</button>
+                                    <hr />
+                                </div>
+                                <div className="victorCard">
+                                    {
+                                        Object.keys(d.vids).map((i) => {
+                                            function update1() {
+
+                                            }
+                                            function delete2() {
+
+                                            }
+                                            return (
+                                                <>
+                                                    <div className={`victor${i}`}>
+                                                        <label for={`userName${i}`}>Player name:  </label>
+                                                        <input type="text" id={`userName${i}`} name={`userName${i}`} defaultValue={d.vids[i].user}></input><br />
+                                                        <label for={`YTLink${i}`}>Video Link:  </label>
+                                                        <input type="text" id={`YTLink${i}`} name={`YTLink${i}`} defaultValue={d.vids[i].link}></input><br />
+                                                        <button onClick={update1}>Update</button>
+                                                        <button onClick={delete2}>Delete</button>
+                                                        <hr />
+                                                    </div>
+
+                                                </>
+
+                                            )
+                                        })}
+
+                                </div>
+                                <br /><button onClick={() => update()}>Update</button><br /><br /><br /><br />
+                                <button onClick={() => delete0()}>Delete level</button>
                             </div>
-                            <div className="victorCard">
-                                {
-                                    Object.keys(d.vids).map((i) => {
-                                        function update1() {
-
-                                        }
-                                        function delete2() {
-
-                                        }
-                                        return (
-                                            <>
-                                                <div className={`victor${i}`}>
-                                                    <label for={`userName${i}`}>Player name:  </label>
-                                                    <input type="text" id={`userName${i}`} name={`userName${i}`} defaultValue={d.vids[i].user}></input><br />
-                                                    <label for={`YTLink${i}`}>Video Link:  </label>
-                                                    <input type="text" id={`YTLink${i}`} name={`YTLink${i}`} defaultValue={d.vids[i].link}></input><br />
-                                                    <button onClick={update1}>Update</button>
-                                                    <button onClick={delete2}>Delete</button>
-                                                    <hr />
-                                                </div>
-
-                                            </>
-
-                                        )
-                                    })}
-
-                            </div>
-                            <br /><button>Update</button><br /><br /><br /><br />
-                            <button>Delete level</button>
                         </div>
                     </div>
-                </div>
-            )
+                )
+            }
             else if (list == 'FDLVNLegacy') return (
                 <div className="popup">
                     <div className="overlay">
@@ -214,77 +257,94 @@ function Main() {
                     </div>
                 </div>
             )
-            else if (list == 'DLVN') return (
-                <div className="popup">
-                    <div className="overlay">
-                        <div className="popupContent">
-                            <h2>Edit level info</h2>
-                            <a id='close' onClick={() => { setModal(!modal) }}>x</a>
-                            <label for="lvname">Level name: </label>
-                            <input type="text" id="lvname" name="lvname" defaultValue={d.name}></input><br />
-                            <label for="creator">Level creator: </label>
-                            <input type="text" id="creator" name="creator" defaultValue={d.creator}></input><br />
-                            <label for="top">Top: </label>
-                            <input type="text" id="top" name="top" defaultValue={d.top}></input><br />
-                            <label for="lvid">ID: </label>
-                            <input type="text" id="lvid" name="lvid" defaultValue={d.id}></input><br />
-                            <label for="thumbnail">Youtube video ID: </label>
-                            <input type="text" id="thumbnail" name="thumbnail" defaultValue={d.thumbnail}></input><br />
-                            <label for="firstVictor">First Victor: </label>
-                            <input type="text" id="firstVictor" name="firstVictor" defaultValue={d.firstVictor}></input><br />
-                            <label for="percentToQualify">Percent to qualify: </label>
-                            <input type="text" id="percentToQualify" name="percentToQualify" defaultValue={d.percentToQualify}></input><br />
-                            <label>Victor: </label><button>Add victor</button><hr></hr>
-                            <div className={`victor`} style={{ display: "none" }}>
-                                <label for={`userName`}>Player name:  </label>
-                                <input type="text" id={`userName`} name={`userName`}></input><br />
-                                <label for={`percent`}>Percent:  </label>
-                                <input type="text" id={`percent`} name={`percent`}></input><br />
-                                <label for={`YTLink`}>Video Link:  </label>
-                                <input type="text" id={`YTLink`} name={`YTLink`}></input><br />
-                                <label for={`hz`}>HZ:  </label>
-                                <input type="text" id={`hz`} name={`hz`}></input><br />
-                                <button>Add</button>
-                                <button>Cancel</button>
-                                <hr />
+            else if (list == 'DLVN') {
+                function roundNumber(num, scale) {
+                    if (!("" + num).includes("e")) {
+                        return +(Math.round(num + "e+" + scale) + "e-" + scale);
+                    } else {
+                        var arr = ("" + num).split("e");
+                        var sig = ""
+                        if (+arr[1] + scale > 0) {
+                            sig = "+";
+                        }
+                        return +(Math.round(+arr[0] + "e" + sig + (+arr[1] + scale)) + "e-" + scale);
+                    }
+                }
+                function getPoint(rank) {
+                    return roundNumber((100 / Math.sqrt(((rank - 1) / 50) + 0.444444)) - 50, 3);
+                }
+                return (
+                    <div className="popup">
+                        <div className="overlay">
+                            <div className="popupContent">
+                                <h2>Edit level info</h2>
+                                <a id='close' onClick={() => { setModal(!modal) }}>x</a>
+                                <label for="lvname">Level name: </label>
+                                <input type="text" id="lvname" name="lvname" defaultValue={d.name}></input><br />
+                                <label for="creator">Level creator: </label>
+                                <input type="text" id="creator" name="creator" defaultValue={d.creator}></input><br />
+                                <label for="top">Top: </label>
+                                <input type="text" id="top" name="top" defaultValue={d.top}></input><br />
+                                <label for="lvid">ID: </label>
+                                <input type="text" id="lvid" name="lvid" defaultValue={d.id}></input><br />
+                                <label for="thumbnail">Youtube video ID: </label>
+                                <input type="text" id="thumbnail" name="thumbnail" defaultValue={d.thumbnail}></input><br />
+                                <label for="firstVictor">First Victor: </label>
+                                <input type="text" id="firstVictor" name="firstVictor" defaultValue={d.firstVictor}></input><br />
+                                <label for="percentToQualify">Percent to qualify: </label>
+                                <input type="text" id="percentToQualify" name="percentToQualify" defaultValue={d.percentToQualify}></input><br />
+                                <label>Victor: </label><button>Add victor</button><hr></hr>
+                                <div className={`victor`} style={{ display: "none" }}>
+                                    <label for={`userName`}>Player name:  </label>
+                                    <input type="text" id={`userName`} name={`userName`}></input><br />
+                                    <label for={`percent`}>Percent:  </label>
+                                    <input type="text" id={`percent`} name={`percent`}></input><br />
+                                    <label for={`YTLink`}>Video Link:  </label>
+                                    <input type="text" id={`YTLink`} name={`YTLink`}></input><br />
+                                    <label for={`hz`}>HZ:  </label>
+                                    <input type="text" id={`hz`} name={`hz`}></input><br />
+                                    <button>Add</button>
+                                    <button>Cancel</button>
+                                    <hr />
+                                </div>
+                                <div className="victorCard">
+                                    {
+                                        Object.keys(d.vids).map((i) => {
+                                            function update1() {
+
+                                            }
+                                            function delete2() {
+
+                                            }
+                                            return (
+                                                <>
+                                                    <div className={`victor${i}`}>
+                                                        <label for={`userName${i}`}>Player name:  </label>
+                                                        <input type="text" id={`userName${i}`} name={`userName${i}`} defaultValue={d.vids[i].user}></input><br />
+                                                        <label for={`percent${i}`}>Percent:  </label>
+                                                        <input type="text" id={`percent${i}`} name={`percent${i}`} defaultValue={d.vids[i].percent}></input><br />
+                                                        <label for={`YTLink${i}`}>Video Link:  </label>
+                                                        <input type="text" id={`YTLink${i}`} name={`YTLink${i}`} defaultValue={d.vids[i].link}></input><br />
+                                                        <label for={`hz${i}`}>HZ:  </label>
+                                                        <input type="text" id={`hz${i}`} name={`hz${i}`} defaultValue={d.vids[i].hz}></input><br />
+                                                        <button onClick={update1}>Update</button>
+                                                        <button onClick={delete2}>Delete</button>
+                                                        <hr />
+                                                    </div>
+
+                                                </>
+
+                                            )
+                                        })}
+
+                                </div>
+                                <br /><button>Update</button><br /><br /><br /><br />
+                                <button>Delete level</button>
                             </div>
-                            <div className="victorCard">
-                                {
-                                    Object.keys(d.vids).map((i) => {
-                                        function update1() {
-
-                                        }
-                                        function delete2() {
-
-                                        }
-                                        return (
-                                            <>
-                                                <div className={`victor${i}`}>
-                                                    <label for={`userName${i}`}>Player name:  </label>
-                                                    <input type="text" id={`userName${i}`} name={`userName${i}`} defaultValue={d.vids[i].user}></input><br />
-                                                    <label for={`percent${i}`}>Percent:  </label>
-                                                    <input type="text" id={`percent${i}`} name={`percent${i}`} defaultValue={d.vids[i].percent}></input><br />
-                                                    <label for={`YTLink${i}`}>Video Link:  </label>
-                                                    <input type="text" id={`YTLink${i}`} name={`YTLink${i}`} defaultValue={d.vids[i].link}></input><br />
-                                                    <label for={`hz${i}`}>HZ:  </label>
-                                                    <input type="text" id={`hz${i}`} name={`hz${i}`} defaultValue={d.vids[i].hz}></input><br />
-                                                    <button onClick={update1}>Update</button>
-                                                    <button onClick={delete2}>Delete</button>
-                                                    <hr />
-                                                </div>
-
-                                            </>
-
-                                        )
-                                    })}
-
-                            </div>
-                            <br /><button>Update</button><br /><br /><br /><br />
-                            <button>Delete level</button>
                         </div>
                     </div>
-                </div>
-            )
+                )
+            }
             else if (list == 'player') {
                 var name = ''
                 if (d[0] != undefined) name = d[0].name

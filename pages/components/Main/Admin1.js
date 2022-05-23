@@ -203,7 +203,6 @@ function Main() {
     }
     function getPoint(rank) {
         return roundNumber((100 / Math.sqrt(((rank - 1) / 50) + 0.444444)) - 50, 3);
-
     }
     function refactor1(x) {
         x.sort((a, b) => (a.top < b.top) ? -1 : 1)
