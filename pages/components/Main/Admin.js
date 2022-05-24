@@ -235,30 +235,58 @@ function Main() {
                     </div>
                 )
             }
-            else if (list == 'FDLVNLegacy') return (
-                <div className="popup">
-                    <div className="overlay">
-                        <div className="popupContent">
-                            <h2>Edit level info</h2>
-                            <a id='close' onClick={() => { setModal(!modal) }}>x</a>
-                            <label for="lvname">Level name: </label>
-                            <input type="text" id="lvname" name="lvname" defaultValue={d.name} ></input><br />
-                            <label for="creator">Level creator: </label>
-                            <input type="text" id="creator" name="creator" defaultValue={d.creator} ></input><br />
-                            <label for="verifier">Verifier: </label>
-                            <input type="text" id="verifier" name="verifier" defaultValue={d.verifier} ></input><br />
-                            <label for="lvid">ID: </label>
-                            <input type="text" id="lvid" name="lvid" defaultValue={d.id} ></input><br />
-                            <label for="thumbnail">Youtube video ID: </label>
-                            <input type="text" id="thumbnail" name="thumbnail" defaultValue={d.thumbnail} ></input><br />
-                            <label for="LDM">LDM: </label>
-                            <input type="text" id="LDM" name="LDM" defaultValue={JSON.stringify(d.ldm).substring(1, JSON.stringify(d.ldm).length - 1)}></input><br />
-                            <br /><button>Update</button><br /><br /><br /><br />
-                            <button>Delete level</button>
+            else if (list == 'FDLVNLegacy'){
+                async function update(){
+                    d.name = document.getElementById('lvname').value;
+                    d.creator = document.getElementById('creator').value;
+                    d.verifier = document.getElementById('verifier').value;
+                    d.id = document.getElementById('lvid').value;
+                    d.thumbnail = document.getElementById('thumbnail').value;
+                    d.ldm = JSON.parse('[' + document.getElementById('LDM').value + ']');
+                    FDLVNLegacy.index[parseInt(d.id)] = d;
+                    for(const i in FDLVNLegacy.list){
+                        if(FDLVNLegacy.list[i].id == d.id){
+                            FDLVNLegacy.list[i] = d;
+                        }
+                    }
+                    setModal(0);
+                    console.log(FDLVNLegacy)
+                }
+                async function delete0(){
+                    delete FDLVNLegacy.index[parseInt(d.id)];
+                    for(const i in FDLVNLegacy.list){
+                        if(FDLVNLegacy.list[i].id == d.id){
+                            delete FDLVNLegacy.list[i];
+                        }
+                    }
+                    setModal(0);
+                    console.log(FDLVNLegacy)
+                }
+                return (
+                    <div className="popup">
+                        <div className="overlay">
+                            <div className="popupContent">
+                                <h2>Edit level info</h2>
+                                <a id='close' onClick={() => { setModal(!modal) }}>x</a>
+                                <label for="lvname">Level name: </label>
+                                <input type="text" id="lvname" name="lvname" defaultValue={d.name} ></input><br />
+                                <label for="creator">Level creator: </label>
+                                <input type="text" id="creator" name="creator" defaultValue={d.creator} ></input><br />
+                                <label for="verifier">Verifier: </label>
+                                <input type="text" id="verifier" name="verifier" defaultValue={d.verifier} ></input><br />
+                                <label for="lvid">ID: </label>
+                                <input type="text" id="lvid" name="lvid" defaultValue={d.id} ></input><br />
+                                <label for="thumbnail">Youtube video ID: </label>
+                                <input type="text" id="thumbnail" name="thumbnail" defaultValue={d.thumbnail} ></input><br />
+                                <label for="LDM">LDM: </label>
+                                <input type="text" id="LDM" name="LDM" defaultValue={JSON.stringify(d.ldm).substring(1, JSON.stringify(d.ldm).length - 1)}></input><br />
+                                <br /><button onClick={() => update()}>Update</button><br /><br /><br /><br />
+                                <button onClick={() => delete0()}>Delete level</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )
+                )
+            }
             else if (list == 'DLVN') {
                 function roundNumber(num, scale) {
                     if (!("" + num).includes("e")) {
