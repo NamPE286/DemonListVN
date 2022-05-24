@@ -15,6 +15,7 @@ function Main() {
     const [modal, setModal] = useState(false);
     const [d, setD] = useState([]);
     const [list, setList] = useState('');
+    const [prevName, setPrevName] = useState('');
     const [percentloaded, setPercentloaded] = useState(0);
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
@@ -392,7 +393,73 @@ function Main() {
                 var name = ''
                 if (d[0] != undefined) name = d[0].name
                 else name = d[1].name
-                console.log(player.index)
+                function update(){
+                    const d1 = {}
+                    d1.avatar = document.getElementById('playerAvatar').value;
+                    d1.name = document.getElementById('playerName').value;
+                    d1.social = {}
+                    d1.social.youtube = document.getElementById('youtube').value;
+                    d1.social.facebook = document.getElementById('facebook').value;
+                    d1.social.discord = document.getElementById('discordTag').value;
+                    player.index[d1.name] = d1
+                    for(const i in player.list){
+                        if(player.list[i].name == d1.name){
+                            player.list[i] = d1
+                        }
+                    }
+
+                    setModal(0);
+                    console.log(player)
+                }
+                function delete0(){
+                    delete player.index[name]
+                    for(const i in player.list){
+                        if(player.list[i].name == name){
+                            player.list = Object.values(player.list)
+                            player.list.splice(i,1)
+                            player.list = Object.assign({},player.list)
+                            break;
+                        }
+                    }
+                    try{
+                        delete FDLVNPlayer.index[name]
+                        for(const i in FDLVNPlayer.list){
+                            if(FDLVNPlayer.list[i].name == name){
+                                FDLVNPlayer.list = Object.values(FDLVNPlayer.list)
+                                FDLVNPlayer.list.splice(i,1)
+                                FDLVNPlayer.list = Object.assign({},FDLVNPlayer.list)
+                                break;
+                            }
+                        }
+                        for(const i in FDLVNPlayer.list){
+                            FDLVNPlayer.list[i].top = parseInt(i) + 1
+                        }
+                    }
+                    catch(err){
+                        console.error(err)
+                    }
+                    try{
+                        delete DLVNPlayer.index[name]
+                        for(const i in DLVNPlayer.list){
+                            if(DLVNPlayer.list[i].name == name){
+                                DLVNPlayer.list = Object.values(DLVNPlayer.list)
+                                DLVNPlayer.list.splice(i,1)
+                                DLVNPlayer.list = Object.assign({}, DLVNPlayer.list)
+                                break;
+                            }
+                        }
+                        for(const i in DLVNPlayer.list){
+                            DLVNPlayer.list[i].top = parseInt(i) + 1
+                        }
+                    }
+                    catch(err){
+                        console.error(err)
+                    }
+                    setModal(0);
+                    console.log(DLVNPlayer)
+                    console.log(FDLVNPlayer)
+                }
+
                 return (
                     <div className="popup">
                         <div className="overlay">
@@ -404,13 +471,13 @@ function Main() {
                                 <label for="playerAvatar">Avatar: </label>
                                 <input type="text" id="playerAvatar" name="playerAvatar" defaultValue={player.index[name].avatar} ></input><br />
                                 <label for="facebook">Facebook: </label>
-                                <input type="text" id="facebook" name="facebook" defaultValue={player.index[name].facebook} ></input><br />
+                                <input type="text" id="facebook" name="facebook" defaultValue={player.index[name].social.facebook} ></input><br />
                                 <label for="youtube">Youtube: </label>
-                                <input type="text" id="youtube" name="youtube" defaultValue={player.index[name].youtube} ></input><br />
+                                <input type="text" id="youtube" name="youtube" defaultValue={player.index[name].social.youtube} ></input><br />
                                 <label for="discordTag">Discord: </label>
-                                <input type="text" id="discordTag" name="discordTag" defaultValue={player.index[name].discord} ></input><br />
-                                <br /><button>Update</button><br /><br /><br /><br />
-                                <button>Delete level</button>
+                                <input type="text" id="discordTag" name="discordTag" defaultValue={player.index[name].social.discord} ></input><br />
+                                <br /><button onClick={update}>Update</button><br /><br /><br /><br />
+                                <button onClick={delete0}>Delete player</button>
                             </div>
                         </div>
                     </div>
