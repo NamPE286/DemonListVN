@@ -89,7 +89,7 @@ function Main() {
         getData()
     }, [])
 
-    async function addData(){
+    async function addData() {
         await setDoc(doc(db, "DLVN", 'index'), DLVN.index);
         await setDoc(doc(db, "DLVNPlayer", 'index'), DLVNPlayer.index);
         await setDoc(doc(db, "FDLVN", 'index'), FDLVN.index);
@@ -98,13 +98,13 @@ function Main() {
         await setDoc(doc(db, "auth", 'index'), au.index);
         await setDoc(doc(db, "player", 'index'), player.index);
 
-        await setDoc(doc(db, "DLVN", 'list'), Object.assign({},DLVN.index));
-        await setDoc(doc(db, "DLVNPlayer", 'list'), Object.assign({},DLVNPlayer.index));
-        await setDoc(doc(db, "FDLVN", 'list'), Object.assign({},FDLVN.index));
-        await setDoc(doc(db, "FDLVNPlayer", 'list'), Object.assign({},FDLVNPlayer.index));
-        await setDoc(doc(db, "FDLVNLegacy", 'list'), Object.assign({},FDLVNLegacy.index));
-        await setDoc(doc(db, "auth", 'list'), Object.assign({},au.index));
-        await setDoc(doc(db, "player", 'list'), Object.assign({},player.index));
+        await setDoc(doc(db, "DLVN", 'list'), Object.assign({}, DLVN.index));
+        await setDoc(doc(db, "DLVNPlayer", 'list'), Object.assign({}, DLVNPlayer.index));
+        await setDoc(doc(db, "FDLVN", 'list'), Object.assign({}, FDLVN.index));
+        await setDoc(doc(db, "FDLVNPlayer", 'list'), Object.assign({}, FDLVNPlayer.index));
+        await setDoc(doc(db, "FDLVNLegacy", 'list'), Object.assign({}, FDLVNLegacy.index));
+        await setDoc(doc(db, "auth", 'list'), Object.assign({}, au.index));
+        await setDoc(doc(db, "player", 'list'), Object.assign({}, player.index));
     }
 
     function logIn() {
@@ -125,7 +125,7 @@ function Main() {
     function showModal1() {
         if (modal) {
             if (list == 'FDLVN') {
-                async function update(){
+                async function update() {
                     const prevTop = d.top
                     d.name = document.getElementById('lvname').value;
                     d.creator = document.getElementById('creator').value;
@@ -139,14 +139,14 @@ function Main() {
                     delete FDLVN.index[parseInt(d.id)];
                     setModal(0);
                     FDLVN.list = Object.assign({}, Object.values(FDLVN.list));
-                    for(const i in FDLVN.list){
+                    for (const i in FDLVN.list) {
                         FDLVN.list[i].top = parseInt(i) + 1;
                     }
                     const d1 = Object.values(FDLVN.list);
                     d.top = parseInt(d.top) - 0.5
                     d1.push(d)
                     d1.sort((a, b) => (a.top > b.top) ? 1 : -1)
-                    for(const i in d1){
+                    for (const i in d1) {
                         d1[i].top = parseInt(i) + 1;
                         d1[i].points = Math.round((2100 / (0.3 * parseInt(d1[i].top) + 9) - 80) * 100) / 100;
                     }
@@ -155,13 +155,13 @@ function Main() {
                     setModal(0);
                     console.log(FDLVN)
                 }
-                async function delete0(){
+                async function delete0() {
                     const prevTop = d.top
                     delete FDLVN.list[parseInt(prevTop) - 1];
                     delete FDLVN.index[parseInt(d.id)];
                     setModal(0);
                     FDLVN.list = Object.assign({}, Object.values(FDLVN.list));
-                    for(const i in FDLVN.list){
+                    for (const i in FDLVN.list) {
                         FDLVN.list[i].top = parseInt(i) + 1;
                         FDLVN.list[i].points = Math.round((2100 / (0.3 * parseInt(FDLVN.list[i].top) + 9) - 80) * 100) / 100;
                     }
@@ -235,8 +235,8 @@ function Main() {
                     </div>
                 )
             }
-            else if (list == 'FDLVNLegacy'){
-                async function update(){
+            else if (list == 'FDLVNLegacy') {
+                async function update() {
                     d.name = document.getElementById('lvname').value;
                     d.creator = document.getElementById('creator').value;
                     d.verifier = document.getElementById('verifier').value;
@@ -244,18 +244,18 @@ function Main() {
                     d.thumbnail = document.getElementById('thumbnail').value;
                     d.ldm = JSON.parse('[' + document.getElementById('LDM').value + ']');
                     FDLVNLegacy.index[parseInt(d.id)] = d;
-                    for(const i in FDLVNLegacy.list){
-                        if(FDLVNLegacy.list[i].id == d.id){
+                    for (const i in FDLVNLegacy.list) {
+                        if (FDLVNLegacy.list[i].id == d.id) {
                             FDLVNLegacy.list[i] = d;
                         }
                     }
                     setModal(0);
                     console.log(FDLVNLegacy)
                 }
-                async function delete0(){
+                async function delete0() {
                     delete FDLVNLegacy.index[parseInt(d.id)];
-                    for(const i in FDLVNLegacy.list){
-                        if(FDLVNLegacy.list[i].id == d.id){
+                    for (const i in FDLVNLegacy.list) {
+                        if (FDLVNLegacy.list[i].id == d.id) {
                             delete FDLVNLegacy.list[i];
                         }
                     }
@@ -303,7 +303,7 @@ function Main() {
                 function getPoint(rank) {
                     return roundNumber((100 / Math.sqrt(((rank - 1) / 50) + 0.444444)) - 50, 3);
                 }
-                async function update(){
+                async function update() {
                     const prevTop = d.top
                     d.name = document.getElementById('lvname').value;
                     d.creator = document.getElementById('creator').value;
@@ -317,14 +317,14 @@ function Main() {
                     delete DLVN.index[parseInt(d.id)];
                     setModal(0);
                     DLVN.list = Object.assign({}, Object.values(DLVN.list));
-                    for(const i in DLVN.list){
+                    for (const i in DLVN.list) {
                         DLVN.list[i].top = parseInt(i) + 1;
                     }
                     const d1 = Object.values(DLVN.list);
                     d.top = parseInt(d.top) - 0.5
                     d1.push(d)
                     d1.sort((a, b) => (a.top > b.top) ? 1 : -1)
-                    for(const i in d1){
+                    for (const i in d1) {
                         d1[i].top = parseInt(i) + 1;
                         d1[i].points = getPoint(parseInt(i) + 1);
                     }
@@ -333,13 +333,13 @@ function Main() {
                     setModal(0);
                     console.log(DLVN)
                 }
-                async function delete0(){
+                async function delete0() {
                     const prevTop = d.top
                     delete DLVN.list[parseInt(prevTop) - 1];
                     delete DLVN.index[parseInt(d.id)];
                     setModal(0);
                     DLVN.list = Object.assign({}, Object.values(DLVN.list));
-                    for(const i in DLVN.list){
+                    for (const i in DLVN.list) {
                         DLVN.list[i].top = parseInt(i) + 1;
                         DLVN.list[i].points = getPoint(parseInt(i) + 1);
                     }
@@ -421,7 +421,7 @@ function Main() {
                 var name = ''
                 if (d[0] != undefined) name = d[0].name
                 else name = d[1].name
-                function update(){
+                function update() {
                     const d1 = {}
                     d1.avatar = document.getElementById('playerAvatar').value;
                     d1.name = document.getElementById('playerName').value;
@@ -430,8 +430,8 @@ function Main() {
                     d1.social.facebook = document.getElementById('facebook').value;
                     d1.social.discord = document.getElementById('discordTag').value;
                     player.index[d1.name] = d1
-                    for(const i in player.list){
-                        if(player.list[i].name == d1.name){
+                    for (const i in player.list) {
+                        if (player.list[i].name == d1.name) {
                             player.list[i] = d1
                         }
                     }
@@ -439,48 +439,48 @@ function Main() {
                     setModal(0);
                     console.log(player)
                 }
-                function delete0(){
+                function delete0() {
                     delete player.index[name]
-                    for(const i in player.list){
-                        if(player.list[i].name == name){
+                    for (const i in player.list) {
+                        if (player.list[i].name == name) {
                             player.list = Object.values(player.list)
-                            player.list.splice(i,1)
-                            player.list = Object.assign({},player.list)
+                            player.list.splice(i, 1)
+                            player.list = Object.assign({}, player.list)
                             break;
                         }
                     }
-                    try{
+                    try {
                         delete FDLVNPlayer.index[name]
-                        for(const i in FDLVNPlayer.list){
-                            if(FDLVNPlayer.list[i].name == name){
+                        for (const i in FDLVNPlayer.list) {
+                            if (FDLVNPlayer.list[i].name == name) {
                                 FDLVNPlayer.list = Object.values(FDLVNPlayer.list)
-                                FDLVNPlayer.list.splice(i,1)
-                                FDLVNPlayer.list = Object.assign({},FDLVNPlayer.list)
+                                FDLVNPlayer.list.splice(i, 1)
+                                FDLVNPlayer.list = Object.assign({}, FDLVNPlayer.list)
                                 break;
                             }
                         }
-                        for(const i in FDLVNPlayer.list){
+                        for (const i in FDLVNPlayer.list) {
                             FDLVNPlayer.list[i].top = parseInt(i) + 1
                         }
                     }
-                    catch(err){
+                    catch (err) {
                         console.error(err)
                     }
-                    try{
+                    try {
                         delete DLVNPlayer.index[name]
-                        for(const i in DLVNPlayer.list){
-                            if(DLVNPlayer.list[i].name == name){
+                        for (const i in DLVNPlayer.list) {
+                            if (DLVNPlayer.list[i].name == name) {
                                 DLVNPlayer.list = Object.values(DLVNPlayer.list)
-                                DLVNPlayer.list.splice(i,1)
+                                DLVNPlayer.list.splice(i, 1)
                                 DLVNPlayer.list = Object.assign({}, DLVNPlayer.list)
                                 break;
                             }
                         }
-                        for(const i in DLVNPlayer.list){
+                        for (const i in DLVNPlayer.list) {
                             DLVNPlayer.list[i].top = parseInt(i) + 1
                         }
                     }
-                    catch(err){
+                    catch (err) {
                         console.error(err)
                     }
                     setModal(0);
@@ -520,48 +520,54 @@ function Main() {
     }
     function showData() {
         if (player.list == undefined) return (<div>Loading {percentloaded}%</div>)
-        else return (
-            <div className="adminMainpanel">
-                <div className="lvDat">
-                    {showModal1()}
-                    <h2>FDLVN</h2>
-                    {Object.keys(FDLVN.list).map(i => {
-                        return (
-                            <p><a href="#!" onClick={() => showModal(FDLVN.list[i], 'FDLVN')}>#{FDLVN.list[i].top} {FDLVN.list[i].name}</a></p>
-                        )
-                    })}
+        else {
+            return (
+                <div className="adminMainpanel">
+                    <div className="lvDat">
+                        {showModal1()}
+                        <h2>FDLVN</h2>
+                        <button>Add new level</button>
+                        {Object.keys(FDLVN.list).map(i => {
+                            return (
+                                <p><a href="#!" onClick={() => showModal(FDLVN.list[i], 'FDLVN')}>#{FDLVN.list[i].top} {FDLVN.list[i].name}</a></p>
+                            )
+                        })}
+                    </div>
+                    <div className="lvDat">
+                        <h2>FDLVN Legacy</h2>
+                        <button>Add new level</button>
+                        {Object.keys(FDLVNLegacy.list).map(i => {
+                            return (
+                                <p><a href="#!" onClick={() => showModal(FDLVNLegacy.list[i], 'FDLVNLegacy')}>{FDLVNLegacy.list[i].name}</a></p>
+                            )
+                        })}
+                    </div>
+                    <div className="lvDat">
+                        <h2>DLVN</h2>
+                        <button>Add new level</button>
+                        {Object.keys(DLVN.list).map(i => {
+                            return (
+                                <p><a href="#!" onClick={() => showModal(DLVN.list[i], 'DLVN')}>#{DLVN.list[i].top} {DLVN.list[i].name}</a></p>
+                            )
+                        })}
+                    </div>
+                    <div className="lvDat">
+                        <h2>Player</h2>
+                        <button>Add new player</button>
+                        {Object.keys(player.list).map(i => {
+                            function getInfo() {
+                                const a = FDLVNPlayer.index[player.list[i].name]
+                                const b = DLVNPlayer.index[player.list[i].name]
+                                return [a, b]
+                            }
+                            return (
+                                <p><a href="#!" onClick={() => showModal(getInfo(), 'player')}>{player.list[i].name}</a></p>
+                            )
+                        })}
+                    </div>
                 </div>
-                <div className="lvDat">
-                    <h2>FDLVN Legacy</h2>
-                    {Object.keys(FDLVNLegacy.list).map(i => {
-                        return (
-                            <p><a href="#!" onClick={() => showModal(FDLVNLegacy.list[i], 'FDLVNLegacy')}>{FDLVNLegacy.list[i].name}</a></p>
-                        )
-                    })}
-                </div>
-                <div className="lvDat">
-                    <h2>DLVN</h2>
-                    {Object.keys(DLVN.list).map(i => {
-                        return (
-                            <p><a href="#!" onClick={() => showModal(DLVN.list[i], 'DLVN')}>#{DLVN.list[i].top} {DLVN.list[i].name}</a></p>
-                        )
-                    })}
-                </div>
-                <div className="lvDat">
-                    <h2>Player</h2>
-                    {Object.keys(player.list).map(i => {
-                        function getInfo() {
-                            const a = FDLVNPlayer.index[player.list[i].name]
-                            const b = DLVNPlayer.index[player.list[i].name]
-                            return [a, b]
-                        }
-                        return (
-                            <p><a href="#!" onClick={() => showModal(getInfo(), 'player')}>{player.list[i].name}</a></p>
-                        )
-                    })}
-                </div>
-            </div>
-        )
+            )
+        }
 
     }
 
