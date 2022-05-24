@@ -467,7 +467,7 @@ function Main() {
                                 <h2>Edit level info</h2>
                                 <a id='close' onClick={() => { setModal(!modal) }}>x</a>
                                 <label for="playerName">Player name: </label>
-                                <input type="text" id="playerName" name="playerName" defaultValue={name} ></input><br />
+                                <input type="text" id="playerName" name="playerName" defaultValue={name} readOnly></input><br />
                                 <label for="playerAvatar">Avatar: </label>
                                 <input type="text" id="playerAvatar" name="playerAvatar" defaultValue={player.index[name].avatar} ></input><br />
                                 <label for="facebook">Facebook: </label>
