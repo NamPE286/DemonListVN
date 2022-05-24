@@ -20,7 +20,7 @@ function Main() {
         console.log("No such document!");
       }
 
-      const lvRef0 = doc(db, "FLVNPlayer", "GDVNALPlayer")
+      const lvRef0 = doc(db, "DLVNPlayer", "list")
       const docSnap0 = await getDoc(lvRef0);
 
       if (docSnap0.exists()) {
