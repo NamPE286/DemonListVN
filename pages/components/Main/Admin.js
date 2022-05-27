@@ -674,8 +674,7 @@ function Main() {
         }
 
     }
-
-    if (user != null) {
+    if (user == null) {
         if (player.list == undefined) return (<div>Loading {percentloaded}%</div>)
         else return (
             <div className="adminMainpanel">
@@ -683,10 +682,15 @@ function Main() {
             </div>
         )
     }
-
+    if(user.email in au.admin)
     return (
         <>
             {showData()}
+        </>
+    )
+    return(
+        <>
+            <p>You do not have permission to access this page.</p>
         </>
     )
 
