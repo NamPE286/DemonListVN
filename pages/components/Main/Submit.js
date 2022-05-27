@@ -1,9 +1,54 @@
-import { useState } from "react";
+import { getDoc, doc, setDoc } from "firebase/firestore"
+import { db } from '../../api/firebase-config.js'
+import { useState, useEffect } from 'react';
+import { async } from "@firebase/util";
 function Main() {
+    const [data, setData] = useState([]);
+    const [data1, setData1] = useState([]);
     const [sel, setSel] = useState(0);
+    const [loading, setLoading] = useState(false);
 
+    useEffect(() => {
+      async function getData() {
+        const lvRef = doc(db, "submit", 'FDLVN')
+        const docSnap = await getDoc(lvRef);
+  
+        if (docSnap.exists()) {
+          setData(docSnap.data());
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
+        const lvRef1 = doc(db, "submit", 'FDLVN')
+        const docSnap1 = await getDoc(lvRef);
+  
+        if (docSnap1.exists()) {
+          setData1(docSnap1.data());
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
+        setLoading(true);
+      }
+      getData()
+    }, [loading])
+  
     function showGGF() {
         if (sel == 0) {
+            async function sendSubmit(){
+                var dat = {}
+                dat['vids'] = {}
+                dat['id'] = document.getElementById('lvID').value
+                dat['vids']['user'] = document.getElementById('userName').value
+                dat['vids']['link'] = document.getElementById('link').value
+                var d = Object.values(data)
+                d.push(dat)
+                console.log(d)
+                d = Object.assign({}, d)
+                setData(d)
+                await setDoc(doc(db, "submit", 'FDLVN'), d);
+                alert('Your submission has been sent!')
+            }
             return (
                 <div className="submit">
                     <label for='userName'>Your in-game name:</label><br></br>
@@ -12,14 +57,50 @@ function Main() {
                     <input type='text' id='lvID' name='lvID' /><br></br> 
                     <label for='link'>YouTube video's link:</label><br></br>
                     <input type='text' id='link' name='link' /><br></br>
-                    <button onClick={() => console.log('ok')}>Submit</button>
+                    <button onClick={() => sendSubmit()}>Submit</button>
                 </div>
             )
         }
         else{
+            async function sendSubmit(){
+                var dat = {}
+                dat['vids'] = {}
+                dat['id'] = document.getElementById('lvID').value
+                dat['vids']['user'] = document.getElementById('userName').value
+                dat['vids']['link'] = document.getElementById('link').value
+                dat['vids']['hz'] = document.getElementById('device').value
+                dat['vids']['percent'] = document.getElementById('percent').value
+                var d = Object.values(data1)
+                d.push(dat)
+                d = Object.assign({}, d)
+                setData1(d)
+                await setDoc(doc(db, "submit", 'DLVN'), d);
+                alert('Your submission has been sent!')
+            
+            }
             return (
-                <>
-                </>
+                <div className="submit">
+                    <label for='userName'>Your in-game name:</label><br></br>
+                    <input type='text' id='userName' name='userName' /><br></br>
+                    <label for='lvID'>ID of the level you've beaten:</label><br></br>
+                    <input type='text' id='lvID' name='lvID' /><br></br> 
+                    <label for='device'>Device (refresh rate):</label><br></br>
+                    <select type='text' id='device' name='device'>
+                        <option value="60Hz">60Hz</option>
+                        <option value="144Hz">144Hz</option>
+                        <option value="240Hz">240Hz</option>
+                        <option value="300Hz">300Hz</option>
+                        <option value="Mobile 60Hz">Mobile 60Hz</option>
+                        <option value="Mobile 144Hz">Mobile 144Hz</option>
+                        <option value="Mobile 240Hz">Mobile 240Hz</option>
+                        <option value="Mobile 300Hz">Mobile 300Hz</option>
+                    </select><br></br>
+                    <label for='percent'>Progress:</label><br></br>
+                    <input type='text' id='percent' name='percent' /><br></br>
+                    <label for='link'>YouTube video's link:</label><br></br>
+                    <input type='text' id='link' name='link' /><br></br>
+                    <button onClick={() => sendSubmit()}>Submit</button>
+                </div>
             )
         }
     }

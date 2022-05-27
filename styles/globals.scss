@@ -1118,6 +1118,24 @@ code {
         background-color: var(--a3);
         transition: 0.3s;
     }
+    select{
+        width: calc(100% + 20px);
+        height: 40px;
+        border-radius: 16px;
+        border: none;
+        background-color: var(--a2);
+        color: var(--a7);
+        font-size: 15px;
+        padding-inline: 10px;
+        margin-top:10px;
+        margin-bottom:10px;
+        transition: 0.3s;
+    }
+    select:focus{
+        outline: none;
+        background-color: var(--a3);
+        transition: 0.3s;
+    }
     margin-inline: auto;
     padding-left: 100px;
     padding-right: 145px;

@@ -98,7 +98,7 @@ function Main() {
                         <br></br><br></br>
                         <div className="levelRecord">
                             <section className="allPlayerInfo">
-                                <a id="levelRec">Completed demon(s): {player[id].length}</a>
+                                <a id="levelRec">Completed demon(s): {Object.values(player[id]['vids']).length}</a>
                             </section>
                             {Object.keys(player[id]['vids']).map(i => {
                                 c = c*-1
@@ -122,7 +122,7 @@ function Main() {
                         <br></br><br></br>
                         <div className="levelRecord">
                             <section className="allPlayerInfo">
-                                <a id="levelRec">This player haven't beaten any level yet</a>
+                                <a id="levelRec">This player hasn't beaten any level yet</a>
                             </section>
                         </div>
                     </div>
