@@ -1099,6 +1099,45 @@ code {
     background-color: var(--a2);
     border-radius: 16px;
 }
+.submit{
+    input{
+        width: 100%;
+        height: 40px;
+        border-radius: 16px;
+        border: none;
+        background-color: var(--a2);
+        color: var(--a7);
+        font-size: 15px;
+        padding-inline: 10px;
+        margin-top:10px;
+        margin-bottom:10px;
+        transition: 0.3s;
+    }
+    input:focus{
+        outline: none;
+        background-color: var(--a3);
+        transition: 0.3s;
+    }
+    margin-inline: auto;
+    padding-left: 100px;
+    padding-right: 145px;
+    button{
+        width: 20%;
+        height: 50px;
+        border-radius: 16px;
+        border: none;
+        background-color: var(--a2);
+        font-size: 15px;
+        padding-inline: 10px;
+        margin-top: 30px;
+        transition: 0.3s;
+        margin-left: 40%;
+    }
+    button:hover{
+        background-color: var(--a3);
+        transition: 0.3s;
+    }
+}
 
 @media screen and (max-width: 1500px) {
     .pageContent {
@@ -1111,6 +1150,14 @@ code {
 }
 
 @media screen and (max-width: 1250px) {
+    .submit{
+        padding-left: 20px;
+        padding-right: 45px;
+        button{
+            width: 40%;
+            margin-left: 30%;
+        }
+    }
     .levelRecord1 {
         margin-left: 25px;
     }

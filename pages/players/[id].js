@@ -83,7 +83,7 @@ function Main() {
                         <br></br><br></br>
                         <div className="levelRecord">
                             <section className="allPlayerInfo">
-                                <a id="levelRec">This player haven't beaten any level yet</a>
+                                <a id="levelRec">This player hasn't beaten any level yet</a>
                             </section>
                         </div>
                     </div>
@@ -265,12 +265,11 @@ function Main() {
                                 </div><br/>
                                 <section id="mode123">
                                     <label for="mode12">Show Record: </label>
-                                    <select name="mode12" id="mode12">
+                                    <select name="mode12" id="mode12" onChange={() => setMode(document.getElementById('mode12').value)}>
                                         <option value={mode} selected disabled hidden>{nah(mode)}</option>
                                         <option value="0">FDLVN</option>
                                         <option value="1">Demon List VN</option>
                                     </select>
-                                    <button onClick={() => setMode(document.getElementById('mode12').value)}>Apply</button>
                                 </section>
                                 {recList()}
                             </div>

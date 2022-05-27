@@ -5,23 +5,20 @@ function Main() {
     function showGGF() {
         if (sel == 0) {
             return (
-                <>
-                    <div className="submitForm">
-                        <iframe className="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLScyjv64Ezp9-3kQPUvZ-aCpEjKue9jhXKqVnq2bFSGqARpzUg/viewform?embedded=true" width="90%" height="1260" frameBorder="0" marginHeight="0" marginWidth="0"></iframe>
-                    </div>
-                    <p className="submitP">Doesn't work? <a href="https://docs.google.com/forms/d/e/1FAIpQLScyjv64Ezp9-3kQPUvZ-aCpEjKue9jhXKqVnq2bFSGqARpzUg/viewform?embedded=true" target="_blank"><u>Click Here</u></a></p>
-
-                </>
+                <div className="submit">
+                    <label for='userName'>Your in-game name:</label><br></br>
+                    <input type='text' id='userName' name='userName' /><br></br>
+                    <label for='lvID'>ID of the level you've beaten:</label><br></br>
+                    <input type='text' id='lvID' name='lvID' /><br></br> 
+                    <label for='link'>YouTube video's link:</label><br></br>
+                    <input type='text' id='link' name='link' /><br></br>
+                    <button onClick={() => console.log('ok')}>Submit</button>
+                </div>
             )
         }
         else{
             return (
                 <>
-                    <div className="submitForm">
-                        <iframe className="google-form" src="https://docs.google.com/forms/d/e/1FAIpQLScnysX6n-jJZJV-Y5acianEVF7hML-tEdGa78qTh6hX0C8gTg/viewform?embedded=true" width="90%" height="1260" frameBorder="0" marginHeight="0" marginWidth="0"></iframe>
-                    </div>
-                    <p className="submitP">Doesn't work? <a href="https://docs.google.com/forms/d/e/1FAIpQLScnysX6n-jJZJV-Y5acianEVF7hML-tEdGa78qTh6hX0C8gTg/viewform?embedded=true" target="_blank"><u>Click Here</u></a></p>
-
                 </>
             )
         }
