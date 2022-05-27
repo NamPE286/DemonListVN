@@ -205,10 +205,14 @@ function Main() {
                                     {
                                         Object.keys(d.vids).map((i) => {
                                             function update1() {
-
+                                                d.vids[i].user = document.getElementById(`userName${i}`).value;
+                                                d.vids[i].link = document.getElementById(`YTLink${i}`).value;
+                                                console.log(d.vids[i])
                                             }
                                             function delete2() {
-
+                                                d.vids.splice(i, 1);
+                                                setModal(0);
+                                                console.log(d.vids)
                                             }
                                             return (
                                                 <>
@@ -280,6 +284,52 @@ function Main() {
                                 <input type="text" id="thumbnail" name="thumbnail" defaultValue={d.thumbnail} ></input><br />
                                 <label for="LDM">LDM: </label>
                                 <input type="text" id="LDM" name="LDM" defaultValue={JSON.stringify(d.ldm).substring(1, JSON.stringify(d.ldm).length - 1)}></input><br />
+                                <label>Victor: </label><button>Add victor</button><hr></hr>
+                                <div className={`victor`} style={{ display: "none" }}>
+                                    <label for={`userName`}>Player name:  </label>
+                                    <input type="text" id={`userName`} name={`userName`}></input><br />
+                                    <label for={`percent`}>Percent:  </label>
+                                    <input type="text" id={`percent`} name={`percent`}></input><br />
+                                    <label for={`YTLink`}>Video Link:  </label>
+                                    <input type="text" id={`YTLink`} name={`YTLink`}></input><br />
+                                    <label for={`hz`}>HZ:  </label>
+                                    <input type="text" id={`hz`} name={`hz`}></input><br />
+                                    <button>Add</button>
+                                    <button>Cancel</button>
+                                    <hr />
+                                </div>
+                                <div className="victorCard">
+                                    {
+                                        Object.keys(d.vids).map((i) => {
+                                            function update1() {
+                                                d.vids[i].user = document.getElementById(`userName${i}`).value;
+                                                d.vids[i].link = document.getElementById(`YTLink${i}`).value;
+                                                console.log(d.vids[i])
+                                            }
+                                            function delete2() {
+                                                d.vids.splice(i, 1);
+                                                setModal(0);
+                                                console.log(d.vids)
+                                            }
+                                            return (
+                                                <>
+                                                    <div className={`victor${i}`}>
+                                                        <label for={`userName${i}`}>Player name:  </label>
+                                                        <input type="text" id={`userName${i}`} name={`userName${i}`} defaultValue={d.vids[i].user}></input><br />
+                                                        <label for={`YTLink${i}`}>Video Link:  </label>
+                                                        <input type="text" id={`YTLink${i}`} name={`YTLink${i}`} defaultValue={d.vids[i].link}></input><br />
+                                                        <button onClick={update1}>Update</button>
+                                                        <button onClick={delete2}>Delete</button>
+                                                        <hr />
+                                                    </div>
+
+                                                </>
+
+                                            )
+                                        })}
+
+                                </div>
+
                                 <br /><button onClick={() => update()}>Update</button><br /><br /><br /><br />
                                 <button onClick={() => delete0()}>Delete level</button>
                             </div>
@@ -383,10 +433,16 @@ function Main() {
                                     {
                                         Object.keys(d.vids).map((i) => {
                                             function update1() {
-
+                                                d.vids[i].user = document.getElementById(`userName${i}`).value;
+                                                d.vids[i].link = document.getElementById(`YTLink${i}`).value;
+                                                d.vids[i].percent = parseInt(document.getElementById(`percent${i}`).value);
+                                                d.vids[i].hz = document.getElementById(`hz${i}`).value;
+                                                console.log(d.vids[i])
                                             }
                                             function delete2() {
-
+                                                d.vids.splice(i, 1);
+                                                setModal(0);
+                                                console.log(d.vids)
                                             }
                                             return (
                                                 <>
