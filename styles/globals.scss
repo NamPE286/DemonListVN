@@ -943,8 +943,13 @@ code {
     margin-inline: 30px;
     display: flex;
 }
-.lvdat {
+.lvDat {
     margin-right: 20px;
+    background-color: var(--a1);
+    border-radius: 16px;
+    padding: 20px;
+    padding-top: 8px;
+    height: fit-content;
 }
 .popup {
     position: absolute;

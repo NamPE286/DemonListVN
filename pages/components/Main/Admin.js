@@ -113,16 +113,16 @@ function Main() {
         var element = document.createElement('a');
         element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
         element.setAttribute('download', filename);
-      
+
         element.style.display = 'none';
         document.body.appendChild(element);
-      
-        element.click();
-      
-        document.body.removeChild(element);
-      }
 
-    function getJSON(){
+        element.click();
+
+        document.body.removeChild(element);
+    }
+
+    function getJSON() {
         var a = {};
         a.DLVN = DLVN;
         a.DLVNPlayer = DLVNPlayer;
@@ -132,7 +132,7 @@ function Main() {
         a.au = au;
         a.player = player;
         const j = JSON.stringify(a);
-        download('data.json',  j)
+        download('data.json', j)
     }
     function logIn() {
         signInWithPopup(auth, provider)
@@ -280,10 +280,17 @@ function Main() {
                     d.thumbnail = document.getElementById('thumbnail').value;
                     d.ldm = JSON.parse('[' + document.getElementById('LDM').value + ']');
                     FDLVNLegacy.index[parseInt(d.id)] = d;
+                    var l = false
                     for (const i in FDLVNLegacy.list) {
                         if (FDLVNLegacy.list[i].id == d.id) {
                             FDLVNLegacy.list[i] = d;
+                            l = true
                         }
+                    }
+                    if (!l) {
+                        FDLVNLegacy.list = Object.values(FDLVNLegacy.list)
+                        FDLVNLegacy.list.unshift(d)
+                        FDLVNLegacy.list = Object.assign({}, FDLVNLegacy.list)
                     }
                     setModal(0);
                     setStatus('Not up to date')
@@ -624,7 +631,18 @@ function Main() {
                     <div className="lvDat">
                         {showModal1()}
                         <h2>FDLVN</h2>
-                        <button>Add new level</button>
+                        <button onClick={() => showModal({
+                            'creator': '',
+                            'id': '',
+                            'ldm': [],
+                            'name': '',
+                            'points': 0,
+                            'top': 1,
+                            'profile': '',
+                            'thumbnail': '',
+                            'verifier': '',
+                            'vids': []
+                        }, 'FDLVN')}>Add new level</button>
                         {Object.keys(FDLVN.list).map(i => {
                             return (
                                 <p><a href="#!" onClick={() => showModal(FDLVN.list[i], 'FDLVN')}>#{FDLVN.list[i].top} {FDLVN.list[i].name}</a></p>
@@ -633,7 +651,16 @@ function Main() {
                     </div>
                     <div className="lvDat">
                         <h2>FDLVN Legacy</h2>
-                        <button>Add new level</button>
+                        <button onClick={() => showModal({
+                            'creator': '',
+                            'id': '',
+                            'ldm': [],
+                            'name': '',
+                            'profile': '',
+                            'thumbnail': '',
+                            'verifier': '',
+                            'vids': []
+                        }, 'FDLVNLegacy')}>Add new level</button>
                         {Object.keys(FDLVNLegacy.list).map(i => {
                             return (
                                 <p><a href="#!" onClick={() => showModal(FDLVNLegacy.list[i], 'FDLVNLegacy')}>{FDLVNLegacy.list[i].name}</a></p>
@@ -642,7 +669,19 @@ function Main() {
                     </div>
                     <div className="lvDat">
                         <h2>DLVN</h2>
-                        <button>Add new level</button>
+                        <button onClick={() => showModal({
+                            'creator': '',
+                            'id': '',
+                            'ldm': [],
+                            'name': '',
+                            'points': 0,
+                            'top': 1,
+                            'profile': '',
+                            'thumbnail': '',
+                            'firstVictor': '',
+                            'percentToQualify': 0,
+                            'vids': []
+                        }, 'DLVN')}>Add new level</button>
                         {Object.keys(DLVN.list).map(i => {
                             return (
                                 <p><a href="#!" onClick={() => showModal(DLVN.list[i], 'DLVN')}>#{DLVN.list[i].top} {DLVN.list[i].name}</a></p>
@@ -651,7 +690,43 @@ function Main() {
                     </div>
                     <div className="lvDat">
                         <h2>Player</h2>
-                        <button>Add new player</button>
+                        <button onClick={() => {
+                            showModal([
+                                {
+                                    'avatar': '',
+                                    'name': '!@deletethis!@',
+                                    'points': 0,
+                                    'top': 0,
+                                    'bestplay': '',
+                                    'bestplayCreator': '',
+                                    'bestplayPt': 0,
+                                    'bestplayThumbnail': '',
+                                    'lv': [],
+                                    'vids': {}
+                                },
+                                {
+                                    'avatar': '',
+                                    'name': '!@deletethis!@',
+                                    'points': 0,
+                                    'top': 0,
+                                    'bestplay': '',
+                                    'bestplayCreator': '',
+                                    'bestplayPt': 0,
+                                    'bestplayThumbnail': '',
+                                    'lv': [],
+                                    'vids': {}
+                                }
+                            ], 'player')
+                            player.index['!@deletethis!@'] = {
+                                'avatar': '',
+                                'name': '',
+                                'social': {
+                                    'facebook': '',
+                                    'youtube': '',
+                                    'discord': ''
+                                },
+                            }
+                        }}>Add new player</button>
                         {Object.keys(player.list).map(i => {
                             function getInfo() {
                                 const a = FDLVNPlayer.index[player.list[i].name]
@@ -664,7 +739,7 @@ function Main() {
                         })}
                     </div>
                     <div className="lvDat">
-                        <br></br><br></br>
+                        <br></br>
                         <button onClick={getJSON}>Download JSON</button><br></br><br></br>
                         <button onClick={addData}>Upload change</button><br></br><br></br>
                         <label>Status: {status}</label>
@@ -682,13 +757,13 @@ function Main() {
             </div>
         )
     }
-    if(user.email in au.admin)
+    if (user.email in au.admin)
+        return (
+            <>
+                {showData()}
+            </>
+        )
     return (
-        <>
-            {showData()}
-        </>
-    )
-    return(
         <>
             <p>You do not have permission to access this page.</p>
         </>
