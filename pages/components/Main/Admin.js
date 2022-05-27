@@ -690,43 +690,6 @@ function Main() {
                     </div>
                     <div className="lvDat">
                         <h2>Player</h2>
-                        <button onClick={() => {
-                            showModal([
-                                {
-                                    'avatar': '',
-                                    'name': '!@deletethis!@',
-                                    'points': 0,
-                                    'top': 0,
-                                    'bestplay': '',
-                                    'bestplayCreator': '',
-                                    'bestplayPt': 0,
-                                    'bestplayThumbnail': '',
-                                    'lv': [],
-                                    'vids': {}
-                                },
-                                {
-                                    'avatar': '',
-                                    'name': '!@deletethis!@',
-                                    'points': 0,
-                                    'top': 0,
-                                    'bestplay': '',
-                                    'bestplayCreator': '',
-                                    'bestplayPt': 0,
-                                    'bestplayThumbnail': '',
-                                    'lv': [],
-                                    'vids': {}
-                                }
-                            ], 'player')
-                            player.index['!@deletethis!@'] = {
-                                'avatar': '',
-                                'name': '',
-                                'social': {
-                                    'facebook': '',
-                                    'youtube': '',
-                                    'discord': ''
-                                },
-                            }
-                        }}>Add new player</button>
                         {Object.keys(player.list).map(i => {
                             function getInfo() {
                                 const a = FDLVNPlayer.index[player.list[i].name]
