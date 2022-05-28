@@ -713,8 +713,7 @@ function Main() {
 
     }
     if (user == null) {
-        if (player.list == undefined) return (<div>Loading {percentloaded}%</div>)
-        else return (
+        return (
             <div className="adminMainpanel">
                 <button onClick={logIn}>Log In</button>
             </div>
