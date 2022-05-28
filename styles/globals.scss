@@ -1157,6 +1157,16 @@ code {
     }
 }
 
+.submissionCard{
+    background-color: var(--a2);
+    padding: 20px;
+    padding-top: 5px;
+    margin-bottom: 20px;
+    border-radius: 16px;
+}
+#center-text{
+    text-align: center;
+}
 @media screen and (max-width: 1500px) {
     .pageContent {
         margin-left: 100px;

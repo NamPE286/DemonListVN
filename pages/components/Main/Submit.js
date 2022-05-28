@@ -1,38 +1,9 @@
 import { getDoc, doc, setDoc } from "firebase/firestore"
 import { db } from '../../api/firebase-config.js'
-import { useState, useEffect } from 'react';
-import { async } from "@firebase/util";
-function Main() {
-    const [data, setData] = useState([]);
-    const [data1, setData1] = useState([]);
-    const [sel, setSel] = useState(0);
-    const [loading, setLoading] = useState(false);
+import { useState } from 'react';
 
-    useEffect(() => {
-      async function getData() {
-        const lvRef = doc(db, "submit", 'FDLVN')
-        const docSnap = await getDoc(lvRef);
-  
-        if (docSnap.exists()) {
-          setData(docSnap.data());
-        } else {
-          // doc.data() will be undefined in this case
-          console.log("No such document!");
-        }
-        const lvRef1 = doc(db, "submit", 'FDLVN')
-        const docSnap1 = await getDoc(lvRef);
-  
-        if (docSnap1.exists()) {
-          setData1(docSnap1.data());
-        } else {
-          // doc.data() will be undefined in this case
-          console.log("No such document!");
-        }
-        setLoading(true);
-      }
-      getData()
-    }, [loading])
-  
+function Main() {
+    const [sel, setSel] = useState(0);    
     function showGGF() {
         if (sel == 0) {
             async function sendSubmit(){
@@ -41,12 +12,19 @@ function Main() {
                 dat['id'] = document.getElementById('lvID').value
                 dat['vids']['user'] = document.getElementById('userName').value
                 dat['vids']['link'] = document.getElementById('link').value
-                var d = Object.values(data)
-                d.push(dat)
-                console.log(d)
-                d = Object.assign({}, d)
-                setData(d)
-                await setDoc(doc(db, "submit", 'FDLVN'), d);
+
+                const lvRef = doc(db, "submit", 'FDLVN')
+                const docSnap = await getDoc(lvRef);
+                if (docSnap.exists()) {
+                  const data = docSnap.data();
+                  var d = Object.values(data)
+                  d.push(dat)
+                  d = Object.assign({}, d)
+                  await setDoc(lvRef, d)
+                } else {
+                  // doc.data() will be undefined in this case
+                  console.log("No such document!");
+                }
                 alert('Your submission has been sent!')
             }
             return (
@@ -70,13 +48,19 @@ function Main() {
                 dat['vids']['link'] = document.getElementById('link').value
                 dat['vids']['hz'] = document.getElementById('device').value
                 dat['vids']['percent'] = document.getElementById('percent').value
-                var d = Object.values(data1)
-                d.push(dat)
-                d = Object.assign({}, d)
-                setData1(d)
-                await setDoc(doc(db, "submit", 'DLVN'), d);
+                const lvRef = doc(db, "submit", 'DLVN')
+                const docSnap = await getDoc(lvRef);
+                if (docSnap.exists()) {
+                  const data = docSnap.data();
+                  var d = Object.values(data)
+                  d.push(dat)
+                  d = Object.assign({}, d)
+                  await setDoc(lvRef, d)
+                } else {
+                  // doc.data() will be undefined in this case
+                  console.log("No such document!");
+                }
                 alert('Your submission has been sent!')
-            
             }
             return (
                 <div className="submit">
