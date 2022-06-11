@@ -67,7 +67,7 @@ function Main() {
     }
     async function reject(i) {
         delete data[i];
-        await setDoc(doc(db, "submit", DLVN), data);
+        await setDoc(doc(db, "submit", 'DLVN'), data);
     }
     if (user == null) {
         return (
