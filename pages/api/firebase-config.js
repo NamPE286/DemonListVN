@@ -1,17 +1,23 @@
 import {getFirestore, enableIndexedDbPersistence} from "@firebase/firestore"
 import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCRw1m2AcNCKJ0fMugRsoR8-2axr9xob_w",
-  authDomain: "demon-list-vn-test.firebaseapp.com",
-  projectId: "demon-list-vn-test",
-  storageBucket: "demon-list-vn-test.appspot.com",
-  messagingSenderId: "183950928584",
-  appId: "1:183950928584:web:2db358198f1f10471313fd"
+  apiKey: process.env.NEXT_PUBLIC_APIKEY,
+  authDomain: process.env.NEXT_PUBLIC_AUTHDOMAIN,
+  projectId: process.env.NEXT_PUBLIC_PROJECTID,
+  storageBucket: process.env.NEXT_PUBLIC_STORAGEBUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_MESSAGINGSENDERID,
+  appId: process.env.NEXT_PUBLIC_APPID,
+  measurementId: process.env.NEXT_PUBLIC_MID
 };
 
 //google analytics
 
 const app = initializeApp(firebaseConfig);
+try{
+  const analytics = getAnalytics();
+}
+catch(err){}
 
 export const db = getFirestore(app);
