@@ -7,6 +7,11 @@ function Main() {
     const [FDLVN, setFDLVN] = useState();
     const [DLVN, setDLVN] = useState();
     const [player, setPlayer] = useState();
+    var uName = localStorage.getItem('userName')
+    if(uName == null){
+        uName = ''
+    }
+    console.log(uName)
     useEffect(() => {
         const dat1 = onSnapshot(doc(db, "FDLVN", 'index'), (doc) => {
             setFDLVN(doc.data());
@@ -41,6 +46,7 @@ function Main() {
                 alert('Your submission has been sent!')
             }
             async function sendSubmit() {
+                localStorage.setItem('userName', document.getElementById('userName').value)
                 var dat = {}
                 dat['vids'] = {}
                 dat['id'] = document.getElementById('lvID').value
@@ -68,7 +74,7 @@ function Main() {
             return (
                 <div className="submit">
                     <label for='userName'>Your in-game name:</label><br></br>
-                    <input type='text' id='userName' name='userName' /><br></br>
+                    <input type='text' id='userName' name='userName' defaultValue={uName}/><br></br>
                     <label for='lvID'>ID of the level you've beaten:</label><br></br>
                     <input type='text' id='lvID' name='lvID' /><br></br>
                     <label for='link'>YouTube video's link:</label><br></br>
@@ -94,6 +100,7 @@ function Main() {
                 alert('Your submission has been sent!')
             }
             async function sendSubmit() {
+                localStorage.setItem('userName', document.getElementById('userName').value)
                 var dat = {}
                 dat['vids'] = {}
                 dat['id'] = document.getElementById('lvID').value
@@ -121,7 +128,7 @@ function Main() {
             return (
                 <div className="submit">
                     <label for='userName'>Your in-game name:</label><br></br>
-                    <input type='text' id='userName' name='userName' /><br></br>
+                    <input type='text' id='userName' name='userName' defaultValue={uName}/><br></br>
                     <label for='lvID'>ID of the level you've beaten:</label><br></br>
                     <input type='text' id='lvID' name='lvID' /><br></br>
                     <label for='device'>Device (refresh rate):</label><br></br>
