@@ -7,9 +7,12 @@ function Main() {
     const [FDLVN, setFDLVN] = useState();
     const [DLVN, setDLVN] = useState();
     const [player, setPlayer] = useState();
-    var uName = localStorage.getItem('userName')
-    if(uName == null){
-        uName = ''
+    var uName = ''
+    if(typeof window !== 'undefined'){
+        uName = localStorage.getItem('userName')
+        if(uName == null){
+            uName = ''
+        }
     }
     useEffect(() => {
         const dat1 = onSnapshot(doc(db, "FDLVN", 'index'), (doc) => {
@@ -45,7 +48,9 @@ function Main() {
                 alert('Your submission has been sent!')
             }
             async function sendSubmit() {
-                localStorage.setItem('userName', document.getElementById('userName').value)
+                if(typeof window !== 'undefined'){
+                    localStorage.setItem('userName', document.getElementById('userName').value)
+                }
                 var dat = {}
                 dat['vids'] = {}
                 dat['id'] = document.getElementById('lvID').value
@@ -99,7 +104,9 @@ function Main() {
                 alert('Your submission has been sent!')
             }
             async function sendSubmit() {
-                localStorage.setItem('userName', document.getElementById('userName').value)
+                if(typeof window !== 'undefined'){
+                    localStorage.setItem('userName', document.getElementById('userName').value)
+                }
                 var dat = {}
                 dat['vids'] = {}
                 dat['id'] = document.getElementById('lvID').value
