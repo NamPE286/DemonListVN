@@ -68,7 +68,7 @@ function Main() {
     }
     async function reject(i) {
         delete data[i];
-        await setDoc(doc(db, "submit", FDLVN), data);
+        await setDoc(doc(db, "submit", 'FDLVN'), data);
     }
     if (user == null) {
         return (
@@ -91,7 +91,7 @@ function Main() {
                     <>
                         <div className='mainpanelNoMargin'>
                             <div className="submission">
-                                <h2>{FDLVN} Submission</h2>
+                                <h2>FDLVN Submission</h2>
                                 <i><p id='center-text'>After checked all submissions, please go to <b><a href='/Admin'>Admin page</a></b> (click on <b>Upload Change</b> button) to update players points (this page only add levels to players record list)</p></i>
                                 <p id='center-text'>All done!</p>
                             </div>
