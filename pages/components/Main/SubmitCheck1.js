@@ -13,15 +13,15 @@ function Main() {
     const router = useRouter();
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
-    const { FDLVN } = router.query;
+    const { DLVN } = router.query;
     useEffect(() => {
-        const dat0 = onSnapshot(doc(db, "submit", 'FDLVN'), (doc) => {
+        const dat0 = onSnapshot(doc(db, "submit", 'DLVN'), (doc) => {
             setData(doc.data());
         })
-        const dat1 = onSnapshot(doc(db, 'FDLVN', 'index'), (doc) => {
+        const dat1 = onSnapshot(doc(db, 'DLVN', 'index'), (doc) => {
             setLvDat(doc.data());
         })
-        const dat2 = onSnapshot(doc(db, 'FDLVN', 'list'), (doc) => {
+        const dat2 = onSnapshot(doc(db, 'DLVN', 'list'), (doc) => {
             setLvDat1(doc.data());
         })
         const dat3 = onSnapshot(doc(db, "auth", 'admin'), (doc) => {
@@ -50,7 +50,6 @@ function Main() {
             });
     }
     async function approve(i) {
-        console.log(data[i].id)
         if (data[i].id in lvDat) {
             lvDat[data[i].id].vids.push(data[i].vids);
             for (const j in lvDat1) {
@@ -59,16 +58,16 @@ function Main() {
                 }
             }
             delete data[i];
-            await setDoc(doc(db, "submit", 'FDLVN'), data);
-            await setDoc(doc(db, "FDLVN", 'index'), lvDat);
-            await setDoc(doc(db, "FDLVN", 'list'), lvDat1);
+            await setDoc(doc(db, "submit", 'DLVN'), data);
+            await setDoc(doc(db, "DLVN", 'index'), lvDat);
+            await setDoc(doc(db, "DLVN", 'list'), lvDat1);
             return
         }
         alert('The level did not exist. Please add the level first.');
     }
     async function reject(i) {
         delete data[i];
-        await setDoc(doc(db, "submit", FDLVN), data);
+        await setDoc(doc(db, "submit", DLVN), data);
     }
     if (user == null) {
         return (
@@ -91,7 +90,7 @@ function Main() {
                     <>
                         <div className='mainpanelNoMargin'>
                             <div className="submission">
-                                <h2>{FDLVN} Submission</h2>
+                                <h2>{DLVN} Submission</h2>
                                 <i><p id='center-text'>After checked all submissions, please go to <b><a href='/Admin'>Admin page</a></b> (click on <b>Upload Change</b> button) to update players points (this page only add levels to players record list)</p></i>
                                 <p id='center-text'>All done!</p>
                             </div>
@@ -118,7 +117,7 @@ function Main() {
                 <>
                     <div className='mainpanelNoMargin'>
                         <div className="submission">
-                            <h2>FDLVN Submission</h2>
+                            <h2>DLVN Submission</h2>
                             <i><p id='center-text'>After checked all submissions, please go to <b><a href='/Admin'>Admin page</a></b> (click on <b>Upload Change</b> button) to update players points (this page only add levels to players record list)</p></i>
                             {Object.keys(data).map(i => {
                                 return (
