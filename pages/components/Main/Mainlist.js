@@ -120,7 +120,7 @@ function Main() {
     <>
       <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
 
-      <div className="mainpanel" data-aos="fade-up" data-aos-duration="800">
+      <div className="mainpanel">
         <h2 id="title">Main List</h2>
         <div>
           <div className="submitSelect">

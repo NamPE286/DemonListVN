@@ -91,6 +91,116 @@ function Main() {
     }, [])
 
     async function addData() {
+        setStatus('Updating player data...');
+        for(const i in DLVNPlayer.index){
+            try{
+                DLVNPlayer.index[i].points = 0
+                DLVNPlayer.index[i].bestplayPt = 0
+            }
+            catch(err){
+                console.error(err)
+                console.log(i)
+            }
+        }
+        for(const i in DLVN.list){
+            for(const j in DLVN.list[i].vids){
+                if(DLVN.list[i].vids[j].user in player.index == false){
+                    player.index[DLVN.list[i].vids[j].user] = {
+                        "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPfCfynXv42fOnrTQAs-99j09O8uz7mDilOQ&usqp=CAU",
+                        "name": DLVN.list[i].vids[j].user,
+                        "social": {
+                            "youtube": "",
+                            "facebook": "",
+                            "discord": ""
+                        }
+                    }
+                    DLVNPlayer.index[DLVN.list[i].vids[j].user] = {
+                        "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPfCfynXv42fOnrTQAs-99j09O8uz7mDilOQ&usqp=CAU",
+                        'bestplay': "",
+                        'bestplayCreator': '',
+                        'bestplayPt': 0,
+                        'bestplayThumbnail': '',
+                        'lv':[],
+                        'name': DLVN.list[i].vids[j].user,
+                        'points': 0,
+                        'top': 0,
+                        'vids':{}
+                    }
+                }
+                DLVNPlayer.index[DLVN.list[i].vids[j].user].points += DLVN.list[i].points
+                DLVNPlayer.index[DLVN.list[i].vids[j].user].points = Math.round(DLVNPlayer.index[DLVN.list[i].vids[j].user].points * 100) / 100
+                if(DLVN.list[i].points > DLVNPlayer.index[DLVN.list[i].vids[j].user].bestplayPt){
+                    DLVNPlayer.index[DLVN.list[i].vids[j].user].bestplayPt = DLVN.list[i].points
+                    DLVNPlayer.index[DLVN.list[i].vids[j].user].bestplay = DLVN.list[i].name
+                    DLVNPlayer.index[DLVN.list[i].vids[j].user].bestplayCreator = DLVN.list[i].creator
+                    DLVNPlayer.index[DLVN.list[i].vids[j].user].bestplayThumbnail = DLVN.list[i].thumbnail
+                }
+            }
+        }
+        DLVNPlayer.list = Object.values(DLVNPlayer.index)
+        DLVNPlayer.list.sort((a, b) => {
+            return b.points - a.points
+        })
+        for(let i = 0; i < DLVNPlayer.list.length; i++){
+            DLVNPlayer.list[i].top = i + 1
+        }
+        DLVNPlayer.list = Object.assign({}, DLVNPlayer.list)
+
+        for(const i in FDLVNPlayer.index){
+            try{
+                FDLVNPlayer.index[i].points = 0
+                FDLVNPlayer.index[i].bestplayPt = 0
+            }
+            catch(err){
+                console.error(err)
+                console.log(i)
+            }
+        }
+        for(const i in FDLVN.list){
+            for(const j in FDLVN.list[i].vids){
+                if(FDLVN.list[i].vids[j].user in player.index == false){
+                    player.index[FDLVN.list[i].vids[j].user] = {
+                        "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPfCfynXv42fOnrTQAs-99j09O8uz7mDilOQ&usqp=CAU",
+                        "name": FDLVN.list[i].vids[j].user,
+                        "social": {
+                            "youtube": "",
+                            "facebook": "",
+                            "discord": ""
+                        }
+                    }
+                    FDLVNPlayer.index[FDLVN.list[i].vids[j].user] = {
+                        "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPfCfynXv42fOnrTQAs-99j09O8uz7mDilOQ&usqp=CAU",
+                        'bestplay': "",
+                        'bestplayCreator': '',
+                        'bestplayPt': 0,
+                        'bestplayThumbnail': '',
+                        'lv':[],
+                        'name': FDLVN.list[i].vids[j].user,
+                        'points': 0,
+                        'top': 0,
+                        'vids':{}
+                    }
+                }
+                FDLVNPlayer.index[FDLVN.list[i].vids[j].user].points += FDLVN.list[i].points
+                FDLVNPlayer.index[FDLVN.list[i].vids[j].user].points = Math.round(FDLVNPlayer.index[FDLVN.list[i].vids[j].user].points * 100) / 100
+                if(FDLVN.list[i].points > FDLVNPlayer.index[FDLVN.list[i].vids[j].user].bestplayPt){
+                    FDLVNPlayer.index[FDLVN.list[i].vids[j].user].bestplayPt = FDLVN.list[i].points
+                    FDLVNPlayer.index[FDLVN.list[i].vids[j].user].bestplay = FDLVN.list[i].name
+                    FDLVNPlayer.index[FDLVN.list[i].vids[j].user].bestplayCreator = FDLVN.list[i].creator
+                    FDLVNPlayer.index[FDLVN.list[i].vids[j].user].bestplayThumbnail = FDLVN.list[i].thumbnail
+                }
+            }
+        }
+        FDLVNPlayer.list = Object.values(FDLVNPlayer.index)
+        FDLVNPlayer.list.sort((a, b) => {
+            return b.points - a.points
+        })
+        for(let i = 0; i < FDLVNPlayer.list.length; i++){
+            FDLVNPlayer.list[i].top = i + 1
+        }
+        FDLVNPlayer.list = Object.assign({}, FDLVNPlayer.list)
+        console.log(DLVNPlayer.index.noeruchan)
+        
         setStatus(`Uploading changes...`)
         await setDoc(doc(db, "DLVN", 'index'), DLVN.index);
         await setDoc(doc(db, "DLVNPlayer", 'index'), DLVNPlayer.index);
@@ -99,14 +209,12 @@ function Main() {
         await setDoc(doc(db, "FDLVNLegacy", 'index'), FDLVNLegacy.index);
         //await setDoc(doc(db, "auth", 'index'), au.index);
         await setDoc(doc(db, "player", 'index'), player.index);
-
         await setDoc(doc(db, "DLVN", 'list'), DLVN.list);
         await setDoc(doc(db, "DLVNPlayer", 'list'), DLVNPlayer.list);
         await setDoc(doc(db, "FDLVN", 'list'), FDLVN.list);
         await setDoc(doc(db, "FDLVNPlayer", 'list'), FDLVNPlayer.list);
         await setDoc(doc(db, "FDLVNLegacy", 'list'), FDLVNLegacy.list);
-        //await setDoc(doc(db, "auth", 'list'), Object.assign({}, au.index));
-        await setDoc(doc(db, "player", 'list'), Object.assign({}, player.index));
+        //await setDoc(doc(db, "auth", 'list'), Object.assign({}, au.index));        
         setStatus('Up to date')
     }
     function download(filename, text) {
@@ -533,9 +641,9 @@ function Main() {
                     d1.social.facebook = document.getElementById('facebook').value;
                     d1.social.discord = document.getElementById('discordTag').value;
                     player.index[d1.name] = d1
-                    for (const i in player.list) {
-                        if (player.list[i].name == d1.name) {
-                            player.list[i] = d1
+                    for (const i in player.index) {
+                        if (player.index[i].name == d1.name) {
+                            player.index[i] = d1
                         }
                     }
 
@@ -545,26 +653,26 @@ function Main() {
                 }
                 function delete0() {
                     delete player.index[name]
-                    for (const i in player.list) {
-                        if (player.list[i].name == name) {
-                            player.list = Object.values(player.list)
-                            player.list.splice(i, 1)
-                            player.list = Object.assign({}, player.list)
+                    for (const i in player.index) {
+                        if (player.index[i].name == name) {
+                            player.index = Object.values(player.index)
+                            player.index.splice(i, 1)
+                            player.index = Object.assign({}, player.index)
                             break;
                         }
                     }
                     try {
                         delete FDLVNPlayer.index[name]
-                        for (const i in FDLVNPlayer.list) {
-                            if (FDLVNPlayer.list[i].name == name) {
-                                FDLVNPlayer.list = Object.values(FDLVNPlayer.list)
-                                FDLVNPlayer.list.splice(i, 1)
-                                FDLVNPlayer.list = Object.assign({}, FDLVNPlayer.list)
+                        for (const i in FDLVNplayer.index) {
+                            if (FDLVNplayer.index[i].name == name) {
+                                FDLVNplayer.index = Object.values(FDLVNplayer.index)
+                                FDLVNplayer.index.splice(i, 1)
+                                FDLVNplayer.index = Object.assign({}, FDLVNplayer.index)
                                 break;
                             }
                         }
-                        for (const i in FDLVNPlayer.list) {
-                            FDLVNPlayer.list[i].top = parseInt(i) + 1
+                        for (const i in FDLVNplayer.index) {
+                            FDLVNplayer.index[i].top = parseInt(i) + 1
                         }
                     }
                     catch (err) {
@@ -572,16 +680,16 @@ function Main() {
                     }
                     try {
                         delete DLVNPlayer.index[name]
-                        for (const i in DLVNPlayer.list) {
-                            if (DLVNPlayer.list[i].name == name) {
-                                DLVNPlayer.list = Object.values(DLVNPlayer.list)
-                                DLVNPlayer.list.splice(i, 1)
-                                DLVNPlayer.list = Object.assign({}, DLVNPlayer.list)
+                        for (const i in DLVNplayer.index) {
+                            if (DLVNplayer.index[i].name == name) {
+                                DLVNplayer.index = Object.values(DLVNplayer.index)
+                                DLVNplayer.index.splice(i, 1)
+                                DLVNplayer.index = Object.assign({}, DLVNplayer.index)
                                 break;
                             }
                         }
-                        for (const i in DLVNPlayer.list) {
-                            DLVNPlayer.list[i].top = parseInt(i) + 1
+                        for (const i in DLVNplayer.index) {
+                            DLVNplayer.index[i].top = parseInt(i) + 1
                         }
                     }
                     catch (err) {
@@ -624,7 +732,7 @@ function Main() {
         setModal(!modal)
     }
     function showData() {
-        if (player.list == undefined) return (<div>Loading {percentloaded}%</div>)
+        if (player.index == undefined) return (<div>Loading {percentloaded}%</div>)
         else {
             return (
                 <div className="adminMainpanel">
@@ -690,14 +798,14 @@ function Main() {
                     </div>
                     <div className="lvDat">
                         <h2>Player</h2>
-                        {Object.keys(player.list).map(i => {
+                        {Object.keys(player.index).map(i => {
                             function getInfo() {
-                                const a = FDLVNPlayer.index[player.list[i].name]
-                                const b = DLVNPlayer.index[player.list[i].name]
+                                const a = FDLVNPlayer.index[player.index[i].name]
+                                const b = DLVNPlayer.index[player.index[i].name]
                                 return [a, b]
                             }
                             return (
-                                <p><a href="#!" onClick={() => showModal(getInfo(), 'player')}>{player.list[i].name}</a></p>
+                                <p><a href="#!" onClick={() => showModal(getInfo(), 'player')}>{player.index[i].name}</a></p>
                             )
                         })}
                     </div>
@@ -713,7 +821,7 @@ function Main() {
 
     }
     if (user == null) {
-        if (player.list == undefined) return (<div>Loading {percentloaded}%</div>)
+        if (player.index == undefined) return (<div>Loading {percentloaded}%</div>)
         else return (
             <div className="adminMainpanel">
                 <button onClick={logIn}>Log In</button>

@@ -18,15 +18,16 @@ function Main() {
         const dat0 = onSnapshot(doc(db, "submit", id), (doc) => {
             setData(doc.data());
         })
-        const dat1 = onSnapshot(doc(db, "FDLVN", 'index'), (doc) => {
+        const dat1 = onSnapshot(doc(db, id, 'index'), (doc) => {
             setLvDat(doc.data());
         })
-        const dat2 = onSnapshot(doc(db, "FDLVN", 'list'), (doc) => {
+        const dat2 = onSnapshot(doc(db, id, 'list'), (doc) => {
             setLvDat1(doc.data());
         })
         const dat3 = onSnapshot(doc(db, "auth", 'admin'), (doc) => {
             setAu(doc.data());
         })
+
         return () => {
             dat0();
             dat1();
@@ -90,6 +91,7 @@ function Main() {
                         <div className='mainpanelNoMargin'>
                             <div className="submission">
                                 <h2>{id} Submission</h2>
+                                <i><p id='center-text'>After checked all submissions, please go to <b><a href='/Admin'>Admin page</a></b> (click on <b>Upload Change</b> button) to update players points (this page only add levels to players record list)</p></i>
                                 <p id='center-text'>All done!</p>
                             </div>
                         </div>
