@@ -118,10 +118,6 @@ function Main() {
                     alert('Please fill in all the fields')
                     return
                 }
-                if (parseInt(document.getElementById('lvID').value) in DLVN == false) {
-                    alert('Level does not exist in the list. Please check the level ID')
-                    return
-                }
                 if (dat['vids']['user'] in player) {
                     sendSubmit1(dat)
                 }

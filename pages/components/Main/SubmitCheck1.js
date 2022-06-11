@@ -82,7 +82,7 @@ function Main() {
                 if (lvDat[i]) {
                     return lvDat[i].name;
                 } else {
-                    return "(Level did not exist)";
+                    return "(Level did not exist. Please create the level through Admin page first)";
                 }
             }
             if (Object.keys(data).length == 0) {
@@ -112,6 +112,11 @@ function Main() {
                     return '';
                 }
             }
+            function apBut(i){
+                if(i != "(Level did not exist. Please create the level through Admin page first)"){
+                    return <button onClick={() => approve(i)}>Approve</button>
+                }
+            }
 
             return (
                 <>
@@ -126,7 +131,7 @@ function Main() {
                                         <a href={`/mainlist/${data[i].id}`} target='_blank' title='View level page'>Level: {getLvInfo(data[i].id)} - {data[i].id}</a><br></br><br></br>
                                         <a href={data[i].vids.link} target='_blank' title='View completion video'>{data[i].vids.link} {getHz(i)} {getPercent(i)}</a><br></br><br></br>
                                         <button onClick={() => reject(i)}>Reject</button><a> </a>
-                                        <button onClick={() => approve(i)}>Approve</button>
+                                        {apBut(getLvInfo(data[i].id))}
                                     </div>
                                 )
                             })}
