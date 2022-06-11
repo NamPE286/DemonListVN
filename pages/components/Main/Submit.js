@@ -11,7 +11,6 @@ function Main() {
     if(uName == null){
         uName = ''
     }
-    console.log(uName)
     useEffect(() => {
         const dat1 = onSnapshot(doc(db, "FDLVN", 'index'), (doc) => {
             setFDLVN(doc.data());
