@@ -143,10 +143,12 @@ function Main() {
                         <option value="144Hz">144Hz</option>
                         <option value="240Hz">240Hz</option>
                         <option value="300Hz">300Hz</option>
+                        <option value="300Hz">360Hz</option>
                         <option value="Mobile 60Hz">Mobile 60Hz</option>
                         <option value="Mobile 144Hz">Mobile 144Hz</option>
                         <option value="Mobile 240Hz">Mobile 240Hz</option>
                         <option value="Mobile 300Hz">Mobile 300Hz</option>
+                        <option value="Mobile 300Hz">Mobile 360Hz</option>
                     </select><br></br>
                     <label for='percent'>Progress:</label><br></br>
                     <input type='text' id='percent' name='percent' /><br></br>
@@ -180,7 +182,7 @@ function Main() {
                 <h3>Submission Rules</h3>
                 <ul>
                     <li>Only 100% records of any demons in the list are accepted (Only apply for FDLVN).</li>
-                    <li>Any records related to any cheat tools or secret ways will be rejected (However, FPS bypass is allowed, up to 300 FPS).</li>
+                    <li>Any records related to any cheat tools or secret ways will be rejected (However, FPS bypass is allowed, up to 360 FPS).</li>
                     <li>Stealing videos from others will not be accepted.</li>
                 </ul>
             </div>

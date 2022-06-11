@@ -2,11 +2,7 @@ import AnnoucementPanel from './components/AnnoucementPanel.js';
 import JoinDiscordPanel from './components/JoinDiscordPanel.js';
 import Navbar from './components/Navbar.js';
 import Head from 'next/head';
-import dynamic from 'next/dynamic'
-const Main = dynamic(
-  () => import('./components/Main/Submit.js'),
-  { ssr: false }
-)
+import Main from './components/Main/Submit.js'
 function App() {
   return (
     <>
