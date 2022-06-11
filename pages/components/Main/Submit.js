@@ -151,7 +151,7 @@ function Main() {
                         <option value="Mobile 300Hz">Mobile 360Hz</option>
                     </select><br></br>
                     <label for='percent'>Progress:</label><br></br>
-                    <input type='text' id='percent' name='percent' /><br></br>
+                    <input type='number' min='0' max='100'  id='percent' name='percent' /><br></br>
                     <label for='link'>YouTube video's link:</label><br></br>
                     <input type='text' id='link' name='link' /><br></br>
                     <button onClick={() => sendSubmit()}>Submit</button>
