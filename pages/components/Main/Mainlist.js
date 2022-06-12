@@ -2,12 +2,18 @@ import { getDoc, doc } from "firebase/firestore"
 import { db } from '../../api/firebase-config.js'
 import { useState, useEffect } from 'react';
 import Image from "next/image";
-import Head from "next/head";
 
 function Main() {
+  var m = 'mainlist'
+  if (typeof window !== 'undefined') {
+    m = localStorage.getItem('mlMode')
+    if (m === null) {
+      m = 'mainlist'
+    }
+  }
   const [data, setData] = useState([]);
   const [data0, setData0] = useState([]);
-  const [mode, setMode] = useState('mainlist');
+  const [mode, setMode] = useState(m);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -124,8 +130,18 @@ function Main() {
         <h2 id="title">Main List</h2>
         <div>
           <div className="submitSelect">
-            <a href="#!" id="ab" onClick={() => setMode('mainlist')} style={{ background: "var(--a2)" }}>Featured List</a>
-            <a href="#!" id="ac" onClick={() => setMode('GDVNAL')} >Demon List</a>
+            <a href="#!" id="ab" onClick={() => {
+              setMode('mainlist')
+              if (typeof window !== 'undefined') {
+                localStorage.setItem('mlMode', 'mainlist')
+              }
+            }} style={{ background: "var(--a2)" }}>Featured List</a>
+            <a href="#!" id="ac" onClick={() => {
+              setMode('GDVNAL')
+              if (typeof window !== 'undefined') {
+                localStorage.setItem('mlMode', 'GDVNAL')
+              }
+            }} >Demon List</a>
           </div>
           <hr id='lineUnderBtn'></hr>
         </div>
