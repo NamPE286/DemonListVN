@@ -61,7 +61,7 @@ function Main() {
             await setDoc(doc(db, "FDLVN", 'list'), lvDat1);
             return
         }
-        alert('The level doesn\'t not exist. Please add the level first.');
+        alert('The level does not exist. Please add the level first.');
     }
     async function reject(i) {
         delete data[i];
@@ -110,13 +110,13 @@ function Main() {
                     return '';
                 }
             }
-
             return (
                 <>
                     <div className='mainpanelNoMargin'>
                         <div className="submission">
                             <h2>FDLVN Submission</h2>
                             <i><p id='center-text'>After checked all submissions, please go to <b><a href='/Admin'>Admin page and</a></b> click on <b>Upload Change</b> button to update players points (this page only add levels to players record list)</p></i>
+                            <p id='center-text'>Total submission: {Object.keys(data).length}</p>
                             {Object.keys(data).map(i => {
                                 return (
                                     <div className='submissionCard'>

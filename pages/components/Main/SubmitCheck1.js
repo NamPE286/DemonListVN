@@ -60,7 +60,7 @@ function Main() {
             await setDoc(doc(db, "DLVN", 'list'), lvDat1);
             return
         }
-        alert('The level did not exist. Please add the level first.');
+        alert('The level does not exist. Please add the level first.');
     }
     async function reject(i) {
         delete data[i];
@@ -79,7 +79,7 @@ function Main() {
                 if (lvDat[i]) {
                     return lvDat[i].name;
                 } else {
-                    return "(Level doesn't not exist. Please create the level through Admin page first)";
+                    return "(Level does not exist. Please create the level through Admin page first)";
                 }
             }
             if (Object.keys(data).length == 0) {
@@ -110,7 +110,7 @@ function Main() {
                 }
             }
             function apBut(i){
-                if(i != "(Level doesn't not exist. Please create the level through Admin page first)"){
+                if(i != "(Level does not exist. Please create the level through Admin page first)"){
                     return <button onClick={() => approve(i)}>Approve</button>
                 }
             }
@@ -121,6 +121,7 @@ function Main() {
                         <div className="submission">
                             <h2>DLVN Submission</h2>
                             <i><p id='center-text'>After checked all submissions, please go to <b><a href='/Admin'>Admin page and</a></b> click on <b>Upload Change</b> button to update players points (this page only add levels to players record list)</p></i>
+                            <p id='center-text'>Total submission: {Object.keys(data).length}</p>
                             {Object.keys(data).map(i => {
                                 return (
                                     <div className='submissionCard'>
