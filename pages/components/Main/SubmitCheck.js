@@ -1,6 +1,5 @@
 import { doc, setDoc, onSnapshot } from "firebase/firestore"
 import { db } from '../../api/firebase-config.js'
-import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
@@ -10,10 +9,8 @@ function Main() {
     const [lvDat1, setLvDat1] = useState();
     const [au, setAu] = useState({});
     const [user, setUser] = useState(null);
-    const router = useRouter();
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
-    const { FDLVN } = router.query;
     useEffect(() => {
         const dat0 = onSnapshot(doc(db, "submit", 'FDLVN'), (doc) => {
             setData(doc.data());
@@ -64,7 +61,7 @@ function Main() {
             await setDoc(doc(db, "FDLVN", 'list'), lvDat1);
             return
         }
-        alert('The level did not exist. Please add the level first.');
+        alert('The level doesn\'t not exist. Please add the level first.');
     }
     async function reject(i) {
         delete data[i];
@@ -83,7 +80,7 @@ function Main() {
                 if (lvDat[i]) {
                     return lvDat[i].name;
                 } else {
-                    return "(Level did not exist)";
+                    return "(Level does not exist)";
                 }
             }
             if (Object.keys(data).length == 0) {
@@ -92,7 +89,7 @@ function Main() {
                         <div className='mainpanelNoMargin'>
                             <div className="submission">
                                 <h2>FDLVN Submission</h2>
-                                <i><p id='center-text'>After checked all submissions, please go to <b><a href='/Admin'>Admin page</a></b> (click on <b>Upload Change</b> button) to update players points (this page only add levels to players record list)</p></i>
+                                <i><p id='center-text'>After checked all submissions, please go to <b><a href='/Admin'>Admin page and</a></b> click on <b>Upload Change</b> button to update players points (this page only add levels to players record list)</p></i>
                                 <p id='center-text'>All done!</p>
                             </div>
                         </div>
@@ -119,7 +116,7 @@ function Main() {
                     <div className='mainpanelNoMargin'>
                         <div className="submission">
                             <h2>FDLVN Submission</h2>
-                            <i><p id='center-text'>After checked all submissions, please go to <b><a href='/Admin'>Admin page</a></b> (click on <b>Upload Change</b> button) to update players points (this page only add levels to players record list)</p></i>
+                            <i><p id='center-text'>After checked all submissions, please go to <b><a href='/Admin'>Admin page and</a></b> click on <b>Upload Change</b> button to update players points (this page only add levels to players record list)</p></i>
                             {Object.keys(data).map(i => {
                                 return (
                                     <div className='submissionCard'>

@@ -1,6 +1,5 @@
 import { doc, setDoc, onSnapshot } from "firebase/firestore"
 import { db } from '../../api/firebase-config.js'
-import { useRouter } from "next/router";
 import { useState, useEffect } from 'react';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 
@@ -10,10 +9,8 @@ function Main() {
     const [lvDat1, setLvDat1] = useState();
     const [au, setAu] = useState({});
     const [user, setUser] = useState(null);
-    const router = useRouter();
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
-    const { DLVN } = router.query;
     useEffect(() => {
         const dat0 = onSnapshot(doc(db, "submit", 'DLVN'), (doc) => {
             setData(doc.data());
@@ -82,7 +79,7 @@ function Main() {
                 if (lvDat[i]) {
                     return lvDat[i].name;
                 } else {
-                    return "(Level did not exist. Please create the level through Admin page first)";
+                    return "(Level doesn't not exist. Please create the level through Admin page first)";
                 }
             }
             if (Object.keys(data).length == 0) {
@@ -91,7 +88,7 @@ function Main() {
                         <div className='mainpanelNoMargin'>
                             <div className="submission">
                                 <h2>DLVN Submission</h2>
-                                <i><p id='center-text'>After checked all submissions, please go to <b><a href='/Admin'>Admin page</a></b> (click on <b>Upload Change</b> button) to update players points (this page only add levels to players record list)</p></i>
+                                <i><p id='center-text'>After checked all submissions, please go to <b><a href='/Admin'>Admin page and</a></b> click on <b>Upload Change</b> button to update players points (this page only add levels to players record list)</p></i>
                                 <p id='center-text'>All done!</p>
                             </div>
                         </div>
@@ -113,7 +110,7 @@ function Main() {
                 }
             }
             function apBut(i){
-                if(i != "(Level did not exist. Please create the level through Admin page first)"){
+                if(i != "(Level doesn't not exist. Please create the level through Admin page first)"){
                     return <button onClick={() => approve(i)}>Approve</button>
                 }
             }
@@ -123,7 +120,7 @@ function Main() {
                     <div className='mainpanelNoMargin'>
                         <div className="submission">
                             <h2>DLVN Submission</h2>
-                            <i><p id='center-text'>After checked all submissions, please go to <b><a href='/Admin'>Admin page</a></b> (click on <b>Upload Change</b> button) to update players points (this page only add levels to players record list)</p></i>
+                            <i><p id='center-text'>After checked all submissions, please go to <b><a href='/Admin'>Admin page and</a></b> click on <b>Upload Change</b> button to update players points (this page only add levels to players record list)</p></i>
                             {Object.keys(data).map(i => {
                                 return (
                                     <div className='submissionCard'>
