@@ -114,7 +114,12 @@ function Main() {
                     return <button onClick={() => approve(i)}>Approve</button>
                 }
             }
-
+            function getVidLink(i) {
+                if(getLvInfo(data[i].id) == "(Level does not exist. Please create the level through Admin page first)"){
+                    return '/Admin'
+                }
+                return `/GDVNAL/${data[i].id}`
+            }
             return (
                 <>
                     <div className='mainpanelNoMargin'>
@@ -126,7 +131,7 @@ function Main() {
                                 return (
                                     <div className='submissionCard'>
                                         <h3>{data[i].vids.user}</h3>
-                                        <a href={`/mainlist/${data[i].id}`} target='_blank' title='View level page'>Level: {getLvInfo(data[i].id)} - {data[i].id}</a><br></br><br></br>
+                                        <a href={getVidLink(i)} target='_blank' title='View level page'>Level: {getLvInfo(data[i].id)} - {data[i].id}</a><br></br><br></br>
                                         <a href={data[i].vids.link} target='_blank' title='View completion video'>{data[i].vids.link} {getHz(i)} {getPercent(i)}</a><br></br><br></br>
                                         <button onClick={() => reject(i)}>Reject</button><a> </a>
                                         {apBut(getLvInfo(data[i].id))}
