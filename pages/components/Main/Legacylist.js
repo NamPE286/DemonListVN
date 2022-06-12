@@ -2,7 +2,6 @@ import { getDoc, doc } from "firebase/firestore"
 import { db } from '../../api/firebase-config.js'
 import { useState, useEffect } from 'react';
 import Image from "next/image";
-import Head from "next/head";
 
 function Main() {
   const [data, setData] = useState([]);
