@@ -11,6 +11,7 @@ function Main() {
     const [data, setData] = useState([]);
     const [data1, setData1] = useState([]);
     const [data2, setData2] = useState([]);
+    const [data3, setData3] = useState([]);
     const [player, setPlayer] = useState([]);
     const [mode, setMode] = useState();
     useEffect(() => {
@@ -40,6 +41,15 @@ function Main() {
 
             if (docSnap2.exists()) {
                 setData2(docSnap2.data());
+            } else {
+                // doc.data() will be undefined in this case
+                console.log("No such document!");
+            }
+            const lvRef3 = doc(db, "FDLVN", "index")
+            const docSnap3 = await getDoc(lvRef3);
+
+            if (docSnap3.exists()) {
+                setData3(docSnap3.data());
             } else {
                 // doc.data() will be undefined in this case
                 console.log("No such document!");
@@ -104,7 +114,7 @@ function Main() {
                                 c = c*-1
                                 return (
                                     <section className="allPlayerInfo" id={`lvGrid${c}`} key={i}>
-                                        <a id="levelRec" href={player[id]['vids'][i].link} target='_blank'>{player[id]['vids'][i].name}</a>
+                                        <a id="levelRec" href={player[id]['vids'][i].link} target='_blank' title='Click to view YouTube video'>{data3[i].name}</a>
                                     </section>
                                 )
 
@@ -143,7 +153,7 @@ function Main() {
                                 c = c*-1
                                 return (
                                     <section className="allPlayerInfo" id={`lvGrid${c}`} key={i}>
-                                        <a id="levelRec" href={data1[id].vids[i].link} target='_blank'>{data2[i].name} ({data1[id].vids[i].percent}%) ({data1[id].vids[i].hz})</a>
+                                        <a id="levelRec" href={data1[id].vids[i].link} target='_blank' title='Click to view YouTube video'>{data2[i].name} ({data1[id].vids[i].percent}%) ({data1[id].vids[i].hz})</a>
                                     </section>
                                 )
                             })}

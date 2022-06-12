@@ -96,6 +96,8 @@ function Main() {
             try{
                 DLVNPlayer.index[i].points = 0
                 DLVNPlayer.index[i].bestplayPt = 0
+                DLVNPlayer.index[i].vids = {}
+                DLVNPlayer.index[i].lv = []
             }
             catch(err){
                 console.error(err)
@@ -129,6 +131,9 @@ function Main() {
                 }
                 DLVNPlayer.index[DLVN.list[i].vids[j].user].points += DLVN.list[i].points
                 DLVNPlayer.index[DLVN.list[i].vids[j].user].points = Math.round(DLVNPlayer.index[DLVN.list[i].vids[j].user].points * 100) / 100
+                DLVNPlayer.index[DLVN.list[i].vids[j].user].vids[parseInt(DLVN.list[i].id)] = DLVN.list[i].vids[j]
+                DLVNPlayer.index[DLVN.list[i].vids[j].user].lv.push(parseInt(DLVN.list[i].id))
+
                 if(DLVN.list[i].points > DLVNPlayer.index[DLVN.list[i].vids[j].user].bestplayPt){
                     DLVNPlayer.index[DLVN.list[i].vids[j].user].bestplayPt = DLVN.list[i].points
                     DLVNPlayer.index[DLVN.list[i].vids[j].user].bestplay = DLVN.list[i].name
@@ -150,6 +155,8 @@ function Main() {
             try{
                 FDLVNPlayer.index[i].points = 0
                 FDLVNPlayer.index[i].bestplayPt = 0
+                FDLVNPlayer.index[i].vids = {}
+                FDLVNPlayer.index[i].lv = []
             }
             catch(err){
                 console.error(err)
@@ -183,6 +190,9 @@ function Main() {
                 }
                 FDLVNPlayer.index[FDLVN.list[i].vids[j].user].points += FDLVN.list[i].points
                 FDLVNPlayer.index[FDLVN.list[i].vids[j].user].points = Math.round(FDLVNPlayer.index[FDLVN.list[i].vids[j].user].points * 100) / 100
+                FDLVNPlayer.index[FDLVN.list[i].vids[j].user].vids[parseInt(FDLVN.list[i].id)] = FDLVN.list[i].vids[j]
+                FDLVNPlayer.index[FDLVN.list[i].vids[j].user].lv.push(parseInt(FDLVN.list[i].id))
+
                 if(FDLVN.list[i].points > FDLVNPlayer.index[FDLVN.list[i].vids[j].user].bestplayPt){
                     FDLVNPlayer.index[FDLVN.list[i].vids[j].user].bestplayPt = FDLVN.list[i].points
                     FDLVNPlayer.index[FDLVN.list[i].vids[j].user].bestplay = FDLVN.list[i].name
@@ -199,8 +209,6 @@ function Main() {
             FDLVNPlayer.list[i].top = i + 1
         }
         FDLVNPlayer.list = Object.assign({}, FDLVNPlayer.list)
-        console.log(DLVNPlayer.index.noeruchan)
-        
         setStatus(`Uploading changes...`)
         await setDoc(doc(db, "DLVN", 'index'), DLVN.index);
         await setDoc(doc(db, "DLVNPlayer", 'index'), DLVNPlayer.index);
@@ -214,7 +222,7 @@ function Main() {
         await setDoc(doc(db, "FDLVN", 'list'), FDLVN.list);
         await setDoc(doc(db, "FDLVNPlayer", 'list'), FDLVNPlayer.list);
         await setDoc(doc(db, "FDLVNLegacy", 'list'), FDLVNLegacy.list);
-        //await setDoc(doc(db, "auth", 'list'), Object.assign({}, au.index));        
+        //await setDoc(doc(db, "auth", 'list'), Object.assign({}, au.index));
         setStatus('Up to date')
     }
     function download(filename, text) {
