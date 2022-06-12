@@ -6,7 +6,7 @@ import Image from "next/image";
 function Main() {
   var m = 'mainlist'
   if (typeof window !== 'undefined') {
-    m = localStorage.getItem('mlMode')
+    m = localStorage.getItem('mode')
     if (m === null) {
       m = 'mainlist'
     }
@@ -133,13 +133,13 @@ function Main() {
             <a href="#!" id="ab" onClick={() => {
               setMode('mainlist')
               if (typeof window !== 'undefined') {
-                localStorage.setItem('mlMode', 'mainlist')
+                localStorage.setItem('mode', 'mainlist')
               }
             }} style={{ background: "var(--a2)" }}>Featured List</a>
             <a href="#!" id="ac" onClick={() => {
               setMode('GDVNAL')
               if (typeof window !== 'undefined') {
-                localStorage.setItem('mlMode', 'GDVNAL')
+                localStorage.setItem('mode', 'GDVNAL')
               }
             }} >Demon List</a>
           </div>

@@ -3,9 +3,16 @@ import { db } from '../../api/firebase-config.js'
 import { useState, useEffect } from 'react';
 
 function Main() {
+  var m = 'mainlist'
+  if (typeof window !== 'undefined') {
+    m = localStorage.getItem('mode')
+    if (m === null) {
+      m = 'mainlist'
+    }
+  }
   const [data, setData] = useState([]);
   const [data0, setData0] = useState([]);
-  const [mode, setMode] = useState('mainlist')
+  const [mode, setMode] = useState(m)
 
   useEffect(() => {
     async function getData() {
@@ -170,10 +177,20 @@ function Main() {
     <div className="mainpanel">
       <h2 id="title">Top Player</h2>
       <div className="submitSelect">
-        <a href="#!" id="ab" onClick={() => setMode('mainlist')} style={{ background: "var(--a2)" }}>Featured List</a>
-        <a href="#!" id="ac" onClick={() => setMode('GDVNAL')} >Demon List</a>
-      </div>
-      <hr id='lineUnderBtn'></hr>
+            <a href="#!" id="ab" onClick={() => {
+              setMode('mainlist')
+              if (typeof window !== 'undefined') {
+                localStorage.setItem('mode', 'mainlist')
+              }
+            }} style={{ background: "var(--a2)" }}>Featured List</a>
+            <a href="#!" id="ac" onClick={() => {
+              setMode('GDVNAL')
+              if (typeof window !== 'undefined') {
+                localStorage.setItem('mode', 'GDVNAL')
+              }
+            }} >Demon List</a>
+          </div>
+          <hr id='lineUnderBtn'></hr>
       {showContent()}
     </div>
 
