@@ -102,6 +102,9 @@ code {
     ::-webkit-scrollbar {
         display: none;
     }
+    hr{
+        background-color: var(--a3);
+    }
 }
 
 .navbar {
