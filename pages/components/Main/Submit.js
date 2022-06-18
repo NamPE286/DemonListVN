@@ -56,6 +56,7 @@ function Main() {
                 dat['id'] = document.getElementById('lvID').value
                 dat['vids']['user'] = document.getElementById('userName').value
                 dat['vids']['link'] = document.getElementById('link').value
+                dat['comment'] = document.getElementById('comment').value
                 if (document.getElementById('lvID').value.length == 0 || document.getElementById('userName').value.length == 0 || document.getElementById('link').value.length == 0) {
                     alert('Please fill in all the fields')
                     return
@@ -83,6 +84,8 @@ function Main() {
                     <input type='text' id='lvID' name='lvID' /><br></br>
                     <label for='link'>YouTube video's link:</label><br></br>
                     <input type='text' id='link' name='link' /><br></br>
+                    <label for='link'>Comment (optional):</label><br></br>
+                    <input type='text' id='comment' name='comment' /><br></br>
                     <button onClick={() => sendSubmit()}>Submit</button>
                 </div>
             )
@@ -114,6 +117,7 @@ function Main() {
                 dat['vids']['link'] = document.getElementById('link').value
                 dat['vids']['hz'] = document.getElementById('device').value
                 dat['vids']['percent'] = document.getElementById('percent').value
+                dat['comment'] = document.getElementById('comment').value
                 if (document.getElementById('lvID').value.length == 0 || document.getElementById('userName').value.length == 0 || document.getElementById('link').value.length == 0) {
                     alert('Please fill in all the fields')
                     return
@@ -150,6 +154,8 @@ function Main() {
                     <input type='number' min='0' max='100'  id='percent' name='percent' /><br></br>
                     <label for='link'>YouTube video's link:</label><br></br>
                     <input type='text' id='link' name='link' /><br></br>
+                    <label for='link'>Comment (optional):</label><br></br>
+                    <input type='text' id='comment' name='comment' /><br></br>
                     <button onClick={() => sendSubmit()}>Submit</button>
                 </div>
             )

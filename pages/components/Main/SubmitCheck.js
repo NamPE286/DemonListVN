@@ -110,6 +110,12 @@ function Main() {
                     return '';
                 }
             }
+            function getComment(i){
+                if(data[i].comment == undefined || data[i].comment.length == 0){
+                    return "(No comment provided)"
+                }
+                return data[i].comment
+            }
             return (
                 <>
                     <div className='mainpanelNoMargin'>
@@ -121,8 +127,9 @@ function Main() {
                                 return (
                                     <div className='submissionCard'>
                                         <h3>{data[i].vids.user}</h3>
-                                        <a href={`/mainlist/${data[i].id}`} target='_blank' title='View level page'>Level: {getLvInfo(data[i].id)} - {data[i].id}</a><br></br><br></br>
+                                        <a href={`/mainlist/${data[i].id}`} target='_blank' title='View level page'>Level: {getLvInfo(data[i].id)} - </a>{data[i].id}<br></br><br></br>
                                         <a href={data[i].vids.link} target='_blank' title='View completion video'>{data[i].vids.link} {getHz(i)} {getPercent(i)}</a><br></br><br></br>
+                                        <a>Comment: {getComment(i)}</a><br></br><br></br>
                                         <button onClick={() => reject(i)}>Reject</button><a> </a>
                                         <button onClick={() => approve(i)}>Approve</button>
                                     </div>
