@@ -47,6 +47,7 @@ function Main() {
             });
     }
     async function approve(i) {
+        console.log(data[i])
         if (data[i].id in lvDat) {
             lvDat[data[i].id].vids.push(data[i].vids);
             for (const j in lvDat1) {
@@ -109,9 +110,9 @@ function Main() {
                     return '';
                 }
             }
-            function apBut(i){
+            function apBut(i, j){
                 if(i != "(Level does not exist. Please create the level through Admin page first)"){
-                    return <button onClick={() => approve(i)}>Approve</button>
+                    return <button onClick={() => approve(j)}>Approve</button>
                 }
             }
             function getVidLink(i) {
@@ -134,7 +135,7 @@ function Main() {
                                         <a href={getVidLink(i)} target='_blank' title='View level page'>Level: {getLvInfo(data[i].id)} - {data[i].id}</a><br></br><br></br>
                                         <a href={data[i].vids.link} target='_blank' title='View completion video'>{data[i].vids.link} {getHz(i)} {getPercent(i)}</a><br></br><br></br>
                                         <button onClick={() => reject(i)}>Reject</button><a> </a>
-                                        {apBut(getLvInfo(data[i].id))}
+                                        {apBut(getLvInfo(data[i].id), i)}
                                     </div>
                                 )
                             })}
