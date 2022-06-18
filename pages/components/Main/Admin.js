@@ -129,6 +129,21 @@ function Main() {
                         'vids':{}
                     }
                 }
+                if(DLVNPlayer.index[DLVN.list[i].vids[j].user] == undefined){
+                    DLVNPlayer.index[DLVN.list[i].vids[j].user] = {
+                        avatar:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPfCfynXv42fOnrTQAs-99j09O8uz7mDilOQ&usqp=CAU",
+                        bestplay:'none',
+                        bestplayCreator:'none',
+                        bestplayPt:0,
+                        bestplayThumbnail:'none',
+                        lv:[],
+                        name:DLVN.list[i].vids[j].user,
+                        points:0,
+                        top:0,
+                        vids:{}
+                    }
+                }
+
                 DLVNPlayer.index[DLVN.list[i].vids[j].user].points += DLVN.list[i].points
                 DLVNPlayer.index[DLVN.list[i].vids[j].user].points = Math.round(DLVNPlayer.index[DLVN.list[i].vids[j].user].points * 100) / 100
                 DLVNPlayer.index[DLVN.list[i].vids[j].user].vids[parseInt(DLVN.list[i].id)] = DLVN.list[i].vids[j]
@@ -150,7 +165,7 @@ function Main() {
             DLVNPlayer.list[i].top = i + 1
         }
         DLVNPlayer.list = Object.assign({}, DLVNPlayer.list)
-
+        
         for(const i in FDLVNPlayer.index){
             try{
                 FDLVNPlayer.index[i].points = 0
@@ -188,6 +203,21 @@ function Main() {
                         'vids':{}
                     }
                 }
+                console.log(FDLVNPlayer.index[FDLVN.list[i].vids[j].user])
+                if(FDLVNPlayer.index[FDLVN.list[i].vids[j].user] == undefined){
+                    FDLVNPlayer.index[FDLVN.list[i].vids[j].user] = {
+                        avatar:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPfCfynXv42fOnrTQAs-99j09O8uz7mDilOQ&usqp=CAU",
+                        bestplay:'none',
+                        bestplayCreator:'none',
+                        bestplayPt:0,
+                        bestplayThumbnail:'none',
+                        lv:[],
+                        name:FDLVN.list[i].vids[j].user,
+                        points:0,
+                        top:0,
+                        vids:{}
+                    }
+                }
                 FDLVNPlayer.index[FDLVN.list[i].vids[j].user].points += FDLVN.list[i].points
                 FDLVNPlayer.index[FDLVN.list[i].vids[j].user].points = Math.round(FDLVNPlayer.index[FDLVN.list[i].vids[j].user].points * 100) / 100
                 FDLVNPlayer.index[FDLVN.list[i].vids[j].user].vids[parseInt(FDLVN.list[i].id)] = FDLVN.list[i].vids[j]
@@ -210,6 +240,7 @@ function Main() {
         }
         FDLVNPlayer.list = Object.assign({}, FDLVNPlayer.list)
         setStatus(`Uploading changes...`)
+        
         await setDoc(doc(db, "DLVN", 'index'), DLVN.index);
         await setDoc(doc(db, "DLVNPlayer", 'index'), DLVNPlayer.index);
         await setDoc(doc(db, "FDLVN", 'index'), FDLVN.index);
@@ -223,6 +254,7 @@ function Main() {
         await setDoc(doc(db, "FDLVNPlayer", 'list'), FDLVNPlayer.list);
         await setDoc(doc(db, "FDLVNLegacy", 'list'), FDLVNLegacy.list);
         //await setDoc(doc(db, "auth", 'list'), Object.assign({}, au.index));
+        
         setStatus('Up to date')
     }
     function download(filename, text) {
