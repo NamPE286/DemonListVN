@@ -101,7 +101,6 @@ function Main() {
             }
             catch(err){
                 console.error(err)
-                console.log(i)
             }
         }
         for(const i in DLVN.list){
@@ -144,7 +143,7 @@ function Main() {
                     }
                 }
 
-                DLVNPlayer.index[DLVN.list[i].vids[j].user].points += DLVN.list[i].points
+                DLVNPlayer.index[DLVN.list[i].vids[j].user].points += DLVN.list[i].points * (parseInt(DLVN.list[i].vids[j].percent) / 100)
                 DLVNPlayer.index[DLVN.list[i].vids[j].user].points = Math.round(DLVNPlayer.index[DLVN.list[i].vids[j].user].points * 100) / 100
                 DLVNPlayer.index[DLVN.list[i].vids[j].user].vids[parseInt(DLVN.list[i].id)] = DLVN.list[i].vids[j]
                 DLVNPlayer.index[DLVN.list[i].vids[j].user].lv.push(parseInt(DLVN.list[i].id))
@@ -175,7 +174,6 @@ function Main() {
             }
             catch(err){
                 console.error(err)
-                console.log(i)
             }
         }
         for(const i in FDLVN.list){
@@ -203,7 +201,6 @@ function Main() {
                         'vids':{}
                     }
                 }
-                console.log(FDLVNPlayer.index[FDLVN.list[i].vids[j].user])
                 if(FDLVNPlayer.index[FDLVN.list[i].vids[j].user] == undefined){
                     FDLVNPlayer.index[FDLVN.list[i].vids[j].user] = {
                         avatar:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPfCfynXv42fOnrTQAs-99j09O8uz7mDilOQ&usqp=CAU",
@@ -240,7 +237,6 @@ function Main() {
         }
         FDLVNPlayer.list = Object.assign({}, FDLVNPlayer.list)
         setStatus(`Uploading changes...`)
-        
         await setDoc(doc(db, "DLVN", 'index'), DLVN.index);
         await setDoc(doc(db, "DLVNPlayer", 'index'), DLVNPlayer.index);
         await setDoc(doc(db, "FDLVN", 'index'), FDLVN.index);
@@ -254,7 +250,6 @@ function Main() {
         await setDoc(doc(db, "FDLVNPlayer", 'list'), FDLVNPlayer.list);
         await setDoc(doc(db, "FDLVNLegacy", 'list'), FDLVNLegacy.list);
         //await setDoc(doc(db, "auth", 'list'), Object.assign({}, au.index));
-        
         setStatus('Up to date')
     }
     function download(filename, text) {
@@ -291,7 +286,6 @@ function Main() {
                 // The signed-in user info.
                 const user = result.user;
                 setUser(user)
-                console.log(user)
             }).catch((error) => {
 
             });
@@ -330,7 +324,6 @@ function Main() {
                     FDLVN.index[parseInt(d.id)] = d;
                     setModal(0);
                     setStatus('Not up to date')
-                    console.log(FDLVN)
                 }
                 async function delete0() {
                     const prevTop = d.top
@@ -343,7 +336,6 @@ function Main() {
                         FDLVN.list[i].points = Math.round((2100 / (0.3 * parseInt(FDLVN.list[i].top) + 9) - 80) * 100) / 100;
                     }
                     setStatus('Not up to date')
-                    console.log(FDLVN)
                 }
                 return (
                     <div className="popup">
@@ -386,13 +378,11 @@ function Main() {
                                                 d.vids[i].user = document.getElementById(`userName${i}`).value;
                                                 d.vids[i].link = document.getElementById(`YTLink${i}`).value;
                                                 setStatus('Not up to date')
-                                                console.log(d.vids[i])
                                             }
                                             function delete2() {
                                                 d.vids.splice(i, 1);
                                                 setModal(0);
                                                 setStatus('Not up to date')
-                                                console.log(d.vids)
                                             }
                                             return (
                                                 <>
@@ -442,7 +432,6 @@ function Main() {
                     }
                     setModal(0);
                     setStatus('Not up to date')
-                    console.log(FDLVNLegacy)
                 }
                 async function delete0() {
                     delete FDLVNLegacy.index[parseInt(d.id)];
@@ -453,7 +442,6 @@ function Main() {
                     }
                     setModal(0);
                     setStatus('Not up to date')
-                    console.log(FDLVNLegacy)
                 }
                 return (
                     <div className="popup">
@@ -494,13 +482,11 @@ function Main() {
                                                 d.vids[i].user = document.getElementById(`userName${i}`).value;
                                                 d.vids[i].link = document.getElementById(`YTLink${i}`).value;
                                                 setStatus('Not up to date')
-                                                console.log(d.vids[i])
                                             }
                                             function delete2() {
                                                 d.vids.splice(i, 1);
                                                 setModal(0);
                                                 setStatus('Not up to date')
-                                                console.log(d.vids)
                                             }
                                             return (
                                                 <>
@@ -573,7 +559,6 @@ function Main() {
                     DLVN.index[parseInt(d.id)] = d;
                     setModal(0);
                     setStatus('Not up to date')
-                    console.log(DLVN)
                 }
                 async function delete0() {
                     const prevTop = d.top
@@ -586,7 +571,6 @@ function Main() {
                         DLVN.list[i].points = getPoint(parseInt(i) + 1);
                     }
                     setStatus('Not up to date')
-                    console.log(DLVN)
                 }
                 return (
                     <div className="popup">
@@ -631,13 +615,11 @@ function Main() {
                                                 d.vids[i].percent = parseInt(document.getElementById(`percent${i}`).value);
                                                 d.vids[i].hz = document.getElementById(`hz${i}`).value;
                                                 setStatus('Not up to date')
-                                                console.log(d.vids[i])
                                             }
                                             function delete2() {
                                                 d.vids.splice(i, 1);
                                                 setModal(0);
                                                 setStatus('Not up to date')
-                                                console.log(d.vids)
                                             }
                                             return (
                                                 <>
@@ -689,7 +671,6 @@ function Main() {
 
                     setModal(0);
                     setStatus('Not up to date')
-                    console.log(player)
                 }
                 function delete0() {
                     delete player.index[name]
@@ -737,8 +718,6 @@ function Main() {
                     }
                     setModal(0);
                     setStatus('Not up to date')
-                    console.log(DLVNPlayer)
-                    console.log(FDLVNPlayer)
                 }
 
                 return (
