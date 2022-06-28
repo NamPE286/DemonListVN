@@ -48,6 +48,10 @@ function Main() {
                 alert('Your submission has been sent!')
             }
             async function sendSubmit() {
+                document.getElementById('userName').value = document.getElementById('userName').value.replace(/\s+/g, ' ').trim();
+                document.getElementById('link').value = document.getElementById('link').value.replace(/\s+/g, ' ').trim();
+                document.getElementById('comment').value = document.getElementById('comment').value.replace(/\s+/g, ' ').trim();
+                document.getElementById('lvID').value = document.getElementById('lvID').value.replace(/\s+/g, ' ').trim();
                 if(typeof window !== 'undefined'){
                     localStorage.setItem('userName', document.getElementById('userName').value)
                 }
@@ -107,6 +111,10 @@ function Main() {
                 alert('Your submission has been sent!')
             }
             async function sendSubmit() {
+                document.getElementById('userName').value = document.getElementById('userName').value.replace(/\s+/g, ' ').trim();
+                document.getElementById('lvID').value = document.getElementById('lvID').value.replace(/\s+/g, ' ').trim();
+                document.getElementById('link').value = document.getElementById('link').value.replace(/\s+/g, ' ').trim();
+                document.getElementById('comment').value = document.getElementById('comment').value.replace(/\s+/g, ' ').trim();
                 if(typeof window !== 'undefined'){
                     localStorage.setItem('userName', document.getElementById('userName').value)
                 }
