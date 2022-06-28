@@ -52,9 +52,7 @@ function Main() {
                 document.getElementById('link').value = document.getElementById('link').value.replace(/\s+/g, ' ').trim();
                 document.getElementById('comment').value = document.getElementById('comment').value.replace(/\s+/g, ' ').trim();
                 document.getElementById('lvID').value = document.getElementById('lvID').value.replace(/\s+/g, ' ').trim();
-                if(typeof window !== 'undefined'){
-                    localStorage.setItem('userName', document.getElementById('userName').value)
-                }
+                localStorage.setItem('userName', document.getElementById('userName').value)
                 var dat = {}
                 dat['vids'] = {}
                 dat['id'] = document.getElementById('lvID').value
@@ -115,9 +113,7 @@ function Main() {
                 document.getElementById('lvID').value = document.getElementById('lvID').value.replace(/\s+/g, ' ').trim();
                 document.getElementById('link').value = document.getElementById('link').value.replace(/\s+/g, ' ').trim();
                 document.getElementById('comment').value = document.getElementById('comment').value.replace(/\s+/g, ' ').trim();
-                if(typeof window !== 'undefined'){
-                    localStorage.setItem('userName', document.getElementById('userName').value)
-                }
+                localStorage.setItem('userName', document.getElementById('userName').value)
                 var dat = {}
                 dat['vids'] = {}
                 dat['id'] = document.getElementById('lvID').value
