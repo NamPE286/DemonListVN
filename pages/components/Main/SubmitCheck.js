@@ -47,14 +47,23 @@ function Main() {
             });
     }
     async function approve(i) {
-        console.log(data[i].id)
         if (data[i].id in lvDat) {
-            lvDat[data[i].id].vids.push(data[i].vids);
-            for (const j in lvDat1) {
-                if (lvDat1[j].id == data[i].id) {
-                    lvDat1[j].vids.push(data[i].vids);
+            var isNeedUpdate = false
+            for(const j in lvDat[data[i].id].vids){
+                if(lvDat[data[i].id].vids[j].user == data[i].vids.user){
+                    lvDat[data[i].id].vids[j] = data[i].vids
+                    isNeedUpdate = true
                 }
             }
+            if(!isNeedUpdate){
+                lvDat[data[i].id].vids.push(data[i].vids);
+                for (const j in lvDat1) {
+                    if (lvDat1[j].id == data[i].id) {
+                        lvDat1[j].vids.push(data[i].vids);
+                    }
+                }
+            }
+            console.log(lvDat[data[i].id])
             delete data[i];
             await setDoc(doc(db, "submit", 'FDLVN'), data);
             await setDoc(doc(db, "FDLVN", 'index'), lvDat);

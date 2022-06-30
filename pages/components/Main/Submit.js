@@ -68,6 +68,16 @@ function Main() {
                     return
                 }
                 if (dat['vids']['user'] in player) {
+                    const lvRef = doc(db, "FDLVNPlayer", "index")
+                    const docSnap = await getDoc(lvRef);
+                    if (docSnap.exists()) {
+                        const data = docSnap.data();
+                        var d = data[dat['vids']['user']]
+                        if(dat['id'] in d['vids']){
+                            alert('You have already submitted this level')
+                            return
+                        }
+                    }
                     sendSubmit1(dat)
                 }
                 else {
@@ -127,6 +137,16 @@ function Main() {
                     return
                 }
                 if (dat['vids']['user'] in player) {
+                    const lvRef = doc(db, "DLVNPlayer", "index")
+                    const docSnap = await getDoc(lvRef);
+                    if (docSnap.exists()) {
+                        const data = docSnap.data();
+                        var d = data[dat['vids']['user']]
+                        if(dat['id'] in d['vids']){
+                            alert('You have already submitted this level')
+                            return
+                        }
+                    }
                     sendSubmit1(dat)
                 }
                 else {
