@@ -29,7 +29,11 @@ function Main() {
     )
     }
   }
-
+  function getRandomLevel(){
+    var random = Math.floor(Math.random() * Object.keys(data).length);
+    var lv = data[random]
+    window.location.href = `/Legacylist/${lv.id}`
+  }
   // Subsequent queries will use persistence, if it was enabled successfully
   return (
     <>
@@ -37,6 +41,11 @@ function Main() {
       <div className="mainpanel">
         <h2>Legacy List</h2>
         <div className="mainpanelContent">
+          <a href="#!" onClick={getRandomLevel}>
+            <div className="randomBtn">
+              <p>Pick a random level</p>
+            </div>
+          </a>
           {Object.keys(data).map(i => {
             if (data[i].name != null) {
                 return (
@@ -53,10 +62,8 @@ function Main() {
                       </div>
                     </a>
                   </div>
-                  {showAds(i)}
                   </>
-                )
-              
+                ) 
             }
           })}
         </div>
