@@ -74,8 +74,31 @@ function Main() {
                         const data = docSnap.data();
                         var d = data[dat['vids']['user']]
                         if(dat['id'] in d['vids']){
-                            alert('You have already submitted this level')
-                            return
+                            var videoId = "";
+                            var videoId1 = "";
+                            if(dat['vids']['link'].includes("youtu.be")){
+                                videoId = dat['vids']['link'].split('youtu.be/')[1]
+                            }
+                            else if(dat['vids']['link'].includes('&') == false){
+                                videoId = dat['vids']['link'].split('watch?v=')[1]
+                            }
+                            else{
+                                videoId = dat['vids']['link'].split('&')[0].split('watch?v=')[1]
+                            }
+                            if(d['vids'][dat['id']]['link'].includes("youtu.be")){
+                                videoId1 = d['vids'][dat['id']]['link'].split('youtu.be/')[1]
+                            }
+                            else if(d['vids'][dat['id']]['link'].includes('&') == false){
+                                videoId1 = d['vids'][dat['id']]['link'].split('watch?v=')[1]
+                            }
+                            else{
+                                videoId1 = d['vids'][dat['id']]['link'].split('&')[0].split('watch?v=')[1]
+                            }
+                            console.log(videoId, videoId1)
+                            if(videoId == videoId1){
+                                alert('You have already submitted this level')
+                                return
+                            }
                         }
                     }
                     sendSubmit1(dat)
@@ -143,8 +166,34 @@ function Main() {
                         const data = docSnap.data();
                         var d = data[dat['vids']['user']]
                         if(dat['id'] in d['vids']){
-                            alert('You have already submitted this level')
-                            return
+                            var videoId = "";
+                            var videoId1 = "";
+                            if(dat['vids']['link'].includes("youtu.be")){
+                                videoId = dat['vids']['link'].split('youtu.be/')[1]
+                            }
+                            else if(dat['vids']['link'].includes('&') == false){
+                                videoId = dat['vids']['link'].split('watch?v=')[1]
+                            }
+                            else{
+                                videoId = dat['vids']['link'].split('&')[0].split('watch?v=')[1]
+                            }
+                            if(d['vids'][dat['id']]['link'].includes("youtu.be")){
+                                videoId1 = d['vids'][dat['id']]['link'].split('youtu.be/')[1]
+                            }
+                            else if(d['vids'][dat['id']]['link'].includes('&') == false){
+                                videoId1 = d['vids'][dat['id']]['link'].split('watch?v=')[1]
+                            }
+                            else{
+                                videoId1 = d['vids'][dat['id']]['link'].split('&')[0].split('watch?v=')[1]
+                            }
+                            if(videoId == videoId1){
+                                alert('You have already submitted this level')
+                                return
+                            }
+                            if(parseInt(dat['vids']['percent']) < parseInt(d['vids'][dat['id']]['percent'])){
+                                alert('Your progress is lower than your previous submission of this level')
+                                return
+                            }
                         }
                     }
                     sendSubmit1(dat)
