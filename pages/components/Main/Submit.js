@@ -62,7 +62,7 @@ function Main() {
                 if (document.getElementById('lvID').value.length == 0 || document.getElementById('userName').value.length == 0 || document.getElementById('link').value.length == 0) {
                     alert('Please fill in all the fields')
                     return
-                }
+                }                
                 if (parseInt(document.getElementById('lvID').value) in FDLVN == false) {
                     alert('Level does not exist in the list. Please check the level ID')
                     return
@@ -74,27 +74,6 @@ function Main() {
                         const data = docSnap.data();
                         var d = data[dat['vids']['user']]
                         if(dat['id'] in d['vids']){
-                            var videoId = "";
-                            var videoId1 = "";
-                            if(dat['vids']['link'].includes("youtu.be")){
-                                videoId = dat['vids']['link'].split('youtu.be/')[1]
-                            }
-                            else if(dat['vids']['link'].includes('&') == false){
-                                videoId = dat['vids']['link'].split('watch?v=')[1]
-                            }
-                            else{
-                                videoId = dat['vids']['link'].split('&')[0].split('watch?v=')[1]
-                            }
-                            if(d['vids'][dat['id']]['link'].includes("youtu.be")){
-                                videoId1 = d['vids'][dat['id']]['link'].split('youtu.be/')[1]
-                            }
-                            else if(d['vids'][dat['id']]['link'].includes('&') == false){
-                                videoId1 = d['vids'][dat['id']]['link'].split('watch?v=')[1]
-                            }
-                            else{
-                                videoId1 = d['vids'][dat['id']]['link'].split('&')[0].split('watch?v=')[1]
-                            }
-                            console.log(videoId, videoId1)
                             if(videoId == videoId1){
                                 alert('You have already submitted this level')
                                 return
@@ -116,7 +95,7 @@ function Main() {
                     <label for='userName'>Your in-game name:</label><br></br>
                     <input type='text' id='userName' name='userName' defaultValue={uName}/><br></br>
                     <label for='lvID'>ID of the level you've beaten:</label><br></br>
-                    <input type='text' id='lvID' name='lvID' /><br></br>
+                    <input type='number' id='lvID' name='lvID' /><br></br>
                     <label for='link'>YouTube video's link:</label><br></br>
                     <input type='text' id='link' name='link' /><br></br>
                     <label for='link'>Comment (optional):</label><br></br>
@@ -209,7 +188,7 @@ function Main() {
                     <label for='userName'>Your in-game name:</label><br></br>
                     <input type='text' id='userName' name='userName' defaultValue={uName}/><br></br>
                     <label for='lvID'>ID of the level you've beaten:</label><br></br>
-                    <input type='text' id='lvID' name='lvID' /><br></br>
+                    <input type='number' id='lvID' name='lvID' /><br></br>
                     <label for='device'>Device (refresh rate):</label><br></br>
                     <select type='text' id='device' name='device'>
                         <option value="60Hz">60Hz</option>
