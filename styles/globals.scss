@@ -1170,6 +1170,27 @@ code {
 #center-text{
     text-align: center;
 }
+.randomBtn{
+    box-shadow: 0 0 30px var(--a18);
+    margin: auto;
+    width: 75%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 16px;
+    object-fit: contain;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    margin-bottom: 42px;
+    background-color: black;
+    p{
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-right: 30px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+}
 @media screen and (max-width: 1500px) {
     .pageContent {
         margin-left: 100px;
@@ -1210,6 +1231,9 @@ code {
     .levelWrapper {
         width: 100%;
     }
+    .randomBtn{
+        width: 85%;
+    }
     .App {
         margin-top: 150px;
     }
@@ -1240,6 +1264,9 @@ code {
         width: 100%;
     }
     .levelCard {
+        width: 85%;
+    }
+    .randomBtn{
         width: 85%;
     }
     .lvinfo {

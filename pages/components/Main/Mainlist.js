@@ -121,7 +121,18 @@ function Main() {
       )
     }
   }
-
+  function getRandomLevel(){
+    if(mode == "mainlist"){
+      var random = Math.floor(Math.random() * Object.keys(data).length);
+      var lv = data[random]
+      window.location.href = `/mainlist/${lv.id}`
+    }
+    else if(mode == "GDVNAL"){
+      var random = Math.floor(Math.random() * Object.keys(data0).length);
+      var lv = data0[random]
+      window.location.href = `/GDVNAL/${lv.id}`
+    }
+  }
   return (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no" />
@@ -145,6 +156,11 @@ function Main() {
           </div>
           <hr id='lineUnderBtn'></hr>
         </div>
+        <a href="#!" onClick={getRandomLevel}>
+          <div className="randomBtn">
+            <p>Pick a random level</p>
+          </div>
+        </a>
         {showList()}
       </div>
     </>
