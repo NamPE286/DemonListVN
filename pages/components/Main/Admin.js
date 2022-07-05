@@ -668,7 +668,12 @@ function Main() {
                             player.index[i] = d1
                         }
                     }
-
+                    if(d1.name in FDLVNPlayer.index){
+                        FDLVNPlayer.index[d1.name].avatar = d1.avatar
+                    }
+                    if(d1.name in DLVNPlayer.index){
+                        DLVNPlayer.index[d1.name].avatar = d1.avatar
+                    }
                     setModal(0);
                     setStatus('Not up to date')
                 }
@@ -724,7 +729,7 @@ function Main() {
                     <div className="popup">
                         <div className="overlay">
                             <div className="popupContent">
-                                <h2>Edit level info</h2>
+                                <h2>Edit player info</h2>
                                 <a id='close' onClick={() => { setModal(!modal) }}>x</a>
                                 <label for="playerName">Player name: </label>
                                 <input type="text" id="playerName" name="playerName" defaultValue={name} readOnly></input><br />

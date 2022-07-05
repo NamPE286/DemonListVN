@@ -12,6 +12,7 @@ function Main() {
     const [data1, setData1] = useState([]);
     const [data2, setData2] = useState([]);
     const [data3, setData3] = useState([]);
+    const [playerInfo, setPlayerInfo] = useState([]);
     const [player, setPlayer] = useState([]);
     const [mode, setMode] = useState();
     useEffect(() => {
@@ -63,6 +64,12 @@ function Main() {
             }
             else {
                 console.log("No such document!");
+            }
+
+            const ref = doc(db, "player", "index")
+            const snap = await getDoc(ref);
+            if(snap.exists()){
+                setPlayerInfo(snap.data());
             }
         }
         getData()
@@ -165,7 +172,7 @@ function Main() {
         }
     }
     function copyDiscordTag() {
-        var text = "test#1234"
+        var text = playerInfo[data[id].name].social.discord
         var dummy = document.createElement("textarea");
         document.body.appendChild(dummy);
         dummy.value = text;
@@ -218,12 +225,12 @@ function Main() {
         try{
             return(
                 <div className="basicInfo">
-                    <img src={data[id].avatar} alt="" />
+                    <img src={playerInfo[data[id].name].avatar} alt="" />
                     <h2 id="playerName">{data[id].name}</h2>
                     <hr></hr>
                     <div className="socialInfo1">
-                    <a href="#!"><img src="/icon/facebook.ico" id='socialIcon' alt="" /></a>
-                        <a href="#!"><img src="/icon/youtube.ico" id='socialIcon' alt="" /></a>
+                    <a href={playerInfo[data[id].name].social.facebook} target="_blank"><img src="/icon/facebook.ico" id='socialIcon' alt=""  /></a>
+                        <a href={playerInfo[data[id].name].social.youtube} target="_blank"><img src="/icon/youtube.ico" id='socialIcon' alt="" /></a>
                         <a href="#!"><img src="/icon/discord.ico" id='socialIcon' onClick={copyDiscordTag} alt="" title="Click to copy Discord tag" /></a>
                     </div>
                 </div>
