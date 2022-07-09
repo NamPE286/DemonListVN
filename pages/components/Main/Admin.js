@@ -13,6 +13,7 @@ function Main() {
     const [user, setUser] = useState(null);
     const [player, setPlayer] = useState({});
     const [modal, setModal] = useState(false);
+    const [addLv, setAddLv] = useState(false);
     const [d, setD] = useState([]);
     const [list, setList] = useState('');
     const [status, setStatus] = useState('Up to date');
@@ -293,7 +294,6 @@ function Main() {
 
     function showModal1() {
         if (modal) {
-
             if (list == 'FDLVN') {
                 async function update() {
                     const prevTop = d.top
@@ -304,9 +304,10 @@ function Main() {
                     d.id = document.getElementById('lvid').value;
                     d.thumbnail = document.getElementById('thumbnail').value;
                     d.ldm = JSON.parse('[' + document.getElementById('LDM').value + ']');
-
-                    delete FDLVN.list[parseInt(prevTop) - 1];
-                    delete FDLVN.index[parseInt(d.id)];
+                    if(!addLv){
+                        delete FDLVN.list[parseInt(prevTop) - 1];
+                        delete FDLVN.index[parseInt(d.id)];
+                    }
                     setModal(0);
                     FDLVN.list = Object.assign({}, Object.values(FDLVN.list));
                     for (const i in FDLVN.list) {
@@ -539,9 +540,10 @@ function Main() {
                     d.id = document.getElementById('lvid').value;
                     d.thumbnail = document.getElementById('thumbnail').value;
                     d.percentToQualify = parseInt(document.getElementById('percentToQualify').value);
-
-                    delete DLVN.list[parseInt(prevTop) - 1];
-                    delete DLVN.index[parseInt(d.id)];
+                    if(!addLv){
+                        delete FDLVN.list[parseInt(prevTop) - 1];
+                        delete FDLVN.index[parseInt(d.id)];
+                    }
                     setModal(0);
                     DLVN.list = Object.assign({}, Object.values(DLVN.list));
                     for (const i in DLVN.list) {
@@ -750,10 +752,15 @@ function Main() {
             }
         }
     }
-    function showModal(x, y) {
+    function showModal(x, y, z) {
         setD(x)
         setList(y)
         setModal(!modal)
+        console.log(DLVN.list)
+        if(z != undefined){
+            setAddLv(true)
+        }
+        else setAddLv(false)
     }
     function showData() {
         if (player.index == undefined) return (<div>Loading {percentloaded}%</div>)
@@ -774,7 +781,7 @@ function Main() {
                             'thumbnail': '',
                             'verifier': '',
                             'vids': []
-                        }, 'FDLVN')}>Add new level</button>
+                        }, 'FDLVN', 1)}>Add new level</button>
                         {Object.keys(FDLVN.list).map(i => {
                             return (
                                 <p><a href="#!" onClick={() => showModal(FDLVN.list[i], 'FDLVN')}>#{FDLVN.list[i].top} {FDLVN.list[i].name}</a></p>
@@ -792,7 +799,7 @@ function Main() {
                             'thumbnail': '',
                             'verifier': '',
                             'vids': []
-                        }, 'FDLVNLegacy')}>Add new level</button>
+                        }, 'FDLVNLegacy', 1)}>Add new level</button>
                         {Object.keys(FDLVNLegacy.list).map(i => {
                             return (
                                 <p><a href="#!" onClick={() => showModal(FDLVNLegacy.list[i], 'FDLVNLegacy')}>{FDLVNLegacy.list[i].name}</a></p>
@@ -813,7 +820,7 @@ function Main() {
                             'firstVictor': '',
                             'percentToQualify': 0,
                             'vids': []
-                        }, 'DLVN')}>Add new level</button>
+                        }, 'DLVN', 1)}>Add new level</button>
                         {Object.keys(DLVN.list).map(i => {
                             return (
                                 <p><a href="#!" onClick={() => showModal(DLVN.list[i], 'DLVN')}>#{DLVN.list[i].top} {DLVN.list[i].name}</a></p>
