@@ -81,8 +81,8 @@ function Main() {
             delete data[i];
             await setDoc(doc(db, 'submit', 'DLVNAccepted'), acp1)
             await setDoc(doc(db, "submit", 'DLVN'), data);
-            await setDoc(doc(db, "FDLVN", 'index'), lvDat);
-            await setDoc(doc(db, "FDLVN", 'list'), lvDat1);
+            await setDoc(doc(db, "DLVN", 'index'), lvDat);
+            await setDoc(doc(db, "DLVN", 'list'), lvDat1);
             return
         }
         alert('The level does not exist. Please add the level first.');
