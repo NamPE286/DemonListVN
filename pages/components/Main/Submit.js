@@ -381,12 +381,12 @@ function Main() {
                     {
                         Object.keys(acp1).map(i => {
                             function getName(){
-                                if(data1[i].id in DLVN) return DLVN[data1[i].id].name
-                                return data1[i].id
+                                if(acp1[i].id in DLVN) return DLVN[acp1[i].id].name
+                                return acp1[i].id
                             }
                             return (
                                 <section>
-                                    <a id="glow" href={`/players/${acp1[i].vids.user}`}>{acp1[i].vids.user}</a><a id="glow" href={`/mainlist/${acp1[i].id}`}>{getName()}</a><a id="glow" href={acp1[i].vids.link} target='_blank'>{data1[i].vids.percent}% ({data1[i].vids.hz})</a><a>{acp1[i].comment}</a>
+                                    <a id="glow" href={`/players/${acp1[i].vids.user}`}>{acp1[i].vids.user}</a><a id="glow" href={`/mainlist/${acp1[i].id}`}>{getName()}</a><a id="glow" href={acp1[i].vids.link} target='_blank'>{acp1[i].vids.percent}% ({acp1[i].vids.hz})</a><a>{acp1[i].comment}</a>
                                 </section>
                             )
                         })
@@ -401,12 +401,12 @@ function Main() {
                     {
                         Object.keys(rej1).map(i => {
                             function getName(){
-                                if(data1[i].id in DLVN) return DLVN[data1[i].id].name
-                                return data1[i].id
+                                if(rej1[i].id in DLVN) return DLVN[rej1[i].id].name
+                                return rej1[i].id
                             }
                             return (
                                 <section>
-                                    <a id="glow" href={`/players/${rej1[i].vids.user}`}>{rej1[i].vids.user}</a><a id="glow" href={`/mainlist/${rej1[i].id}`}>{getName()} ({data1[i].vids.percent}%)</a><a id="glow" href={rej1[i].vids.link} target='_blank'>{data1[i].vids.percent}% ({data1[i].vids.hz})</a><a>{rej1[i].comment}</a>
+                                    <a id="glow" href={`/players/${rej1[i].vids.user}`}>{rej1[i].vids.user}</a><a id="glow" href={`/mainlist/${rej1[i].id}`}>{getName()} ({rej1[i].vids.percent}%)</a><a id="glow" href={rej1[i].vids.link} target='_blank'>{rej1[i].vids.percent}% ({rej1[i].vids.hz})</a><a>{rej1[i].comment}</a>
                                 </section>
                             )
                         })
