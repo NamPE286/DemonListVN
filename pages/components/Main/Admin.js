@@ -396,6 +396,11 @@ function Main() {
                                             function update1() {
                                                 d.vids[i].user = document.getElementById(`userName${i}`).value;
                                                 d.vids[i].link = document.getElementById(`YTLink${i}`).value;
+                                                for(const i in FDLVNLlist){
+                                                    if(parseInt(FDLVN.list[i].id) == parseInt(d.id)){
+                                                        FDLVN.list[i] = d;
+                                                    }
+                                                }
                                                 setStatus('Not up to date')
                                             }
                                             function delete2() {
@@ -521,6 +526,11 @@ function Main() {
                                             function update1() {
                                                 d.vids[i].user = document.getElementById(`userName${i}`).value;
                                                 d.vids[i].link = document.getElementById(`YTLink${i}`).value;
+                                                for(const i in FDLVNLegacy.list){
+                                                    if(parseInt(FDLVNLegacy.list[i].id) == parseInt(d.id)){
+                                                        FDLVNLegacy.list[i] = d;
+                                                    }
+                                                }
                                                 setStatus('Not up to date')
                                             }
                                             function delete2() {
@@ -681,6 +691,11 @@ function Main() {
                                                 d.vids[i].link = document.getElementById(`YTLink${i}`).value;
                                                 d.vids[i].percent = parseInt(document.getElementById(`percent${i}`).value);
                                                 d.vids[i].hz = document.getElementById(`hz${i}`).value;
+                                                for(const i in DLVN.list){
+                                                    if(parseInt(DLVN.list[i].id) == parseInt(d.id)){
+                                                        DLVN.list[i] = d;
+                                                    }
+                                                }
                                                 setStatus('Not up to date')
                                             }
                                             function delete2() {
