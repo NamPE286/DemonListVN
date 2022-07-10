@@ -358,18 +358,36 @@ function Main() {
                                 <input type="text" id="thumbnail" name="thumbnail" defaultValue={d.thumbnail} ></input><br />
                                 <label for="LDM">LDM: </label>
                                 <input type="text" id="LDM" name="LDM" defaultValue={JSON.stringify(d.ldm).substring(1, JSON.stringify(d.ldm).length - 1)}></input><br />
-                                <label>Victor: </label><button>Add victor</button><hr></hr>
+                                <label>Victor: </label><button onClick={() => {
+                                    document.getElementsByClassName('victor')[0].style.display = 'block';
+                                }}>Add victor</button><hr></hr>
                                 <div className={`victor`} style={{ display: "none" }}>
                                     <label for={`userName`}>Player name:  </label>
                                     <input type="text" id={`userName`} name={`userName`}></input><br />
-                                    <label for={`percent`}>Percent:  </label>
-                                    <input type="text" id={`percent`} name={`percent`}></input><br />
                                     <label for={`YTLink`}>Video Link:  </label>
                                     <input type="text" id={`YTLink`} name={`YTLink`}></input><br />
-                                    <label for={`hz`}>HZ:  </label>
-                                    <input type="text" id={`hz`} name={`hz`}></input><br />
-                                    <button>Add</button>
-                                    <button>Cancel</button>
+                                    <button onClick={() => {
+                                        const userName = document.getElementById(`userName`).value;
+                                        const YTLink = document.getElementById(`YTLink`).value;
+                                        var d2 = {
+                                            user: userName,
+                                            link: YTLink
+                                        }
+                                        d.vids.push(d2);
+                                        FDLVN.index[parseInt(d.id)] = d
+                                        for(const i in FDLVN.list){
+                                            if(parseInt(FDLVN.list[i].id) == parseInt(d.id)){
+                                                FDLVN.list[i] = d;
+                                            }
+                                        }
+                                        setStatus('Not up to date')
+                                        document.getElementsByClassName('victor')[0].style.display = 'none';
+                                        setModal(0);
+                                        console.log(d)
+                                    }}>Add</button>
+                                    <button onClick={() => {
+                                        document.getElementsByClassName('victor')[0].style.display = 'none';
+                                    }}>Cancel</button>
                                     <hr />
                                 </div>
                                 <div className="victorCard">
@@ -462,18 +480,39 @@ function Main() {
                                 <input type="text" id="thumbnail" name="thumbnail" defaultValue={d.thumbnail} ></input><br />
                                 <label for="LDM">LDM: </label>
                                 <input type="text" id="LDM" name="LDM" defaultValue={JSON.stringify(d.ldm).substring(1, JSON.stringify(d.ldm).length - 1)}></input><br />
-                                <label>Victor: </label><button>Add victor</button><hr></hr>
+                                <label>Victor: </label><button onClick={() => {
+                                    document.getElementsByClassName('victor')[0].style.display = 'block';
+                                }}>Add victor</button><hr></hr>
                                 <div className={`victor`} style={{ display: "none" }}>
                                     <label for={`userName`}>Player name:  </label>
                                     <input type="text" id={`userName`} name={`userName`}></input><br />
-                                    <label for={`percent`}>Percent:  </label>
-                                    <input type="text" id={`percent`} name={`percent`}></input><br />
                                     <label for={`YTLink`}>Video Link:  </label>
                                     <input type="text" id={`YTLink`} name={`YTLink`}></input><br />
-                                    <label for={`hz`}>HZ:  </label>
-                                    <input type="text" id={`hz`} name={`hz`}></input><br />
-                                    <button>Add</button>
-                                    <button>Cancel</button>
+                                    <button onClick={() => {
+                                        const userName = document.getElementById(`userName`).value;
+                                        const YTLink = document.getElementById(`YTLink`).value;
+                                        var d2 = {
+                                            user: userName,
+                                            link: YTLink
+                                        }
+                                        d.vids.push(d2);
+                                        FDLVNLegacy.index[parseInt(d.id)] = d
+                                        for(const i in FDLVNLegacy.list){
+                                            if(parseInt(FDLVNLegacy.list[i].id) == parseInt(d.id)){
+                                                FDLVNLegacy.list[i] = d;
+                                            }
+                                        }
+                                        setStatus('Not up to date')
+                                        document.getElementsByClassName('victor')[0].style.display = 'none';
+                                        setModal(0);
+                                        console.log(d)
+                                    }}>Add</button>
+                                    <button onClick={() => {
+                                        document.getElementsByClassName('victor')[0].style.display = 'none';
+                                    }}>Cancel</button>
+                                    <button onClick={() => {
+                                        document.getElementsByClassName('victor')[0].style.display = 'none';
+                                    }}>Cancel</button>
                                     <hr />
                                 </div>
                                 <div className="victorCard">
@@ -594,7 +633,9 @@ function Main() {
                                 <input type="text" id="firstVictor" name="firstVictor" defaultValue={d.firstVictor}></input><br />
                                 <label for="percentToQualify">Percent to qualify: </label>
                                 <input type="text" id="percentToQualify" name="percentToQualify" defaultValue={d.percentToQualify}></input><br />
-                                <label>Victor: </label><button>Add victor</button><hr></hr>
+                                <label>Victor: </label><button onClick={() => {
+                                    document.getElementsByClassName('victor')[0].style.display = 'block';
+                                }}>Add victor</button><hr></hr>
                                 <div className={`victor`} style={{ display: "none" }}>
                                     <label for={`userName`}>Player name:  </label>
                                     <input type="text" id={`userName`} name={`userName`}></input><br />
@@ -604,8 +645,32 @@ function Main() {
                                     <input type="text" id={`YTLink`} name={`YTLink`}></input><br />
                                     <label for={`hz`}>HZ:  </label>
                                     <input type="text" id={`hz`} name={`hz`}></input><br />
-                                    <button>Add</button>
-                                    <button>Cancel</button>
+                                    <button onClick={() => {
+                                        const userName = document.getElementById(`userName`).value;
+                                        const percent = document.getElementById(`percent`).value;
+                                        const YTLink = document.getElementById(`YTLink`).value;
+                                        const hz = document.getElementById(`hz`).value;
+                                        var d2 = {
+                                            user: userName,
+                                            percent: percent,
+                                            hz: hz,
+                                            link: YTLink
+                                        }
+                                        d.vids.push(d2);
+                                        DLVN.index[parseInt(d.id)] = d
+                                        for(const i in DLVN.list){
+                                            if(parseInt(DLVN.list[i].id) == parseInt(d.id)){
+                                                DLVN.list[i] = d;
+                                            }
+                                        }
+                                        setStatus('Not up to date')
+                                        document.getElementsByClassName('victor')[0].style.display = 'none';
+                                        setModal(0);
+                                        console.log(d)
+                                    }}>Add</button>
+                                    <button onClick={() => {
+                                        document.getElementsByClassName('victor')[0].style.display = 'none';
+                                    }}>Cancel</button>
                                     <hr />
                                 </div>
                                 <div className="victorCard">
