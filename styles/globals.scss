@@ -522,6 +522,16 @@ code {
         text-align: left;
         transition: 0.3s;
     }
+    #submitComment {
+        width: 45%;
+        transition: 0.3s;
+    }
+    #glow{
+        transition: 0.3s;
+    }
+    #glow:hover{
+        color: white;
+    }
 }
 
 .dropbtn {
@@ -1009,6 +1019,10 @@ code {
 #lineUnderBtn1 {
     width: 300px;
 }
+#lineUnderBtn2 {
+    width: 230px;
+    margin-bottom: -25px;
+}
 .selector4{
     margin-left: 100px;
     margin-top: -25px;
@@ -1103,6 +1117,7 @@ code {
     border-radius: 16px;
 }
 .submit{
+    
     input{
         width: 100%;
         height: 40px;
@@ -1111,10 +1126,10 @@ code {
         background-color: var(--a2);
         color: var(--a7);
         font-size: 15px;
-        padding-inline: 10px;
         margin-top:10px;
         margin-bottom:10px;
         transition: 0.3s;
+        padding-inline-start: 10px;
     }
     input:focus{
         outline: none;
@@ -1122,7 +1137,7 @@ code {
         transition: 0.3s;
     }
     select{
-        width: calc(100% + 20px);
+        width: calc(100% + 4px);
         height: 40px;
         border-radius: 16px;
         border: none;
@@ -1139,9 +1154,8 @@ code {
         background-color: var(--a3);
         transition: 0.3s;
     }
-    margin-inline: auto;
     padding-left: 100px;
-    padding-right: 145px;
+    padding-right: 100px;
     button{
         width: 20%;
         height: 50px;
@@ -1150,13 +1164,18 @@ code {
         background-color: var(--a2);
         font-size: 15px;
         padding-inline: 10px;
-        margin-top: 30px;
+        margin-top: 10px;
+        margin-bottom: 20px;
         transition: 0.3s;
-        margin-left: 40%;
+
     }
     button:hover{
         background-color: var(--a3);
         transition: 0.3s;
+    }
+    .submitBtn1{
+        display: flex;
+        justify-content: center;
     }
 }
 
@@ -1191,6 +1210,11 @@ code {
         font-weight: bold;
     }
 }
+#subStat{
+    display: flex;
+    justify-content: center;
+    margin-bottom: -25px;
+}
 @media screen and (max-width: 1500px) {
     .pageContent {
         margin-left: 100px;
@@ -1205,10 +1229,6 @@ code {
     .submit{
         padding-left: 20px;
         padding-right: 45px;
-        button{
-            width: 40%;
-            margin-left: 30%;
-        }
     }
     .levelRecord1 {
         margin-left: 25px;

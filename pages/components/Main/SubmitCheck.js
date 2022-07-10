@@ -9,6 +9,8 @@ function Main() {
     const [lvDat1, setLvDat1] = useState();
     const [au, setAu] = useState({});
     const [user, setUser] = useState(null);
+    const [acp, setAcp] = useState(false);
+    const [rej, setRej] = useState(false);
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
     useEffect(() => {
@@ -24,12 +26,20 @@ function Main() {
         const dat3 = onSnapshot(doc(db, "auth", 'admin'), (doc) => {
             setAu(doc.data());
         })
+        const dat4 = onSnapshot(doc(db, 'submit', 'FDLVNAccepted'), (doc) => {
+            setAcp(doc.data());
+        })
+        const dat5 = onSnapshot(doc(db, "submit", 'FDLVNRejected'), (doc) => {
+            setRej(doc.data());
+        })
 
         return () => {
             dat0();
             dat1();
             dat2();
             dat3();
+            dat4();
+            dat5();
         }
     }, [])
     function logIn() {
@@ -63,8 +73,13 @@ function Main() {
                     }
                 }
             }
-            console.log(lvDat[data[i].id])
+            var acp1 = Object.values(acp);
+            acp1.unshift(JSON.parse(JSON.stringify(data[i])))
+            if(acp1.length > 50) acp1.pop()
+            acp1 = Object.assign({}, acp1)
+            setAcp(acp1)
             delete data[i];
+            await setDoc(doc(db, 'submit', 'FDLVNAccepted'), acp1)
             await setDoc(doc(db, "submit", 'FDLVN'), data);
             await setDoc(doc(db, "FDLVN", 'index'), lvDat);
             await setDoc(doc(db, "FDLVN", 'list'), lvDat1);
@@ -73,7 +88,13 @@ function Main() {
         alert('The level does not exist. Please add the level first.');
     }
     async function reject(i) {
+        var rej1 = Object.values(rej)
+        rej1.unshift(JSON.parse(JSON.stringify(data[i])))
+        if(rej1.length > 50) rej1.pop()
+        rej1 = Object.assign({}, rej1)
+        setRej(rej1)
         delete data[i];
+        await setDoc(doc(db, 'submit', 'FDLVNRejected'), rej1)
         await setDoc(doc(db, "submit", 'FDLVN'), data);
     }
     if (user == null) {
