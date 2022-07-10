@@ -14,7 +14,7 @@ function Main() {
             <h2>Credit</h2>
             <h3 id='role'>• Featured List VN Owner</h3>
             <div className="credit">
-                <img src="https://yt3.ggpht.com/ytc/AAUvwnjglRqQfBFknV54s-A7rDqU41E4mCyCUxLk9eT7wA=s88-c-k-c0x00ffffff-no-rj"></img>
+                <img src="https://cdn.discordapp.com/attachments/993835187735646208/995564093094244352/unknown.png"></img>
                 <div className="creditContent">
                     <h3>Hito73</h3>
                     <hr></hr>
@@ -62,24 +62,26 @@ function Main() {
             </div>
             <h3 id='role'>• Designer</h3>
             <div className="credit">
-                <img src="https://cdn.discordapp.com/attachments/955026244427210812/955026262240428052/275017775_2701633393464712_7996914072184440323_n.png"></img>
+                <img src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/280492165_2746716752289709_1076846455306641503_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=HYo4ww5NE_kAX_dnT2v&_nc_ht=scontent.fhan15-2.fna&oh=00_AT86MgZ9C9IqppAt2H85WqIXTU9_gE7vEwQ7MsODAAdyGA&oe=62CF682C"></img>
                 <div className="creditContent">
                     <h3>NamPE</h3>
                     <hr></hr>
                     <a href="https://www.youtube.com/channel/UCCj7J4fxHF70n5zxccZQDww">YouTube</a>
                     <a href="https://www.facebook.com/profile.php?id=100008542323249">Facebook</a>
                     <a href="https://www.youtube.com/channel/UCCj7J4fxHF70n5zxccZQDww">GitHub</a>
+                    <a>Discord: NamPE#5953</a>
                 </div>
             </div>
             <h3 id='role'>• Developer</h3>
             <div className="credit">
-                <img src="https://cdn.discordapp.com/attachments/955026244427210812/955026262240428052/275017775_2701633393464712_7996914072184440323_n.png"></img>
+                <img src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/280492165_2746716752289709_1076846455306641503_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=HYo4ww5NE_kAX_dnT2v&_nc_ht=scontent.fhan15-2.fna&oh=00_AT86MgZ9C9IqppAt2H85WqIXTU9_gE7vEwQ7MsODAAdyGA&oe=62CF682C"></img>
                 <div className="creditContent">
                     <h3>NamPE</h3>
                     <hr></hr>
                     <a href="https://www.youtube.com/channel/UCCj7J4fxHF70n5zxccZQDww">YouTube</a>
                     <a href="https://www.facebook.com/profile.php?id=100008542323249">Facebook</a>
                     <a href="https://www.youtube.com/channel/UCCj7J4fxHF70n5zxccZQDww">GitHub</a>
+                    <a>Discord: NamPE#5953</a>
                 </div>
             </div>
             <div className="credit">
