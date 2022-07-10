@@ -541,8 +541,8 @@ function Main() {
                     d.thumbnail = document.getElementById('thumbnail').value;
                     d.percentToQualify = parseInt(document.getElementById('percentToQualify').value);
                     if(!addLv){
-                        delete FDLVN.list[parseInt(prevTop) - 1];
-                        delete FDLVN.index[parseInt(d.id)];
+                        delete DLVN.list[parseInt(prevTop) - 1];
+                        delete DLVN.index[parseInt(d.id)];
                     }
                     setModal(0);
                     DLVN.list = Object.assign({}, Object.values(DLVN.list));
