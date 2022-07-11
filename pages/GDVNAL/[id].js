@@ -331,7 +331,6 @@ function Main() {
                                 <div className="selector" id="selector1">
                                     <div>
                                         <a href="#!" onClick={changetoInfo}>Info</a>
-                                        <a href="#!" id="spacing" onClick={changetoLDM}>LDM</a>
                                     </div>
                                     <hr id="sel"></hr>
                                 </div>
