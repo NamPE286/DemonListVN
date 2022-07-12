@@ -326,7 +326,7 @@ function Main() {
                     FDLVN.index[parseInt(d.id)] = d;
                     setModal(0);
                     setStatus('Not up to date')
-                    setLog(log + `🔵 Updated ${d.name} (${d.id}) in FDLVN\n`)
+                    setLog(log + `🟦 Updated ${d.name} (${d.id}) in FDLVN\n`)
                 }
                 async function delete0() {
                     const prevTop = d.top
@@ -339,7 +339,7 @@ function Main() {
                         FDLVN.list[i].points = Math.round((2100 / (0.3 * parseInt(FDLVN.list[i].top) + 9) - 80) * 100) / 100;
                     }
                     setStatus('Not up to date')
-                    setLog(log + `🔴 Deleted ${d.name} (${d.id}) in FDLVN\n`)
+                    setLog(log + `🟥 Deleted ${d.name} (${d.id}) in FDLVN\n`)
                 }
                 return (
                     <div className="popup">
@@ -386,7 +386,7 @@ function Main() {
                                         setStatus('Not up to date')
                                         document.getElementsByClassName('victor')[0].style.display = 'none';
                                         setModal(0);
-                                        setLog(log + `🟢 Added ${userName} record in ${d.name} (${d.id}) in FDLVN\n`)
+                                        setLog(log + `🟩 Added ${userName} record in ${d.name} (${d.id}) in FDLVN\n`)
                                     }}>Add</button>
                                     <button onClick={() => {
                                         document.getElementsByClassName('victor')[0].style.display = 'none';
@@ -405,13 +405,13 @@ function Main() {
                                                     }
                                                 }
                                                 setStatus('Not up to date')
-                                                setLog(log + `🔵 Updated ${d.vids[i].user} record in ${d.name} (${d.id}) in FDLVN\n`)
+                                                setLog(log + `🟦 Updated ${d.vids[i].user} record in ${d.name} (${d.id}) in FDLVN\n`)
                                             }
                                             function delete2() {
                                                 d.vids.splice(i, 1);
                                                 setModal(0);
                                                 setStatus('Not up to date')
-                                                setLog(log + `🔴 Deleted ${d.vids[i].user} record in ${d.name} (${d.id}) in FDLVN\n`)
+                                                setLog(log + `🟥 Deleted ${d.vids[i].user} record in ${d.name} (${d.id}) in FDLVN\n`)
                                             }
                                             return (
                                                 <>
@@ -461,7 +461,7 @@ function Main() {
                     }
                     setModal(0);
                     setStatus('Not up to date')
-                    setLog(log + `🔵 Updated ${d.name} (${d.id}) in Legacy\n`)
+                    setLog(log + `🟦 Updated ${d.name} (${d.id}) in Legacy\n`)
                 }
                 async function delete0() {
                     delete FDLVNLegacy.index[parseInt(d.id)];
@@ -472,7 +472,7 @@ function Main() {
                     }
                     setModal(0);
                     setStatus('Not up to date')
-                    setLog(log + `🔴 Deleted ${d.name} (${d.id}) in Legacy\n`)
+                    setLog(log + `🟥 Deleted ${d.name} (${d.id}) in Legacy\n`)
                 }
                 return (
                     <div className="popup">
@@ -517,7 +517,7 @@ function Main() {
                                         setStatus('Not up to date')
                                         document.getElementsByClassName('victor')[0].style.display = 'none';
                                         setModal(0);
-                                        setLog(log + `🟢 Added victor to ${d.name} (${d.id}) in Legacy\n`)
+                                        setLog(log + `🟩 Added victor to ${d.name} (${d.id}) in Legacy\n`)
                                     }}>Add</button>
                                     <button onClick={() => {
                                         document.getElementsByClassName('victor')[0].style.display = 'none';
@@ -539,13 +539,13 @@ function Main() {
                                                     }
                                                 }
                                                 setStatus('Not up to date')
-                                                setLog(log + `🔵 Updated ${d.vids[i].user} record in level ${d.name} (${d.id}) in Legacy\n`)
+                                                setLog(log + `🟦 Updated ${d.vids[i].user} record in level ${d.name} (${d.id}) in Legacy\n`)
                                             }
                                             function delete2() {
                                                 d.vids.splice(i, 1);
                                                 setModal(0);
                                                 setStatus('Not up to date')
-                                                setLog(log + `🔴 Deleted ${d.vids[i].user} record from level ${d.name} (${d.id}) in Legacy\n`)
+                                                setLog(log + `🟥 Deleted ${d.vids[i].user} record from level ${d.name} (${d.id}) in Legacy\n`)
                                             }
                                             return (
                                                 <>
@@ -619,7 +619,7 @@ function Main() {
                     DLVN.index[parseInt(d.id)] = d;
                     setModal(0);
                     setStatus('Not up to date')
-                    setLog(log + `🔵 Updated ${d.name} (${d.id}) in DLVN\n`)
+                    setLog(log + `🟦 Updated ${d.name} (${d.id}) in DLVN\n`)
                 }
                 async function delete0() {
                     const prevTop = d.top
@@ -632,7 +632,7 @@ function Main() {
                         DLVN.list[i].points = getPoint(parseInt(i) + 1);
                     }
                     setStatus('Not up to date')
-                    setLog(log + `🔴 Deleted ${d.name} (${d.id}) in DLVN\n`)
+                    setLog(log + `🟥 Deleted ${d.name} (${d.id}) in DLVN\n`)
                 }
                 return (
                     <div className="popup">
@@ -687,7 +687,7 @@ function Main() {
                                         setStatus('Not up to date')
                                         document.getElementsByClassName('victor')[0].style.display = 'none';
                                         setModal(0);
-                                        setLog(log + `🟢 Added ${userName} record to level ${d.name} (${d.id}) in DLVN\n`)
+                                        setLog(log + `🟩 Added ${userName} record to level ${d.name} (${d.id}) in DLVN\n`)
                                     }}>Add</button>
                                     <button onClick={() => {
                                         document.getElementsByClassName('victor')[0].style.display = 'none';
@@ -708,13 +708,13 @@ function Main() {
                                                     }
                                                 }
                                                 setStatus('Not up to date')
-                                                setLog(log + `🔵 Updated ${d.vids[i].user} record in level ${d.name} (${d.id}) in DLVN\n`)
+                                                setLog(log + `🟦 Updated ${d.vids[i].user} record in level ${d.name} (${d.id}) in DLVN\n`)
                                             }
                                             function delete2() {
                                                 d.vids.splice(i, 1);
                                                 setModal(0);
                                                 setStatus('Not up to date')
-                                                setLog(log + `🔴 Deleted ${d.vids[i].user} record from level ${d.name} (${d.id}) in DLVN\n`)
+                                                setLog(log + `🟥 Deleted ${d.vids[i].user} record from level ${d.name} (${d.id}) in DLVN\n`)
                                             }
                                             return (
                                                 <>
