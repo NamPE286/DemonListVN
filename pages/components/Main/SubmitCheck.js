@@ -13,6 +13,9 @@ function Main() {
     const [rej, setRej] = useState(false);
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
+    const request = new XMLHttpRequest();
+    request.open("POST", "https://discord.com/api/webhooks/996394280035827833/6YLN6_Ruhtf-0GRepNPf6-Pp4DQgM2Jm9ykYCCVhv7diQxFLW696HdMAgIamNCjyiUX0");
+    request.setRequestHeader('Content-type', 'application/json');
     useEffect(() => {
         const dat0 = onSnapshot(doc(db, "submit", 'FDLVN'), (doc) => {
             setData(doc.data());
@@ -78,6 +81,12 @@ function Main() {
             if(acp1.length > 50) acp1.pop()
             acp1 = Object.assign({}, acp1)
             setAcp(acp1)
+            const params = {
+                username: "Demon List Submit Logs",
+                avatar_url: "",
+                content: `${user.displayName} (${user.email}) approved ${data[i].vids.user}'s submission of ${lvDat[data[i].id].name} (${data[i].id}) (FDLVN).`
+            }
+            request.send(JSON.stringify(params));
             delete data[i];
             await setDoc(doc(db, 'submit', 'FDLVNAccepted'), acp1)
             await setDoc(doc(db, "submit", 'FDLVN'), data);
@@ -93,6 +102,12 @@ function Main() {
         if(rej1.length > 50) rej1.pop()
         rej1 = Object.assign({}, rej1)
         setRej(rej1)
+        const params = {
+            username: "Demon List Submit Logs",
+            avatar_url: "",
+            content: `${user.displayName} (${user.email}) rejected ${data[i].vids.user}'s submission of ${lvDat[data[i].id].name} (${data[i].id}) (FDLVN).`
+        }
+        request.send(JSON.stringify(params));
         delete data[i];
         await setDoc(doc(db, 'submit', 'FDLVNRejected'), rej1)
         await setDoc(doc(db, "submit", 'FDLVN'), data);

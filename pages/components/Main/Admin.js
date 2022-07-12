@@ -21,7 +21,9 @@ function Main() {
     const [percentloaded, setPercentloaded] = useState(0);
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
-
+    const request = new XMLHttpRequest();
+    request.open("POST", "https://discord.com/api/webhooks/996394280035827833/6YLN6_Ruhtf-0GRepNPf6-Pp4DQgM2Jm9ykYCCVhv7diQxFLW696HdMAgIamNCjyiUX0");
+    request.setRequestHeader('Content-type', 'application/json');
     useEffect(() => {
         async function getData() {
             const DLVNRef = query(collection(db, 'DLVN'));
@@ -238,7 +240,6 @@ function Main() {
         }
         FDLVNPlayer.list = Object.assign({}, FDLVNPlayer.list)
         setStatus(`Uploading changes...`)
-
         await setDoc(doc(db, "DLVN", 'index'), DLVN.index);
         await setDoc(doc(db, "DLVNPlayer", 'index'), DLVNPlayer.index);
         await setDoc(doc(db, "FDLVN", 'index'), FDLVN.index);
@@ -250,7 +251,12 @@ function Main() {
         await setDoc(doc(db, "FDLVN", 'list'), FDLVN.list);
         await setDoc(doc(db, "FDLVNPlayer", 'list'), FDLVNPlayer.list);
         await setDoc(doc(db, "FDLVNLegacy", 'list'), FDLVNLegacy.list);
-        await setDoc(doc(db, 'logs', 'logs'), {'content' : log})
+        const params = {
+            username: "Demon List Admin Logs",
+            avatar_url: "",
+            content: log
+        }
+        request.send(JSON.stringify(params));
         setStatus('Up to date')
     }
     function download(filename, text) {
