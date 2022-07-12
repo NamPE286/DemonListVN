@@ -84,7 +84,7 @@ function Main() {
             const params = {
                 username: "Demon List Submit Logs",
                 avatar_url: "",
-                content: `${user.displayName} (${user.email}) approved ${data[i].vids.user}'s submission of ${lvDat[data[i].id].name} (${data[i].id}) (FDLVN).`
+                content: `✅ ${user.displayName} (${user.email}) approved ${data[i].vids.user}'s submission of ${lvDat[data[i].id].name} (${data[i].id}) (FDLVN).`
             }
             request.send(JSON.stringify(params));
             delete data[i];
@@ -105,7 +105,7 @@ function Main() {
         const params = {
             username: "Demon List Submit Logs",
             avatar_url: "",
-            content: `${user.displayName} (${user.email}) rejected ${data[i].vids.user}'s submission of ${lvDat[data[i].id].name} (${data[i].id}) (FDLVN).`
+            content: `⛔ ${user.displayName} (${user.email}) rejected ${data[i].vids.user}'s submission of ${lvDat[data[i].id].name} (${data[i].id}) (FDLVN).`
         }
         request.send(JSON.stringify(params));
         delete data[i];
