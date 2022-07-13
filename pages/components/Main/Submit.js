@@ -233,15 +233,15 @@ function Main() {
                     <label for='device'>Device (refresh rate):</label><br></br>
                     <select type='text' id='device' name='device'>
                         <option value="60Hz">60Hz</option>
-                        <option value="144Hz">144Hz</option>
-                        <option value="240Hz">240Hz</option>
-                        <option value="300Hz">300Hz</option>
-                        <option value="300Hz">360Hz</option>
-                        <option value="Mobile 60Hz">Mobile 60Hz</option>
-                        <option value="Mobile 144Hz">Mobile 144Hz</option>
-                        <option value="Mobile 240Hz">Mobile 240Hz</option>
-                        <option value="Mobile 300Hz">Mobile 300Hz</option>
-                        <option value="Mobile 300Hz">Mobile 360Hz</option>
+                        <option value="144Hz">144fps</option>
+                        <option value="240Hz">240fps</option>
+                        <option value="300Hz">300fps</option>
+                        <option value="300Hz">360fps</option>
+                        <option value="Mobile 60Hz">Mobile 60fps</option>
+                        <option value="Mobile 144Hz">Mobile 144fps</option>
+                        <option value="Mobile 240Hz">Mobile 240fps</option>
+                        <option value="Mobile 300Hz">Mobile 300fps</option>
+                        <option value="Mobile 300Hz">Mobile 360fps</option>
                     </select><br></br>
                     <label for='percent'>Progress:</label><br></br>
                     <input type='number' min='0' max='100' id='percent' name='percent' /><br></br>
