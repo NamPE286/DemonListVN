@@ -348,6 +348,7 @@ function Main() {
                     setLog(log + `🟦 Updated ${d.name} (${d.id}) in FDLVN\n`)
                 }
                 async function delete0() {
+                    setLog(log + `🟥 Deleted ${d.name} (${d.id}) in FDLVN\n`)
                     const prevTop = d.top
                     delete FDLVN.list[parseInt(prevTop) - 1];
                     delete FDLVN.index[parseInt(d.id)];
@@ -358,7 +359,6 @@ function Main() {
                         FDLVN.list[i].points = Math.round((2100 / (0.3 * parseInt(FDLVN.list[i].top) + 9) - 80) * 100) / 100;
                     }
                     setStatus('Not up to date')
-                    setLog(log + `🟥 Deleted ${d.name} (${d.id}) in FDLVN\n`)
                 }
                 return (
                     <div className="popup">
@@ -427,10 +427,10 @@ function Main() {
                                                 setLog(log + `🟦 Updated ${d.vids[i].user} record in ${d.name} (${d.id}) in FDLVN\n`)
                                             }
                                             function delete2() {
+                                                setLog(log + `🟥 Deleted ${d.vids[i].user} record in ${d.name} (${d.id}) in FDLVN\n`)
                                                 d.vids.splice(i, 1);
                                                 setModal(0);
                                                 setStatus('Not up to date')
-                                                setLog(log + `🟥 Deleted ${d.vids[i].user} record in ${d.name} (${d.id}) in FDLVN\n`)
                                             }
                                             return (
                                                 <>
@@ -483,6 +483,7 @@ function Main() {
                     setLog(log + `🟦 Updated ${d.name} (${d.id}) in Legacy\n`)
                 }
                 async function delete0() {
+                    setLog(log + `🟥 Deleted ${d.name} (${d.id}) in Legacy\n`)
                     delete FDLVNLegacy.index[parseInt(d.id)];
                     for (const i in FDLVNLegacy.list) {
                         if (FDLVNLegacy.list[i].id == d.id) {
@@ -491,7 +492,6 @@ function Main() {
                     }
                     setModal(0);
                     setStatus('Not up to date')
-                    setLog(log + `🟥 Deleted ${d.name} (${d.id}) in Legacy\n`)
                 }
                 return (
                     <div className="popup">
@@ -561,10 +561,10 @@ function Main() {
                                                 setLog(log + `🟦 Updated ${d.vids[i].user} record in level ${d.name} (${d.id}) in Legacy\n`)
                                             }
                                             function delete2() {
+                                                setLog(log + `🟥 Deleted ${d.vids[i].user} record from level ${d.name} (${d.id}) in Legacy\n`)
                                                 d.vids.splice(i, 1);
                                                 setModal(0);
                                                 setStatus('Not up to date')
-                                                setLog(log + `🟥 Deleted ${d.vids[i].user} record from level ${d.name} (${d.id}) in Legacy\n`)
                                             }
                                             return (
                                                 <>
@@ -641,6 +641,7 @@ function Main() {
                     setLog(log + `🟦 Updated ${d.name} (${d.id}) in DLVN\n`)
                 }
                 async function delete0() {
+                    setLog(log + `🟥 Deleted ${d.name} (${d.id}) in DLVN\n`)
                     const prevTop = d.top
                     delete DLVN.list[parseInt(prevTop) - 1];
                     delete DLVN.index[parseInt(d.id)];
@@ -651,7 +652,6 @@ function Main() {
                         DLVN.list[i].points = getPoint(parseInt(i) + 1);
                     }
                     setStatus('Not up to date')
-                    setLog(log + `🟥 Deleted ${d.name} (${d.id}) in DLVN\n`)
                 }
                 return (
                     <div className="popup">
@@ -730,10 +730,10 @@ function Main() {
                                                 setLog(log + `🟦 Updated ${d.vids[i].user} record in level ${d.name} (${d.id}) in DLVN\n`)
                                             }
                                             function delete2() {
+                                                setLog(log + `🟥 Deleted ${d.vids[i].user} record from level ${d.name} (${d.id}) in DLVN\n`)
                                                 d.vids.splice(i, 1);
                                                 setModal(0);
                                                 setStatus('Not up to date')
-                                                setLog(log + `🟥 Deleted ${d.vids[i].user} record from level ${d.name} (${d.id}) in DLVN\n`)
                                             }
                                             return (
                                                 <>
