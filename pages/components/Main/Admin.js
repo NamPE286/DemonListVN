@@ -241,24 +241,33 @@ function Main() {
         }
         FDLVNPlayer.list = Object.assign({}, FDLVNPlayer.list)
         setStatus(`Uploading changes...`)
-        await setDoc(doc(db, "DLVN", 'index'), DLVN.index);
-        await setDoc(doc(db, "DLVNPlayer", 'index'), DLVNPlayer.index);
-        await setDoc(doc(db, "FDLVN", 'index'), FDLVN.index);
-        await setDoc(doc(db, "FDLVNPlayer", 'index'), FDLVNPlayer.index);
-        await setDoc(doc(db, "FDLVNLegacy", 'index'), FDLVNLegacy.index);
-        await setDoc(doc(db, "player", 'index'), player.index);
-        await setDoc(doc(db, "DLVN", 'list'), DLVN.list);
-        await setDoc(doc(db, "DLVNPlayer", 'list'), DLVNPlayer.list);
-        await setDoc(doc(db, "FDLVN", 'list'), FDLVN.list);
-        await setDoc(doc(db, "FDLVNPlayer", 'list'), FDLVNPlayer.list);
-        await setDoc(doc(db, "FDLVNLegacy", 'list'), FDLVNLegacy.list);
-        const params = {
+
+        try{
+            await setDoc(doc(db, "DLVN", 'index'), DLVN.index);
+            await setDoc(doc(db, "DLVNPlayer", 'index'), DLVNPlayer.index);
+            await setDoc(doc(db, "FDLVN", 'index'), FDLVN.index);
+            await setDoc(doc(db, "FDLVNPlayer", 'index'), FDLVNPlayer.index);
+            await setDoc(doc(db, "FDLVNLegacy", 'index'), FDLVNLegacy.index);
+            await setDoc(doc(db, "player", 'index'), player.index);
+            await setDoc(doc(db, "DLVN", 'list'), DLVN.list);
+            await setDoc(doc(db, "DLVNPlayer", 'list'), DLVNPlayer.list);
+            await setDoc(doc(db, "FDLVN", 'list'), FDLVN.list);
+            await setDoc(doc(db, "FDLVNPlayer", 'list'), FDLVNPlayer.list);
+            await setDoc(doc(db, "FDLVNLegacy", 'list'), FDLVNLegacy.list);
+            log += `Changes uploaded successfully!\n`
+            setStatus('Up to date')
+        }
+        catch(err){
+            log += err.toString() + '\n'
+            console.log(err.toString())
+            setStatus('An error occured')
+        }
+        var params = {
             username: "Demon List Admin Logs",
             avatar_url: "",
             content: log
         }
         request.send(JSON.stringify(params));
-        setStatus('Up to date')
     }
     function download(filename, text) {
         var element = document.createElement('a');
@@ -286,6 +295,9 @@ function Main() {
         download('data.json', j)
     }
     function logIn() {
+        function getCurrentTimeDate() {
+            return new Date().toLocaleString();
+        }
         signInWithPopup(auth, provider)
             .then((result) => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
@@ -294,7 +306,7 @@ function Main() {
                 // The signed-in user info.
                 const user = result.user;
                 setUser(user)
-                setLog(log + `**${user.displayName} (${user.email})'s session:**\n`)
+                setLog(log + `**${user.displayName} (${user.email})'s session (start at ${getCurrentTimeDate()}):**\n`)
             }).catch((error) => {
 
             });
@@ -336,6 +348,7 @@ function Main() {
                     setLog(log + `🟦 Updated ${d.name} (${d.id}) in FDLVN\n`)
                 }
                 async function delete0() {
+                    setLog(log + `🟥 Deleted ${d.name} (${d.id}) in FDLVN\n`)
                     const prevTop = d.top
                     delete FDLVN.list[parseInt(prevTop) - 1];
                     delete FDLVN.index[parseInt(d.id)];
@@ -346,7 +359,6 @@ function Main() {
                         FDLVN.list[i].points = Math.round((2100 / (0.3 * parseInt(FDLVN.list[i].top) + 9) - 80) * 100) / 100;
                     }
                     setStatus('Not up to date')
-                    setLog(log + `🟥 Deleted ${d.name} (${d.id}) in FDLVN\n`)
                 }
                 return (
                     <div className="popup">
@@ -415,10 +427,10 @@ function Main() {
                                                 setLog(log + `🟦 Updated ${d.vids[i].user} record in ${d.name} (${d.id}) in FDLVN\n`)
                                             }
                                             function delete2() {
+                                                setLog(log + `🟥 Deleted ${d.vids[i].user} record in ${d.name} (${d.id}) in FDLVN\n`)
                                                 d.vids.splice(i, 1);
                                                 setModal(0);
                                                 setStatus('Not up to date')
-                                                setLog(log + `🟥 Deleted ${d.vids[i].user} record in ${d.name} (${d.id}) in FDLVN\n`)
                                             }
                                             return (
                                                 <>
@@ -471,6 +483,7 @@ function Main() {
                     setLog(log + `🟦 Updated ${d.name} (${d.id}) in Legacy\n`)
                 }
                 async function delete0() {
+                    setLog(log + `🟥 Deleted ${d.name} (${d.id}) in Legacy\n`)
                     delete FDLVNLegacy.index[parseInt(d.id)];
                     for (const i in FDLVNLegacy.list) {
                         if (FDLVNLegacy.list[i].id == d.id) {
@@ -479,7 +492,6 @@ function Main() {
                     }
                     setModal(0);
                     setStatus('Not up to date')
-                    setLog(log + `🟥 Deleted ${d.name} (${d.id}) in Legacy\n`)
                 }
                 return (
                     <div className="popup">
@@ -549,10 +561,10 @@ function Main() {
                                                 setLog(log + `🟦 Updated ${d.vids[i].user} record in level ${d.name} (${d.id}) in Legacy\n`)
                                             }
                                             function delete2() {
+                                                setLog(log + `🟥 Deleted ${d.vids[i].user} record from level ${d.name} (${d.id}) in Legacy\n`)
                                                 d.vids.splice(i, 1);
                                                 setModal(0);
                                                 setStatus('Not up to date')
-                                                setLog(log + `🟥 Deleted ${d.vids[i].user} record from level ${d.name} (${d.id}) in Legacy\n`)
                                             }
                                             return (
                                                 <>
@@ -629,6 +641,7 @@ function Main() {
                     setLog(log + `🟦 Updated ${d.name} (${d.id}) in DLVN\n`)
                 }
                 async function delete0() {
+                    setLog(log + `🟥 Deleted ${d.name} (${d.id}) in DLVN\n`)
                     const prevTop = d.top
                     delete DLVN.list[parseInt(prevTop) - 1];
                     delete DLVN.index[parseInt(d.id)];
@@ -639,7 +652,6 @@ function Main() {
                         DLVN.list[i].points = getPoint(parseInt(i) + 1);
                     }
                     setStatus('Not up to date')
-                    setLog(log + `🟥 Deleted ${d.name} (${d.id}) in DLVN\n`)
                 }
                 return (
                     <div className="popup">
@@ -718,10 +730,10 @@ function Main() {
                                                 setLog(log + `🟦 Updated ${d.vids[i].user} record in level ${d.name} (${d.id}) in DLVN\n`)
                                             }
                                             function delete2() {
+                                                setLog(log + `🟥 Deleted ${d.vids[i].user} record from level ${d.name} (${d.id}) in DLVN\n`)
                                                 d.vids.splice(i, 1);
                                                 setModal(0);
                                                 setStatus('Not up to date')
-                                                setLog(log + `🟥 Deleted ${d.vids[i].user} record from level ${d.name} (${d.id}) in DLVN\n`)
                                             }
                                             return (
                                                 <>

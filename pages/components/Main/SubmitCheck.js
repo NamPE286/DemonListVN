@@ -11,6 +11,7 @@ function Main() {
     const [user, setUser] = useState(null);
     const [acp, setAcp] = useState(false);
     const [rej, setRej] = useState(false);
+    const [player, setPlayer] = useState(false)
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
     var XMLHttpRequest = require('xhr2');
@@ -36,7 +37,9 @@ function Main() {
         const dat5 = onSnapshot(doc(db, "submit", 'FDLVNRejected'), (doc) => {
             setRej(doc.data());
         })
-
+        const dat6 =  onSnapshot(doc(db, "player", 'index'), (doc) => {
+            setPlayer(doc.data());
+        })
         return () => {
             dat0();
             dat1();
@@ -44,6 +47,7 @@ function Main() {
             dat3();
             dat4();
             dat5();
+            dat6()
         }
     }, [])
     function logIn() {
@@ -61,6 +65,7 @@ function Main() {
             });
     }
     async function approve(i) {
+        data[i].vids.user = document.getElementById(`playerName${i}`).value
         if (data[i].id in lvDat) {
             var isNeedUpdate = false
             for(const j in lvDat[data[i].id].vids){
@@ -162,6 +167,10 @@ function Main() {
                 }
                 return data[i].comment
             }
+            function checkIfExist(i){
+                if(data[i].vids.user in player) return ''
+                return '(Not exist in list)'
+            }
             return (
                 <>
                     <div className='mainpanelNoMargin'>
@@ -172,7 +181,7 @@ function Main() {
                             {Object.keys(data).map(i => {
                                 return (
                                     <div className='submissionCard'>
-                                        <h3>{data[i].vids.user}</h3>
+                                        <input type="text" defaultValue={data[i].vids.user} className='playerName1' id={`playerName${i}`}></input> <label>{checkIfExist(i)}</label><br></br><br></br><br></br><br></br>
                                         <a href={`/mainlist/${data[i].id}`} target='_blank' title='View level page'>Level: {getLvInfo(data[i].id)} - </a>{data[i].id}<br></br><br></br>
                                         <a href={data[i].vids.link} target='_blank' title='View completion video'>{data[i].vids.link} {getHz(i)} {getPercent(i)}</a><br></br><br></br>
                                         <a>Comment: {getComment(i)}</a><br></br><br></br>
