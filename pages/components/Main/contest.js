@@ -8,14 +8,14 @@ function Main(){
         )
         if(i == 1) return(
             <div className="contestCard">
-                <a href='#!' id='joinContest'>Enter</a>
+                <a href='/contest/test' id='joinContest'>Enter</a>
                 <label id='contestName'><b>Contest Name</b></label>
                 <label id='endIn'>End in: 00:00:00</label>
             </div>
         )
         if(i == 2) return(
             <div className="contestCard">
-                <a href='#!' id='joinContest'>View</a>
+                <a href='/contest/test' id='joinContest'>View</a>
                 <label id='contestName'><b>Contest Name</b></label>
             </div>
         )

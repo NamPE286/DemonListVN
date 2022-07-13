@@ -3,7 +3,6 @@ import JoinDiscordPanel from '../components/JoinDiscordPanel.js';
 import Navbar from '../components/Navbar.js';
 import Main from '../components/Main/contest.js';
 import Head from 'next/head';
-const [sel, setSel] = useState(0);
 
 function App() {
   return (
