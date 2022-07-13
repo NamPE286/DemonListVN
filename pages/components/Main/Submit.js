@@ -232,7 +232,7 @@ function Main() {
                     <input type='number' id='lvID' name='lvID' /><br></br>
                     <label for='device'>Device (refresh rate):</label><br></br>
                     <select type='text' id='device' name='device'>
-                        <option value="60Hz">60Hz</option>
+                        <option value="60Hz">60fps</option>
                         <option value="144Hz">144fps</option>
                         <option value="240Hz">240fps</option>
                         <option value="300Hz">300fps</option>
