@@ -241,24 +241,33 @@ function Main() {
         }
         FDLVNPlayer.list = Object.assign({}, FDLVNPlayer.list)
         setStatus(`Uploading changes...`)
-        await setDoc(doc(db, "DLVN", 'index'), DLVN.index);
-        await setDoc(doc(db, "DLVNPlayer", 'index'), DLVNPlayer.index);
-        await setDoc(doc(db, "FDLVN", 'index'), FDLVN.index);
-        await setDoc(doc(db, "FDLVNPlayer", 'index'), FDLVNPlayer.index);
-        await setDoc(doc(db, "FDLVNLegacy", 'index'), FDLVNLegacy.index);
-        await setDoc(doc(db, "player", 'index'), player.index);
-        await setDoc(doc(db, "DLVN", 'list'), DLVN.list);
-        await setDoc(doc(db, "DLVNPlayer", 'list'), DLVNPlayer.list);
-        await setDoc(doc(db, "FDLVN", 'list'), FDLVN.list);
-        await setDoc(doc(db, "FDLVNPlayer", 'list'), FDLVNPlayer.list);
-        await setDoc(doc(db, "FDLVNLegacy", 'list'), FDLVNLegacy.list);
-        const params = {
+
+        try{
+            await setDoc(doc(db, "DLVN", 'index'), DLVN.index);
+            await setDoc(doc(db, "DLVNPlayer", 'index'), DLVNPlayer.index);
+            await setDoc(doc(db, "FDLVN", 'index'), FDLVN.index);
+            await setDoc(doc(db, "FDLVNPlayer", 'index'), FDLVNPlayer.index);
+            await setDoc(doc(db, "FDLVNLegacy", 'index'), FDLVNLegacy.index);
+            await setDoc(doc(db, "player", 'index'), player.index);
+            await setDoc(doc(db, "DLVN", 'list'), DLVN.list);
+            await setDoc(doc(db, "DLVNPlayer", 'list'), DLVNPlayer.list);
+            await setDoc(doc(db, "FDLVN", 'list'), FDLVN.list);
+            await setDoc(doc(db, "FDLVNPlayer", 'list'), FDLVNPlayer.list);
+            await setDoc(doc(db, "FDLVNLegacy", 'list'), FDLVNLegacy.list);
+            log += `Changes uploaded successfully!\n`
+            setStatus('Up to date')
+        }
+        catch(err){
+            log += err.toString() + '\n'
+            console.log(err.toString())
+            setStatus('An error occured')
+        }
+        var params = {
             username: "Demon List Admin Logs",
             avatar_url: "",
             content: log
         }
         request.send(JSON.stringify(params));
-        setStatus('Up to date')
     }
     function download(filename, text) {
         var element = document.createElement('a');
@@ -286,6 +295,9 @@ function Main() {
         download('data.json', j)
     }
     function logIn() {
+        function getCurrentTimeDate() {
+            return new Date().toLocaleString();
+        }
         signInWithPopup(auth, provider)
             .then((result) => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
@@ -294,7 +306,7 @@ function Main() {
                 // The signed-in user info.
                 const user = result.user;
                 setUser(user)
-                setLog(log + `**${user.displayName} (${user.email})'s session:**\n`)
+                setLog(log + `**${user.displayName} (${user.email})'s session (start at ${getCurrentTimeDate()}):**\n`)
             }).catch((error) => {
 
             });
