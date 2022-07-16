@@ -1271,10 +1271,11 @@ code {
             display: table-row;
             height: 40px;
         }
-        label{
+        p{
             display: table-cell;
             vertical-align: middle;
             text-align: center;
+            line-height: 20px;
         }
         #contestLevel{
             text-align: left;

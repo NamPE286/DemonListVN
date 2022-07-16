@@ -36,7 +36,7 @@ function Main() {
         catch (err) { }
     }
     function showSubmit() {
-        if (!mode) return (
+        if (mode == 0) return (
             <>
                 <div id='abcz'>
                     <h3>Submit</h3>
@@ -83,11 +83,11 @@ function Main() {
                     </div>
                     <div className='contestInfo'>
                         <div className='contestLevel'>
-                            <section><label id='contestLevel'><b>Level Name</b> by <b>Creator</b></label><label id='contestLevelID'>12345678</label><label id='contestLevelDiff'>Easy Demon</label></section>
-                            <section><label id='contestLevel'><b>Level Name</b> by <b>Creator</b></label><label id='contestLevelID'>12345678</label><label id='contestLevelDiff'>Medium Demon</label></section>
-                            <section><label id='contestLevel'><b>Level Name</b> by <b>Creator</b></label><label id='contestLevelID'>12345678</label><label id='contestLevelDiff'>Hard Demon</label></section>
-                            <section><label id='contestLevel'><b>Level Name</b> by <b>Creator</b></label><label id='contestLevelID'>12345678</label><label id='contestLevelDiff'>Insane Demon</label></section>
-                            <section><label id='contestLevel'><b>Level Name</b> by <b>Creator</b></label><label id='contestLevelID'>12345678</label><label id='contestLevelDiff'>Extreme Demon</label></section>
+                            <section><p id='contestLevel'><b>Level Name</b> by <b>Creator</b></p><p id='contestLevelID'>12345678</p><p id='contestLevelDiff'>Easy Demon</p></section>
+                            <section><p id='contestLevel'><b>Level Name</b> by <b>Creator</b></p><p id='contestLevelID'>12345678</p><p id='contestLevelDiff'>Medium Demon</p></section>
+                            <section><p id='contestLevel'><b>Level Name</b> by <b>Creator</b></p><p id='contestLevelID'>12345678</p><p id='contestLevelDiff'>Hard Demon</p></section>
+                            <section><p id='contestLevel'><b>Level Name</b> by <b>Creator</b></p><p id='contestLevelID'>12345678</p><p id='contestLevelDiff'>Insane Demon</p></section>
+                            <section><p id='contestLevel'><b>Level Name</b> by <b>Creator</b></p><p id='contestLevelID'>12345678</p><p id='contestLevelDiff'>Extreme Demon</p></section>
                         </div>
                     </div>
                     {showSubmit()}
