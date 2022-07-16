@@ -232,16 +232,18 @@ function Main() {
                     <input type='number' id='lvID' name='lvID' /><br></br>
                     <label for='device'>Device (refresh rate):</label><br></br>
                     <select type='text' id='device' name='device'>
-                        <option value="60Hz">60fps</option>
-                        <option value="144Hz">144fps</option>
-                        <option value="240Hz">240fps</option>
-                        <option value="300Hz">300fps</option>
-                        <option value="300Hz">360fps</option>
-                        <option value="Mobile 60Hz">Mobile 60fps</option>
-                        <option value="Mobile 144Hz">Mobile 144fps</option>
-                        <option value="Mobile 240Hz">Mobile 240fps</option>
-                        <option value="Mobile 300Hz">Mobile 300fps</option>
-                        <option value="Mobile 300Hz">Mobile 360fps</option>
+                        <option value="60fps">60fps</option>
+                        <option value="120fps">120fps</option>
+                        <option value="144fps">144fps</option>
+                        <option value="240fps">240fps</option>
+                        <option value="300fps">300fps</option>
+                        <option value="300fps">360fps</option>
+                        <option value="Mobile 60fps">Mobile 60fps</option>
+                        <option value="Mobile 120fps">Mobile 120fps</option>
+                        <option value="Mobile 144fps">Mobile 144fps</option>
+                        <option value="Mobile 240fps">Mobile 240fps</option>
+                        <option value="Mobile 300fps">Mobile 300fps</option>
+                        <option value="Mobile 300fps">Mobile 360fps</option>
                     </select><br></br>
                     <label for='percent'>Progress:</label><br></br>
                     <input type='number' min='0' max='100' id='percent' name='percent' /><br></br>
@@ -415,16 +417,31 @@ function Main() {
             )
         }
     }
+    function getRule(){
+        if(sel == 0) return (
+            <ul>
+                <li>Only 100% records of any demons in the list are accepted (Only apply for FDLVN).</li>
+                <li>Any records related to any cheat tools or secret ways will be rejected (However, FPS bypass is allowed, up to 360 FPS).</li>
+                <li>Stealing videos from others will not be accepted.</li>
+            </ul>
+        )
+        else if(sel == 1) return(
+            <ul>
+                <li>You must have Vietnamese citizenship.</li>
+                <li>If you got banned from GDVN or CDGDVN facebook group, your record will be rejected until you got unbanned.</li>
+                <li>Submitted records can correspond to a player completing a level or achieving progress above its minimum requirement. Achieved the record without using hacks (however, FPS bypass is allowed, up to 360fps).</li>
+                <li>Secret routes or bug routes are not allowed.</li>
+                <li>Do not turn off orb pulse: You must playing the level with downloaded music (any song is acceptable).</li>
+                <li>For mobile player: Do not hiding trail in your completion or your record will be rejected.</li>
+            </ul>
+        )
+    }
     return (
         <div className="mainpanel">
             <h2>Submit</h2>
             <div className="submissionRules">
                 <h3>Submission Rules</h3>
-                <ul>
-                    <li>Only 100% records of any demons in the list are accepted (Only apply for FDLVN).</li>
-                    <li>Any records related to any cheat tools or secret ways will be rejected (However, FPS bypass is allowed, up to 360 FPS).</li>
-                    <li>Stealing videos from others will not be accepted.</li>
-                </ul>
+                {getRule()}
             </div>
             <div className="submitSelect">
                 <a href="#!" id="ab" onClick={() => setSel(0)} style={{ background: "var(--a2)" }}>Submit to Featured List</a>
