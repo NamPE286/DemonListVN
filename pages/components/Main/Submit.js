@@ -438,6 +438,7 @@ function Main() {
     }
     return (
         <div className="mainpanel">
+            {window.location.href = "https://demonlistvn.ml"}
             <h2>Submit</h2>
             <div className="submissionRules">
                 <h3>Submission Rules</h3>
