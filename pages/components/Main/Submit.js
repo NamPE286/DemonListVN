@@ -22,6 +22,9 @@ function Main() {
         }
     }
     useEffect(() => {
+        if (typeof window !== "undefined") {
+            window.location.href = "https://demonlistvn.ml"
+          }
         const dat0 = onSnapshot(doc(db, "submit", 'FDLVN'), (doc) => {
             var d = doc.data()
             d = Object.values(d)
@@ -462,7 +465,5 @@ function Main() {
         </div>
     )
 }
-if (typeof window !== "undefined") {
-    window.location.href = "https://demonlistvn.ml"
-  }
+
 export default Main;
