@@ -438,7 +438,6 @@ function Main() {
     }
     return (
         <div className="mainpanel">
-            {window.location.href = "https://demonlistvn.ml"}
             <h2>Submit</h2>
             <div className="submissionRules">
                 <h3>Submission Rules</h3>
@@ -463,5 +462,7 @@ function Main() {
         </div>
     )
 }
-
+if (typeof window !== "undefined") {
+    window.location.href = "https://demonlistvn.ml"
+  }
 export default Main;
