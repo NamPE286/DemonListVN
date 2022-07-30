@@ -17,6 +17,7 @@ function Main() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    alert('This page have moved to https://demonlistvn.ml')
     async function getData() {
 
       const lvRef = doc(db, "FDLVN", 'list')
